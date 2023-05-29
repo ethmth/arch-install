@@ -83,7 +83,8 @@ mkinitcpio -P
 # Grub Command Line
 grub_string=$(cat /opt/grub_string.txt)
 rm /opt/grub_string.txt
-sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$grub_string\"/" /etc/default/grub
+current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed 's/GRUB_CMDLINE_LINUX_DEFAULT=//')
+sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$current_arguments $grub_string\"/" /etc/default/grub
 
 #echo "You will now un-chroot yourself back into the arch linux installer."
 #echo "Type 'exit'"
