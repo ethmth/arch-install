@@ -80,6 +80,11 @@ echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel-group
 sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
 mkinitcpio -P
 
-echo "You will now un-chroot yourself back into the arch linux installer."
-echo "Type 'exit'"
-echo "Then run '/root/install-scripts/3-arch-install-fstab.sh' (in the installer)"
+# Grub Command Line
+grub_string=$(cat /opt/grub_string.txt)
+rm /opt/grub_string.txt
+sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$grub_string\"/" /etc/default/grub
+
+#echo "You will now un-chroot yourself back into the arch linux installer."
+#echo "Type 'exit'"
+#echo "Then run '/root/install-scripts/3-arch-install-fstab.sh' (in the installer)"

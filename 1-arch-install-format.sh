@@ -75,7 +75,10 @@ fi
 clear
 
 # Disk things
-lsblk -f >> /mnt/tmp/lsblk.out
+uuid_crypt=$(lsblk -f | grep crypto_LUKS | awk '{print $4}')
+uuid_rootfs=$(lsblk -f | grep rootfs | grep -v loop | awk '{print $4}')
+grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm root=UUID=$uuid_rootfs"
+echo "$grub_string" > /mnt/opt/grub_string.txt
 genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "You will now be chrooted into the arch linux system."
