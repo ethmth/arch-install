@@ -94,8 +94,8 @@ sed -i 's/ quiet//g' /etc/default/grub
 #echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 
 # Grub Installation
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
-# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck --removable
+# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck --removable
 # grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
