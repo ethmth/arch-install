@@ -29,6 +29,9 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${disk}
   2 # partion number 2
     # default, start immediately after preceding partition
     # default, extend partition to end of disk
+  t # change partition type
+  1 # partition number (1)
+  1 # partion type (1 - EFI system)
   w # write the partition table
 EOF
 echo "Partitions created:"
