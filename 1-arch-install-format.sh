@@ -53,8 +53,8 @@ echo "Enter the password to unencrypt the disk:"
 cryptsetup open "${disk}2" "rootfs"
 mkfs.ext4 /dev/mapper/rootfs
 mount /dev/mapper/rootfs /mnt
-# mount --mkdir "${disk}1" /mnt/boot
-mount --mkdir "${disk}1" /mnt/boot/EFI
+# mount --mkdir "${disk}1" /mnt/boot/EFI
+mount --mkdir "${disk}1" /mnt/boot
 lsblk
 
 read -p "Are the mountpoints correct (N for No, otherwise Yes)? " userInput
@@ -89,4 +89,4 @@ echo "You will now be chrooted into the arch linux system."
 echo "(If you're not, then run 'arch-chroot /mnt')"
 echo "Run 'git clone https://github.com/ethmth/install-scripts.git /tmp/install-scripts'"
 echo "Then '/tmp/install-scripts/2-arch-install-chroot.sh'"
-arch-chroot /mnt
+arch-chroot /mnt bash
