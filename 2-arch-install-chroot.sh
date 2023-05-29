@@ -75,6 +75,7 @@ echo "Please set the password for $username:"
 passwd $username
 
 echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel-group
+usermod -aG audio,video,optical,storage $username
 
 # Grub configuration
 sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
@@ -87,8 +88,11 @@ current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed '
 sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$current_arguments $grub_string\"/" /etc/default/grub
 sed -i 's/ quiet//g' /etc/default/grub
 
+echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+
 # Grub Installation
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "You will now un-chroot yourself back into the arch linux installer."

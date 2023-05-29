@@ -53,7 +53,8 @@ echo "Enter the password to unencrypt the disk:"
 cryptsetup open "${disk}2" "rootfs"
 mkfs.ext4 /dev/mapper/rootfs
 mount /dev/mapper/rootfs /mnt
-mount --mkdir "${disk}1" /mnt/boot
+# mount --mkdir "${disk}1" /mnt/boot
+mount --mkdir "${disk}1" /mnt/boot/EFI
 lsblk
 
 read -p "Are the mountpoints correct (N for No, otherwise Yes)? " userInput
@@ -67,7 +68,7 @@ clear
 
 # ============ INSTALLATION =====================
 
-pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub git vim nano cryptsetup lvm2 efibootmgr tmux curl wget fzf
+pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub git vim nano cryptsetup lvm2 efibootmgr dosfstools os-prober mtools tmux curl wget fzf
 
 read -p "Were the package installations successful (N for No, otherwise Yes)? " userInput
 
