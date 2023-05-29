@@ -11,7 +11,13 @@ pacman -S vim fzf
 # Font, Time
 setfont ter-122b
 timedatectl
-read -p "Is the timedatectl correct (zone does not matter, just clock)?" userInput
+read -p "Is the timedatectl correct (zone does not matter, just clock) (N for No, anything else for Yes)? " userInput
+
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    echo "Alrighty then... fix it. Exiting now"
+    exit 1
+fi
+clear
 
 # Disk partititioning
 disk=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk for BOOT and ROOT partitions" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
@@ -36,3 +42,51 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${disk}
     # default, extend partition to end of disk
   w # write the partition table
 EOF
+echo "Partitions created:"
+fdisk -l | grep "$disk"
+
+read -p "Do these partitions look correct (N for No, anything else for Yes)? " userInput
+
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    echo "Alrighty then... fix it. Exiting now"
+    exit 1
+fi
+clear
+
+# Disk formatting/encryption and mounting
+mkfs.fat -F32 "${disk}1"
+echo "ENCRYPTION SETUP FOR ROOT FILESYSTEM:"
+cryptsetup luksFormat "${disk}2"
+echo "Enter the password to unencrypt the disk:"
+cryptsetup open "${disk}2" "rootfs"
+mkfs.ext4 /dev/mapper/rootfs
+mount /dev/mapper/rootfs /mnt
+mount --mkdir "${disk}1" /mnt/boot
+lsblk
+
+read -p "Are the mountpoints correct (N for No, anything else for Yes)? " userInput
+
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    echo "Alrighty then... fix it. Exiting now"
+    exit 1
+fi
+clear
+
+
+# ============ INSTALLATION =====================
+
+pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub git vim nano cryptsetup lvm2 efibootmgr tmux curl wget
+
+read -p "Was the installation successful (N for No, anything else for Yes)? " userInput
+
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    echo "Alrighty then... fix it. Exiting now"
+    exit 1
+fi
+clear
+
+echo "You will now be chrooted into the arch linux system."
+echo "(If you're not, then run 'arch-chroot /mnt')"
+echo "Run 'git clone https://github.com/ethmth/install-scripts.git /tmp/install-scripts'"
+echo "Then '/tmp/install-scripts/arch-install-chroot.sh'"
+arch-chroot /mnt
