@@ -75,3 +75,7 @@ echo "Please set the password for $username:"
 passwd $username
 
 echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel-group
+
+# Grub configuration
+sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
+mkinitcpio -P
