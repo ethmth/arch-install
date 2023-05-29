@@ -79,6 +79,8 @@ usermod -aG audio,video,optical,storage $username
 
 # Grub configuration
 sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
+sed -i '/^HOOKS/s/keyboard //' /etc/mkinitcpio.conf
+sed -i '/^HOOKS/s/autodetect/keyboard autodetect/' /etc/mkinitcpio.conf
 # sed -i '/^HOOKS/s/filesystems/filesystems resume/' /etc/mkinitcpio.conf
 mkinitcpio -P
 
@@ -92,7 +94,7 @@ sed -i 's/ quiet//g' /etc/default/grub
 #echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 
 # Grub Installation
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/efi --recheck --removable
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 # grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck --removable
 # grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
