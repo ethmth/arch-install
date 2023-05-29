@@ -97,4 +97,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "You will now un-chroot yourself back into the arch linux installer."
 echo "Type 'exit'"
 echo "Then shutdown ('shutdown now') (in the arch linux installer), take out installation medium, boot back up, and connect to the internet"
-echo "Then, login and run 'git clone https://github.com/ethmth/install-scripts.git' and execute './3-arch-install-desktop.sh'"
+echo "Then, login and run 'git clone https://github.com/ethmth/install-scripts.git' and execute './3-arch-install-packages.sh'"

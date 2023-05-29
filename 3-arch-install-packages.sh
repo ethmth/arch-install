@@ -10,19 +10,22 @@
 
 # Install Desktop Environment
 typeofcpu=$(printf "Laptop\nDesktop\n" | fzf --prompt="Select your type of computer")
-gpu=$(printf "AMD/Intel\nNvidia\n" | fzf --prompt="Select your host GPU")
+gpu=$(printf "Intel Integrated Graphics\nAMD\nNvidia\n" | fzf --prompt="Select your host GPU")
 de=$(printf "KDE Plasma\nHyprland\n" | fzf --prompt="Select your preferred Desktop Environment")
 
 NVIDIA=0
 AMD=0
+INTEL=0
 HYPRLAND=0
 PLASMA=0
 LAPTOP=0
 DESKTOP=0
 if [ "$gpu" == "Nvidia" ]; then
     NVIDIA=1
-else
+elif [ "$gpu" == "AMD" ]; then
     AMD=1
+else
+    INTEL=1
 fi
 if [ "$de" == "Hyprland" ]; then
     HYPRLAND=1
@@ -36,10 +39,12 @@ else
 fi
 
 base_packages="
+cups
 dkms
 linux-headers
 linux-zen
 linux-zen-headers
+cronie
 openresolv
 openvpn
 networkmanager-openvpn
@@ -68,6 +73,9 @@ docker
 docker-compose
 texlive-bin
 texlive-bibtexextra
+biber
+perl-file-homedir
+perl-yaml-tiny
 libvirt
 virt-manager
 qemu-arch-extra
@@ -76,6 +84,22 @@ bridge-utils
 virtualbox
 virtualbox-host-dkms
 wireshark-qt
+openssh
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+thunar
+thunar-archive-plugin
+ffmpeg
+neovim
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+pipewire-v4l2
+pavucontrol
+qjackctl
+hashcat-git
 "
 #base_packages=${base_packages//$'\n'/ }
 
@@ -85,12 +109,6 @@ sddm-git"
 #echo "$packages"
 #exit 0
 
-
-if (( HYPRLAND )); then
-packages+="
-hyprpicker-git
-"
-fi
 if (( HYPRLAND && AMD )); then
 packages+="
 hyprland-git
@@ -101,23 +119,24 @@ packages+="
 hyprland-nvidia-git
 "
 fi
-
-if (( NVIDIA )); then
+if (( HYPRLAND )); then
 packages+="
-nvidia-dkms
-nvidia-settings
-nvidia-utils
-opencl-nvidia
-"
-fi
-
-if (( AMD )); then 
-packages+="
-obs-studio-amf
-obs-vkcapture-git
-obs-streamfx-git
-obs-vaapi
-v4l2loopback-dkms
+xorg
+hyprpicker-git
+polkit-gnome
+xdg-desktop-portal-hyprland-git
+rofi
+wl-clipboard
+wf-recorder
+swaybg
+grimblast-git
+waybar-hyprland
+wlogout
+swaylock-effects
+alacritty
+otf-font-awesome
+dunst
+brightnessctl
 "
 fi
 
@@ -127,6 +146,32 @@ xorg
 plasma
 plasma-wayland-session
 kde-applications
+qterminal
+"
+fi
+
+if (( NVIDIA )); then
+packages+="
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+opencl-nvidia
+obs-studio
+v4l2loopback-dkms
+"
+fi
+
+if (( AMD )); then 
+packages+="
+rocm-opencl-runtime
+lib32-vulkan-amdgpu-pro
+vulkan-amdgpu-pro
+amf-amdgpu-pro
+obs-studio-amf
+obs-vkcapture-git
+obs-streamfx-git
+obs-vaapi
+v4l2loopback-dkms
 "
 fi
 
@@ -142,13 +187,20 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 echo "$packages"
 exit 0
 
-# Add user to group
+# Add user to groups
 USER=$(whoami)
 sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,transmission,wireshark,autologin $USER
+
+# Software Specific Configuration
+# sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 
 # Enable Services
 sudo systemctl enable sddm.service
 sudo systemctl enable libvirtd
+sudo systemctl enable cronie
+sudo systemctl enable docker
+sudo systemctl enable sshd
+sudo systemctl enable cups
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
