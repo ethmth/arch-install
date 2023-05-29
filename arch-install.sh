@@ -75,7 +75,7 @@ clear
 
 # ============ INSTALLATION =====================
 
-pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub git vim nano cryptsetup lvm2 efibootmgr tmux curl wget
+pacstrap -K /mnt base base-devel linux linux-firmware networkmanager grub git vim nano cryptsetup lvm2 efibootmgr tmux curl wget fzf
 
 read -p "Was the installation successful (N for No, anything else for Yes)? " userInput
 
