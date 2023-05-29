@@ -74,6 +74,10 @@ if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
 fi
 clear
 
+# Disk things
+lsblk -f >> /mnt/tmp/lsblk.out
+genfstab -U /mnt >> /mnt/etc/fstab
+
 echo "You will now be chrooted into the arch linux system."
 echo "(If you're not, then run 'arch-chroot /mnt')"
 echo "Run 'git clone https://github.com/ethmth/install-scripts.git /tmp/install-scripts'"
