@@ -51,3 +51,27 @@ if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     exit 1
 fi
 clear
+
+# Enabling NetworkManager
+systemctl enable NetworkManager.service
+
+
+# Setting root password
+echo "Please enter the desired root password:"
+passwd
+
+# Add a user
+read -p "Please input your desired username: " username
+read -p "Is '$username' your desired username (N for No, otherwise Yes)? " userInput
+
+while ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); do
+    read -p "Please input your desired username: " username
+    read -p "Is '$username' your desired username (N for No, otherwise Yes)? " userInput
+done
+echo "Username: $username"
+
+useradd -G wheel -m $username
+echo "Please set the password for $username:"
+passwd $username
+
+echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel-group
