@@ -92,7 +92,7 @@ echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 
 # Grub Installation
 # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "You will now un-chroot yourself back into the arch linux installer."
