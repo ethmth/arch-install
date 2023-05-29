@@ -81,7 +81,6 @@ usermod -aG audio,video,optical,storage $username
 sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
 sed -i '/^HOOKS/s/keyboard //' /etc/mkinitcpio.conf
 sed -i '/^HOOKS/s/autodetect/keyboard autodetect/' /etc/mkinitcpio.conf
-# sed -i '/^HOOKS/s/filesystems/filesystems resume/' /etc/mkinitcpio.conf
 mkinitcpio -P
 
 # Grub Command Line Arguments
@@ -91,12 +90,8 @@ current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed '
 sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$current_arguments $grub_string\"/" /etc/default/grub
 sed -i 's/ quiet//g' /etc/default/grub
 
-#echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
-
 # Grub Installation
-# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck --removable
-# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "You will now un-chroot yourself back into the arch linux installer."

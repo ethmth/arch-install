@@ -53,7 +53,6 @@ echo "Enter the password to unencrypt the disk:"
 cryptsetup open "${disk}2" "cryptroot"
 mkfs.ext4 /dev/mapper/cryptroot
 mount /dev/mapper/cryptroot /mnt
-# mount --mkdir "${disk}1" /mnt/boot/EFI
 mount --mkdir "${disk}1" /mnt/boot
 lsblk
 
@@ -80,8 +79,6 @@ clear
 
 # Disk things
 uuid_crypt=$(lsblk -f | grep crypto_LUKS | awk '{print $4}')
-#uuid_rootfs=$(lsblk -f | grep cryptroot | grep -v loop | awk '{print $4}')
-# grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm root=UUID=$uuid_rootfs"
 grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm"
 echo "$grub_string" > /mnt/opt/grub_string.txt
 genfstab -U /mnt >> /mnt/etc/fstab
