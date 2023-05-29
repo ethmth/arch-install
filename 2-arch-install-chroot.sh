@@ -85,7 +85,7 @@ grub_string=$(cat /opt/grub_string.txt)
 rm /opt/grub_string.txt
 current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed 's/GRUB_CMDLINE_LINUX_DEFAULT=//' | tr -d '"')
 sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$current_arguments $grub_string\"/" /etc/default/grub
-sed -i 's/quiet//g' /etc/default/grub
+sed -i 's/ quiet//g' /etc/default/grub
 
 # Grub Installation
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
