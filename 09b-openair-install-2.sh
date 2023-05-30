@@ -13,3 +13,5 @@ bash ./set_vars.sh
 bash ./install_to_bin.sh
 cd
 rm -rf /home/$CUR_USER/openair-vpn/
+
+echo "It would be best to restart now"
