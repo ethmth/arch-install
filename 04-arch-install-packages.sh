@@ -171,7 +171,9 @@ yay -Syu $packages --needed --noconfirm
 
 # Add user to groups
 sudo -k groupadd autologin
-sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $CUR_USER
+sudo usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $CUR_USER
 
-# Update grub with new kernels
+# Update grub with new config and kernels
+sudo sh -c 'echo "GRUB_SAVEDEFAULT=true" > /etc/default/grub'
+sudo sh -c 'echo "GRUB_DISABLE_SUBMENU=y" > /etc/default/grub'
 sudo grub-mkconfig -o /boot/grub/grub.cfg
