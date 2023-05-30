@@ -214,4 +214,8 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 yay -Syu $packages --needed --noconfirm
 
 # Add user to groups
-sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,transmission,wireshark,autologin $USER
+sudo -k groupadd autologin
+sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $USER
+
+# Update grub with new kernels
+sudo grub-mkconfig -o /boot/grub/grub.cfg
