@@ -114,6 +114,8 @@ pavucontrol
 qjackctl
 gallery-dl
 yt-dlp
+gparted
+gthumb
 "
 
 if (( HYPRLAND && AMD )); then
@@ -193,7 +195,6 @@ fi
 packages+="
 jdk-openjdk
 emacs29-git
-jdk19-openjdk
 texlive-bin
 texlive-bibtexextra
 biber
