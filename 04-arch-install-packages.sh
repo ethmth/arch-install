@@ -84,6 +84,7 @@ alacritty
 kdeconnect
 kate
 jq
+net-tools
 "
 
 if (( HYPRLAND && AMD )); then

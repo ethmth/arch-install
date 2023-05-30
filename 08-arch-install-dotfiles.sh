@@ -15,6 +15,8 @@ shopt -s dotglob
 cp -r /home/$CUR_USER/arch-dots/home/* /home/$CUR_USER/
 rm -rf /home/$CUR_USER/arch-dots
 
+# Source bash prompt
+echo "source ~/.config/bash/prompt" >> /home/$CUR_USER/.bashrc
 
 # Install Magic Status Executables
 if (( PLASMA )); then
