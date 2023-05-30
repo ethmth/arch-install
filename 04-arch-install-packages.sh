@@ -83,6 +83,7 @@ qterminal
 alacritty
 kdeconnect
 kate
+jq
 "
 
 if (( HYPRLAND && AMD )); then
