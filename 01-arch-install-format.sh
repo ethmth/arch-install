@@ -46,14 +46,17 @@ fi
 clear
 
 # Disk formatting/encryption and mounting
-mkfs.fat -F32 "${disk}1"
+partition=$(fdisk -l | grep $disk | awk '{print $1}' | grep '1$' | rev | cut -c 2- | rev)
+partitionsuffix=$(echo "$partition" | cut -d'/' -f 3)
+
+mkfs.fat -F32 "${partition}1"
 echo "Encryption setup for root filesystem:"
-cryptsetup luksFormat "${disk}2"
+cryptsetup luksFormat "${partition}2"
 echo "Enter the password to unencrypt the disk:"
-cryptsetup open "${disk}2" "cryptroot"
+cryptsetup open "${partition}2" "cryptroot"
 mkfs.ext4 /dev/mapper/cryptroot
 mount /dev/mapper/cryptroot /mnt
-mount --mkdir "${disk}1" /mnt/boot
+mount --mkdir "${partition}1" /mnt/boot
 lsblk
 
 read -p "Are the mountpoints correct (N for No, otherwise Yes)? " userInput
@@ -79,7 +82,7 @@ clear
 
 # Disk things
 uuid_crypt=$(lsblk -f | grep crypto_LUKS | awk '{print $4}')
-grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm"
+grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm:allow-discards"
 echo "$grub_string" > /mnt/opt/grub_string.txt
 genfstab -U /mnt >> /mnt/etc/fstab
 
