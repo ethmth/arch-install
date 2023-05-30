@@ -158,7 +158,7 @@ perl-file-homedir
 perl-yaml-tiny
 hashcat-git
 neofetch
-steam-devices-git
+steam-devices
 vscodium-bin
 gcc-fortran
 xpadneo-dkms
