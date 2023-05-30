@@ -2,7 +2,6 @@
 
 # Load Config Values
 CUR_USER=$(whoami)
-echo "$CUR_USER"
 source /home/$CUR_USER/install-scripts/values.conf
 
 # Software Specific Configuration
