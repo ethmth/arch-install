@@ -12,6 +12,10 @@ cd /home/$CUR_USER/openair-vpn/
 bash ./set_vars.sh
 bash ./install_to_bin.sh
 cd
+
+echo "Install root crontab:"
+sudo crontab /home/$CUR_USER/openair-vpn/crontab-root
+
 rm -rf /home/$CUR_USER/openair-vpn/
 
 echo "It would be best to restart now"
