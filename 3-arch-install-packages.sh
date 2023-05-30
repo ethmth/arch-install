@@ -49,7 +49,6 @@ openresolv
 openvpn
 networkmanager-openvpn
 openbsd-netcat
-jdk-openjdk
 python
 python-beautifulsoup4
 python-cuda
@@ -71,11 +70,6 @@ firefox
 flatpak
 docker
 docker-compose
-texlive-bin
-texlive-bibtexextra
-biber
-perl-file-homedir
-perl-yaml-tiny
 libvirt
 virt-manager
 qemu-arch-extra
@@ -99,7 +93,8 @@ pipewire-pulse
 pipewire-v4l2
 pavucontrol
 qjackctl
-hashcat-git
+gallery-dl
+yt-dlp
 "
 #base_packages=${base_packages//$'\n'/ }
 
@@ -193,6 +188,26 @@ sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,transmission,wire
 
 # Software Specific Configuration
 # sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sudo printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf
+if (( LAPTOP )); then
+    sudo printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf
+    sudo cp /home/$USER/install-scripts/configs/backlight.rules /etc/udev/rules.d/backlight.rules
+fi
+if (( HYPRLAND )); then
+    sudo cp /home/$USER/install-scripts/installed_scripts/wrappedhl /usr/bin/wrappedhl
+    sudo cp /home/$USER/install-scripts/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
+    sudo printf "[Autologin]\nUser=$USER\nSession=hyprlandwrapper\n" > /etc/sddm.conf
+fi
+if (( LAPTOP && HYPRLAND )); then
+    sudo cp /home/$USER/install-scripts/installed_scripts/brightlight /usr/bin/brightlight
+    sudo cp /home/$USER/install-scripts/installed_scripts/nightlight /usr/bin/nightlight
+fi
+if (( PLASMA )); then
+    sudo printf "[Autologin]\nUser=$USER\nSession=plasmawayland\n" > /etc/sddm.conf
+fi
+sudo cp /home/$USER/install-scripts/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
+sudo cp /home/$USER/install-scripts/installed_scripts/sshbg /usr/bin/sshbg
+sudo cp /home/$USER/install-scripts/installed_scripts/stream-dl /usr/bin/stream-dl
 
 # Enable Services
 sudo systemctl enable sddm.service
