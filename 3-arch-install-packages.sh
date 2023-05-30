@@ -116,6 +116,7 @@ gallery-dl
 yt-dlp
 gparted
 gthumb
+gvfs
 "
 
 if (( HYPRLAND && AMD )); then
