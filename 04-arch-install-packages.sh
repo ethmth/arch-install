@@ -72,6 +72,10 @@ yt-dlp
 gparted
 gthumb
 gvfs
+veracrypt
+cryptomator-bin
+android-sdk
+scrcpy
 "
 
 if (( HYPRLAND && AMD )); then
