@@ -5,8 +5,10 @@ USER=$(whoami)
 source /home/$USER/install-scripts/values.conf
 
 # Software Specific Configuration
+sudo mkdir /etc/systemd/system.conf.d
 sudo printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf
 if (( LAPTOP )); then
+    sudo mkdir /etc/systemd/login.conf.d
     sudo printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf
     sudo cp /home/$USER/install-scripts/configs/backlight.rules /etc/udev/rules.d/backlight.rules
 fi
@@ -37,5 +39,3 @@ sudo systemctl enable cups
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
-
-# Install Dotfiles
