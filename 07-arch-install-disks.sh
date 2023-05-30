@@ -87,3 +87,5 @@ uuid_crypt=$(lsblk -f | grep $partitionsuffix | awk '{print $4}')
 device_string="UUID=$uuid_crypt"
 
 printf "$name\t$device_string\t$path$name\t$options\n" >> /etc/crypttab
+
+printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults\t0 1\n" >> /etc/fstab
