@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Install yay
-#cd
-#git clone https://aur.archlinux.org/yay.git
-#cd yay
-#makepkg -si --needed --noconfirm
-#cd
-#rm -rf yay
+cd
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --needed --noconfirm
+cd
+rm -rf yay
 
 # Install Desktop Environment
 typeofcpu=$(printf "Laptop\nDesktop\n" | fzf --prompt="Select your type of computer")
-gpu=$(printf "Intel Integrated Graphics\nAMD\nNvidia\n" | fzf --prompt="Select your host GPU")
+cpu=$(printf "Intel\nAMD\n" | fzf --prompt="Select your CPU")
+gpu=$(printf "Intel Integrated Graphics\nAMD GPU\nNvidia GPU\n" | fzf --prompt="Select your host GPU")
 de=$(printf "KDE Plasma\nHyprland\n" | fzf --prompt="Select your preferred Desktop Environment")
 
 NVIDIA=0
@@ -20,9 +21,16 @@ HYPRLAND=0
 PLASMA=0
 LAPTOP=0
 DESKTOP=0
-if [ "$gpu" == "Nvidia" ]; then
+INTEL_CPU=0
+AMD_CPU=0
+if [ "$cpu" == "AMD" ]; then
+    AMD_CPU=1
+else
+    INTEL_CPU=1
+fi
+if [ "$gpu" == "Nvidia GPU" ]; then
     NVIDIA=1
-elif [ "$gpu" == "AMD" ]; then
+elif [ "$gpu" == "AMD GPU" ]; then
     AMD=1
 else
     INTEL=1
@@ -38,7 +46,8 @@ else
     DESKTOP=1
 fi
 
-base_packages="
+packages="
+sddm-git
 cups
 dkms
 linux-headers
@@ -96,13 +105,6 @@ qjackctl
 gallery-dl
 yt-dlp
 "
-#base_packages=${base_packages//$'\n'/ }
-
-packages="$base_packages
-sddm-git"
-
-#echo "$packages"
-#exit 0
 
 if (( HYPRLAND && AMD )); then
 packages+="
@@ -167,6 +169,7 @@ obs-vkcapture-git
 obs-streamfx-git
 obs-vaapi
 v4l2loopback-dkms
+prismlauncher-git
 "
 fi
 
@@ -176,18 +179,68 @@ auto-cpufreq
 "
 fi
 
+# Fun Packages
+packages+="
+jdk-openjdk
+emacs29-git
+jdk19-openjdk
+texlive-bin
+texlive-bibtexextra
+biber
+perl-file-homedir
+perl-yaml-tiny
+hashcat-git
+neofetch
+steam-devices-git
+vscodium-bin
+gcc-fortran
+xpadneo-dkms
+"
+
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
-echo "$packages"
-exit 0
+yay -Syu $packages --needed --noconfirm
+
+# Install Flatpaks
+flatpaks="
+com.brave.Browser
+com.github.micahflee.torbrowser-launcher
+com.github.tchx84.Flatseal
+com.google.AndroidStudio
+com.heroicgameslauncher.hgl
+com.jetbrains.IntelliJ-IDEA-Community
+com.usebottles.bottles
+com.valvesoftware.Steam
+eu.scarpetta.PDFMixTool
+io.gitlab.librewolf-community
+net.lutris.Lutris
+net.mullvad.MullvadBrowser
+nz.mega.MEGAsync
+org.chromium.Chromium
+org.kde.kdenlive
+rest.insomnia.Insomnia
+org.signal.Signal
+com.github.Matoking.protontricks
+com.belmoussaoui.Decoder
+app.bluebubbles.BlueBubbles
+net.davidotek.pupgui2
+"
+if (( NVIDIA || INTEL )); then
+flatpaks+="
+org.prismlauncher.PrismLauncher
+"
+fi
+
+flatpaks=${flatpaks//$'\n'/ }
+flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+flatpak install --noninteractive flathub $flatpaks
 
 # Add user to groups
 USER=$(whoami)
 sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,transmission,wireshark,autologin $USER
 
 # Software Specific Configuration
-# sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 sudo printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf
 if (( LAPTOP )); then
     sudo printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf
@@ -208,6 +261,7 @@ fi
 sudo cp /home/$USER/install-scripts/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo cp /home/$USER/install-scripts/installed_scripts/sshbg /usr/bin/sshbg
 sudo cp /home/$USER/install-scripts/installed_scripts/stream-dl /usr/bin/stream-dl
+sudo cp /home/$USER/install-scripts/installed_scripts/megasync /usr/bin/megasync
 
 # Enable Services
 sudo systemctl enable sddm.service
@@ -219,3 +273,5 @@ sudo systemctl enable cups
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
+
+# Install Dotfiles
