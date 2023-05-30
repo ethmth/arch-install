@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Load Config Values
-USER=$(whoami)
-source /home/$USER/install-scripts/values.conf
+CUR_USER=$(whoami)
+source /home/$CUR_USER/install-scripts/values.conf
 
 # Install yay
 cd
@@ -171,7 +171,7 @@ yay -Syu $packages --needed --noconfirm
 
 # Add user to groups
 sudo -k groupadd autologin
-sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $USER
+sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $CUR_USER
 
 # Update grub with new kernels
 sudo grub-mkconfig -o /boot/grub/grub.cfg

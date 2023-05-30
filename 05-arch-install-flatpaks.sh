@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Load Config Values
-USER=$(whoami)
-source /home/$USER/install-scripts/values.conf
+CUR_USER=$(whoami)
+source /home/$CUR_USER/install-scripts/values.conf
 
 # Install Flatpaks
 flatpaks="

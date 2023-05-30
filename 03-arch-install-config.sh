@@ -37,13 +37,13 @@ else
     PLASMA=1
 fi
 
-USER=$(whoami)
-echo "DESKTOP=$DESKTOP" > /home/$USER/install-scripts/values.conf
-echo "LAPTOP=$LAPTOP" >> /home/$USER/install-scripts/values.conf
-echo "AMD_CPU=$AMD_CPU" >> /home/$USER/install-scripts/values.conf
-echo "INTEL_CPU=$INTEL_CPU" >> /home/$USER/install-scripts/values.conf
-echo "AMD=$AMD" >> /home/$USER/install-scripts/values.conf
-echo "INTEL=$INTEL" >> /home/$USER/install-scripts/values.conf
-echo "NVIDIA=$NVIDIA" >> /home/$USER/install-scripts/values.conf
-echo "HYPRLAND=$HYPRLAND" >> /home/$USER/install-scripts/values.conf
-echo "PLASMA=$PLASMA" >> /home/$USER/install-scripts/values.conf
+CUR_USER=$(whoami)
+echo "DESKTOP=$DESKTOP" > /home/$CUR_USER/install-scripts/values.conf
+echo "LAPTOP=$LAPTOP" >> /home/$CUR_USER/install-scripts/values.conf
+echo "AMD_CPU=$AMD_CPU" >> /home/$CUR_USER/install-scripts/values.conf
+echo "INTEL_CPU=$INTEL_CPU" >> /home/$CUR_USER/install-scripts/values.conf
+echo "AMD=$AMD" >> /home/$CUR_USER/install-scripts/values.conf
+echo "INTEL=$INTEL" >> /home/$CUR_USER/install-scripts/values.conf
+echo "NVIDIA=$NVIDIA" >> /home/$CUR_USER/install-scripts/values.conf
+echo "HYPRLAND=$HYPRLAND" >> /home/$CUR_USER/install-scripts/values.conf
+echo "PLASMA=$PLASMA" >> /home/$CUR_USER/install-scripts/values.conf
