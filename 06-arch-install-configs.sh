@@ -5,10 +5,10 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/install-scripts/values.conf
 
 # Software Specific Configuration
-sudo -k mkdir /etc/systemd/system.conf.d
+sudo -k mkdir -p /etc/systemd/system.conf.d
 sudo sh -c 'printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf'
 if (( LAPTOP )); then
-    sudo mkdir /etc/systemd/login.conf.d
+    sudo mkdir -p /etc/systemd/login.conf.d
     sudo sh -c 'printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf'
     sudo cp /home/$CUR_USER/install-scripts/configs/backlight.rules /etc/udev/rules.d/backlight.rules
 fi

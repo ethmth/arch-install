@@ -76,6 +76,13 @@ veracrypt
 cryptomator-bin
 android-sdk
 scrcpy
+anaconda
+npm
+nodejs-lts-hydrogen
+qterminal
+alacritty
+kdeconnect
+kate
 "
 
 if (( HYPRLAND && AMD )); then
@@ -102,7 +109,6 @@ grimblast-git
 waybar-hyprland
 wlogout
 swaylock-effects
-alacritty
 otf-font-awesome
 dunst
 brightnessctl
@@ -115,7 +121,6 @@ xorg
 plasma
 plasma-wayland-session
 kde-applications
-qterminal
 "
 fi
 
