@@ -9,20 +9,25 @@ cd
 rm -rf yay
 
 # Install Desktop Environment
-typeofcpu=$(printf "Laptop\nDesktop\n" | fzf --prompt="Select your type of computer")
-cpu=$(printf "Intel\nAMD\n" | fzf --prompt="Select your CPU")
-gpu=$(printf "Intel Integrated Graphics\nAMD GPU\nNvidia GPU\n" | fzf --prompt="Select your host GPU")
-de=$(printf "KDE Plasma\nHyprland\n" | fzf --prompt="Select your preferred Desktop Environment")
+typeofcpu=$(printf "Desktop\nLaptop\n" | fzf --prompt="Select your type of computer")
+cpu=$(printf "AMD\nIntel\n" | fzf --prompt="Select your CPU")
+gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf --prompt="Select your host GPU")
+de=$(printf "Hyprland\nKDE Plasma\n" | fzf --prompt="Select your preferred Desktop Environment")
 
-NVIDIA=0
+DESKTOP=0
+LAPTOP=0
+AMD_CPU=0
+INTEL_CPU=0
 AMD=0
 INTEL=0
+NVIDIA=0
 HYPRLAND=0
 PLASMA=0
-LAPTOP=0
-DESKTOP=0
-INTEL_CPU=0
-AMD_CPU=0
+if [ "$typeofcpu" == "Laptop" ]; then
+    LAPTOP=1
+else
+    DESKTOP=1
+fi
 if [ "$cpu" == "AMD" ]; then
     AMD_CPU=1
 else
@@ -40,11 +45,17 @@ if [ "$de" == "Hyprland" ]; then
 else
     PLASMA=1
 fi
-if [ "$typeofcpu" == "Laptop" ]; then
-    LAPTOP=1
-else
-    DESKTOP=1
-fi
+
+USER=$(whoami)
+echo "DESKTOP=$DESKTOP" > /home/$USER/install-scripts/values.conf
+echo "LAPTOP=$LAPTOP" >> /home/$USER/install-scripts/values.conf
+echo "AMD_CPU=$AMD_CPU" >> /home/$USER/install-scripts/values.conf
+echo "INTEL_CPU=$INTEL_CPU" >> /home/$USER/install-scripts/values.conf
+echo "AMD=$AMD" >> /home/$USER/install-scripts/values.conf
+echo "INTEL=$INTEL" >> /home/$USER/install-scripts/values.conf
+echo "NVIDIA=$NVIDIA" >> /home/$USER/install-scripts/values.conf
+echo "HYPRLAND=$HYPRLAND" >> /home/$USER/install-scripts/values.conf
+echo "PLASMA=$PLASMA" >> /home/$USER/install-scripts/values.conf
 
 packages="
 sddm-git
@@ -60,7 +71,6 @@ networkmanager-openvpn
 openbsd-netcat
 python
 python-beautifulsoup4
-python-cuda
 python-flask
 python-flask-socketio
 python-gbinder
@@ -202,76 +212,5 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 
 yay -Syu $packages --needed --noconfirm
 
-# Install Flatpaks
-flatpaks="
-com.brave.Browser
-com.github.micahflee.torbrowser-launcher
-com.github.tchx84.Flatseal
-com.google.AndroidStudio
-com.heroicgameslauncher.hgl
-com.jetbrains.IntelliJ-IDEA-Community
-com.usebottles.bottles
-com.valvesoftware.Steam
-eu.scarpetta.PDFMixTool
-io.gitlab.librewolf-community
-net.lutris.Lutris
-net.mullvad.MullvadBrowser
-nz.mega.MEGAsync
-org.chromium.Chromium
-org.kde.kdenlive
-rest.insomnia.Insomnia
-org.signal.Signal
-com.github.Matoking.protontricks
-com.belmoussaoui.Decoder
-app.bluebubbles.BlueBubbles
-net.davidotek.pupgui2
-"
-if (( NVIDIA || INTEL )); then
-flatpaks+="
-org.prismlauncher.PrismLauncher
-"
-fi
-
-flatpaks=${flatpaks//$'\n'/ }
-flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-flatpak install --noninteractive flathub $flatpaks
-
 # Add user to groups
-USER=$(whoami)
 sudo -k usermod -aG network,libvirt,kvm,input,docker,vboxusers,transmission,wireshark,autologin $USER
-
-# Software Specific Configuration
-sudo printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf
-if (( LAPTOP )); then
-    sudo printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf
-    sudo cp /home/$USER/install-scripts/configs/backlight.rules /etc/udev/rules.d/backlight.rules
-fi
-if (( HYPRLAND )); then
-    sudo cp /home/$USER/install-scripts/installed_scripts/wrappedhl /usr/bin/wrappedhl
-    sudo cp /home/$USER/install-scripts/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
-    sudo printf "[Autologin]\nUser=$USER\nSession=hyprlandwrapper\n" > /etc/sddm.conf
-fi
-if (( LAPTOP && HYPRLAND )); then
-    sudo cp /home/$USER/install-scripts/installed_scripts/brightlight /usr/bin/brightlight
-    sudo cp /home/$USER/install-scripts/installed_scripts/nightlight /usr/bin/nightlight
-fi
-if (( PLASMA )); then
-    sudo printf "[Autologin]\nUser=$USER\nSession=plasmawayland\n" > /etc/sddm.conf
-fi
-sudo cp /home/$USER/install-scripts/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
-sudo cp /home/$USER/install-scripts/installed_scripts/sshbg /usr/bin/sshbg
-sudo cp /home/$USER/install-scripts/installed_scripts/stream-dl /usr/bin/stream-dl
-sudo cp /home/$USER/install-scripts/installed_scripts/megasync /usr/bin/megasync
-
-# Enable Services
-sudo systemctl enable sddm.service
-sudo systemctl enable libvirtd
-sudo systemctl enable cronie
-sudo systemctl enable docker
-sudo systemctl enable sshd
-sudo systemctl enable cups
-if (( LAPTOP )); then
-    sudo systemctl enable auto-cpufreq
-fi
-
-# Install Dotfiles
