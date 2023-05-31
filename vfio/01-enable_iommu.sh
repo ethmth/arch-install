@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run with root/sudo privileges."
+if ! [[ $EUID -ne 0 ]]; then
+	echo "This script must NOT be run with root/sudo privileges."
 	exit 1
 fi
 
@@ -20,4 +20,4 @@ fi
 new_arguments+="iommu=pt"
 
 #echo "$new_arguments $current_arguments"
-sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$new_arguments $current_arguments\"/" /etc/default/grub
+sudo -k sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$new_arguments $current_arguments\"/" /etc/default/grub
