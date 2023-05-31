@@ -1,7 +1,6 @@
 #!/bin/bash
 
 conf_file="/etc/default/grub"
-conf_file="grub" # Comment this out
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run with root/sudo privileges."
