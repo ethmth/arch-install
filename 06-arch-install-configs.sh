@@ -48,3 +48,11 @@ sudo systemctl enable cups
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
+
+git config --global credential.helper store
+
+read -p "What is your Github username?: " git_user
+read -p "What is your Github email?: " git_email
+
+git config --global user.name "$git_user"
+git config --global user.email "$git_email"
