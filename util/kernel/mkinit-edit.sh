@@ -56,6 +56,11 @@ while getopts "ab" opt; do
   esac
 done
 
+if ! (( AFTER || BEFORE )); then
+	echo "Please specify -a <module> for after or -b <module for before"
+	exit 1
+fi
+
 if (( AFTER && BEFORE )); then
     echo "Cannot specify both after (-a) and before (-b)"
     exit 1
