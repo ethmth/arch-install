@@ -22,3 +22,5 @@ echo "source ~/.config/bash/prompt" >> /home/$CUR_USER/.bashrc
 if (( PLASMA )); then
     sudo -k git clone https://github.com/ethmth/magic-status-executables.git /usr/share/plasma/plasmoids/com.github.ethmth.magic-status-executables
 fi
+
+# Install spacemacs
