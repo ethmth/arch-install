@@ -47,6 +47,8 @@ docker-compose
 libvirt
 virt-manager
 qemu-arch-extra
+guestfs-tools
+swtpm
 dnsmasq
 bridge-utils
 virtualbox
