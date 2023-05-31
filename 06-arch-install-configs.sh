@@ -56,3 +56,4 @@ read -p "What is your Github email?: " git_email
 
 git config --global user.name "$git_user"
 git config --global user.email "$git_email"
+
