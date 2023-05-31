@@ -85,6 +85,7 @@ kdeconnect
 kate
 jq
 net-tools
+piper
 "
 
 if (( HYPRLAND && AMD )); then

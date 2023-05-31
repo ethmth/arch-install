@@ -24,3 +24,4 @@ if (( PLASMA )); then
 fi
 
 # Install spacemacs
+git clone https://github.com/syl20bnr/spacemacs /home/$CUR_USER/.emacs.d
