@@ -5,6 +5,10 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+if [ "$1" == "add-hook" ]; then
+
+elif
+
 #conf_file="/etc/mkinitcpio.conf"
 conf_file="mkinitcpio.conf"
 
