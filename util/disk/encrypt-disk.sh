@@ -1,42 +1,36 @@
 #!/bin/bash
 
-# Install my dotfiles
-
-# Install openair-vpn
-
-# Choose which GPU to start on
-
-# Choose what to do to other disks, encrypt 8 GB HDD?
-
 # Disk partititioning
-path="/etc/mykeys/"
+# path="/etc/mykeys/"
+
+name="crypttemp"
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run with root/sudo privileges."
 	exit 1
 fi
 
-if [ ! -d "$path" ]; then
-    mkdir -p "$path"
-    echo "Created directory $path"
-fi
+# if [ ! -d "$path" ]; then
+    # mkdir -p "$path"
+    # echo "Created directory $path"
+# fi
 
-disksuffix=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk for BOOT and ROOT partitions" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
+disksuffix=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk to encrypt" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
 disk="/dev/$disksuffix"
 
-typeofdisk=$(printf "HDD\nSSD\n" | fzf --prompt="Select the type of disk")
+# typeofdisk=$(printf "HDD\nSSD\n" | fzf --prompt="Select the type of disk")
 
-SSD=0
-HDD=0
-if [ "$typeofdisk" == "SSD" ]; then
-    SSD=1
-else
-    HDD=1
-fi
+# SSD=0
+# HDD=0
+# if [ "$typeofdisk" == "SSD" ]; then
+    # SSD=1
+# else
+    # HDD=1
+# fi
 
-read -p "Please input your desired name for the disk: " name
+# read -p "Please input your desired name for the disk: " name
 
-read -p "Are you sure you want to format $disk ($name - $typeofdisk) (YES for yes, otherwise No)? " userInput
+read -p "Are you sure you want to format $disk (YES for yes, otherwise No)? " userInput
 
 if ! [ "$userInput" == "YES" ]; then
     echo "Cancelling. No damage done."
@@ -72,20 +66,21 @@ cryptsetup luksFormat "$partition"
 echo "Enter the password to unencrypt the disk:"
 cryptsetup open "$partition" "$name"
 mkfs.ext4 /dev/mapper/$name
+cryptsetup close "$name"
 
-dd if=/dev/urandom of=$path$name bs=1024 count=1
-chmod u=rw,g=,o= $path$name
+# dd if=/dev/urandom of=$path$name bs=1024 count=1
+# chmod u=rw,g=,o= $path$name
 
-cryptsetup luksAddKey "$partition" "$path$name"
+# cryptsetup luksAddKey "$partition" "$path$name"
 
-options="luks"
-if (( SSD )); then
-    options+=",discard"
-fi
+# options="luks"
+# if (( SSD )); then
+#     options+=",discard"
+# fi
 
-uuid_crypt=$(lsblk -f | grep $partitionsuffix | awk '{print $4}')
-device_string="UUID=$uuid_crypt"
+# uuid_crypt=$(lsblk -f | grep $partitionsuffix | awk '{print $4}')
+# device_string="UUID=$uuid_crypt"
 
-printf "$name\t$device_string\t$path$name\t$options\n" >> /etc/crypttab
+# printf "$name\t$device_string\t$path$name\t$options\n" >> /etc/crypttab
 
-printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults\t0 1\n" >> /etc/fstab
+# printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults\t0 1\n" >> /etc/fstab
