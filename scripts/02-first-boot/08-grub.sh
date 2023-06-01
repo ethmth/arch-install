@@ -25,5 +25,4 @@ fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Verify that the grub config /etc/default/grub is correct."
-echo "Reboot. After (if needed) configure other disk drives using the scripts found in /home/$CUR_USER/arch-install/util/disk"
-echo "Then, run '~/arch-install/scripts/03-setup/01-packages-opt.sh'"
+echo "Reboot. After, verify success and run '~/arch-install/scripts/03-setup/01-packages-opt.sh'"

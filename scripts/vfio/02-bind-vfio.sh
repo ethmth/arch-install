@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if ! [[ $EUID -ne 0 ]]; then
+	echo "This script should not be run with root/sudo privileges."
+	exit 1
+fi
+
+CUR_USER=$(whoami)
+source /home/$CUR_USER/arch-install/config/system.conf
+
 string=""
 shopt -s nullglob
 for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do

@@ -19,6 +19,7 @@ sudo crontab /home/$CUR_USER/openair-vpn/crontab-root
 rm -rf /home/$CUR_USER/openair-vpn/
 
 echo "Restart and verify that openvpn connects successfully automatically"
-echo "Now, you may want to configure your Desktop Environment and most commonly used software"
+echo "Next, you may want to configure other disk drives using the scripts found in /home/$CUR_USER/arch-install/util/disk"
+echo "Also, you may want to configure your Desktop Environment and most commonly used software"
 echo "Such as KDE Plasma or Hyprland, Thunar, Alacritty or QTerminal, Librewolf, Brave, MEGASync (should start up automatically), and more"
 echo "Then, you may want to begin setting up vfio/Virtual Machines"
