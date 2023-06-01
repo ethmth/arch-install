@@ -48,3 +48,4 @@ cryptsetup open "$partition" "$name"
 mkfs.ext4 /dev/mapper/$name
 cryptsetup close "$name"
 
+echo "To finish setting up the disk, run ./add-disk.sh"

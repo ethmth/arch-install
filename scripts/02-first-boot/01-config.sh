@@ -38,12 +38,17 @@ else
 fi
 
 CUR_USER=$(whoami)
-echo "DESKTOP=$DESKTOP" > /home/$CUR_USER/install-scripts/values.conf
-echo "LAPTOP=$LAPTOP" >> /home/$CUR_USER/install-scripts/values.conf
-echo "AMD_CPU=$AMD_CPU" >> /home/$CUR_USER/install-scripts/values.conf
-echo "INTEL_CPU=$INTEL_CPU" >> /home/$CUR_USER/install-scripts/values.conf
-echo "AMD=$AMD" >> /home/$CUR_USER/install-scripts/values.conf
-echo "INTEL=$INTEL" >> /home/$CUR_USER/install-scripts/values.conf
-echo "NVIDIA=$NVIDIA" >> /home/$CUR_USER/install-scripts/values.conf
-echo "HYPRLAND=$HYPRLAND" >> /home/$CUR_USER/install-scripts/values.conf
-echo "PLASMA=$PLASMA" >> /home/$CUR_USER/install-scripts/values.conf
+echo "DESKTOP=$DESKTOP" > /home/$CUR_USER/arch-install/config/system.conf
+echo "LAPTOP=$LAPTOP" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "AMD_CPU=$AMD_CPU" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "INTEL_CPU=$INTEL_CPU" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "AMD=$AMD" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "INTEL=$INTEL" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "NVIDIA=$NVIDIA" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "HYPRLAND=$HYPRLAND" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "PLASMA=$PLASMA" >> /home/$CUR_USER/arch-install/config/system.conf
+
+cat /home/$CUR_USER/arch-install/config/system.conf
+
+echo "Verify the contents of /home/$CUR_USER/arch-install/config/system.conf"
+echo "If successful, run ./02-packages.sh"
