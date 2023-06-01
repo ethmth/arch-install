@@ -55,6 +55,7 @@ obs-vkcapture-git
 rocm-opencl-runtime
 v4l2loopback-dkms
 vulkan-amdgpu-pro
+prismlauncher-bin
 "
 fi
 

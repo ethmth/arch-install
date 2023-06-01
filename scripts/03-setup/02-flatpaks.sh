@@ -1,12 +1,19 @@
 #!/bin/bash
 
-# Load Config Values
+if ! [[ $EUID -ne 0 ]]; then
+	echo "This script should not be run with root/sudo privileges."
+	exit 1
+fi
+
 CUR_USER=$(whoami)
-source /home/$CUR_USER/install-scripts/values.conf
+source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+app.bluebubbles.BlueBubbles
+com.belmoussaoui.Decoder
 com.brave.Browser
+com.github.Matoking.protontricks
 com.github.micahflee.torbrowser-launcher
 com.github.tchx84.Flatseal
 com.google.AndroidStudio
@@ -16,17 +23,14 @@ com.usebottles.bottles
 com.valvesoftware.Steam
 eu.scarpetta.PDFMixTool
 io.gitlab.librewolf-community
+net.davidotek.pupgui2
 net.lutris.Lutris
 net.mullvad.MullvadBrowser
 nz.mega.MEGAsync
 org.chromium.Chromium
 org.kde.kdenlive
-rest.insomnia.Insomnia
 org.signal.Signal
-com.github.Matoking.protontricks
-com.belmoussaoui.Decoder
-app.bluebubbles.BlueBubbles
-net.davidotek.pupgui2
+rest.insomnia.Insomnia
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
@@ -37,3 +41,6 @@ fi
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
+
+echo "Verify that the installation of the flatpaks was successful"
+echo "If so, run ./03-openair-clone.sh"

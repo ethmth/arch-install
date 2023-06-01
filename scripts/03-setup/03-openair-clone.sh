@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if ! [[ $EUID -ne 0 ]]; then
-	echo "Do not run this script as sudo/root."
+	echo "This script should not be run with root/sudo privileges."
 	exit 1
 fi
 
 CUR_USER=$(whoami)
-source /home/$CUR_USER/install-scripts/values.conf
+source /home/$CUR_USER/arch-install/config/system.conf
 
 git clone https://github.com/ethmth/openair-vpn.git /home/$CUR_USER/openair-vpn
 
@@ -15,4 +15,4 @@ cp /home/$CUR_USER/openair-vpn/vars/install_location.conf.example /home/$CUR_USE
 
 echo "Navigate to https://airvpn.org/generator/ and download AirVPN.zip into ~/.vpn/"
 echo "Edit /home/$CUR_USER/openair-vpn/vars/vars.conf"
-echo "Run /home/$CUR_USER/install-scripts/openair-install-2.sh"
+echo "When DONE EDITING vars.conf, run ./04-openair-install.sh"
