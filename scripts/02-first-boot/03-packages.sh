@@ -79,6 +79,7 @@ python-pyqt6
 python-socketio
 python-virtualenv
 python-websockets
+python-dotenv
 qemu-arch-extra
 qemu-desktop
 qjackctl
