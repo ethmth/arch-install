@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.libreoffice.LibreOffice
+org.onlyoffice.desktopeditors
 app.bluebubbles.BlueBubbles
 com.belmoussaoui.Decoder
 com.brave.Browser

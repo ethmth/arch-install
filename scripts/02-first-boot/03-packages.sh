@@ -9,6 +9,9 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+plocate
+unzip
+tar
 alacritty
 bridge-utils
 cronie
