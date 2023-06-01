@@ -9,6 +9,9 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+gtk3
+gtk4
+gsettings-desktop-schemas
 wl-clipboard
 openssl
 pandoc-cli
