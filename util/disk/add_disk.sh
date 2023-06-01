@@ -12,8 +12,9 @@ if [ ! -d "$path" ]; then
     echo "Created directory $path"
 fi
 
-partition=$(echo "$(lsblk -f | grep crypto_LUKS | awk '{gsub(/^└─/, ""); print $1}')" | fzf --prompt="Please select the crypto_LUKS partition you would like to add to your system.")
+partition=$(echo "$(lsblk --list -f | grep crypto_LUKS | awk '{print $1}')" | fzf --prompt="Please select the crypto_LUKS partition you would like to add to your system.")
 partition="/dev/$partition"
+
 
 typeofdisk=$(printf "HDD\nSSD\n" | fzf --prompt="Select the type of disk")
 
