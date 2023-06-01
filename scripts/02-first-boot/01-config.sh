@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! [[ $EUID -ne 0 ]]; then
+        echo "This script should not be run with root/sudo privileges."
+        exit 1
+fi
+
 typeofcpu=$(printf "Desktop\nLaptop\n" | fzf --prompt="Select your type of computer")
 cpu=$(printf "AMD\nIntel\n" | fzf --prompt="Select your CPU")
 gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf --prompt="Select your host GPU")

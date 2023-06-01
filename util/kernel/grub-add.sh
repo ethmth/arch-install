@@ -9,6 +9,7 @@ fi
 
 if [ $# -lt 1 ]; then
 	echo "Please provide at least one option to add"
+	exit 1
 fi
 
 new="$@"
