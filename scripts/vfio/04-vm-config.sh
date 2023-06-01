@@ -9,7 +9,6 @@ CUR_USER=$(whoami)
 OFILE="/home/$CUR_USER/arch-install/config/vm.conf"
 
 WHONIX_LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired Whonix installation location")
-# WHONIX_LOC=$("$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot")\nCancel" | fzf --prompt="Select your desired Whonix installation location")
 
 if ([ "$WHONIX_LOC" == "" ] || [ "$WHONIX_LOC" == "Cancel" ]); then
     echo "Nothing was selected"
@@ -19,11 +18,9 @@ if ([ "$WHONIX_LOC" == "" ] || [ "$WHONIX_LOC" == "Cancel" ]); then
 fi
 
 if [ "$WHONIX_LOC" == "/" ]; then
-# echo "Root directory selected. Will install in /home/$CUR_USER/vm"
-WHONIX_LOC="/home/$CUR_USER"
+    WHONIX_LOC="/home/$CUR_USER"
 fi
 WHONIX_LOC="$WHONIX_LOC/vm"
-# echo "Are you sure you want to install whonix in $WHONIX_LOC"
 
 echo "WHONIX_LOC=$WHONIX_LOC" > $OFILE
 # echo "POOP=$POOP" >> $OFILE
@@ -34,4 +31,4 @@ cat $OFILE
 
 echo "Verify the contents of $OFILE (Output above)"
 echo "You can manually edit $OFILE if needed"
-echo "If successful, run ./05-network-whonix.sh"
+echo "If successful, run ./05-whonix-download.sh"
