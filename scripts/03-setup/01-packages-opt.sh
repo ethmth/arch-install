@@ -9,6 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+rstudio-desktop-bin
 cryptomator-bin
 android-sdk
 scrcpy
@@ -22,8 +23,8 @@ perl-yaml-tiny
 hashcat-git
 steam-devices
 vscodium-bin
-gcc-fortran
 xpadneo-dkms
+python310
 "
 
 if (( NVIDIA )); then
@@ -32,6 +33,14 @@ nvidia-dkms
 nvidia-settings
 nvidia-utils
 opencl-nvidia
+"
+fi
+if (( NVIDIA )); then
+packages+="
+cuda
+cuda-tools
+python-cuda
+tensorflow-cuda
 "
 fi
 if (( NVIDIA && LAPTOP )); then

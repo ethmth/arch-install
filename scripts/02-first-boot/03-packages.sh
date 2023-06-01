@@ -9,7 +9,12 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+openssl
+pandoc-cli
 plocate
+gcc-fortran
+gdal
+proj
 unzip
 tar
 alacritty
@@ -55,6 +60,7 @@ pipewire-jack
 pipewire-pulse
 pipewire-v4l2
 python
+python-poetry
 python-beautifulsoup4
 python-flask
 python-flask-socketio

@@ -39,5 +39,7 @@ git config --global user.email "$git_email"
 # Set Default Java Version for Arch Linux
 sudo -k archlinux-java set java-17-openjdk
 
+mkdir -p /home/$CUR_USER/Documents/Programs
+
 echo "Verify that dotfiles were installed correctly"
 echo "If so, run ./07-scripts.sh"
