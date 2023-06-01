@@ -13,20 +13,22 @@ WHONIX_LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" 
 
 if ([ "$WHONIX_LOC" == "" ] || [ "$WHONIX_LOC" == "Cancel" ]); then
     echo "Nothing was selected"
+    echo "Run this script again with correct drive mounted."
+    echo "" > $OFILE
     exit 1
 fi
 
 if [ "$WHONIX_LOC" == "/" ]; then
-echo "Are you sure you want to install in the root directory? We will use "
+# echo "Root directory selected. Will install in /home/$CUR_USER/vm"
+WHONIX_LOC="/home/$CUR_USER"
 fi
-
-echo "Using $WHONIX_LOC to install whonix"
-
-exit 0
-
+WHONIX_LOC="$WHONIX_LOC/vm"
+# echo "Are you sure you want to install whonix in $WHONIX_LOC"
 
 echo "WHONIX_LOC=$WHONIX_LOC" > $OFILE
-echo "POOP=$POOP" >> $OFILE
+# echo "POOP=$POOP" >> $OFILE
+
+mkdir -p $WHONIX_LOC
 
 cat $OFILE
 
