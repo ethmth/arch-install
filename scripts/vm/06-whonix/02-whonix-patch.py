@@ -24,7 +24,7 @@ except:
 
 if WHONIX_LOC == "":
     print("Whonix location not set in /home/$USER/arch-install/config/vm.conf")
-    print("Run ./04-vm-config.sh first to set location")
+    print("Run ../01-vm-config.sh first to set location")
     sys.exit(1)
 
 if os.path.exists(WHONIX_LOC) == False:
@@ -97,4 +97,4 @@ with open(ext_file, 'w') as file:
     file.write(updated_ext_content)
 
 print("Whonix files modified.")
-print("Run ./08-whonix-define.sh to define the virtual machines.")
+print("Run ./03-whonix-define.sh to define the virtual machines.")

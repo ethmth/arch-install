@@ -41,4 +41,4 @@ sudo mkinitcpio -P
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
-echo "After you're done, begin setting up the virtual networks by running ./03-network-default.sh"
+# echo "After you're done, begin setting up the virtual networks by running ./03-network-default.sh"

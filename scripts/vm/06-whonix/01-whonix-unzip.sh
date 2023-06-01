@@ -10,7 +10,7 @@ source /home/$CUR_USER/arch-install/config/vm.conf
 
 if [ "$WHONIX_LOC" == "" ]; then
 	echo "Whonix location not set in /home/$CUR_USER/arch-install/config/vm.conf"
-	echo "Run ./04-vm-config.sh first to set location"
+	echo "Run ../01-vm-config.sh first to set location"
 	exit 1
 fi
 
@@ -19,6 +19,14 @@ if ! [ -d "$WHONIX_LOC" ]; then
 	echo "Try mounting the disk, and optionally running ./04-vm-config.sh"
 	exit 1
 fi
+
+
+if ! [ -e "$WHONIX_LOC/whonix/Whonix*.libvirt.xz" ]; then
+  echo "The Whonix*.libvirt.xz file is not available." 
+  echo "Be sure you've run ../01-vm-config.sh and ../downloaders/01-whonix-download.sh"
+  exit 1
+fi
+
 
 mkdir -p $WHONIX_LOC/disk
 tar -xvf $WHONIX_LOC/whonix/Whonix*.libvirt.xz -C $WHONIX_LOC/whonix/
@@ -34,4 +42,4 @@ mv $WHONIX_LOC/whonix/Whonix-Gateway*.qcow2 $WHONIX_LOC/disk/Whonix-Gateway.qcow
 mv $WHONIX_LOC/whonix/Whonix-Workstation*.qcow2 $WHONIX_LOC/disk/Whonix-Workstation.qcow2
 
 echo "Whonix files unzipped and renamed/moved correctly."
-echo "Before defining the virtual machines, run ./07-whonix-patch.py to adjust the templates"
+echo "Before defining the virtual machines, run ./02-whonix-patch.py to adjust the templates"

@@ -9,5 +9,5 @@ virsh -c qemu:///system net-autostart default
 virsh -c qemu:///system net-start default
 
 echo "If the default network started successfully,"
-echo "Mount the drive you want to use for VM installation"
-echo "Run ./04-vm-config.sh to generate a config file"
+# echo "Mount the drive you want to use for VM installation"
+echo "Run ./03-network-vpn.sh to define the VPN-Gateway network"

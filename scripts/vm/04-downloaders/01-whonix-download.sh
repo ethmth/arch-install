@@ -20,9 +20,16 @@ if ! [ -d "$WHONIX_LOC" ]; then
 	exit 1
 fi
 
+if [ -e "$WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz" ]; then
+  echo "File $WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz already exists."
+  echo "To start fresh, rm $WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz"
+  exit 1
+fi
+
 mkdir -p $WHONIX_LOC/whonix
 curl https://www.whonix.org/wiki/KVM#Network_Start > $WHONIX_LOC/whonix/whonix.html
 download=$(cat $WHONIX_LOC/whonix/whonix.html | grep "download.whonix.org" | grep "Whonix-XFCE" | grep "qcow2" | grep -v "archive" | grep -v "asc" | head -n 1 | awk -F'"' '{print $2}')
+
 
 wget --output-document=$WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz $download
 
