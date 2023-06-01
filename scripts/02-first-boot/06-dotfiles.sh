@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Load Config Values
-CUR_USER=$(whoami)
-source /home/$CUR_USER/install-scripts/values.conf
-
 if ! [[ $EUID -ne 0 ]]; then
-	echo "Do not run this script as sudo/root."
+	echo "This script should not be run with root/sudo privileges."
 	exit 1
 fi
 
+CUR_USER=$(whoami)
+source /home/$CUR_USER/arch-install/config/system.conf
+
 # Clone and copy dot files
+echo "Installing dotfiles..."
 git clone https://github.com/ethmth/arch-dots.git /home/$CUR_USER/arch-dots
 shopt -s dotglob
 cp -r /home/$CUR_USER/arch-dots/home/* /home/$CUR_USER/
@@ -20,8 +20,20 @@ echo "source ~/.config/bash/prompt" >> /home/$CUR_USER/.bashrc
 
 # Install Magic Status Executables
 if (( PLASMA )); then
+	echo "Installing Plasma Widget - Magic Status Executables..."
     sudo -k git clone https://github.com/ethmth/magic-status-executables.git /usr/share/plasma/plasmoids/com.github.ethmth.magic-status-executables
 fi
 
 # Install spacemacs
+echo "Installing spacemacs..."
 git clone https://github.com/syl20bnr/spacemacs /home/$CUR_USER/.emacs.d
+
+echo "Login to Github..."
+git config --global credential.helper store
+read -p "What is your Github username?: " git_user
+read -p "What is your Github email?: " git_email
+git config --global user.name "$git_user"
+git config --global user.email "$git_email"
+
+echo "Verify that dotfiles were installed correctly"
+echo "If so, run ./07-scripts.sh"
