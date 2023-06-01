@@ -57,3 +57,7 @@ device_string="UUID=$uuid_crypt"
 printf "$name\t$device_string\t$path$name\t$options\n" >> /etc/crypttab
 
 printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults\t0 1\n" >> /etc/fstab
+
+echo "$name added to /etc/crypttab and /etc/fstab"
+echo "Reboot and the disk should be mounted automatically at /mnt/$name"
+echo "To give your user, as a part of the storage group, access to the mountpoint, run ./change_ownership.sh as root"
