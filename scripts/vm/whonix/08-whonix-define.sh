@@ -30,4 +30,4 @@ sudo virsh -c qemu:///system define $WHONIX_LOC/whonix/Whonix-Gateway.xml
 sudo virsh -c qemu:///system define $WHONIX_LOC/whonix/Whonix-Workstation.xml
 
 echo "Virtual machines defined and started. You can now use the Whonix VMs"
-echo "To continue VM setup, run ./09-download-images.sh"
+echo "To continue VM setup, run ./09-network-mine.sh"

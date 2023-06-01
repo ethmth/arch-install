@@ -31,4 +31,9 @@ cat $OFILE
 
 echo "Verify the contents of $OFILE (Output above)"
 echo "You can manually edit $OFILE if needed"
+echo "If successful, begin downloading iso files (run scripts simultaneously):"
+printf "\t1. Windows 11 - Visit https://www.microsoft.com/software-download/windows11\n"
+printf "\t2. Ubuntu - Run ./05-download-ubuntu.sh"
+printf "\t3. MX Linux - Run ./06-download-mx.sh"
+printf "\t4. MacOS - Run ./07-download-macos.sh"
 echo "If successful, run ./05-whonix-download.sh"
