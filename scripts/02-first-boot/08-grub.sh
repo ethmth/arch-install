@@ -19,10 +19,10 @@ sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default
 if (( NVIDIA )); then
     # current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed 's/GRUB_CMDLINE_LINUX_DEFAULT=//' | tr -d '"')
     # sudo sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"ibt=off $current_arguments\"/" /etc/default/grub
-    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh ibt=off usbcore.autosuspend=-1
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh ibt=off usbcore.autosuspend=-1 video=efifb:off
     echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
 else
-    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 video=efifb:off
     echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
 fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
