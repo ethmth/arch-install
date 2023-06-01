@@ -34,5 +34,7 @@ ids="${ids%?}"
 echo "Adding these ids to blocklist: $ids"
 
 sudo -k sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
-sudo sh -c "echo \"softdep drm pre: vfio-pci\" >> /etc/modprobe.d/vfio.conf"
+#sudo sh -c "echo \"softdep drm pre: vfio-pci\" >> /etc/modprobe.d/vfio.conf"
+sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1
+echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 sudo mkinitcpio -P
