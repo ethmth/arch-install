@@ -20,12 +20,15 @@ if ! [ -d "$WHONIX_LOC" ]; then
 	exit 1
 fi
 
-# mkdir -p $WHONIX_LOC/whonix
+mkdir -p $WHONIX_LOC/disk
 tar -xvf $WHONIX_LOC/whonix/Whonix*.libvirt.xz -C $WHONIX_LOC/whonix/
 
 touch $WHONIX_LOC/whonix/WHONIX_BINARY_LICENSE_AGREEMENT_accepted
 
-cp $WHONIX_LOC/whonix/Whonix-Gateway*.xml $WHONIX_LOC/whonix/Whonix-Gateway.xml 
-cp $WHONIX_LOC/whonix/Whonix-Workstation*.xml $WHONIX_LOC/whonix/Whonix-Workstation.xml 
-cp $WHONIX_LOC/whonix/Whonix_external*.xml $WHONIX_LOC/whonix/Whonix_external.xml 
-cp $WHONIX_LOC/whonix/Whonix_internal*.xml $WHONIX_LOC/whonix/Whonix_internal.xml 
+cp $WHONIX_LOC/whonix/Whonix-Gateway*.xml $WHONIX_LOC/whonix/Whonix-Gateway.xml
+cp $WHONIX_LOC/whonix/Whonix-Workstation*.xml $WHONIX_LOC/whonix/Whonix-Workstation.xml
+cp $WHONIX_LOC/whonix/Whonix_external*.xml $WHONIX_LOC/whonix/Whonix_external.xml
+cp $WHONIX_LOC/whonix/Whonix_internal*.xml $WHONIX_LOC/whonix/Whonix_internal.xml
+
+mv $WHONIX_LOC/whonix/Whonix-Gateway*.qcow2 $WHONIX_LOC/disk/Whonix-Gateway.qcow2
+mv $WHONIX_LOC/whonix/Whonix-Workstation*.qcow2 $WHONIX_LOC/disk/Whonix-Workstation.qcow2

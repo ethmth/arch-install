@@ -32,26 +32,100 @@ if os.path.exists(WHONIX_LOC) == False:
     print("Try mounting the disk, and optionally running ./04-vm-config.sh")
     sys.exit(1)
 
-# print(f"whonix {WHONIX_LOC}/whonix/Whonix-Gateway.xml")
-
-
 gw_file=f"{WHONIX_LOC}/whonix/Whonix-Gateway.xml"
 ws_file=f"{WHONIX_LOC}/whonix/Whonix-Workstation.xml"
 int_file=f"{WHONIX_LOC}/whonix/Whonix_internal.xml"
 ext_file=f"{WHONIX_LOC}/whonix/Whonix_external.xml"
 
-# xml_file = 'Whonix-Gateway.xml'
-# memory_value = '1048576'  # New memory value in KiB (1GB)
-# dump_core_value = 'on'  # New dumpCore attribute value
-
-# Parse the XML file
 gw_tree = ET.parse(gw_file)
+ws_tree = ET.parse(ws_file)
+int_tree = ET.parse(int_file)
+ext_tree = ET.parse(ext_file)
+
 gw_root = gw_tree.getroot()
+ws_root = ws_tree.getroot()
+int_root = int_tree.getroot()
+ext_root = ext_tree.getroot()
 
-# Find the memory element and update its attributes and text
-gw_memory_element = gw_root.find(".//memory")
-# gw_memory_element.set('dumpCore', dump_core_value)
-gw_memory_element.text = '1048576'
+# ============= MAKE XML CHANGES HERE ====================
 
-# Save the modified XML file
+# Update Memory of Gateway
+gw_root.find(".//memory").text = "1048576"
+
+# Replace Disk in Gateway
+# for elem in gw_root.iter():
+    # if elem.text is not None and "/var/lib/libvirt/images/Whonix-Gateway.qcow2" in elem.text:
+        # elem.text = elem.text.replace("/var/lib/libvirt/images/Whonix-Gateway.qcow2", f"{WHONIX_LOC}/disk/Whonix-Gateway.qcow2")
+
+# Tun0 killswitch
+ext_root.find('forward').set('dev', 'tun0')
+# ext_root.find('forward').set('mode', 'nat')
+
+# ext_forward_element = ext_root.find('forward')
+# ext_forward_element.attrib['dev'] = 'tun0'
+# ext_forward_element.attrib.move_to_end('dev', last=False)
+
+# ext_root.insert(ext_root.index(ext_root.find('forward')), ET.Element('forward', {'dev': 'tun0', 'mode':'nat'}))
+
+# ext_forward_element = ext_root.find('forward')
+# ext_root.insert(ext_root.index(ext_forward_element), ET.Element('forward', {'dev': 'tun0', 'mode': 'nat'}))
+# ext_root.remove(ext_forward_element)
+# ET.indent(ext_tree, '  ')
+
+# forward_element = ext_root.find('forward')
+# new_forward_element = ET.Element('forward', {'dev': 'tun0', 'mode': 'nat'})
+# forward_index = list(ext_root).index(forward_element)
+# ext_root.insert(forward_index, new_forward_element)
+# ext_root.remove(forward_element)
+
+
+# forward_elements = ext_root.findall('forward')
+# if len(forward_elements) > 1:
+#     ext_root.remove(forward_elements[1])
+# forward_element = ext_root.find('forward')
+# bridge_element = ext_root.find('bridge')
+# newline_element = ET.Element('text')
+# newline_element.text = '\n'
+# forward_parent = forward_element.getparent()
+# forward_parent.insert(list(forward_parent).index(forward_element) + 1, newline_element)
+
+# ============= END XML CHANGES =========================
+
 gw_tree.write(gw_file)
+ws_tree.write(ws_file)
+int_tree.write(int_file)
+ext_tree.write(ext_file)
+# ext_tree.write(ext_file, xml_declaration=True)
+
+with open(gw_file, 'r') as file:
+    gw_content = file.read()
+with open(ws_file, 'r') as file:
+    ws_content = file.read()
+with open(int_file, 'r') as file:
+    int_content = file.read()
+with open(ext_file, 'r') as file:
+    ext_content = file.read()
+
+updated_gw_content = gw_content
+updated_ws_content = ws_content
+updated_int_content = int_content
+updated_ext_content = ext_content
+
+# =============== MAKE REPLACEMENT/RAW CHANGES HERE ========
+
+# Replace disk in Gateway
+updated_gw_content = gw_content.replace("/var/lib/libvirt/images/Whonix-Gateway.qcow2", f"{WHONIX_LOC}/disk/Whonix-Gateway.qcow2")
+
+# Replace disk in Workstation
+updated_ws_content = ws_content.replace("/var/lib/libvirt/images/Whonix-Workstation.qcow2", f"{WHONIX_LOC}/disk/Whonix-Workstation.qcow2")
+
+# =============== END REPLACEMENT/RAW CHANGES ==============
+
+with open(gw_file, 'w') as file:
+    file.write(updated_gw_content)
+with open(ws_file, 'w') as file:
+    file.write(updated_ws_content)
+with open(int_file, 'w') as file:
+    file.write(updated_int_content)
+with open(ext_file, 'w') as file:
+    file.write(updated_ext_content)
