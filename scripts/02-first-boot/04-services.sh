@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Enable Services
 sudo systemctl enable sddm.service
 sudo systemctl enable libvirtd
+sudo systemctl enable virtlogd.socket
 sudo systemctl enable cronie
 sudo systemctl enable docker
 sudo systemctl enable sshd

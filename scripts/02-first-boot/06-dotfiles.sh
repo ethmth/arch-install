@@ -36,5 +36,8 @@ read -p "What is your Github email?: " git_email
 git config --global user.name "$git_user"
 git config --global user.email "$git_email"
 
+# Set Default Java Version for Arch Linux
+sudo -k archlinux-java set java-17-openjdk
+
 echo "Verify that dotfiles were installed correctly"
 echo "If so, run ./07-scripts.sh"

@@ -67,6 +67,7 @@ python-socketio
 python-virtualenv
 python-websockets
 qemu-arch-extra
+qemu-desktop
 qjackctl
 qterminal
 sddm-git
@@ -81,6 +82,10 @@ wireshark-qt
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 yt-dlp
+edk2-ovmf
+jdk-openjdk
+jdk17-openjdk
+jdk8-openjdk
 "
 
 if (( HYPRLAND && AMD )); then
@@ -135,4 +140,6 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 yay -Syu $packages --needed --noconfirm
 
 echo "Verify that the installation of the packages was successful"
+echo "NOTE: sddm-git may not install due to being in conflict with sddm"
+echo "Run yay -S sddm-git to be sure it's installed"
 echo "If so, run ./04-services.sh"

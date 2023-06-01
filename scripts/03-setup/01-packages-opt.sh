@@ -13,8 +13,6 @@ cryptomator-bin
 android-sdk
 scrcpy
 anaconda
-prismlauncher-git
-jdk-openjdk
 emacs29-git
 texlive-bin
 texlive-bibtexextra
