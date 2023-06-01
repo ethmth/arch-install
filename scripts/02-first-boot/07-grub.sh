@@ -4,9 +4,6 @@
 CUR_USER=$(whoami)
 source /home/$CUR_USER/install-scripts/values.conf
 
-# Add user to groups
-sudo -k groupadd autologin
-sudo usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $CUR_USER
 
 # Update grub with new config and kernels
 sudo sh -c 'echo "GRUB_SAVEDEFAULT=true" >> /etc/default/grub'

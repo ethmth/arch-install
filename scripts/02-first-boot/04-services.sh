@@ -18,3 +18,6 @@ sudo systemctl enable cups
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
+
+echo "Verify that the enabling of the systemd services was successful"
+echo "If so, run ./05-groups.sh"

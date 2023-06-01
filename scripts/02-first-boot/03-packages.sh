@@ -9,17 +9,48 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
-sddm-git
+alacritty
+bridge-utils
+cronie
 cups
 dkms
+dnsmasq
+docker
+docker-compose
+ffmpeg
+firefox
+flatpak
+gallery-dl
+geckodriver
+gparted
+gthumb
+guestfs-tools
+gvfs
+jq
+kate
+kdeconnect
+libvirt
 linux-headers
 linux-zen
 linux-zen-headers
-cronie
-openresolv
-openvpn
+neofetch
+neovim
+net-tools
 networkmanager-openvpn
+nodejs-lts-hydrogen
+npm
 openbsd-netcat
+openresolv
+openssh
+openvpn
+pavucontrol
+piper
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+pipewire-v4l2
 python
 python-beautifulsoup4
 python-flask
@@ -30,60 +61,26 @@ python-nodeenv
 python-numpy
 python-pandas
 python-pip
-python-pyqt6
 python-pyqt5
+python-pyqt6
 python-socketio
 python-virtualenv
 python-websockets
-geckodriver
-firefox
-flatpak
-docker
-docker-compose
-libvirt
-virt-manager
 qemu-arch-extra
-guestfs-tools
+qjackctl
+qterminal
+sddm-git
 swtpm
-dnsmasq
-bridge-utils
+thunar
+thunar-archive-plugin
+veracrypt
+virt-manager
 virtualbox
 virtualbox-host-dkms
 wireshark-qt
-openssh
 xdg-desktop-portal
 xdg-desktop-portal-gtk
-thunar
-thunar-archive-plugin
-ffmpeg
-neovim
-pipewire
-pipewire-alsa
-pipewire-audio
-pipewire-jack
-pipewire-pulse
-pipewire-v4l2
-pavucontrol
-qjackctl
-gallery-dl
 yt-dlp
-gparted
-gthumb
-gvfs
-veracrypt
-cryptomator-bin
-android-sdk
-scrcpy
-anaconda
-npm
-nodejs-lts-hydrogen
-qterminal
-alacritty
-kdeconnect
-kate
-jq
-net-tools
-piper
 "
 
 if (( HYPRLAND && AMD )); then
@@ -98,56 +95,30 @@ hyprland-nvidia-git
 fi
 if (( HYPRLAND )); then
 packages+="
-xorg
-hyprpicker-git
-polkit-gnome
-xdg-desktop-portal-hyprland-git
-rofi
-wl-clipboard
-wf-recorder
-swaybg
-grimblast-git
-waybar-hyprland
-wlogout
-swaylock-effects
-otf-font-awesome
-dunst
 brightnessctl
+dunst
+grimblast-git
+hyprpicker-git
+otf-font-awesome
+polkit-gnome
+rofi
+swaybg
+swaylock-effects
+waybar-hyprland
+wf-recorder
+wl-clipboard
+wlogout
+xdg-desktop-portal-hyprland-git
+xorg
 "
 fi
 
 if (( PLASMA )); then
 packages+="
-xorg
+kde-applications
 plasma
 plasma-wayland-session
-kde-applications
-"
-fi
-
-if (( NVIDIA )); then
-packages+="
-nvidia-dkms
-nvidia-settings
-nvidia-utils
-opencl-nvidia
-obs-studio
-v4l2loopback-dkms
-"
-fi
-
-if (( AMD )); then 
-packages+="
-rocm-opencl-runtime
-lib32-vulkan-amdgpu-pro
-vulkan-amdgpu-pro
-amf-amdgpu-pro
-obs-studio-amf
-obs-vkcapture-git
-obs-streamfx-git
-obs-vaapi
-v4l2loopback-dkms
-prismlauncher-git
+xorg
 "
 fi
 
@@ -157,25 +128,11 @@ auto-cpufreq
 "
 fi
 
-# Fun Packages
-packages+="
-jdk-openjdk
-emacs29-git
-texlive-bin
-texlive-bibtexextra
-biber
-perl-file-homedir
-perl-yaml-tiny
-hashcat-git
-neofetch
-steam-devices
-vscodium-bin
-gcc-fortran
-xpadneo-dkms
-"
 
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 yay -Syu $packages --needed --noconfirm
-#echo "$packages"
+
+echo "Verify that the installation of the packages was successful"
+echo "If so, run ./04-services.sh"
