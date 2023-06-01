@@ -28,6 +28,7 @@ fi
 echo "Installing spacemacs..."
 git clone https://github.com/syl20bnr/spacemacs /home/$CUR_USER/.emacs.d
 
+# Github Login
 echo "Login to Github..."
 git config --global credential.helper store
 read -p "What is your Github username?: " git_user
