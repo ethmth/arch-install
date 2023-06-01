@@ -137,9 +137,10 @@ fi
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
-yay -Syu $packages --needed --noconfirm
+yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
 echo "NOTE: sddm-git may not install due to being in conflict with sddm"
 echo "Run yay -S sddm-git to be sure it's installed"
 echo "If so, run ./04-services.sh"
+

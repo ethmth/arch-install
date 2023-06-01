@@ -28,11 +28,15 @@ xpadneo-dkms
 
 if (( NVIDIA )); then
 packages+="
-lib32-nvidia-utils
 nvidia-dkms
 nvidia-settings
 nvidia-utils
 opencl-nvidia
+"
+fi
+if (( NVIDIA && LAPTOP )); then
+packages+="
+nvidia-prime
 "
 fi
 if ! (( AMD )); then
@@ -60,7 +64,7 @@ fi
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
-yay -Syu $packages --needed --noconfirm
+yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
 echo "If so, run ./02-flatpaks.sh"
