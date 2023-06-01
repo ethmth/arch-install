@@ -1,16 +1,7 @@
 #!/bin/bash
 
-# Load Config Values
 CUR_USER=$(whoami)
-source /home/$CUR_USER/install-scripts/values.conf
-
-# Install yay
-cd
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --needed --noconfirm
-cd
-rm -rf yay
+source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
 sddm-git

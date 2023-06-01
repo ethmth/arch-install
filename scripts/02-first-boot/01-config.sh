@@ -56,4 +56,4 @@ echo "PLASMA=$PLASMA" >> /home/$CUR_USER/arch-install/config/system.conf
 cat /home/$CUR_USER/arch-install/config/system.conf
 
 echo "Verify the contents of /home/$CUR_USER/arch-install/config/system.conf"
-echo "If successful, run ./02-packages.sh"
+echo "If successful, run ./02-yay.sh"
