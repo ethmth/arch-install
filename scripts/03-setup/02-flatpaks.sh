@@ -41,6 +41,7 @@ fi
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
+flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
 echo "If so, run ./03-openair-clone.sh"
