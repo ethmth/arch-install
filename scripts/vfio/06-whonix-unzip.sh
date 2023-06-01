@@ -32,3 +32,6 @@ cp $WHONIX_LOC/whonix/Whonix_internal*.xml $WHONIX_LOC/whonix/Whonix_internal.xm
 
 mv $WHONIX_LOC/whonix/Whonix-Gateway*.qcow2 $WHONIX_LOC/disk/Whonix-Gateway.qcow2
 mv $WHONIX_LOC/whonix/Whonix-Workstation*.qcow2 $WHONIX_LOC/disk/Whonix-Workstation.qcow2
+
+echo "Whonix files unzipped and renamed/moved correctly."
+echo "Before defining the virtual machines, run ./07-whonix-patch.py to adjust the templates"

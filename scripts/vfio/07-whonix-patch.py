@@ -52,42 +52,9 @@ ext_root = ext_tree.getroot()
 # Update Memory of Gateway
 gw_root.find(".//memory").text = "1048576"
 
-# Replace Disk in Gateway
-# for elem in gw_root.iter():
-    # if elem.text is not None and "/var/lib/libvirt/images/Whonix-Gateway.qcow2" in elem.text:
-        # elem.text = elem.text.replace("/var/lib/libvirt/images/Whonix-Gateway.qcow2", f"{WHONIX_LOC}/disk/Whonix-Gateway.qcow2")
-
 # Tun0 killswitch
 ext_root.find('forward').set('dev', 'tun0')
-# ext_root.find('forward').set('mode', 'nat')
 
-# ext_forward_element = ext_root.find('forward')
-# ext_forward_element.attrib['dev'] = 'tun0'
-# ext_forward_element.attrib.move_to_end('dev', last=False)
-
-# ext_root.insert(ext_root.index(ext_root.find('forward')), ET.Element('forward', {'dev': 'tun0', 'mode':'nat'}))
-
-# ext_forward_element = ext_root.find('forward')
-# ext_root.insert(ext_root.index(ext_forward_element), ET.Element('forward', {'dev': 'tun0', 'mode': 'nat'}))
-# ext_root.remove(ext_forward_element)
-# ET.indent(ext_tree, '  ')
-
-# forward_element = ext_root.find('forward')
-# new_forward_element = ET.Element('forward', {'dev': 'tun0', 'mode': 'nat'})
-# forward_index = list(ext_root).index(forward_element)
-# ext_root.insert(forward_index, new_forward_element)
-# ext_root.remove(forward_element)
-
-
-# forward_elements = ext_root.findall('forward')
-# if len(forward_elements) > 1:
-#     ext_root.remove(forward_elements[1])
-# forward_element = ext_root.find('forward')
-# bridge_element = ext_root.find('bridge')
-# newline_element = ET.Element('text')
-# newline_element.text = '\n'
-# forward_parent = forward_element.getparent()
-# forward_parent.insert(list(forward_parent).index(forward_element) + 1, newline_element)
 
 # ============= END XML CHANGES =========================
 
@@ -95,7 +62,6 @@ gw_tree.write(gw_file)
 ws_tree.write(ws_file)
 int_tree.write(int_file)
 ext_tree.write(ext_file)
-# ext_tree.write(ext_file, xml_declaration=True)
 
 with open(gw_file, 'r') as file:
     gw_content = file.read()
@@ -129,3 +95,6 @@ with open(int_file, 'w') as file:
     file.write(updated_int_content)
 with open(ext_file, 'w') as file:
     file.write(updated_ext_content)
+
+print("Whonix files modified.")
+print("Run ./08-whonix-define.sh to define the virtual machines.")
