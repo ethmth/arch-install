@@ -9,6 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+wl-clipboard
 openssl
 pandoc-cli
 plocate
@@ -120,7 +121,6 @@ swaybg
 swaylock-effects
 waybar-hyprland
 wf-recorder
-wl-clipboard
 wlogout
 xdg-desktop-portal-hyprland-git
 xorg
