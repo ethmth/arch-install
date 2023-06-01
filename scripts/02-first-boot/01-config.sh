@@ -5,10 +5,13 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+CUR_USER=$(whoami)
+OFILE="/home/$CUR_USER/arch-install/config/system.conf"
+
 typeofcpu=$(printf "Desktop\nLaptop\n" | fzf --prompt="Select your type of computer")
 cpu=$(printf "AMD\nIntel\n" | fzf --prompt="Select your CPU")
-gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf --prompt="Select your host GPU")
-de=$(printf "Hyprland\nKDE Plasma\n" | fzf --prompt="Select your preferred Desktop Environment")
+gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf -m --prompt="Select your host GPU")
+de=$(printf "Hyprland\nKDE Plasma\n" | fzf -m --prompt="Select your preferred Desktop Environment")
 
 DESKTOP=0
 LAPTOP=0
@@ -19,41 +22,50 @@ INTEL=0
 NVIDIA=0
 HYPRLAND=0
 PLASMA=0
-if [ "$typeofcpu" == "Laptop" ]; then
-    LAPTOP=1
-else
+
+if [[ $typeofcpu == *"Desktop"* ]]; then
     DESKTOP=1
 fi
-if [ "$cpu" == "AMD" ]; then
+if [[ $typeofcpu == *"Laptop"* ]]; then
+    LAPTOP=1
+fi
+
+if [[ $cpu == *"AMD"* ]]; then
     AMD_CPU=1
-else
+fi
+if [[ $cpu == *"Intel"* ]]; then
     INTEL_CPU=1
 fi
-if [ "$gpu" == "Nvidia GPU" ]; then
-    NVIDIA=1
-elif [ "$gpu" == "AMD GPU" ]; then
+
+if [[ $gpu == *"AMD GPU"* ]]; then
     AMD=1
-else
+fi
+if [[ $gpu == *"Intel Integrated Graphics"* ]]; then
     INTEL=1
 fi
-if [ "$de" == "Hyprland" ]; then
+if [[ $gpu == *"Nvidia GPU"* ]]; then
+    NVIDIA=1
+fi
+
+if [[ $de == *"Hyprland"* ]]; then
     HYPRLAND=1
-else
+fi
+if [[ $de == *"KDE Plasma"* ]]; then
     PLASMA=1
 fi
 
-CUR_USER=$(whoami)
-echo "DESKTOP=$DESKTOP" > /home/$CUR_USER/arch-install/config/system.conf
-echo "LAPTOP=$LAPTOP" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "AMD_CPU=$AMD_CPU" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "INTEL_CPU=$INTEL_CPU" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "AMD=$AMD" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "INTEL=$INTEL" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "NVIDIA=$NVIDIA" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "HYPRLAND=$HYPRLAND" >> /home/$CUR_USER/arch-install/config/system.conf
-echo "PLASMA=$PLASMA" >> /home/$CUR_USER/arch-install/config/system.conf
+echo "DESKTOP=$DESKTOP" > $OFILE
+echo "LAPTOP=$LAPTOP" >> $OFILE
+echo "AMD_CPU=$AMD_CPU" >> $OFILE
+echo "INTEL_CPU=$INTEL_CPU" >> $OFILE
+echo "AMD=$AMD" >> $OFILE
+echo "INTEL=$INTEL" >> $OFILE
+echo "NVIDIA=$NVIDIA" >> $OFILE
+echo "HYPRLAND=$HYPRLAND" >> $OFILE
+echo "PLASMA=$PLASMA" >> $OFILE
 
-cat /home/$CUR_USER/arch-install/config/system.conf
+cat $OFILE
 
-echo "Verify the contents of /home/$CUR_USER/arch-install/config/system.conf"
+echo "Verify the contents of $OFILE (Output above)"
+echo "You can manually edit $OFILE with 1 or 0 if needed"
 echo "If successful, run ./02-yay.sh"
