@@ -71,6 +71,8 @@ if ([ "$OS_DISK" == "" ] || [ "$OS_DISK" == "Nothing" ]); then
     exit 1
 fi
 
+OS_DISK="/home/$CUR_USER/vm/os/$OS_DISK"
+
 networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
 NETWORK=$(echo "$networks" | fzf --prompt="Select your network")
 
@@ -96,5 +98,9 @@ sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
 
 sudo virsh -c qemu:///system define /home/$CUR_USER/vm/templates/$NAME.xml
+
+chmod o+x /home/$CUR_USER
+chmod o+x /home/$CUR_USER/vm
+chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined. Add your PCIe devices in virt-manager and you're good to go."
