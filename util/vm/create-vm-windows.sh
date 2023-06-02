@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
@@ -30,7 +28,6 @@ if [ "$DISK" == "Nothing" ]; then
     file_array=()
 
     for mnt in "${MNT_ARRAY[@]}"; do
-        # echo "$element"
         files=$(ls $mnt/vm/disk 2>/dev/null)
         for file in $files; do
             file_array+=("$mnt/vm/disk/$file")
@@ -59,6 +56,21 @@ if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     read -p "Please enter your desired name: " NAME
 fi
 
+
+OS_DISK="Nothing"
+oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep Win | head -n 1)
+read -p "Do you want to use $oses as the iso (N for No, Otherwise Yes)? " userInput
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
+else
+    OS_DISK=$oses
+fi
+
+if ([ "$OS_DISK" == "" ] || [ "$OS_DISK" == "Nothing" ]); then
+    echo "No OS ISO Disk selected."
+    exit 1
+fi
+
 networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
 NETWORK=$(echo "$networks" | fzf --prompt="Select your network")
 
@@ -73,18 +85,13 @@ MAC=$(hexdump -n 3 -ve '1/1 "%.2x "' /dev/random | awk -v a="2,6,a,e" -v r="$RAN
 MAC="52:54:00:$MAC"
 UUID=$(uuidgen)
 
-# echo "$MAC"
-
-# echo "$UUID"
-# 
-# exit 0
-
 mkdir -p /home/$CUR_USER/vm/templates
 cp /home/$CUR_USER/arch-install/files/templates/Windows.xml /home/$CUR_USER/vm/templates/$NAME.xml
 
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
-sed -i "s/VIRT_DISK_HERE/$DISK/g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s|VIRT_ISODISK_HERE|$OS_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
 
