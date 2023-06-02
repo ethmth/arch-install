@@ -9,6 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+speedtest-cli
 iproute2
 p7zip
 dmg2img

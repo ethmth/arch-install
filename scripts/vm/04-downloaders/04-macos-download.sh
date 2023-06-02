@@ -17,6 +17,8 @@ fi
 
 python /home/$CUR_USER/vm/osx/OSX-KVM/fetch-macOS-v2.py
 
+mv BaseSystem.dmg /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.dmg
+
 dmg2img -i /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.dmg /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.img
 
 echo "OSX-KVM Download Complete"
