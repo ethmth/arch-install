@@ -1,3 +1,4 @@
 config/system.conf
 config/vm.conf
+scripts/vm/04-downloaders/BaseSystem.dmg
 # scripts/vfio/whonix.html

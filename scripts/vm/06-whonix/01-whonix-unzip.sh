@@ -21,7 +21,7 @@ if ! [ -d "$WHONIX_LOC" ]; then
 fi
 
 
-if ! [ -e "$WHONIX_LOC/whonix/Whonix*.libvirt.xz" ]; then
+if ! find "$WHONIX_LOC/whonix" -name "Whonix*.libvirt.xz" -print -quit | grep -q .; then
   echo "The Whonix*.libvirt.xz file is not available." 
   echo "Be sure you've run ../01-vm-config.sh and ../downloaders/01-whonix-download.sh"
   exit 1

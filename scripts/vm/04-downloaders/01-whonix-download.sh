@@ -34,4 +34,4 @@ download=$(cat $WHONIX_LOC/whonix/whonix.html | grep "download.whonix.org" | gre
 wget --output-document=$WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz $download
 
 echo "Image downloaded into $WHONIX_LOC/whonix"
-echo "Run ./06-whonix-unzip.sh to unzip and edit the images before adding them"
+echo "Run ../06-whonix/01-whonix-unzip.sh to unzip and edit the images before adding them"
