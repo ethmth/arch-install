@@ -37,9 +37,6 @@ fi
 clear
 
 partitionsuffix=$(echo "$partition" | cut -d'/' -f 3)
-echo "$partition"
-echo "$partitionsuffix"
-exit 0
 
 dd if=/dev/urandom of=$path$name bs=1024 count=1
 chmod u=rw,g=,o= $path$name

@@ -46,6 +46,7 @@ cryptsetup luksFormat "$partition"
 echo "Enter the password to unencrypt the disk:"
 cryptsetup open "$partition" "$name"
 mkfs.ext4 /dev/mapper/$name
+sleep 3
 cryptsetup close "$name"
 
 echo "To finish setting up the disk, run ./add-disk.sh"
