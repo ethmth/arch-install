@@ -44,10 +44,11 @@ flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
 
-#sudo -k flatpak update --commit=b5875b97f32a2bee9a24f7ba610726642835368e8981177c7410eebaf2ebf2e3 io.gitlab.librewolf-community
-sudo -k flatpak override --reset io.gitlab.librewolf-community
-sudo flatpak override --nosocket=wayland io.gitlab.librewolf-community
+#sudo -k flatpak override --reset io.gitlab.librewolf-community
+#sudo flatpak override --nosocket=wayland io.gitlab.librewolf-community
 flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
-echo "If so, run ./03-openair-clone.sh"
+echo "Note: If you have clipboard issues with the address bar of Librewolf,"
+echo "consider disabling socket=wayland access in Flatseal to force xwayland"
+echo "Next, run ./03-openair-clone.sh"
