@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.godotengine.Godot
+org.gimp.GIMP
 org.libreoffice.LibreOffice
 org.onlyoffice.desktopeditors
 app.bluebubbles.BlueBubbles
