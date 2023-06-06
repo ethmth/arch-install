@@ -14,6 +14,9 @@ git clone https://github.com/ethmth/arch-dots.git /home/$CUR_USER/arch-dots
 shopt -s dotglob
 cp -r /home/$CUR_USER/arch-dots/home/* /home/$CUR_USER/
 rm -rf /home/$CUR_USER/arch-dots
+# TODO - change DEVICE variable in this hyprmon script depending on device:
+sudo -k cp /home/$CUR_USER/arch-dots/home/.config/hypr/hyprmon.sh /usr/bin/hyprmon
+sudo chmod +x /usr/bin/hyprmon
 
 # Source bash prompt
 echo "source ~/.config/bash/prompt" >> /home/$CUR_USER/.bashrc
