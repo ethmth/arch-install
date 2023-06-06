@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 #python2
 packages="
+python-torchvision
+python-pycocotools
 remmina
 rstudio-desktop-bin
 cryptomator-bin
