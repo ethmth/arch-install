@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux VPN: Native GUI App for Ubuntu, Mint &amp; More | PIA VPN</title>
+<link href="https://assets-cms.privateinternetaccess.com/dist/css/pia/app.css?v=123015" rel="stylesheet">
+<meta name="description" content="Download PIA&#039;s native app for Linux - install it on Ubuntu, Debian, Fedora, and Linux Mint. Enjoy no bandwidth caps and ultra-fast connection speeds.">
+<meta property="og:description" content="Download PIA&#039;s native app for Linux - install it on Ubuntu, Debian, Fedora, and Linux Mint. Enjoy no bandwidth caps and ultra-fast connection speeds." />
+<meta property="og:image" content="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/apps-hero/linux@2x.png" />
+<meta property="og:title" content="Linux VPN: Native GUI App for Ubuntu, Mint &amp; More | PIA VPN" />
+<link rel="canonical" href="https://www.privateinternetaccess.com/download/linux-vpn" />
+<link rel="alternate" hreflang="en" href="https://www.privateinternetaccess.com/download/linux-vpn" />
+<link rel="alternate" hreflang="x-default" href="https://www.privateinternetaccess.com/download/linux-vpn" />
+<link rel="alternate" hreflang="de" href="https://www.privateinternetaccess.com/de/download/linux-vpn" />
+<link rel="alternate" hreflang="es" href="https://www.privateinternetaccess.com/es/download/linux-vpn" />
+<link rel="alternate" hreflang="pt" href="https://www.privateinternetaccess.com/pt/download/linux-vpn" />
+<link rel="alternate" hreflang="fr" href="https://www.privateinternetaccess.com/fr/download/linux-vpn" />
+<link rel="alternate" hreflang="it" href="https://www.privateinternetaccess.com/it/download/linux-vpn" />
+<link rel="alternate" hreflang="pl" href="https://www.privateinternetaccess.com/pl/download/linux-vpn" />
+<link rel="alternate" hreflang="ro" href="https://www.privateinternetaccess.com/ro/download/linux-vpn" />
+<link rel="alternate" hreflang="ru" href="https://www.privateinternetaccess.com/ru/download/linux-vpn" />
+<link rel="alternate" hreflang="nl" href="https://www.privateinternetaccess.com/nl/download/linux-vpn" />
+<link rel="alternate" hreflang="ja" href="https://www.privateinternetaccess.com/ja/download/linux-vpn" />
+<link rel="alternate" hreflang="ko" href="https://www.privateinternetaccess.com/ko/download/linux-vpn" />
+<link rel="alternate" hreflang="sv" href="https://www.privateinternetaccess.com/sv/download/linux-vpn" />
+<link rel="alternate" hreflang="tr" href="https://www.privateinternetaccess.com/tr/download/linux-vpn" />
+<link rel="alternate" hreflang="da" href="https://www.privateinternetaccess.com/da/download/linux-vpn" />
+<link rel="alternate" hreflang="th" href="https://www.privateinternetaccess.com/th/download/linux-vpn" />
+<link rel="alternate" hreflang="ar" href="https://www.privateinternetaccess.com/ar/download/linux-vpn" />
+<link rel="alternate" hreflang="zh" href="https://www.privateinternetaccess.com/zh/download/linux-vpn" />
+<link rel="alternate" hreflang="nb" href="https://www.privateinternetaccess.com/nb/download/linux-vpn" />
+<link rel="alternate" hreflang="hu" href="https://www.privateinternetaccess.com/hu/download/linux-vpn" />
+<link rel="alternate" hreflang="cs" href="https://www.privateinternetaccess.com/cs/download/linux-vpn" />
+<link rel="alternate" hreflang="el" href="https://www.privateinternetaccess.com/el/download/linux-vpn" />
+<link rel="alternate" hreflang="fi" href="https://www.privateinternetaccess.com/fi/download/linux-vpn" />
+<link rel="alternate" hreflang="id" href="https://www.privateinternetaccess.com/id/download/linux-vpn" />
+<link rel="alternate" hreflang="vi" href="https://www.privateinternetaccess.com/vi/download/linux-vpn" />
+<link rel="alternate" hreflang="uk" href="https://www.privateinternetaccess.com/uk/download/linux-vpn" />
+<link rel="alternate" hreflang="bg" href="https://www.privateinternetaccess.com/bg/download/linux-vpn" />
+<link rel="alternate" hreflang="hr" href="https://www.privateinternetaccess.com/hr/download/linux-vpn" />
+<link rel="alternate" hreflang="he" href="https://www.privateinternetaccess.com/he/download/linux-vpn" />
+<style>
+            @media (max-width: 1200px){
+  .jumbotron .column-benefit-list{
+   flex-wrap:wrap;
+  }
+.jumbotron .column-benefit-list .wp-block-column{
+  flex-basis: 100% !important;
+  margin-left:0px;
+  }
+}
+.custom-linux-position {
+  display: grid;
+  text-align: left !important;
+}
+            
+            @media (max-width: 1199.98px) { 
+.social-media-container>div{
+  padding-left:0px;
+ }
+}
+@media(max-width: 780px){
+ footer .logos-block .wp-block-image figure{
+     padding-left:0px;
+ 	  padding-right:0px;
+ }
+}
+@media (max-width: 767.98px) { 
+.social-media-container>div{
+  max-width:200px!important;
+  }
+ .social-media-container .logos-block .wp-block-image{
+  width:30px
+  }
+}
+        .pricing-container-block .btn.btn-secondary,
+.pricing-container-block .wp-block-common-blocks-button.is-style-secondary .wp-block-button__link,
+.pricing-container-block .wp-block-button__link.is-style-secondary {
+    color: #707070;
+    border: 2px solid #707070
+}
+
+.pricing-container-block .btn.btn-secondary:hover,
+.pricing-container-block .wp-block-common-blocks-button.is-style-secondary .wp-block-button__link:hover,
+.pricing-container-block .wp-block-button__link.is-style-secondary:hover {
+    background-color: #707070;
+    border: 2px solid #707070;
+    color: #fff
+}
+
+.pricing-card-v2 .price-value,
+.pricing-card-v2 .price-currency {
+    font-weight: 600
+}
+
+.pricing-card-v2 .wp-block-common-blocks-button .wp-block-button__link {
+    padding: 8px 24px 6.5px
+}
+
+.pricing-card-v2 .wp-block-common-blocks-button.is-style-secondary .wp-block-button__link {
+    font-size: 16px
+}
+
+.pricing-card-v2.is-featured {
+    box-shadow: #7f9cde1a 8px 8px 10px 0 !important
+}
+
+.pricing-card-v2.is-featured:hover {
+    box-shadow: none !important
+}
+
+.pricing-card-v2.is-featured .billing-info {
+    opacity: .8;
+    margin-bottom: 0
+}
+
+.pricing-card-v2 {
+    transition: box-shadow .3s ease-in-out, transform .3s ease-in-out
+}
+
+
+.lang-cs #pricing-widget .pricing-card-v2.is-featured,
+.lang-hr #pricing-widget .pricing-card-v2.is-featured,
+.lang-es #pricing-widget .pricing-card-v2.is-featured,
+.lang-it #pricing-widget .pricing-card-v2.is-featured{
+    border-color: #4cb649 !important;
+}
+
+.lang-cs .pricing-container-block .pricing-card-v2 .deal,
+.lang-hr .pricing-container-block .pricing-card-v2 .deal,
+.lang-es .pricing-container-block .pricing-card-v2 .deal,
+.lang-it .pricing-container-block .pricing-card-v2 .deal  {
+    background-color: #4cb649 !important;
+}
+
+.pricing-card-v2:not(.is-featured) .price {
+    transition: .3s;
+    color: #1f212d
+}
+
+html[lang=en] .pricing-card-v2 .wp-block-common-blocks-button .wp-block-button__link {
+    max-height: 40px
+}
+
+.lang-ru .pricing-card-v2 .deal {
+    font-size: 11px !important
+}
+
+.pricing-container-block .pricing-card-v2 .deal {
+    font-weight: 600;
+    border: none;
+    letter-spacing: .24px;
+    padding: 5px 13px 2px
+}
+
+.lang-en .pricing-container-block .pricing-card-v2 .deal {
+    max-width: 165px;
+    width: 160px
+}
+
+
+
+.lang-bg .pricing-card .deal,
+.lang-el .pricing-card .deal,
+.lang-vi .pricing-card .deal,
+.lang-uk .pricing-card .deal,
+.lang-pt .pricing-card .deal,
+.lang-hu .pricing-card .deal {
+    font-size: 10px !important
+}
+.lang-ro .pricing-card .deal {
+    font-size: 9px !important
+}
+
+
+.pricing-container-block .pricing-card-v2:not(.is-featured) .price {
+    opacity: .8
+}
+
+.pricing-card-v2 .deal {
+    text-transform: none !important
+}
+
+#pricing-widget .ub_countdown_second,
+#pricing-widget .ub_countdown-time-unit-seconds {
+    color: #ff6c2f
+}
+
+@media(min-width:781px) {
+    #pricing-widget .pricing-card-v2 {
+        width: 246px
+    }
+    #pricing-widget .pricing-card-v2:not(.is-featured) {
+        padding-bottom: 10px !important;
+        padding-top: 15px !important
+    }
+    #pricing-widget .custom-container>div {
+        max-width: 800px !important
+    }
+}
+
+@media(max-width:780px) {
+    .pricing-widget-sticky-cta .selected .checkbox-pricing {
+        background-color: ##56B14D !important
+    }
+    #pricing-widget .pricing-card-v2.is-featured .plan-info {
+        font-size: 16px
+    }
+    .pricing-widget-sticky-cta .plan-info {
+        max-width: 100px !important
+    }
+}.exit-intent .ub-countdown-odometer{font-size:27px;font-weight:400;height:30px}.exit-intent .ub-countdown-odometer-container span{font-weight:400;height:18px;line-height:14px}.lang-bg .exit-intent .ub-countdown-odometer-container span,.lang-uk .exit-intent .ub-countdown-odometer-container span{font-size:10px!important}.exit-intent .ub-countdown{width:210px;margin-bottom:0}.exit-intent .exit-intent-container{background-size:contain}.exit-intent .timer-text{text-transform:capitalize;padding-left:3px;padding-bottom:4px}.exit-intent .custom-container>div{max-width:310px!important}.exit-intent p{margin-bottom:0}.exit-intent h2{line-height:54px;letter-spacing:-.8px;font-weight:500}.exit-intent strong{font-weight:500!important}.exit-intent .description-ei{letter-spacing:-.44px;line-height:28px}.exit-intent .wp-block-common-blocks-buttons .wp-block-common-blocks-button{margin-right:0}.exit-intent .money-back-text img{margin-right:5px;vertical-align:sub;padding-bottom:1px}.exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 40px 10px}.exit-intent .wp-block-button__link::after{content:"";background:url(https://assets-cms.privateinternetaccess.com/photos/shares/olympics21/arrow_right_olympics.svg);background-size:contain;background-repeat:no-repeat;width:19px;height:14px;display:inline-block;position:relative;left:10px;top:1px}.exit-intent .close-btn{background-color:#717282;color:#fff;top:12px;right:12px;font-size:21px;width:24px;height:24px;line-height:28px}.exit-intent .wp-block-common-blocks-buttons .wp-block-common-blocks-button{margin-bottom:10px}.lang-de .exit-intent .description-ei{font-size:21px!important}.lang-ru .exit-intent .description-ei{font-size:18px!important}.lang-bg .exit-intent h2{font-size:30px!important}.lang-cs .exit-intent h2,.lang-hu .exit-intent h2,.lang-id .exit-intent h2{font-size:33px!important}.lang-de .exit-intent h2{font-size:34px!important;line-height:43px!important}.lang-el .exit-intent h2{line-height:32px!important;font-size:31px!important}.lang-es .exit-intent h2{font-size:28px!important;margin-bottom:0!important}.lang-fr .exit-intent h2{font-size:32px!important;line-height:42px!important}.lang-fi .exit-intent h2{font-size:28px!important}.lang-it .exit-intent h2{font-size:36px!important;line-height:45px!important}.lang-nl .exit-intent h2{font-size:33px!important}.lang-nb .exit-intent h2{font-size:27px!important}.lang-pl .exit-intent h2{font-size:31px!important}.lang-ru .exit-intent h2{font-size:30px!important}.lang-ro .exit-intent h2{font-size:28px!important}.lang-uk .exit-intent h2{font-size:30px!important}.lang-sv .exit-intent h2{font-size:28px!important}.lang-ja .exit-intent h2{font-size:30px!important}.lang-ko .exit-intent h2{font-size:33px!important}.lang-he .exit-intent h2{line-height:39px!important}.lang-hr .exit-intent h2{font-size:28px!important}.lang-he .exit-intent h2{font-size:33px!important}.lang-nl .exit-intent .description-ei{font-size:20px!important}.lang-es .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 20px 10px}.lang-cs .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 40px 10px}.lang-de .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 30px 10px}.lang-nb .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link,.lang-ja .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 20px 10px}.lang-nl .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 15px 10px}.lang-sv .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 20px 10px}.lang-ru .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 15px 10px}.lang-tr .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link,.lang-ar .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link,.lang-zh .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 35px 10px}.lang-pl .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 25px 10px}.lang-id .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 15px 10px}.lang-ro .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 15px 10px}.lang-hu .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 13px 10px;font-size:14px}.lang-el .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 13px 10px;font-size:15px}.lang-bg .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 25px 10px}.lang-vi .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:18px 15px 10px}.lang-es .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{font-size:15px!important}.lang-fr .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 9px 10px;width:270px!important}.lang-pt .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 15px 10px;font-size:16px!important}.lang-es .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 13px 10px;font-size:15px!important}.lang-it .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 19px 10px;font-size:16px!important}.lang-uk .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 19px 10px}.lang-hr .exit-intent .wp-block-common-blocks-button.is-style-main .wp-block-button__link{padding:15px 34px 10px}.lang-cs .exit-intent .description-ei{font-size:18px!important}.lang-fr .exit-intent .description-ei{font-size:17px!important}.lang-it .exit-intent .description-ei{font-size:19px!important}.lang-da .exit-intent .description-ei{font-size:19px!important}.lang-nl .exit-intent .description-ei{font-size:25px!important}.lang-pt .exit-intent .description-ei{font-size:19px!important}.lang-tr .exit-intent .description-ei{font-size:19px!important}.lang-nb .exit-intent .description-ei{font-size:18px!important}.lang-ja .exit-intent .description-ei{font-size:17px!important}.lang-zh .exit-intent .description-ei{font-size:16px!important}.lang-el .exit-intent .description-ei{font-size:16px!important}.lang-ko .exit-intent .description-ei{font-size:17px!important}.lang-hu .exit-intent .description-ei{font-size:16px!important}.lang-bg .exit-intent .description-ei{font-size:17px!important}.lang-pl .exit-intent .description-ei{font-size:21px!important}.lang-da .exit-intent h2{line-height:45px}.lang-el .exit-intent .money-back-text{font-size:13px!important}.lang-bg .exit-intent .money-back-text{font-size:12px!important}</style>
+
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-26585402-1');
+        ga('require', 'ec');
+        ga('send', 'pageview');
+
+
+    </script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10928540304" type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-10928540304');
+    </script>
+<link href="https://assets-cms.privateinternetaccess.com/vendor/@fortawesome/fontawesome-free/css/fontawesome.min.css?v=123015" rel="preload" as="style">
+<link href="https://assets-cms.privateinternetaccess.com/vendor/@fortawesome/fontawesome-free/css/solid.min.css?v=123015" rel="preload" as="style">
+
+<script type="fb27c3f92fc3246ae999a67a-text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+
+
+<link rel="icon" type="image/png" href="https://assets-cms.privateinternetaccess.com/img/frontend/pia-favicon_32x32.png?v=123015" sizes="32x32">
+<meta name="author" content="Private Internet Access, Inc.">
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">
+    function checkQs(field){
+        var url = window.location.href;
+        if(url.indexOf('?' + field + '') != -1)
+            return true;
+        else if(url.indexOf('&' + field + '') != -1)
+            return true;
+        return false
+
+    }
+    if(checkQs('ms=cja') && !checkQs('coupon=')){
+        window.location.href = window.location.href + '&coupon=2Y2M'
+    }
+</script>
+</head>
+<body class="lang-en">
+<nav class="navbar navbar-expand-lg navbar-pia ">
+<div class="max-1300">
+<div class="navbar-brand logo-pia d-none d-lg-block pia-divider">
+<a href="/">
+<img src="https://assets-cms.privateinternetaccess.com/img/frontend/pia_menu_logo_light.svg?v=123015" width="146" height="49" class="img-fluid" alt="Private Internet Access">
+</a>
+</div>
+<div class="navbar-brand logo-pia d-block d-lg-none">
+<a href="/">
+<img src="https://assets-cms.privateinternetaccess.com/img/frontend/pia_menu_logo_light.svg?v=123015" width="120" height="40" class="img-fluid" alt="Private Internet Access">
+</a>
+</div>
+<div class="nav-item dropdown dropdown-langs d-block ml-auto d-lg-none pia-divider">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/download/linux-vpn">
+<span class="flags-logos flag-icon bg-open-globe">
+<img src="https://assets-cms.privateinternetaccess.com/img/frontend/open_globe.svg?v=123015" alt="">
+</span>
+<span class="location-name ellipsis">
+EN
+</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item nav-link" href="/bg/download/linux-vpn">
+<span class="flags-logos flag-icon bg-bg"></span>
+<span class="location-name"> Bulgarian </span>
+</a>
+<a class="dropdown-item nav-link" href="/cs/download/linux-vpn">
+<span class="flags-logos flag-icon bg-cz"></span>
+<span class="location-name"> Čeština </span>
+</a>
+<a class="dropdown-item nav-link" href="/hr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-hr"></span>
+<span class="location-name"> Croatian </span>
+</a>
+<a class="dropdown-item nav-link" href="/da/download/linux-vpn">
+<span class="flags-logos flag-icon bg-dk"></span>
+<span class="location-name"> Dansk </span>
+</a>
+<a class="dropdown-item nav-link" href="/de/download/linux-vpn">
+<span class="flags-logos flag-icon bg-de"></span>
+<span class="location-name"> Deutsch </span>
+</a>
+<a class="dropdown-item nav-link" href="/es/download/linux-vpn">
+<span class="flags-logos flag-icon bg-es"></span>
+<span class="location-name"> Español </span>
+</a>
+<a class="dropdown-item nav-link" href="/fi/download/linux-vpn">
+<span class="flags-logos flag-icon bg-fi"></span>
+<span class="location-name"> Finnish </span>
+</a>
+<a class="dropdown-item nav-link" href="/fr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-fr"></span>
+<span class="location-name"> Français </span>
+</a>
+<a class="dropdown-item nav-link" href="/he/download/linux-vpn">
+<span class="flags-logos flag-icon bg-he"></span>
+<span class="location-name"> Hebrew </span>
+</a>
+<a class="dropdown-item nav-link" href="/id/download/linux-vpn">
+<span class="flags-logos flag-icon bg-id"></span>
+<span class="location-name"> Indonesian </span>
+</a>
+<a class="dropdown-item nav-link" href="/it/download/linux-vpn">
+<span class="flags-logos flag-icon bg-it"></span>
+<span class="location-name"> Italiano </span>
+</a>
+<a class="dropdown-item nav-link" href="/hu/download/linux-vpn">
+<span class="flags-logos flag-icon bg-hu"></span>
+<span class="location-name"> Magyar </span>
+</a>
+<a class="dropdown-item nav-link" href="/nl/download/linux-vpn">
+<span class="flags-logos flag-icon bg-nl"></span>
+<span class="location-name"> Nederlands </span>
+</a>
+<a class="dropdown-item nav-link" href="/nb/download/linux-vpn">
+<span class="flags-logos flag-icon bg-no"></span>
+<span class="location-name"> Norsk </span>
+</a>
+<a class="dropdown-item nav-link" href="/pl/download/linux-vpn">
+<span class="flags-logos flag-icon bg-pl"></span>
+<span class="location-name"> Polski </span>
+</a>
+<a class="dropdown-item nav-link" href="/pt/download/linux-vpn">
+<span class="flags-logos flag-icon bg-br"></span>
+<span class="location-name"> Português </span>
+</a>
+<a class="dropdown-item nav-link" href="/ru/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ru"></span>
+<span class="location-name"> Pусский </span>
+</a>
+<a class="dropdown-item nav-link" href="/ro/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ro"></span>
+<span class="location-name"> Română </span>
+</a>
+<a class="dropdown-item nav-link" href="/sv/download/linux-vpn">
+<span class="flags-logos flag-icon bg-se"></span>
+<span class="location-name"> Svenska </span>
+</a>
+<a class="dropdown-item nav-link" href="/tr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-tr"></span>
+<span class="location-name"> Türkçe </span>
+</a>
+<a class="dropdown-item nav-link" href="/uk/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ua"></span>
+<span class="location-name"> Ukrainian </span>
+</a>
+<a class="dropdown-item nav-link" href="/vi/download/linux-vpn">
+<span class="flags-logos flag-icon bg-vn"></span>
+<span class="location-name"> Vietnamese </span>
+</a>
+<a class="dropdown-item nav-link" href="/el/download/linux-vpn">
+<span class="flags-logos flag-icon bg-gr"></span>
+<span class="location-name"> Ελληνικά </span>
+</a>
+<a class="dropdown-item nav-link" href="/ar/download/linux-vpn">
+<span class="flags-logos flag-icon bg-sa"></span>
+<span class="location-name"> العربية </span>
+</a>
+<a class="dropdown-item nav-link" href="/th/download/linux-vpn">
+<span class="flags-logos flag-icon bg-th"></span>
+<span class="location-name"> ไทย </span>
+</a>
+<a class="dropdown-item nav-link" href="/ja/download/linux-vpn">
+<span class="flags-logos flag-icon bg-jp"></span>
+<span class="location-name"> 日本語 </span>
+</a>
+<a class="dropdown-item nav-link" href="/zh/download/linux-vpn">
+<span class="flags-logos flag-icon bg-cn"></span>
+<span class="location-name"> 简体中文 </span>
+</a>
+<a class="dropdown-item nav-link" href="/ko/download/linux-vpn">
+<span class="flags-logos flag-icon bg-kr"></span>
+<span class="location-name"> 한국어 </span>
+</a>
+</div>
+</div>
+<button class="navbar-toggler burger-menu-button" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<div class="navbar-collapse sidenav" id="main-nav">
+<ul class="navbar-nav navbar-nav-left">
+<li class="nav-item   " id="">
+<a class=" nav-link  " href="/what-is-vpn" role="button" data-object = menu_what_is_vpn>
+What is a VPN
+</a>
+</li>
+<li class="nav-item   " id="">
+<a class=" nav-link  " href="/why-pia" role="button" data-object = menu_why_pia>
+Why PIA
+</a>
+</li>
+<li class="nav-item   " id="">
+<a class=" nav-link  " href="/buy-vpn-online" role="button" data-object = menu_pricing>
+Pricing
+</a>
+</li>
+<li class="nav-item dropdown  " id="">
+<a class=" nav-link dropdown-toggle " href="/vpn-features" data-toggle="dropdown" role="button" data-object = menu_features>
+VPN Features
+</a>
+<ul class="dropdown-menu single-column">
+<li class="" id=""><a class="dropdown-item" href="/vpn-features/no-logs-vpn">No Logs Policy</a></li>
+<li class="" id=""><a class="dropdown-item" href="/vpn-features/dedicated-ip-vpn">Dedicated IP</a></li>
+<li class="" id=""><a class="dropdown-item" href="/antivirus">Antivirus</a></li>
+<li class="" id=""><a class="dropdown-item" href="/vpn-features/router-vpn">VPN Router</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown  " id="app-bar">
+<a class="nav-link dropdown-toggle" href="/download" data-toggle="dropdown" role="button" data-object = menu_download_vpn>Download VPN </a>
+<div class="dropdown-menu app-bar-menu">
+<a class="app " href="/download/windows-vpn" id="windows">
+<div class='app-img'>
+<svg id="windows" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" fill="rgba(255,255,255,0)" />
+<g id="win" transform="translate(13.224 13.221)">
+<path id="Path_28183" data-name="Path 28183" d="M0,263.225l15.364,2.117V250.677H0Z" transform="translate(0 -230.897)" fill="#8c919d" />
+<path id="Path_28184" data-name="Path 28184" d="M0,53.39H15.364V38.544L0,40.661Z" transform="translate(0 -35.503)" fill="#8c919d" />
+<path id="Path_28185" data-name="Path 28185" d="M216.129,265.565l20.433,2.816V250.674H216.129Z" transform="translate(-199.075 -230.895)" fill="#8c919d" />
+<path id="Path_28186" data-name="Path 28186" d="M216.132,2.816V17.887h20.432V0Z" transform="translate(-199.078)" fill="#8c919d" />
+</g>
+</svg>
+</div>
+<span class="app-name">Windows VPN</span>
+</a>
+<a class="app " href="/download/mac-vpn" id="macos">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="mac-os" transform="translate(0.375)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(-0.375)" fill="rgba(255,255,255,0)" />
+<path id="MacOS_logo" d="M27.059,16.41v-.4l-1.248.086a1.548,1.548,0,0,0-.8.224.659.659,0,0,0,0,1.059,1.159,1.159,0,0,0,.709.2,1.585,1.585,0,0,0,.529-.087,1.317,1.317,0,0,0,.426-.242,1.084,1.084,0,0,0,.281-.366A1.069,1.069,0,0,0,27.059,16.41ZM24.6.25A24.178,24.178,0,0,0,.25,24.6,24.177,24.177,0,0,0,24.6,48.959,24.177,24.177,0,0,0,48.959,24.6,24.177,24.177,0,0,0,24.6.25Zm4.728,14.436a2.416,2.416,0,0,1,.487-.83,2.132,2.132,0,0,1,.758-.532,2.729,2.729,0,0,1,1.874-.04,2.141,2.141,0,0,1,.678.394,1.883,1.883,0,0,1,.45.579,1.945,1.945,0,0,1,.2.7H32.8a1.258,1.258,0,0,0-.133-.378,1.033,1.033,0,0,0-.25-.3,1.175,1.175,0,0,0-.366-.2A1.429,1.429,0,0,0,31.577,14a1.23,1.23,0,0,0-1,.48,1.678,1.678,0,0,0-.278.558,2.5,2.5,0,0,0-.1.73,2.543,2.543,0,0,0,.1.744,1.607,1.607,0,0,0,.282.555,1.217,1.217,0,0,0,.438.347,1.309,1.309,0,0,0,.562.121A1.334,1.334,0,0,0,32.4,17.3a1.1,1.1,0,0,0,.411-.69h.979a1.947,1.947,0,0,1-.222.732,1.886,1.886,0,0,1-.465.565,2.074,2.074,0,0,1-.674.362,2.724,2.724,0,0,1-.851.128,2.607,2.607,0,0,1-.993-.182,2.133,2.133,0,0,1-.762-.522,2.339,2.339,0,0,1-.489-.827,3.273,3.273,0,0,1-.173-1.1,3.165,3.165,0,0,1,.17-1.083ZM15.42,13.2H16.4v.87h.019a1.447,1.447,0,0,1,.235-.387,1.465,1.465,0,0,1,.333-.291,1.525,1.525,0,0,1,.415-.184,1.771,1.771,0,0,1,.478-.063,1.556,1.556,0,0,1,.91.257,1.379,1.379,0,0,1,.527.739h.025a1.54,1.54,0,0,1,.259-.415,1.661,1.661,0,0,1,.369-.315,1.714,1.714,0,0,1,.457-.2,1.949,1.949,0,0,1,.522-.068,1.868,1.868,0,0,1,.688.121,1.522,1.522,0,0,1,.529.34,1.483,1.483,0,0,1,.338.534,1.966,1.966,0,0,1,.119.7v3.5H21.6V15.086a1.1,1.1,0,0,0-.261-.783.968.968,0,0,0-.742-.277,1.108,1.108,0,0,0-.433.083.988.988,0,0,0-.338.232,1.043,1.043,0,0,0-.222.357,1.24,1.24,0,0,0-.081.454v3.187H18.517V15a1.116,1.116,0,0,0-.069-.4.863.863,0,0,0-.2-.308.852.852,0,0,0-.31-.2,1.158,1.158,0,0,0-.41-.069,1.085,1.085,0,0,0-.438.088,1.033,1.033,0,0,0-.345.243,1.106,1.106,0,0,0-.224.369,1.373,1.373,0,0,0-.136.462v3.149H15.42Zm2.222,24.577c-4.489,0-7.305-3.12-7.305-8.1s2.816-8.109,7.305-8.109,7.295,3.13,7.295,8.109-2.805,8.1-7.295,8.1Zm8.312-19.454a2.044,2.044,0,0,1-.508.063,2.153,2.153,0,0,1-.7-.109,1.618,1.618,0,0,1-.548-.308,1.378,1.378,0,0,1-.357-.48,1.492,1.492,0,0,1-.128-.627,1.249,1.249,0,0,1,.5-1.056,2.686,2.686,0,0,1,1.459-.442l1.385-.08v-.4a.825.825,0,0,0-.282-.676,1.226,1.226,0,0,0-.8-.231,1.42,1.42,0,0,0-.389.052,1.067,1.067,0,0,0-.317.149.853.853,0,0,0-.227.232.83.83,0,0,0-.123.3h-.96a1.363,1.363,0,0,1,.168-.629,1.621,1.621,0,0,1,.431-.5,2.032,2.032,0,0,1,.641-.331,2.63,2.63,0,0,1,.8-.119,2.819,2.819,0,0,1,.849.119,1.931,1.931,0,0,1,.65.338,1.5,1.5,0,0,1,.415.529,1.6,1.6,0,0,1,.147.692v3.522h-.978v-.856h-.025a1.543,1.543,0,0,1-.276.376,1.772,1.772,0,0,1-.378.286,1.9,1.9,0,0,1-.459.182Zm6.459,19.454c-3.424,0-5.751-1.793-5.913-4.609h2.229c.174,1.609,1.729,2.675,3.859,2.675,2.043,0,3.512-1.066,3.512-2.522,0-1.261-.892-2.022-2.957-2.543l-2.012-.5c-2.892-.717-4.207-2.033-4.207-4.2,0-2.663,2.326-4.512,5.642-4.512,3.239,0,5.5,1.859,5.587,4.533H35.947c-.153-1.609-1.467-2.6-3.425-2.6s-3.293,1-3.293,2.446c0,1.141.847,1.816,2.913,2.337l1.7.424c3.229.783,4.555,2.055,4.555,4.338,0,2.913-2.305,4.729-5.98,4.729ZM17.642,23.572c-3.076,0-5,2.359-5,6.109s1.924,6.1,5,6.1,5-2.359,5-6.1S20.708,23.572,17.642,23.572Z" transform="translate(7.361 7.361)" fill="#8c919d" />
+</g>
+</svg>
+</div>
+ <span class="app-name">Mac VPN</span>
+</a>
+<a class="app " href="/download/linux-vpn" id="linux">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="linux" transform="translate(-0.252)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(0.252)" fill="rgba(255,255,255,0)" />
+<path id="linux-2" data-name="linux" d="M58.693,35.4c-1.291-.529-1.843-1.232-1.79-2.28a3.5,3.5,0,0,0-.968-2.474,10.737,10.737,0,0,0,0-5.679c-.838-2.447-3.4-6.184-6.035-9.858-1.081-1.509-1.132-3.149-1.191-5.048A15.363,15.363,0,0,0,47.581,3.91,6.349,6.349,0,0,0,41.542,0,8.258,8.258,0,0,0,36.95,1.4c-2.637,1.822-2.289,5.8-2.058,8.425.032.36.061.7.079.991A13.046,13.046,0,0,1,34.8,15.16a17.838,17.838,0,0,1-1.316,1.849c-.637.84-1.359,1.792-1.951,2.68a21,21,0,0,0-1.828,4.278,20.527,20.527,0,0,1-1.156,2.9,3.95,3.95,0,0,0-.382,2.964,3.045,3.045,0,0,0-.975,1.237C26.8,31.9,26,32.354,24.349,32.673a2.192,2.192,0,0,0-1.56.952,2.7,2.7,0,0,0,.017,2.157,3.36,3.36,0,0,1-.222,2.432c-.077.232-.163.494-.251.784a1.414,1.414,0,0,0,.148,1.235c.625.957,2.45,1.294,4.328,1.516a16.665,16.665,0,0,1,3.536,1.017,16.581,16.581,0,0,0,3.459,1,3.928,3.928,0,0,0,.489.032,2.878,2.878,0,0,0,2.633-1.547,29.228,29.228,0,0,1,4.745-.561,20.584,20.584,0,0,1,4.717.485,3.8,3.8,0,0,0,1.421,1.55,3.444,3.444,0,0,0,1.6.361h0a3.852,3.852,0,0,0,2.81-1.162,25.174,25.174,0,0,1,5.1-3.259c.39-.211.754-.409,1.074-.588a2.406,2.406,0,0,0,1.469-2.135A1.8,1.8,0,0,0,58.693,35.4Zm-21.722-.2c-.122-.861-1.229-1.716-2.511-2.705a8.886,8.886,0,0,1-2.563-2.5c-.676-1.6-.143-4.418.786-5.869a14.912,14.912,0,0,0,1.2-2.892,10.4,10.4,0,0,1,1.25-2.859,7.3,7.3,0,0,0,1.5-3.64,4.535,4.535,0,0,0,2.677,1.457,1.576,1.576,0,0,0,.43-.058A14.457,14.457,0,0,0,42.3,14.839a10.951,10.951,0,0,1,2.179-1.1c.643.924,4.378,9.2,4.76,11.859a12.583,12.583,0,0,1-.177,4.522,3.319,3.319,0,0,0-.445-.032c-1.04,0-1.316.569-1.388.908a36.814,36.814,0,0,0-.206,4.337,8.607,8.607,0,0,1-5.01,3.137,21.665,21.665,0,0,1-3.088.244,10.418,10.418,0,0,1-1.523-.094l-1.373-1.572A1.67,1.67,0,0,0,36.972,35.2ZM38.713,9.272q-.064.028-.126.059a2.564,2.564,0,0,0-.029-.282,1.6,1.6,0,0,0-1.36-1.49.959.959,0,0,0-.147.012,1.138,1.138,0,0,0-.84.753c.143-.888.646-1.546,1.242-1.546.7,0,1.292.945,1.292,2.063A3.057,3.057,0,0,1,38.713,9.272Zm5.44.666a2.191,2.191,0,0,0,.1-.655A1.645,1.645,0,0,0,42.79,7.475a1.662,1.662,0,0,0-1.454,1.808q0,.1.01.2l-.124-.048a2.768,2.768,0,0,1-.139-.869,2.008,2.008,0,0,1,1.725-2.2,2.008,2.008,0,0,1,1.725,2.2A2.591,2.591,0,0,1,44.153,9.938Zm-.7,2.359c-.014.061-.043.088-.365.256-.163.085-.366.191-.619.345L42.3,13a15.69,15.69,0,0,1-2.709,1.438c-.294.04-.476-.075-.885-.353-.092-.063-.19-.13-.3-.2a3.471,3.471,0,0,1-1.265-1.226c.24-.186.836-.652,1.141-.927a3.3,3.3,0,0,1,1.551-.964.244.244,0,0,1,.046,0,15.416,15.416,0,0,1,1.909.682c.3.121.562.225.746.291A1.786,1.786,0,0,1,43.452,12.3Zm5.189,26.938a21.43,21.43,0,0,0,.64-4.654c-.014-.268-.038-.56-.061-.842A7.753,7.753,0,0,1,49.18,32.2a.281.281,0,0,1,.043-.016,2.622,2.622,0,0,0,1.224,2.49,2.7,2.7,0,0,0,1.088.211A4.439,4.439,0,0,0,54.3,33.861a5.028,5.028,0,0,0,.7-.921,1.113,1.113,0,0,1,.048.434,3.112,3.112,0,0,0,1.338,2.8l.134.07c.327.172,1.2.629,1.211.846a.193.193,0,0,1-.056.071,12.546,12.546,0,0,1-1.726.97,15.082,15.082,0,0,0-3.476,2.14,4.747,4.747,0,0,1-2.653,1.66.7.7,0,0,1-.211-.03C48.908,41.686,48.332,40.676,48.641,39.235ZM24.806,35.481a1.963,1.963,0,0,1-.067-.853c.044-.189.977-.392,1.376-.479a5.359,5.359,0,0,0,1.519-.478,3.085,3.085,0,0,0,1.035-1.39,2.159,2.159,0,0,1,.578-.868.122.122,0,0,1,.067-.016c.408,0,1.264.859,1.758,1.628.125.194.357.582.625,1.032a32.988,32.988,0,0,0,2.474,3.8c.517.555,1.354,1.621,1.148,2.535a2.776,2.776,0,0,1-1.142,1.414,1.169,1.169,0,0,1-.254.024,16.218,16.218,0,0,1-4.439-1.406l-.173-.073a14.057,14.057,0,0,0-2.746-.613,8.959,8.959,0,0,1-2.127-.479c-.151-.169.024-.72.178-1.205a7.824,7.824,0,0,0,.288-1.087A3.963,3.963,0,0,0,24.806,35.481Z" transform="translate(-9.094 9.924)" fill="#8c919d" />
+</g>
+</svg>
+</div>
+<span class="app-name">Linux VPN</span>
+</a>
+<a class="app " href="/download/android-vpn-app" id="android">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="android" transform="translate(0.123)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(-0.123)" fill="rgba(255,255,255,0)" />
+<g id="android-2" data-name="android" transform="translate(9.894 10.649)">
+<g id="g80302" transform="translate(0 28.739)">
+<path id="path825" d="M-410.475,527.946a3.158,3.158,0,0,0-3.079,3.346,3.135,3.135,0,0,0,3.079,3.321,2.475,2.475,0,0,0,2.036-.946v.412a.435.435,0,0,0,.412.412h1.018v-6.4h-1.43v.812A2.478,2.478,0,0,0-410.475,527.946Zm.255,1.309a1.958,1.958,0,0,1,1.905,2.036,1.974,1.974,0,0,1-1.9,2.035,1.935,1.935,0,0,1-1.881-2.049A1.907,1.907,0,0,1-410.22,529.255Z" transform="translate(413.554 -524.819)" fill="#8c919d" />
+<path id="path829" d="M-364.468,534.482a.4.4,0,0,1-.412-.412v-5.988h1.43v.792a2.231,2.231,0,0,1,1.929-.939,2.39,2.39,0,0,1,2.434,2.45v4.1h-.994a.438.438,0,0,1-.436-.436V530.7a1.357,1.357,0,0,0-1.332-1.453,1.729,1.729,0,0,0-1.6,1.841v3.394Z" transform="translate(373.001 -524.81)" fill="#8c919d" />
+<path id="path833" d="M-320.537,512.694a3.158,3.158,0,0,0-3.079,3.346,3.134,3.134,0,0,0,3.079,3.321,2.475,2.475,0,0,0,2.036-.945v.412a.435.435,0,0,0,.412.412h1.018v-9.6h-1.43v4.012A2.479,2.479,0,0,0-320.537,512.694Zm.255,1.309a1.958,1.958,0,0,1,1.905,2.036,1.974,1.974,0,0,1-1.9,2.036,1.935,1.935,0,0,1-1.881-2.049A1.907,1.907,0,0,1-320.283,514Z" transform="translate(338.622 -509.567)" fill="#8c919d" />
+<path id="path835" d="M-274.53,534.855a.4.4,0,0,1-.412-.412v-5.988h1.43v1.067a1.763,1.763,0,0,1,1.721-1.14,2.979,2.979,0,0,1,.509.049v1.479a2.059,2.059,0,0,0-.679-.121,1.691,1.691,0,0,0-1.551,1.842v3.225Z" transform="translate(298.07 -525.182)" fill="#8c919d" />
+<path id="path837" d="M-203.045,535.218a.4.4,0,0,1-.412-.412v-5.988h1.43v6.4Z" transform="translate(238.512 -525.546)" fill="#8c919d" />
+<path id="path839" d="M-185.122,512.694a3.158,3.158,0,0,0-3.079,3.346,3.134,3.134,0,0,0,3.079,3.321,2.475,2.475,0,0,0,2.036-.945v.412a.435.435,0,0,0,.412.412h1.018v-9.6h-1.43v4.012A2.478,2.478,0,0,0-185.122,512.694Zm.255,1.309a1.958,1.958,0,0,1,1.905,2.036,1.974,1.974,0,0,1-1.9,2.036,1.935,1.935,0,0,1-1.881-2.049A1.907,1.907,0,0,1-184.867,514Z" transform="translate(225.801 -509.567)" fill="#8c919d" />
+<ellipse id="path841" cx="0.946" cy="0.946" rx="0.946" ry="0.946" transform="translate(34.813 0)" fill="#8c919d" />
+<path id="path843" d="M-247.054,527.934a3.294,3.294,0,0,0-3.336,3.336,3.257,3.257,0,0,0,3.333,3.333,3.3,3.3,0,0,0,3.384-3.32A3.324,3.324,0,0,0-247.054,527.934Zm.005,1.336a1.931,1.931,0,0,1,1.919,2,1.96,1.96,0,0,1-1.916,2.016,1.945,1.945,0,0,1-1.914-2A1.928,1.928,0,0,1-247.049,529.27Z" transform="translate(277.614 -524.809)" fill="#8c919d" />
+</g>
+<path id="path80319" d="M99.951,269.37l3.66-6.339a.743.743,0,0,0-.269-1.013.734.734,0,0,0-1.009.269l-3.708,6.421a23.136,23.136,0,0,0-18.874,0l-3.708-6.421a.741.741,0,0,0-1.282.744l3.66,6.339A21.85,21.85,0,0,0,67.13,286.655h44.116A21.844,21.844,0,0,0,99.951,269.37ZM79.059,280.46a1.849,1.849,0,1,1,1.849-1.849A1.85,1.85,0,0,1,79.059,280.46Zm20.252,0a1.849,1.849,0,1,1,1.849-1.849A1.85,1.85,0,0,1,99.312,280.46Z" transform="translate(-67.103 -261.917)" fill="#8c919d" />
+</g>
+</g>
+</svg>
+</div>
+<span class="app-name">Android VPN</span>
+</a>
+<a class="app " href="/download/ios-vpn" id="ios">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="apple-ios" transform="translate(0.498)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(-0.498)" fill="rgba(255,255,255,0)" />
+<g id="apple" transform="translate(12.341 5.845)">
+<path id="Path_28181" data-name="Path 28181" d="M20.7,0h.342a10.309,10.309,0,0,1-2.6,7.769c-1.545,1.824-3.661,3.594-7.084,3.325a10,10,0,0,1,2.643-7.528A11.414,11.414,0,0,1,20.7,0Z" transform="translate(8.184)" fill="#8c919d" />
+<path id="Path_28182" data-name="Path 28182" d="M41.353,29.22v.1a28.011,28.011,0,0,1-4.008,7.727c-1.528,2.1-3.4,4.934-6.746,4.934-2.89,0-4.809-1.858-7.771-1.909-3.133-.051-4.856,1.554-7.72,1.958h-.977c-2.1-.3-3.8-1.97-5.038-3.471A30.412,30.412,0,0,1,2.1,21.058V18.9c.222-5.247,2.771-9.513,6.16-11.581a10.4,10.4,0,0,1,6.985-1.617,17.571,17.571,0,0,1,3.423.981,9.451,9.451,0,0,0,3.42,1.025,8.211,8.211,0,0,0,2.4-.734c2.359-.852,4.672-1.829,7.72-1.37a10.711,10.711,0,0,1,7.87,4.693c-3.1,1.972-5.549,4.945-5.131,10.02C35.324,24.933,38,27.631,41.353,29.22Z" transform="translate(-2.104 6.118)" fill="#8c919d" />
+</g>
+</g>
+</svg>
+</div>
+<span class="app-name">iOS VPN</span>
+</a>
+<a class="app " href="/download/chrome-vpn" id="chrome">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="chrome" transform="translate(-0.128)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(0.128)" fill="rgba(255,255,255,0)" />
+<path id="chrome-2" data-name="chrome" d="M23.088,48.959,33.969,30.113l.03-.057a10.988,10.988,0,0,0-2.092-13.69H47.622A24.511,24.511,0,0,1,24.5,49C24.027,49,23.558,48.986,23.088,48.959ZM7.177,41.823A24.511,24.511,0,0,1,4.022,11.04L14.9,29.882c.013.021.025.043.039.064a11,11,0,0,0,12.9,5.04l-7.851,13.6A24.32,24.32,0,0,1,7.177,41.823Zm9.039-17.147a8.108,8.108,0,1,1,8.108,8.108A8.109,8.109,0,0,1,16.216,24.676ZM5.9,8.553q.611-.71,1.277-1.378A24.529,24.529,0,0,1,46.4,13.495H24.5a11.025,11.025,0,0,0-10.752,8.651Z" transform="translate(7.128 8)" fill="#8c919d" />
+</g>
+</svg>
+</div>
+ <span class="app-name">Chrome VPN</span>
+</a>
+<a class="app " href="/gaming-vpn" id="consoles">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="consoles" transform="translate(0.498 0.375)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(-0.498 -0.375)" fill="rgba(255,255,255,0)" />
+<path id="consoles-2" data-name="consoles" d="M35.3,41.215h-.5a6.494,6.494,0,0,1-5.933-3.86l-2.394-5.4a5.647,5.647,0,0,0-10.323,0l-2.394,5.4a6.494,6.494,0,0,1-5.933,3.86h-.5a5.886,5.886,0,0,1-5.8-4.85,96.638,96.638,0,0,1-1.508-18.7L.04,16.057A10.058,10.058,0,0,1,9.18,6.2l.75-.069c3.2-.3,6.456-.47,9.685-.514V1.693a1.694,1.694,0,0,1,3.388,0V5.616c3.237.045,6.5.219,9.687.514l.748.069a10.058,10.058,0,0,1,9.14,9.858l.028,1.612a96.639,96.639,0,0,1-1.51,18.7A5.886,5.886,0,0,1,35.3,41.215ZM30.343,19.2a2.262,2.262,0,0,0-2.258,2.26v.563a2.258,2.258,0,1,0,4.516,0v-.563A2.262,2.262,0,0,0,30.343,19.2ZM7.76,15.809a1.693,1.693,0,0,0,0,3.386h2.823v2.823a1.694,1.694,0,1,0,3.388,0V19.2h2.821a1.693,1.693,0,1,0,0-3.386H13.971V12.986a1.694,1.694,0,0,0-3.388,0v2.823ZM34.3,15.244a2.258,2.258,0,1,0,0,4.516h.563a2.258,2.258,0,0,0,0-4.516Zm-8.47,0a2.258,2.258,0,0,0,0,4.516h.565a2.258,2.258,0,1,0,0-4.516Zm4.516-4.516a2.261,2.261,0,0,0-2.258,2.258v.565a2.258,2.258,0,1,0,4.516,0v-.565A2.261,2.261,0,0,0,30.343,10.728Z" transform="translate(10.655 9.817)" fill="#8c919d" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" />
+</g>
+</svg>
+</div>
+<span class="app-name">Gaming VPN</span>
+</a>
+<a class="app " href="/smart-tvs" id="smarttv">
+<div class='app-img'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<g id="smart-tv" transform="translate(0.123 0.375)">
+<circle id="Ellipse_2124" data-name="Ellipse 2124" cx="32" cy="32" r="32" transform="translate(-0.123 -0.375)" fill="rgba(255,255,255,0)" />
+<path id="Shape" d="M36.52,41.362H12.19a1.824,1.824,0,1,1,0-3.649H20.1V32.727l-13.439-.38a6.288,6.288,0,0,1-6.07-5.57,91.25,91.25,0,0,1,0-20.706A6.288,6.288,0,0,1,6.659.5l17.7-.5,17.7.5a6.287,6.287,0,0,1,6.068,5.57,91.25,91.25,0,0,1,0,20.706,6.287,6.287,0,0,1-6.068,5.57l-13.439.38v4.985H36.52a1.824,1.824,0,0,1,0,3.649ZM24.355,3.65l-17.594.5A2.651,2.651,0,0,0,4.216,6.486a87.513,87.513,0,0,0,0,19.876A2.648,2.648,0,0,0,6.761,28.7l17.594.5,17.593-.5a2.651,2.651,0,0,0,2.547-2.336,87.514,87.514,0,0,0,0-19.876,2.654,2.654,0,0,0-2.547-2.338ZM21.394,22.575a1.757,1.757,0,0,1-1.733-1.528,36.112,36.112,0,0,1,0-9.246,1.757,1.757,0,0,1,1.732-1.528,1.725,1.725,0,0,1,.579.1l.55.2A30.167,30.167,0,0,1,30.9,15.143a1.621,1.621,0,0,1,0,2.562,30.133,30.133,0,0,1-8.376,4.573l-.55.2A1.725,1.725,0,0,1,21.394,22.575Z" transform="translate(7.611 11.387)" fill="#8c919d" />
+</g>
+</svg>
+</div>
+<span class="app-name">Smart TV VPN</span>
+</a>
+</div>
+</li>
+<li class="nav-item   " id="">
+<a class=" nav-link  " href="/vpn-server" role="button" data-object = menu_servers>
+VPN Servers
+</a>
+</li>
+<li class="nav-item   " id="">
+<a class=" nav-link  " href="https://www.privateinternetaccess.com/blog/" role="button" data-object = menu_blog>
+Blog
+</a>
+</li>
+<li class="nav-item  d-flex align-items-center " id="">
+<a class=" nav-link  " href="https://helpdesk.privateinternetaccess.com/" role="button" data-object = menu_support>
+Support
+</a>
+</li>
+</ul>
+<div class="ml-auto">
+<ul class="navbar-nav navbar-right">
+<li class="nav-item " id="header-login-btn">
+<a class="nav-link" href="/account/client-sign-in">Login</a>
+</li>
+<li class="nav-item dropdown dropdown-langs d-none d-lg-block">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/download/linux-vpn">
+<span class="flags-logos flag-icon bg-open-globe">
+<img src="https://assets-cms.privateinternetaccess.com/img/frontend/open_globe.svg?v=123015" alt="">
+</span>
+<span class="location-name ellipsis">
+EN
+</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item nav-link" href="/bg/download/linux-vpn">
+<span class="flags-logos flag-icon bg-bg"></span>
+<span class="location-name ellipsis">
+Bulgarian
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/cs/download/linux-vpn">
+<span class="flags-logos flag-icon bg-cz"></span>
+<span class="location-name ellipsis">
+Čeština
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/hr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-hr"></span>
+<span class="location-name ellipsis">
+Croatian
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/da/download/linux-vpn">
+<span class="flags-logos flag-icon bg-dk"></span>
+<span class="location-name ellipsis">
+Dansk
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/de/download/linux-vpn">
+<span class="flags-logos flag-icon bg-de"></span>
+<span class="location-name ellipsis">
+Deutsch
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/es/download/linux-vpn">
+<span class="flags-logos flag-icon bg-es"></span>
+<span class="location-name ellipsis">
+Español
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/fi/download/linux-vpn">
+<span class="flags-logos flag-icon bg-fi"></span>
+<span class="location-name ellipsis">
+Finnish
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/fr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-fr"></span>
+<span class="location-name ellipsis">
+Français
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/he/download/linux-vpn">
+<span class="flags-logos flag-icon bg-he"></span>
+<span class="location-name ellipsis">
+Hebrew
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/id/download/linux-vpn">
+<span class="flags-logos flag-icon bg-id"></span>
+<span class="location-name ellipsis">
+Indonesian
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/it/download/linux-vpn">
+<span class="flags-logos flag-icon bg-it"></span>
+<span class="location-name ellipsis">
+Italiano
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/hu/download/linux-vpn">
+<span class="flags-logos flag-icon bg-hu"></span>
+ <span class="location-name ellipsis">
+Magyar
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/nl/download/linux-vpn">
+<span class="flags-logos flag-icon bg-nl"></span>
+<span class="location-name ellipsis">
+Nederlands
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/nb/download/linux-vpn">
+<span class="flags-logos flag-icon bg-no"></span>
+<span class="location-name ellipsis">
+Norsk
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/pl/download/linux-vpn">
+<span class="flags-logos flag-icon bg-pl"></span>
+<span class="location-name ellipsis">
+Polski
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/pt/download/linux-vpn">
+<span class="flags-logos flag-icon bg-br"></span>
+<span class="location-name ellipsis">
+Português
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/ru/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ru"></span>
+<span class="location-name ellipsis">
+Pусский
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/ro/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ro"></span>
+<span class="location-name ellipsis">
+Română
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/sv/download/linux-vpn">
+<span class="flags-logos flag-icon bg-se"></span>
+<span class="location-name ellipsis">
+Svenska
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/tr/download/linux-vpn">
+<span class="flags-logos flag-icon bg-tr"></span>
+<span class="location-name ellipsis">
+Türkçe
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/uk/download/linux-vpn">
+<span class="flags-logos flag-icon bg-ua"></span>
+<span class="location-name ellipsis">
+Ukrainian
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/vi/download/linux-vpn">
+<span class="flags-logos flag-icon bg-vn"></span>
+<span class="location-name ellipsis">
+Vietnamese
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/el/download/linux-vpn">
+<span class="flags-logos flag-icon bg-gr"></span>
+<span class="location-name ellipsis">
+Ελληνικά
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/ar/download/linux-vpn">
+<span class="flags-logos flag-icon bg-sa"></span>
+<span class="location-name ellipsis">
+العربية
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/th/download/linux-vpn">
+<span class="flags-logos flag-icon bg-th"></span>
+<span class="location-name ellipsis">
+ไทย
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/ja/download/linux-vpn">
+<span class="flags-logos flag-icon bg-jp"></span>
+<span class="location-name ellipsis">
+日本語
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/zh/download/linux-vpn">
+<span class="flags-logos flag-icon bg-cn"></span>
+<span class="location-name ellipsis">
+简体中文
+</span>
+</a>
+<a class="dropdown-item nav-link" href="/ko/download/linux-vpn">
+<span class="flags-logos flag-icon bg-kr"></span>
+<span class="location-name ellipsis">
+한국어
+</span>
+</a>
+</div>
+</li>
+<li id="header-buy-btn" class="">
+<a class="btn btn-main wp-block-button__link" href="/buy-vpn-online" data-object="header-getpiavpn">Get PIA VPN</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<div id="layout-content">
+<div class='gutenberg__content wp-embed-responsive'>
+<header class="wp-block-common-blocks-jumbotron alignfull jumbotron jumbotron-left"><div class="container"><div class="breacrumbs"><nav aria-label="breadcrumb"><ol class="breadcrumb breadcrumb-links"><li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li><li class="breadcrumb-item"><a href="/download">Download</a></li><li class="breadcrumb-item"><a href="#">Linux VPN</a></li></ol></nav></div>
+<div class="wp-block-columns alignfull are-vertically-aligned-center">
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h1 class="">Download VPN for Linux — Easy Install, Advanced Security, Fast Speeds</h1>
+
+
+<p class="">Skip complex command line configuration when you use PIA, the best VPN for Linux.</p>
+
+
+<ul class="wp-block-cg-blocks-custom-list-container-block items-list">
+<li class="wp-block-cg-blocks-custom-list-element-block custom-list"><i class="fas fa-check" style="color:#56B14D"></i><span style="color:undefined">Protect Ubuntu, Mint, Debian, Fedora, Arch and other distros</span></li>
+
+
+<li class="wp-block-cg-blocks-custom-list-element-block custom-list"><i class="fas fa-check" style="color:#56B14D"></i><span style="color:undefined">Scrutinize our 100% open-source VPN app code anytime</span></li>
+
+
+<li class="wp-block-cg-blocks-custom-list-element-block custom-list"><i class="fas fa-check" style="color:#56B14D"></i><span style="color:undefined">Use the most feature-rich Linux VPN on the market</span></li>
+</ul>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-buttons">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-jumbo" data-object="linux-buy-jumbo"><span>Get PIA VPN for Linux</span></a></div>
+
+
+<div class="wp-block-common-blocks-button button is-style-secondary"><a class="wp-block-button__link" href="https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run" data-object="download_linux" data-custom-param="download" data-custom-value="linux"><span>Download VPN For Linux</span></a></div>
+</div>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<p class="" style="font-size:14px">*Requires Ubuntu 18.04+ (LTS), Mint, Debian, Fedora, or Arch.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/apps-hero/linux@2x.png" alt="Download VPN for Linux — Easy Install, Advanced Security, Fast Speeds" width="368" height="324" /></figure></div>
+</div>
+</div>
+</div></header>
+
+
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:1140px ">
+<h3 class="has-text-align-center font-medium">Protection For All Your Devices</h3>
+
+
+<div class="wp-block-pia-blocks-platforms-container platforms-section has-text-align-left variation-platforms" id="platforms-section-lENXovyFMm"><span class="d-none dataset">{"buttons":{},"itemsPerRow":11,"isSortable":false,"boxType":"small","elemId":"section-lENXovyFMm","editMode":false,"linkProduct":true,"newDesign":true}</span><div class="platforms-container"><div class="platforms-element platforms-grid-11 box-type-small" data-reactroot=""><div class="container-inner new-platforms-design"></div></div></div></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:800px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<h2 class="has-text-align-center mb-2">How to Install PIA VPN on Your Linux Distro</h2>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Our VPN for Linux is a piece of cake to install. Simply download and run the installer, and start enjoying VPN protection in minutes.</p>
+
+
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="has-text-align-center" style="max-width:980px ">
+<div class="wp-block-pia-blocks-steps-container-block steps-container"><script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"","description":"","step":[{"@type":"HowToStep","name":"Step 1","text":"Subscribe to PIA","url":"https://www.privateinternetaccess.com/download/linux-vpn#step1","image":"https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Pia-steps/simple_cart.png"},{"@type":"HowToStep","name":"Step 2","text":"Download our Linux app installer","url":"https://www.privateinternetaccess.com/download/linux-vpn#step2","image":"https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Pia-steps/simple_download.png"},{"@type":"HowToStep","name":"Step 3","text":"Run the installer","url":"https://www.privateinternetaccess.com/download/linux-vpn#step3","image":"https://assets-cms.privateinternetaccess.com/photos/shares/pia-steps/step-three.svg"},{"@type":"HowToStep","name":"Step 4","text":"Start using PIA VPN for Linux","url":"https://www.privateinternetaccess.com/download/linux-vpn#step3","image":"https://assets-cms.privateinternetaccess.com/photos/shares/pia-steps/step-four.svg"}],"totalTime":"P5M","tool":[{"@type":"HowToTool","name":"internet"}]}</script><div class="top-section"><h2 class="steps-container-heading"></h2><p class="steps-container-description"></p></div><div class="bottom-section">
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large is-resized"><img src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Pia-steps/simple_cart.png" alt="" width="199" height="165" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step1">Step 1</h4>
+
+
+<p class="step-paragraph"><a href="/buy-vpn-online">Subscribe to PIA</a></p>
+</div>
+
+
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large is-resized"><img src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Pia-steps/simple_download.png" alt="" width="199" height="165" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step2">Step 2</h4>
+
+
+<p class="step-paragraph">Download our Linux app installer</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large"><img src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-steps/step-three.svg" alt="" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step3">Step 3</h4>
+
+
+<p class="step-paragraph">Run the installer</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large"><img src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-steps/step-four.svg" alt="" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step3">Step 4</h4>
+
+
+<p class="step-paragraph">Start using PIA VPN for Linux</p>
+</div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-pia-card-block aligncenter card custom-card  special-card shadow-up px-md-5 pt-md-5" style="max-width:1140px;font-size:14px;background-color:#FFFFFF;border-width:0px;border-radius:28px;border-color:#EEEEEE">
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container mobile-pt-24px mobile-pb-24px mobile-pl-32px mobile-pr-24px desktop-pt-48px desktop-pb-48px desktop-pl-48px desktop-pr-48px"><div class="" style="max-width:900px ">
+<div class="wp-block-pia-blocks-steps-container-block steps-container"><script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Connect to PIA VPN for Linux in 3 Steps","description":"","step":[{"@type":"HowToStep","name":"Step 1","text":"Press the ‘On’ button to auto-connect to the nearest server.","url":"https://www.privateinternetaccess.com/download/linux-vpn#step1","image":"https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-one.png"},{"@type":"HowToStep","name":"Step 2","text":"Alternatively, click the location bar to pick a specific location.","url":"https://www.privateinternetaccess.com/download/linux-vpn#step2","image":"https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-two.png"},{"@type":"HowToStep","name":"Step 3","text":"Wait for the VPN to connect, then enjoy increased online privacy.","url":"https://www.privateinternetaccess.com/download/linux-vpn#step3","image":"https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-three.png"}],"totalTime":"P5M","tool":[{"@type":"HowToTool","name":"internet"}]}</script><div class="top-section"><h2 class="steps-container-heading">Connect to PIA VPN for Linux in 3 Steps</h2><p class="steps-container-description"></p></div><div class="bottom-section">
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large is-resized"><img src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-one.png" alt="step 1" width="199" height="165" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step1">Step 1</h4>
+
+
+<p class="step-paragraph">Press the ‘On’ button to auto-connect to the nearest server.</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-two.png" alt="step 2" width="234" height="165" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step2">Step 2</h4>
+
+
+<p class="step-paragraph">Alternatively, click the location bar to pick a specific location.</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-step-block step-block">
+<div class="wp-block-image step-image"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/steps/step-three.png" alt="step 3" width="199" height="165" /></figure></div>
+
+
+<h4 class="step-heading mb-0 mt-3" id="step3">Step 3</h4>
+
+
+<p class="step-paragraph">Wait for the VPN to connect, then enjoy increased online privacy.</p>
+</div>
+</div></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-buttons">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-steps" data-object="linux-buy-steps"><span>Get PIA VPN </span></a></div>
+</div>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer show-on-desktop is-style-responsive-medium"></div>
+</div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-columns are-vertically-aligned-center mb-0">
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Download-by-App/Linux-download@2x.jpg" alt="Download a VPN for Linux Devices" width="366" height="322" /></figure></div>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center text-center-mobile" style="flex-basis:60%">
+<h3 class="has-text-align-left has-text-color" id="linux-vpn-app" style="color:#1f212d">Download a VPN for Linux Devices</h3>
+
+
+<p class="has-text-align-left has-text-color" style="color:#747474">PIA’s VPN app works well on a broad range of devices, including laptops and desktops running the most popular Linux distros. The process is a cinch from start to finish. Just download our Linux app to get started.</p>
+
+
+<h3 class="has-text-align-left">PIA VPN is Compatible with:</h3>
+
+
+<p class="has-text-align-left">Ubuntu 18.04+ (LTS), Mint, Debian, Fedora, and Arch.</p>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer show-on-desktop"></div>
+
+
+<div class="wp-block-common-blocks-buttons aligncenter custom-linux-position">
+<div class="wp-block-common-blocks-button button is-style-secondary other-windows"><a class="wp-block-button__link" href="https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run" data-cp="download_windows_64" data-object="download_windows_64" data-custom-param="download" data-custom-value="windows_64"><span><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/common/Download.svg" alt="undefined">Download Linux VPN</span></a></div>
+
+
+<div class="wp-block-common-blocks-button button is-style-secondary other-windows"><a class="wp-block-button__link" href="https://installers.privateinternetaccess.com/download/pia-linux-armhf-3.3.1-06924.run" data-cp="download_windows_64" data-object="download_windows_64" data-custom-param="download" data-custom-value="windows_64"><span><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/common/Download.svg" alt="undefined">Download Linux VPN (armhf)</span></a></div>
+
+
+<div class="wp-block-common-blocks-button button is-style-secondary other-windows"><a class="wp-block-button__link" href="https://installers.privateinternetaccess.com/download/pia-linux-arm64-3.3.1-06924.run" data-cp="download_windows_64" data-object="download_windows_64" data-custom-param="download" data-custom-value="windows_64"><span><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/common/Download.svg" alt="undefined">Download Linux VPN (arm64)</span></a></div>
+</div>
+</div>
+</div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block aligncenter custom-container"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-columns are-vertically-aligned-center">
+<div class="wp-block-column is-vertically-aligned-center">
+<h3 class=""><span class="has-inline-color has-black-color">A Full-Featured, Graphical VPN for Linux</span></h3>
+
+
+<p class="has-text-color" style="color:#747474">Our approach to Linux is different from most VPNs — our Linux app has feature-for-feature parity with our Windows and macOS apps. Our full GUI means you won’t need to bother with the command line on supported distros. </p>
+
+
+<p class="">Our user-friendly VPN and UI make setup easy — it also allows you to control every feature with a click of your mouse after installation. You even get advanced features for Linux you won’t get in other VPNs, including split tunneling and DNS configuration. </p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image"><figure class="alignright size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/encryption-pia.png" alt="A Full-Featured, Graphical VPN for Linux" /></figure></div>
+</div>
+</div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background" style="background:linear-gradient(0deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+</div></div>
+
+
+<h2 class="has-text-align-center mb-2 mobile-mb-20px desktop-mb-20px">PIA’s Top Linux VPN Features</h2>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer is-style-responsive-small"></div>
+
+
+<div class="wp-block-columns are-vertically-aligned-top feature-4-columns">
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image mb-"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-open-source.png" alt="Open Source VPN Expertise" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Open Source VPN Expertise</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Audit, inspect, or verify our VPN app code anytime. We use the best open-source VPN protocols, OpenVPN and WireGuard®, to give you full transparency.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-no-logs.png" alt="Proven No Logs Policy" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Proven No Logs Policy</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">PIA’s proven No Logs policy guarantees we’ll never collect your usage data. Our RAM-only servers delete all traces of your connection with each reboot.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-fast-speeds.png" alt="Fast Speeds" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Fast Speeds</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Our NextGen servers use 10 Gbps network connectors, so you can enjoy glitch-free gaming, streaming, and torrenting wherever you are.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-global-server-network.png" alt="Global Server Network" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Global Server Network</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Secure your Linux device from anywhere — our global network spans 82 countries. Unlock local accounts, torrent safely, and enjoy more freedom online.</p>
+</div>
+</div>
+
+
+<div class="wp-block-columns are-vertically-aligned-top feature-4-columns">
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image mb-"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-unlimited-bandwidth.png" alt="Unlimited Bandwidth" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Unlimited Bandwidth</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Download bulky .iso files without worrying about losing protection. No matter how much you upload or download, you’ll never hit a bandwidth or data cap with PIA.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image mb-"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-support-p2p.png" alt="P2P Support" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">P2P Support</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Don’t settle for slow torrenting speeds on distant servers. PIA supports P2P file sharing on every server, so you can enjoy great performance without compromising your privacy.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image mb-"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-ad-and-malware-blocker.png" alt="Ads &amp; Malware Blocker" width="143" height="120" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Ads &amp; Malware Blocker</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Our supercharged ad, tracker, and malware blocker, PIA MACE, works at the DNS level to block suspicious domains and stop harmful software before it reaches your system.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-top">
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/pia/photos/product/features/pia-support.png" alt="24/7 Support" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">24/7 Support</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Take advantage of round-the-clock support from our team of VPN experts. Contact us via live chat or email, we’re happy to answer all your PIA-related questions.</p>
+</div>
+</div>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer is-style-responsive-small"></div>
+
+
+<div class="wp-block-common-blocks-buttons aligncenter">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-features" data-object="linux-buy-features"><span>Download PIA VPN</span></a></div>
+</div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background" style="background:linear-gradient(180deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:750px ">
+<h2 class="has-text-align-center mb-2">Why use a VPN for Linux?</h2>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Linux is one of the most secure platforms available, but it doesn’t do anything to protect your internet data. Once data leaves your Linux device, it's just as vulnerable as it would be on any other system.</p>
+
+
+<p class="has-text-align-center">When you connect to our secure servers, your IP address is hidden from the websites and services you visit — they only see your new IP address. PIA also uses unbreakable AES encryption to ensure your data is useless if it's intercepted by cybercriminals.</p>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background padding-none" style="background:linear-gradient(0deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:700px ">
+<h2 class="has-text-align-center mb-2">Get the Most Privacy-Focused Linux VPN</h2>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Our open-source VPN app makes PIA the ideal VPN for Linux distros. You won’t be shorted when it comes to configuration options or advanced features like Split Tunneling. </p>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer is-style-responsive-small"></div>
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-fixed-layout"><tbody><tr><td><strong>Feature</strong></td><td><strong>Description </strong></td></tr><tr><td>Strong encryption</td><td>Select default 128-bit AES encryption or pick military-grade 256-bit AES for added data security.</td></tr><tr><td>Secure protocols </td><td>Pick blazing-fast WireGuard® or ultra-secure OpenVPN. Adjust the base MTU to transmit large files.</td></tr><tr><td>Split tunneling</td><td>Bypass the VPN on selected apps and domains without disconnecting the app or losing protection elsewhere.</td></tr><tr><td>Advanced Kill Switch</td><td>Stop data being sent over the internet when the VPN disconnects, or even if it’s switched off.</td></tr><tr><td>Automation</td><td>Configure the VPN to automatically connect or disconnect on specific networks such as public Wi-Fi.</td></tr><tr><td>Multi-Hop</td><td>Use a SOCKS5 or Shadowsocks proxy to relay your traffic through multiple servers and increase privacy.</td></tr><tr><td>Obfuscation</td><td>Make VPN traffic look like ordinary traffic, to hide your VPN use from anyone monitoring your network.</td></tr><tr><td>Customizable DNS Settings</td><td>Use the default PIA DNS, create your own custom DNS settings, or choose from other options.</td></tr><tr><td>Port Forwarding</td><td>Speed up torrents or maintain a remote connection between your device and home network.</td></tr></tbody></table></figure>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-buttons aligncenter">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-get" data-object="linux-buy-get"><span>Get PIA VPN</span></a></div>
+</div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background padding-none" style="background:linear-gradient(0deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="has-text-align-center" style="max-width:1140px ">
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:700px ">
+<h2 class="has-text-align-center mb-2">The Best VPN for Linux and Other Devices</h2>
+
+
+<p class="has-text-align-center">In addition to Linux, PIA has apps for iOS, Android, macOS, and Windows. You get unlimited simultaneous device connections, so you can protect all your tech with one subsctiption.</p>
+</div></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-pia-blocks-platforms-container platforms-section" id="platforms-section-bAZFcwuNQH"><span class="d-none dataset">{"buttons":{},"itemsPerRow":8,"isSortable":false,"boxType":"small","elemId":"section-bAZFcwuNQH","editMode":false}</span><div class="platforms-container"><div class="platforms-element platforms-grid-8 box-type-small" data-reactroot=""><div class="container-inner "></div></div></div></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-buttons">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-devices" data-object="linux-buy-devices"><span>Get Connected to PIA</span></a></div>
+</div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<h2 class="has-text-align-center">PIA VPN for Linux Specification and System Requirements</h2>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:750px ">
+<figure class="wp-block-table is-style-stripes"><table class="has-fixed-layout"><tbody><tr><td>Protocols</td><td>WireGuard® and OpenVPN</td></tr><tr><td>Encryption</td><td>128-bit AES, 256-bit AES, 256-bit ChaCha20</td></tr><tr><td>Transport</td><td>UDP / TCP</td></tr><tr><td>Proxies</td><td>SOCKS5 and Shadowsocks</td></tr><tr><td>Port Sections</td><td>UDP ports 8080, 853, 123, 53, 1197, 1198 <br>TCP ports 8443, 853, 443, 80 501, 502</td></tr><tr><td>Supported OS Versions</td><td>Ubuntu 18.04+ (LTS), Mint, Debian, Fedora, Arch</td></tr><tr><td>Minimum system requirements</td><td>32/64-bit system architectures including systemd, sysvinit, and openrc-based systems. You can use PIA on Linux ARMHF and ARM64 but you need to download a <a href="#linux-vpn-app">specific version of the VPN</a>.</td></tr></tbody></table></figure>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<h2 class="has-text-align-center mb-2 has-text-color" style="color:#1f212d">Why Choose PIA VPN for Linux? </h2>
+
+
+<div class="wp-block-columns are-vertically-aligned-center">
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/why-pia.png" alt="VPN Expertise" width="137" height="120" title="" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">VPN Expertise</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">PIA VPN has spent a decade optimizing our security features to protect your privacy online.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image mb"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/opensource-glassbox.png" alt="100% Transparency" width="133" height="117" title="" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Open Source Transparency</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Our apps and protocols are 100% open source — check under the hood for yourself.</p>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image mb"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-all-apps/Email-breachMonitor2-Current-View@2x.png" alt="24/7 Customer Support " width="130" height="119" /></figure></div>
+
+
+<h4 class="has-text-align-center mb-2 mt-3">Global Reach, US Focus</h4>
+
+
+<p class="has-text-align-center has-text-color" style="color:#747474">Connect to high-speed servers in 82 countries and all 50 US states.</p>
+</div>
+</div>
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-buttons aligncenter">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-why" data-object="linux-buy-why"><span>Get PIA VPN</span></a></div>
+</div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background" style="background:linear-gradient(0deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+
+
+<div class="wp-block-pia-blocks-reviews-container carousel-section has-text-align-center"><h2 class="">The Best VPN for Linux Trusted by Millions of Customers</h2><span class="d-none dataset">{"tweetsBtnText":"{Tweets}","userBtnText":"{User Reviews}","influencersBtnText":"{Influencers}","techReviewsBtnText":"{Tech Reviews}"}</span><div id="reviews_container"><div class="" data-reactroot=""><div class="controls d-none"><a href="#" class="active">{User Reviews}</a><a href="#" class="">{Tweets}</a><a href="#" class="">{Influencers}</a><a href="#" class="">{Tech Reviews}</a></div><div class="reviews-carousel crousel"><div class="container-inner"></div></div><div class="bullets"></div></div></div></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<p class="has-text-align-center">TRUSTED AND RECOMMENDED BY:</p>
+
+
+<div class="wp-block-pia-blocks-logos-block logos-block  is-vertically-aligned-center">
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/logo_forbes.svg" alt="" /></figure></div>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/NewYorkTimes-black.svg" alt="" /></figure></div>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/logo_gizmodo-color.svg" alt="" /></figure></div>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/PCmag-red.svg" alt="" /></figure></div>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/logo_lifehacker_bar.svg" alt="" /></figure></div>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/trusted-by-bar/logo_wired.svg" alt="" /></figure></div>
+</div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container padding-none"><div class="" style="max-width:1140px ">
+<h2 class="has-text-align-center mb-0" id="plans">Choose The Plan That's Right For You</h2>
+
+
+<p class="has-text-align-center" style="font-size:18px"><img class="wp-image-undefined" style="width: 16px;" data-src="https://assets-cms.privateinternetaccess.com/photos/shares/common/inline-image-pia.svg" alt="undefined"> All Plans Are Covered By Our 30-Day Money-Back Guarantee</p>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div id="pricing-widget" class="wp-block-pia-blocks-pricing-widget">
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="has-text-align-center" style="max-width:760px ">
+<div class="wp-block-pia-blocks-pricing-container-block pricing-container-block">
+<div class="wp-block-pia-blocks-pricing-block-v2 card pricing-card pricing-card-v2 text-center has-text-color" data-coupon="ZyJAsHQYEwHNCgU31I3A9E8bzp51rils40q_n1az3gD1sWuf1OviGrSE6Kan-SLEtm6-l-Z22Od0CtWRfzt8fA.." data-scheme="pia-vpn-black-friday-cyber-monday-2020" data-product="1m" data-product-displayed="1m" data-currency="USD" style="color:#1f212d">
+<p class="plan-info has-text-color" style="color:#5c6370">1 Month</p>
+
+
+<span class="wp-block-pia-blocks-price price"><span class="price-currency">$</span><span class="price-value">11.95</span><span class="price-month">/mo</span></span>
+
+
+<div class="wp-block-common-blocks-button button is-style-secondary"><a class="wp-block-button__link"><span>Select Plan</span></a></div>
+
+
+<p class="mb-0 billing-info has-text-color" style="color:#717282">$11.95 per month</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-pricing-block-v2 card pricing-card pricing-card-v2 text-center is-featured has-badge-top has-black-color has-white-background-color has-text-color has-background" data-coupon="ZyJAsHQYEwHNCgU31I3A9E8bzp51rils40q_n1az3gD1sWuf1OviGrSE6Kan-SLEtm6-l-Z22Od0CtWRfzt8fA.." data-scheme="pia-vpn-black-friday-cyber-monday-2020" data-product="36m" data-product-displayed="36m" data-currency="USD" style="border-color:#4cb649;box-shadow:inset 0px 0px 5px #4cb649, 0px 0px 5px #4cb649"><div class="badge-deal top"><span class="deal has-white-color has-text-color has-background" style="background-color:#4cb649">BEST DEAL — SAVE 83%</span></div>
+<p class="plan-info has-black-color has-text-color">3 Years + 3 Months Free</p>
+
+
+<span class="wp-block-pia-blocks-price price price-color"><span class="price-currency">$</span><span class="price-value">2.03</span><span class="price-month">/mo</span></span>
+
+
+<div class="wp-block-common-blocks-button button is-style-main-second-version"><a class="wp-block-button__link"><span>Select Plan</span></a></div>
+
+
+<p class="billing-info has-text-color" style="color:#717282"><span class="has-inline-color has-vivid-red-color"><s>$466.05</s></span> $79 per 3 years</p>
+</div>
+
+
+<div class="wp-block-pia-blocks-pricing-block-v2 card pricing-card pricing-card-v2 text-center has-text-color" data-coupon="ZyJAsHQYEwHNCgU31I3A9E8bzp51rils40q_n1az3gD1sWuf1OviGrSE6Kan-SLEtm6-l-Z22Od0CtWRfzt8fA.." data-scheme="pia-vpn-black-friday-cyber-monday-2020" data-product="12m" data-product-displayed="12m" data-currency="USD" style="color:#1f212d">
+<p class="plan-info has-text-color" style="color:#5c6370">1 Year</p>
+
+
+<span class="wp-block-pia-blocks-price price"><span class="price-currency">$</span><span class="price-value">3.33</span><span class="price-month">/mo</span></span>
+
+
+<div class="wp-block-common-blocks-button button is-style-secondary"><a class="wp-block-button__link"><span>Select Plan</span></a></div>
+
+
+<p class="mb-0 billing-info has-text-color" style="color:#717282"><span class="has-inline-color has-vivid-red-color"><s>$143.40</s></span> $39.95 per year</p>
+</div>
+</div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:400px ">
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<p class="pricing-fineprint" style="font-size:12px">All amounts are shown in USD, and any discounts reflect a reduction based on the current monthly service pricing at <span class="price-currency">$</span><span class="price-value">11.95</span> per month.</p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+</div></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container has-background padding-none" style="background:linear-gradient(180deg,rgb(255,255,255) 0%,rgb(246,246,246) 100%)"><div class="" style="max-width:1140px ">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:700px ">
+<h2 class="has-text-align-center">FAQ</h2>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-question-element-container accordion questions-container" id="section-jYJjsznUMe"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I set up a VPN for Linux?","acceptedAnswer":{"@type":"Answer","text":"Most VPNs require command line input for Linux, but PIA makes it easy with our full GUI. Just download the Linux VPN app from our website and run the installer. Then launch PIA, sign in, and connect to a server."}},{"@type":"Question","name":"Can I use a free VPN for Linux?","acceptedAnswer":{"@type":"Answer","text":"You can, but it’s a bad idea. Free VPNs rarely offer the same security and privacy features for Linux distros as they do for Windows and macOS. You pay in other ways, too. Free VPNs are often too slow for streaming, limit bandwidth, and come with server restrictions. This makes it difficult or impossible to torrent safely and without interruptions.. Subscribe to PIA instead. It’s a fast, unlimited, and secure VPN. We have a court-tested No Logs policy — we never collect information about your online activity. Download VPN apps for all your devices, and get 30 days to try us on your favorite Linux devices risk-free."}},{"@type":"Question","name":"Does PIA VPN offer Dedicated IPs for Linux?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our Dedicated IPs are available on all platforms we support. Get a personal, static Dedicated IP address for the US, UK, Canada, Australia, Switzerland, Singapore, Japan, or Germany. Your new Dedicated IP is completely unique — only you have access to it. You’ll enjoy smooth access to your accounts while traveling with fewer CAPTCHAs and security warnings. "}},{"@type":"Question","name":"Does Linux have a built-in VPN?","acceptedAnswer":{"@type":"Answer","text":"No, although most Linux distributions do have built-in support for OpenVPN, IPSec, and WireGuard®. You can use the network manager to configure your VPN connection using these protocols, but you still need a VPN service to connect to.. Our native Linux app’s full GUI means you won't have to worry about command line entry. Just buy PIA VPN, set up the app, connect to a server, and enjoy added anonymity online."}},{"@type":"Question","name":"Which Linux distribution is the most secure?","acceptedAnswer":{"@type":"Answer","text":"It depends. If you're solely looking for added privacy, the Debian-based Kodachi or Fedora-based Qubes OS are excellent choices. However, the most secure Linux distro for you will depend on what specific security you require. In general, any Linux distro is considered more secure than mainstream operating systems. . Don’t dismiss your favorite distro over security concerns — elevate its security with a VPN. PIA hides your IP address to prevent location tracking and uses unhackable AES encryption to mask your traffic. That way, you can use your favorite Linux distro and still get the security you need."}},{"@type":"Question","name":"How do I know if my Linux VPN is connected?","acceptedAnswer":{"@type":"Answer","text":"Easy, just open PIA and click the large Auto Connect button, once it turns green you’re connected. You can also double-check your connection status and current IP address with our What’s My IP tool."}}]}</script>
+<div class="wp-block-common-blocks-question-element aligncenter question-block-element card"><div id="answer-DcKojxLKmq-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="How_do_I_set_up_a_VPN_for_Linux?" data-target="#answer-DcKojxLKmq-answear" aria-expanded="true" aria-controls="answer-DcKojxLKmq-answear"><span class="question-title">How do I set up a VPN for Linux?</span></a></h4></div><div id="answer-DcKojxLKmq-answear" class="collapse answer-content" aria-labelledby="answer-DcKojxLKmq-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">Most VPNs require command line input for Linux, but PIA makes it easy with our full GUI. Just download the <a href="#linux-vpn-app">Linux VPN app</a> from our website and run the installer. Then launch PIA, sign in, and connect to a server.</p>
+</div></div></div>
+
+
+<div class="wp-block-common-blocks-question-element question-block-element card"><div id="answer-mtXzyhsPLX-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="Can_I_use_a_free_VPN_for_Linux?" data-target="#answer-mtXzyhsPLX-answear" aria-expanded="true" aria-controls="answer-mtXzyhsPLX-answear"><span class="question-title">Can I use a free VPN for Linux?</span></a></h4></div><div id="answer-mtXzyhsPLX-answear" class="collapse answer-content" aria-labelledby="answer-mtXzyhsPLX-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">You can, but it’s a bad idea. Free VPNs rarely offer the same security and privacy features for Linux distros as they do for Windows and macOS. You pay in other ways, too. Free VPNs are often too slow for streaming, limit bandwidth, and come with server restrictions. This makes it difficult or impossible to torrent safely and without interruptions.</p>
+
+
+<p class="">Subscribe to PIA instead. It’s a fast, unlimited, and secure VPN. We have a court-tested No Logs policy — we never collect information about your online activity. <a href="/download">Download VPN</a> apps for all your devices, and get 30 days to try us on your favorite Linux devices risk-free.</p>
+</div></div></div>
+
+
+<div class="wp-block-common-blocks-question-element question-block-element card"><div id="answer-wqIGGbseqO-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="Does_PIA_VPN_offer_Dedicated_IPs_for_Linux?" data-target="#answer-wqIGGbseqO-answear" aria-expanded="true" aria-controls="answer-wqIGGbseqO-answear"><span class="question-title">Does PIA VPN offer Dedicated IPs for Linux?</span></a></h4></div><div id="answer-wqIGGbseqO-answear" class="collapse answer-content" aria-labelledby="answer-wqIGGbseqO-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">Yes. Our <a href="/vpn-features/dedicated-ip-vpn">Dedicated IPs</a> are available on all platforms we support. Get a personal, static Dedicated IP address for the US, UK, Canada, Australia, Switzerland, Singapore, Japan, or Germany. Your new Dedicated IP is completely unique — only you have access to it. You’ll enjoy smooth access to your accounts while traveling with fewer CAPTCHAs and security warnings. </p>
+</div></div></div>
+
+
+<div class="wp-block-common-blocks-question-element question-block-element card"><div id="answer-htnkEhxmsv-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="Does_Linux_have_a_built-in_VPN?" data-target="#answer-htnkEhxmsv-answear" aria-expanded="true" aria-controls="answer-htnkEhxmsv-answear"><span class="question-title">Does Linux have a built-in VPN?</span></a></h4></div><div id="answer-htnkEhxmsv-answear" class="collapse answer-content" aria-labelledby="answer-htnkEhxmsv-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">No, although most Linux distributions do have built-in support for OpenVPN, IPSec, and WireGuard®. You can use the network manager to configure your VPN connection using these protocols, but you still need a VPN service to connect to.</p>
+
+
+<p class="">Our native Linux app’s full GUI means you won't have to worry about command line entry. Just <a href="/buy-vpn-online">buy PIA VPN</a>, set up the app, connect to a server, and enjoy added anonymity online.</p>
+</div></div></div>
+
+
+<div class="wp-block-common-blocks-question-element question-block-element card"><div id="answer-hTgTyVMKEo-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="Which_Linux_distribution_is_the_most_secure?" data-target="#answer-hTgTyVMKEo-answear" aria-expanded="true" aria-controls="answer-hTgTyVMKEo-answear"><span class="question-title">Which Linux distribution is the most secure?</span></a></h4></div><div id="answer-hTgTyVMKEo-answear" class="collapse answer-content" aria-labelledby="answer-hTgTyVMKEo-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">It depends. If you're solely looking for added privacy, the Debian-based Kodachi or Fedora-based Qubes OS are excellent choices. However, the most secure Linux distro for you will depend on what specific security you require. In general, any Linux distro is considered more secure than mainstream operating systems. </p>
+
+
+<p class="">Don’t dismiss your favorite distro over security concerns — elevate its security with a VPN. PIA <a href="/hide-my-ip-address">hides your IP address</a> to prevent location tracking and uses unhackable AES encryption to mask your traffic. That way, you can use your favorite Linux distro and still get the security you need.</p>
+</div></div></div>
+
+
+<div class="wp-block-common-blocks-question-element question-block-element card"><div id="answer-RWFEZYmNJm-heading" class="question-header"><h4><a class="collapse-question collapsed" type="button" data-toggle="collapse" data-title="How_do_I_know_if_my_Linux_VPN_is_connected?" data-target="#answer-RWFEZYmNJm-answear" aria-expanded="true" aria-controls="answer-RWFEZYmNJm-answear"><span class="question-title">How do I know if my Linux VPN is connected?</span></a></h4></div><div id="answer-RWFEZYmNJm-answear" class="collapse answer-content" aria-labelledby="answer-RWFEZYmNJm-heading" data-parent="#section-jYJjsznUMe"><div class="card-body">
+<p class="">Easy, just open PIA and click the large Auto Connect button, once it turns green you’re connected. You can also double-check your connection status and current IP address with our <a href="/what-is-my-ip">What’s My IP</a> tool.</p>
+</div></div></div>
+</div>
+</div></div>
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer is-style-responsive-medium"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:750px ">
+<div class="wp-block-columns">
+<div class="wp-block-column is-vertically-aligned-center text-center-mobile" style="flex-basis:60%">
+<h2 class="">Still Not Convinced? Try PIA Risk-Free</h2>
+
+
+<p class="">You’re covered by our 30-day money-back guarantee. If you’re not satisfied, get a refund.</p>
+
+
+<div class="wp-block-columns two-columns-tablet">
+<div class="wp-block-column pia-divider" style="flex-basis:70%">
+<div class="wp-block-common-blocks-buttons">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link" href="/buy-vpn-online" data-cp="linux-buy-mbg" data-object="linux-buy-mbg"><span>Get Private Internet Access</span></a></div>
+</div>
+</div>
+
+
+<div class="wp-block-column is-vertically-aligned-center">
+<div class="wp-block-image image-center-mobile"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-homepage/PCmage_tomsg.png" alt="" width="90" height="32" title="" /></figure></div>
+</div>
+</div>
+</div>
+
+
+<div class="wp-block-column">
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/pia-homepage/30-day.png" alt="vpn free trial" width="274" height="314" /></figure></div>
+</div>
+</div>
+</div></div>
+
+
+<p class="has-text-align-center">Disclaimer: Per our <a rel="noreferrer noopener" href="/terms-of-service" target="_blank">Terms and Conditions</a>, using PIA VPN for illegal purposes is not encouraged.</p>
+</div>
+</div>
+<footer>
+<div class="footer-content">
+<div class="container">
+<div class="row">
+<div class="col-12 col-md-4 pr-md-5">
+<div class='gutenberg__content wp-embed-responsive'>
+<p> </p>
+<div class="trustpilot-widget" data-locale="en-US" data-template-id="53aa8807dec7e10d38f59f32" data-businessunit-id="4fc92496000064000515f77d" data-style-height="120px" data-style-width="100%" data-theme="light" data-font-family="Nunito" data-text-color="#263238" style="max-width: 235px;"> <a href="https://www.trustpilot.com/review/privateinternetaccess.com" target="_blank" rel="noopener">Trustpilot</a> </div>
+<p> </p>
+
+
+<p>Private Internet Access has 10+ years of experience leading the VPN industry. With a strict no-logs policy, world-class server infrastructure, and transparent open-source software, PIA prioritizes your online privacy, security, and freedom above all else.</p>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<p class="has-text-color" style="font-size:17px;color:#3e7f34">Follow us on social media</p>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container margin-none social-media-container"><div class="" style="max-width:160px ">
+<div class="wp-block-pia-blocks-logos-block logos-block  is-vertically-aligned-center">
+<div class="wp-block-image ml-0"><figure class="aligncenter size-large is-resized"><a href="https://www.facebook.com/privateinternetaccess" target="_blank" rel="noreferrer"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/social-media-logos/facebook.svg" alt="" width="25" height="25" /></a></figure></div>
+
+
+<figure class="wp-block-image size-large is-resized"><a href="https://twitter.com/buyvpnservice" target="_blank" rel="noreferrer"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/social-media-logos/twitter.svg" alt="" width="25" height="25" /></a></figure>
+
+
+<figure class="wp-block-image size-large is-resized"><a href="https://www.linkedin.com/company/private-internet-access/" target="_blank" rel="noreferrer"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/social-media-logos/linkedin.svg" alt="" width="25" height="25" /></a></figure>
+
+
+<figure class="wp-block-image size-large is-resized"><a href="https://www.reddit.com/r/PrivateInternetAccess/" target="_blank" rel="noreferrer"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/social-media-logos/reddit.svg" alt="" width="25" height="25" /></a></figure>
+
+
+<figure class="wp-block-image size-large is-resized"><a href="https://www.youtube.com/user/vpnservice/videos" target="_blank" rel="noreferrer"><img data-src="https://assets-cms.privateinternetaccess.com/photos/shares/social-media-logos/youtube.svg" alt="" width="25" height="25" /></a></figure>
+</div>
+</div></div>
+</div> </div>
+<div class="col-12 col-md footer-column">
+<a class=" footer-heading " href="javascript:void(0)" id="">PIA VPN</a>
+<ul class="footer-list">
+<li class="" id=""><a href="/what-is-vpn">What is a VPN</a></li>
+<li class="" id=""><a href="/why-pia">Why PIA?</a></li>
+<li class="" id=""><a href="/buy-vpn-online">Pricing</a></li>
+<li class="" id=""><a href="/vpn-features">Features</a></li>
+<li class="" id=""><a href="/vpn-server">Servers</a></li>
+<li class="" id=""><a href="/download">Download</a></li>
+<li class="" id=""><a href="/antivirus">Antivirus</a></li>
+<li class="" id=""><a href="https://www.privateinternetaccess.com/blog/">Blog</a></li>
+<li class="" id=""><a href="/account/client-sign-in">Login</a></li>
+</ul>
+</div>
+<div class="col-12 col-md footer-column">
+<a class=" footer-heading " href="javascript:void(0)" id="">PIA Apps</a>
+<ul class="footer-list">
+<li class="" id=""><a href="/download/windows-vpn">Windows</a></li>
+<li class="" id=""><a href="/download/mac-vpn">macOS</a></li>
+<li class="" id=""><a href="/download/linux-vpn">Linux</a></li>
+<li class="" id=""><a href="/download/android-vpn-app">Android app</a></li>
+<li class="" id=""><a href="/download/ios-vpn">iOS app</a></li>
+<li class="" id=""><a href="/download/chrome-vpn">Chrome</a></li>
+<li class="" id=""><a href="/download/firefox-vpn">Firefox</a></li>
+<li class="" id=""><a href="/download/opera-vpn">Opera</a></li>
+<li class="" id=""><a href="/smart-tvs">Smart TVs</a></li>
+</ul>
+</div>
+<div class="col-12 col-md footer-column">
+<a class=" footer-heading " href="javascript:void(0)" id="">Programs</a>
+<ul class="footer-list">
+<li class="" id=""><a href="/refer-a-friend">Refer a Friend</a></li>
+<li class="" id=""><a href="/affiliate-program">Affiliates</a></li>
+<li class="" id=""><a href="/influencer">Influencers</a></li>
+<li class="" id=""><a href="/pia-partnership">Become a Partner</a></li>
+<li class="" id=""><a href="/vulnerability-disclosure-program">Vulnerability Disclosure Program</a></li>
+</ul>
+<a class=" footer-heading " href="javascript:void(0)" id="">Resources</a>
+<ul class="footer-list">
+<li class="" id=""><a href="/what-is-my-ip">What&#039;s my IP</a></li>
+<li class="" id=""><a href="https://dnsleak.com/">DNS Leak Test</a></li>
+<li class="" id=""><a href="https://emailipleak.com/">Email Leak Test</a></li>
+<li class="" id=""><a href="https://ipv6leak.com/">IPv6 Leak Test</a></li>
+</ul>
+</div>
+<div class="col-12 col-md footer-column">
+<a class=" footer-heading " href="javascript:void(0)" id="">Company</a>
+<ul class="footer-list">
+<li class="" id=""><a href="/about-us">About PIA</a></li>
+<li class="" id=""><a href="/companies-we-support">Companies we support</a></li>
+<li class="" id=""><a href="/sitemap">Sitemap</a></li>
+<li class="" id=""><a href="/reviews">Reviews</a></li>
+</ul>
+<a class=" footer-heading " href="javascript:void(0)" id="">Help</a>
+<ul class="footer-list">
+<li class="" id=""><a href="https://helpdesk.privateinternetaccess.com/">Support</a></li>
+<li class="" id=""><a href="/contact-us">Contact us</a></li>
+<li class="" id=""><a href="/terms-of-service">Terms of Service</a></li>
+<li class="" id=""><a href="/privacy-policy">Privacy and Cookie Policy</a></li>
+<li class="" id=""><a href="/dmca-policy">DMCA Policy</a></li>
+<li class="" id=""><a href="/export-control-policy">Export Control Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="container">
+<div class="row">
+<div class="col-12 col-md-6">
+<p>Copyright © Private Internet Access, Inc. All Rights Reserved.</p>
+<div class="col-12 col-md-6">
+<ul>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<input type="hidden" name="currency" id="page-currency">
+
+<div class="wp-block-common-blocks-exit-intent-container-block alignfull exit-intent exit-intent-overlay" style="background-color:rgba(3,0,0,0.5)"><div class="exit-intent-container" style="background-image:url(https://assets-cms.privateinternetaccess.com/photos/shares/campaigns/summer23/exit-intent/summer23-ei.svg);width:500px;height:400px"><div class="close-btn">×</div><div>
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container"><div class="" style="max-width:1140px ">
+<div class="wp-block-common-blocks-background-container-block alignfull custom-container padding-none"><div class="" style="max-width:210px ">
+<p class="timer-text d-inline-block has-text-color" style="font-size:14px;color:#717282">Deal Ends in:</p>
+
+
+<div class="ub-countdown d-none" data-expirymessage="" data-enddate="1686855600" data-largestUnit="day" data-smallestunit="second" data-dailyreset="0">
+<div class="ub-countdown_inner-container is_type-odometer ub-countdown-odometer-container" style="grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;"><div class="ub-countdown-odometer ub-countdown-digit-container ub_countdown_day" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;"><div class="ub-countdown-odometer-digit">3</div><div class="ub-countdown-odometer-digit">5</div></div><span class="ub-countdown-separator"></span><div class="ub-countdown-odometer ub-countdown-digit-container ub_countdown_hour" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;"><div class="ub-countdown-odometer-digit">0</div><div class="ub-countdown-odometer-digit">6</div></div><span class="ub-countdown-separator"></span><div class="ub-countdown-odometer ub-countdown-digit-container ub_countdown_minute" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;"><div class="ub-countdown-odometer-digit">5</div><div class="ub-countdown-odometer-digit">3</div></div><span class="ub-countdown-separator"></span><div class="ub-countdown-odometer ub-countdown-digit-container ub_countdown_second" style="background-color:#4cb649;border: 1px solid #4cb649;color: #ffffff;"><div class="ub-countdown-odometer-digit">4</div><div class="ub-countdown-odometer-digit">3</div></div><span class="ub_countdown-time-unit ub_countdown-time-unit-days" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;">Days</span><span></span><span class="ub_countdown-time-unit ub_countdown-time-unit-hours" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;">Hours</span><span></span><span class="ub_countdown-time-unit ub_countdown-time-unit-minutes" style="background-color:#ffffff;border: 1px solid #4cb649;color: #4cb649;">Mins</span><span></span><span class="ub_countdown-time-unit ub_countdown-time-unit-seconds" style="background-color:#4cb649;border: 1px solid #4cb649;color: #ffffff;">Sec</span></div></div>
+</div></div>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="has-text-color has-large-font-size font-semibold" style="color:#263238">Don't Miss Out!</h2>
+
+
+<p class="description-ei has-text-color has-medium-font-size font-regular" style="color:#1f212d"><span style="color:#717282" class="has-inline-color">Cover All Your Devices</br> &amp;</span> <span style="color:#4cb649" class="has-inline-color"><strong>Save <span class="ps-tag-discount"></span></strong></span></p>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-common-blocks-buttons">
+<div class="wp-block-common-blocks-button button is-style-main"><a class="wp-block-button__link"><span>Get PIA Now</span></a></div>
+</div>
+
+
+<p class="money-back-text has-text-color" style="font-size:14px;color:#717282"><img class="wp-image-undefined" style="width: 12px;" src="https://assets-cms.privateinternetaccess.com/photos/shares/campaigns/valentine2023/exit-intent/icon-lock.svg" alt="undefined">30-Day Money-Back Guarantee</p>
+
+
+<p class="money-back-text d-none has-text-color" style="font-size:14px;color:#717282"><img class="wp-image-undefined" style="width: 12px;" src="https://assets-cms.privateinternetaccess.com/photos/shares/campaigns/valentine2023/exit-intent/icon-shield.svg" alt="undefined">Unlimited Device Protection</p>
+</div></div>
+</div></div></div>
+
+
+<p class=""></p>
+<input type="hidden" name="dynamic-upload" id="dynamic-upload"><script src="https://assets-cms.privateinternetaccess.com/js/front/blocks/countdown.js?v=11306" type="fb27c3f92fc3246ae999a67a-text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js" type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">
+    window.language = 'en';
+    window.locale = 'en_US';
+    window.pagename = 'linux-vpn';
+    window.category = 'download_vpn';
+    window.companyCode = 'pia';
+    // window.cf_country =  null;
+    window.assetsUrl = 'https://assets-cms.privateinternetaccess.com';
+    window.resourcesUrl = 'https://assets-cms.privateinternetaccess.com';
+    window.checkoutUrl = 'order';
+    window.cookieDomain  = '.privateinternetaccess.com';
+    window.appversion = '1.23.0.15';
+    window.cookieMessage = 'This website uses cookies.';
+    window.dismissMessage = 'Ok, I got it';
+    window.cookieLink = 'Find out more';
+    window.routePolicyLink = '/privacy-policy';
+    window.pricingLink = '/buy-vpn-online';
+    window.cookieImage =  'https://assets-cms.privateinternetaccess.com/img/frontend/cookie-policy.svg?v=123015';
+    window.pricingStats = {};
+    window.baseHref = '/';
+    window.previewMode = ''
+    window.transparencyReportVariables = `{"AF":"Afghanistan","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","BQ":"British Antarctic Territory","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","KH":"Cambodia","CM":"Cameroon","CA":"Canada","CV":"Cape Verde","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos [Keeling] Islands","CO":"Colombia","KM":"Comoros","CG":"Congo - Brazzaville","CD":"Congo - Kinshasa","CK":"Cook Islands","CR":"Costa Rica","HR":"Croatia","CU":"Cuba","CY":"Cyprus","CZ":"Czech Republic","CI":"C\u00f4te d\u2019Ivoire","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR China","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JT":"Johnston Island","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macau SAR China","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MI":"Midway Islands","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar [Burma]","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","AN":"Netherlands Antilles","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Territories","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RO":"Romania","RU":"Russia","RW":"Rwanda","RE":"R\u00e9union","BL":"Saint Barth\u00e9lemy","SH":"Saint Helena","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and the South Sandwich Islands","KR":"South Korea","ES":"Spain","LK":"Sri Lanka","SD":"Sudan","SR":"Suriname","SJ":"Svalbard and Jan Mayen","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","ST":"S\u00e3o Tom\u00e9 and Pr\u00edncipe","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WK":"Wake Island","WF":"Wallis and Futuna","EH":"Western Sahara","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe","AX":"\u00c5land Islands"}`
+    let exitIntentCookieName = `exit_intent`;
+    let widgetCookieName = ``;
+    let exitIntentModalEvents = `{"on_cta_click_event":"campaign_summer23","on_display_event":"campaign_summer23","modal_close_event":"campaign_summer23_close"}`;
+    window.exitIntentModalEvents =  JSON.parse( exitIntentModalEvents);
+    window.campaignName = `campaign_summer23`;
+
+    let campaignWidgetModalEvents = ``;
+    window.campaignWidgetModalEvents =  "";
+
+    window.protectedStatus = `PROTECTED`;
+    window.exposedStatus = `EXPOSED`;
+    window.trustpilotString = ` out of 5`
+    window.protectedStatusTitle = `You are using a CyberGhost&amp;nbsp;VPN IP`
+
+    window.simulatedCampaign = ``
+    window.simulatedDiscount = ``
+    window.discountPropertyValue = ``
+    window.stickyCta = ``
+
+
+    
+
+                console.log = function () {
+    }
+    </script>
+<script type="application/ld+json">
+            {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Download","item":"https://privateinternetaccess.com/download"},{"@type":"ListItem","position":2,"name":"Linux VPN","item":"https://privateinternetaccess.com/download/linux-vpn"}]}    </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script src="https://assets-cms.privateinternetaccess.com/vendor/cookie-consent/cookie-consent.min.js?v=123015" type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" defer type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">
+        setTimeout(function(){
+            !function(t,e,n,r,v,o){
+                var a,i;var c=new XMLHttpRequest;c.addEventListener("load",(function(){try{var t="string"==typeof this.response?JSON.parse(this.response):this.response;if(!t.data)throw new Error;var n=t.data.cdn;a=n,i=t.data;var r=e.createElement("script");r.async=!0,r.src="".concat(a,"/loader.chat.js"),r.type="text/javascript",e.getElementsByTagName("head")[0].appendChild(r)}catch(t){throw new Error("Chat: failed to retrieve metadata")}})),c.open("GET","".concat(r,"/").concat(v,"/").concat(o,"/metadata"),!0),c.responseType="json",c.send();var u={on:{}};t[n]={init:function(t){return u.init=t},render:function(t){return u.render=t},reinit:function(){},open:function(){},close:function(){},toggle:function(){},destroy:function(){},on:function(t,e){t&&"function"==typeof e&&(Array.isArray(u.on[t])||(u.on[t]=[]),u.on[t].push(e))}},t.__chatLoaderReady__=function(e,r){r(a,i,v,o,u),t[n]=e}}
+            (window, document, "Chat", "https://api.engage.com/edge/chat", "5058b647-fd22-4e9f-a850-bc7888007644", "60ec2af70419040100247a96")
+            Chat.init({ botId: "60ec2af70419040100247a96" })
+        }, 5000)
+    </script>
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"16004650"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+<link href="https://assets-cms.privateinternetaccess.com/vendor/@fortawesome/fontawesome-free/css/fontawesome.min.css?v=123015" rel="stylesheet">
+<link href="https://assets-cms.privateinternetaccess.com/vendor/@fortawesome/fontawesome-free/css/solid.min.css?v=123015" rel="stylesheet">
+<script src="https://assets-cms.privateinternetaccess.com/dist/js/frontend/pia/script.js?v=123015" defer type="fb27c3f92fc3246ae999a67a-text/javascript"></script>
+<script type="application/ld+json">
+        {"name": "Private Internet Access VPN", "@type": "SoftwareApplication", "offers": {"@type": "AggregateOffer", "lowPrice": "2.75", "highPrice": "12.99", "offerCount": "4", "priceCurrency": "USD"}, "@context": "https://schema.org", "aggregateRating": {"@type": "AggregateRating", "ratingCount": "7193", "ratingValue": "4.4"}, "operatingSystem": "Windows, macOS, iOS, Android, Linux, Chrome", "applicationCategory": "SecurityApplication"}
+    </script>
+<script type="fb27c3f92fc3246ae999a67a-text/javascript">  </script><script type="fb27c3f92fc3246ae999a67a-text/javascript"> var eiDisplayed=false;var exit_timer=setInterval(function(){const isWebsite=false;const $exitIntentSelector=$('.exit-intent');const $exitIntentContainer=$('.exit-intent-container');function exitExitIntent(){$exitIntentSelector.css('display','none');$('body').removeClass('noscroll');var websiteObjectClicked={category:'web_engagement',action:"cta_clicks",label:window.exitIntentModalEvents.modal_close_event};if(!isWebsite){window.Feedback.sendEvent(websiteObjectClicked,['ga']);}
+websiteObjectClicked={event:"website_object_clicked",object:window.exitIntentModalEvents.modal_close_event};window.Feedback.sendEvent(websiteObjectClicked,['elastic']);eiDisplayed=false;}
+if($exitIntentSelector.length){var outsideDiv=function outsideDiv(div,callback){$(document).mouseup(function(e){var container=$(div);if(!container.is(e.target)&&container.has(e.target).length===0){callback();}});};ouibounce($exitIntentSelector[0],{cookieName:exitIntentCookieName,cookieDomain:window.cookieDomain,sitewide:true,cookieExpire:23,callback:function(){let websiteObjectClicked={category:'web_engagement',action:"banner_displayed",label:window.exitIntentModalEvents.on_display_event,}
+if(!isWebsite){window.Feedback.sendEvent(websiteObjectClicked,['ga']);}
+websiteObjectClicked={event:"banner_displayed",banner:window.exitIntentModalEvents.on_display_event}
+window.Feedback.sendEvent(websiteObjectClicked,['elastic']);$exitIntentSelector.find('.wp-block-button__link').click(function(e){e.preventDefault();let websiteObjectClicked={category:'web_engagement',action:"cta_clicks",label:window.exitIntentModalEvents.on_cta_click_event}
+if(!isWebsite){window.Feedback.sendEvent(websiteObjectClicked,['ga']);}
+websiteObjectClicked={event:"website_object_clicked",object:window.exitIntentModalEvents.on_cta_click_event};window.Feedback.sendEvent(websiteObjectClicked,['elastic']);if(window.pagename!=='buy-vpn-online'){setTimeout(function(){window.location=window.pricingLink;},300)}else{$exitIntentSelector.css('display','none');$('body').removeClass('noscroll');eiDisplayed=false;}});$exitIntentSelector.css('display','flex');$('body').addClass('noscroll');eiDisplayed=true;$exitIntentSelector.addClass(window.language);}});clearInterval(exit_timer);$exitIntentSelector.find(".close-btn").on('click',function(){exitExitIntent();});$('body').on("click",function(e){if(!$exitIntentContainer.is(e.target)&&$exitIntentContainer.has(e.target).length===0&&eiDisplayed===true){exitExitIntent();}});};},1000); </script><script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="fb27c3f92fc3246ae999a67a-|49" defer=""></script><script>(function(){var js = "window['__CF$cv$params']={r:'7d2c852239eb336d',m:'plJuqPZweIJyoABfdUbcOzxbMSJY_ToGxgenO0hnD24-1686011146-0-AaGMBM212u6CwYATiLOe9PrQzoAw3gCwpeYNGC5HWOv4',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7d2c852239eb336d","version":"2023.4.0","b":1,"token":"427ce35451e7434689fdb950c124d736","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

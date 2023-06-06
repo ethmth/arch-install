@@ -26,7 +26,7 @@ if ! [[ "$1" == *"="* ]]; then
 fi
 
 if grep -q "^$KEY=" $conf_file; then
-    sed -i "s/^$KEY=.*/$KEY=$VALUE/" $conf_file
+    sed -i "s|^$KEY=.*|$KEY=$VALUE|" $conf_file
 else
     echo "$KEY=$VALUE" >> $conf_file
 fi

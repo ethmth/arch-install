@@ -8,7 +8,9 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
+# eddie-ui
 packages="
+socat
 stunnel
 bind
 ncdu
