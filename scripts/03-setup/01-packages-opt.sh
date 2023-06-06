@@ -8,6 +8,7 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
+#python2
 packages="
 remmina
 rstudio-desktop-bin

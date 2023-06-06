@@ -9,7 +9,6 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
-# python2
 packages="
 socat
 stunnel
@@ -22,6 +21,7 @@ iproute2
 p7zip
 dmg2img
 make
+cmake
 gtk3
 gtk4
 gsettings-desktop-schemas
