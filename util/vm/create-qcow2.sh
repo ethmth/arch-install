@@ -6,14 +6,12 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 CUR_USER=$(whoami)
-# OFILE="/home/$CUR_USER/arch-install/config/vm.conf"
 
 LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired Whonix installation location")
 
 if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
     echo "Nothing was selected"
     echo "Run this script again with target drive mounted."
-    # echo "" > $OFILE
     exit 1
 fi
 
@@ -30,7 +28,6 @@ LOC="$LOC/vm"
 DISK_LOC="$LOC/disk"
 mkdir -p $DISK_LOC
 
-# Hostname
 read -p "Please input your desired disk name: " DISK_NAME
 read -p "Enter your desired disk size in GB: " DISK_SIZE
 if ! [[ "$DISK_SIZE" =~ ^[0-9]+$ ]]; then
@@ -46,3 +43,8 @@ if ! [ "$userInput" == "YES" ]; then
 fi
 
 qemu-img create -f qcow2 "$DISK_LOC/$DISK_NAME.qcow2" "${DISK_SIZE}G"
+
+echo "LAST_DISK=$DISK_LOC/$DISK_NAME.qcow2" > /home/$CUR_USER/arch-install/config/last_disk.txt
+
+echo "Disk $DISK_LOC/$DISK_NAME.qcow2 created."
+echo "Now run ./create-vm-windows.sh to define a Virtual machine"
