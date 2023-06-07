@@ -27,13 +27,7 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-# read -p "Do you need to use prime-run for an Nvidia GPU (Y for Yes, otherwise No)? " primeStr
+cp -r /home/$CUR_USER/arch-install/files/containers/sd-webui $LOC/
 
-# PRIME=0
-# if ([ "$primeStr" == "Y" ] || [ "$primeStr" == "y"]); then
-#     PRIME=1
-# fi
-
-git clone https://github.com/AbdBarho/stable-diffusion-webui-docker.git $LOC/stable-diffusion-webui-docker
-
-docker compose --project-directory $LOC/stable-diffusion-webui-docker --profile download up --build
+mkdir $LOC/sd-webui/stable-diffusion-webui
+docker compose --project-directory $LOC/sd-webui up --build
