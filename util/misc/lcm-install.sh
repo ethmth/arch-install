@@ -6,8 +6,6 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 CUR_USER=$(whoami)
 
-#git clone https://github.com/lcm-proj/lcm.git /tmp/lcm
-
 mkdir /tmp/lcm-temp
 wget -O /tmp/lcm-temp/lcm.zip https://github.com/lcm-proj/lcm/archive/refs/tags/v1.5.0.zip
 cd /tmp/lcm-temp
@@ -20,4 +18,5 @@ cmake ..
 make
 sudo -k make install
 
-#python /tmp/lcm-temp/$DIR_NAME/lcm-python/setup.py install /home/$CUR_USER
+# Might be necessary to install python library (check first):
+# sudo python /tmp/lcm-temp/$DIR_NAME/lcm-python/setup.py install
