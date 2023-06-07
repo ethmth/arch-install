@@ -37,6 +37,8 @@ nvidia-dkms
 nvidia-settings
 nvidia-utils
 opencl-nvidia
+nvidia-container-toolkit
+nvidia-container-runtime
 "
 fi
 if (( NVIDIA )); then
