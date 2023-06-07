@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
 packages="
+bluez
+bluez-utils
 vlc
 mpv
 socat
@@ -119,7 +121,7 @@ jdk8-openjdk
 
 if (( HYPRLAND && AMD )); then
 packages+="
-hyprland-git
+hyprland
 "
 fi
 if (( HYPRLAND && NVIDIA )); then
@@ -141,7 +143,7 @@ swaylock-effects
 waybar-hyprland
 wf-recorder
 wlogout
-xdg-desktop-portal-hyprland-git
+xdg-desktop-portal-hyprland
 xorg
 "
 fi
