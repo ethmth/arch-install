@@ -43,4 +43,4 @@ sudo chmod +x /usr/bin/stream-dl
 sudo chmod +x /usr/bin/megasync
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync, etc)"
-echo "If so, run ./08-grub.sh"
+echo "If so, run ./09-grub.sh"
