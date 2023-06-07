@@ -10,6 +10,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
 packages="
+libtool
+autoconf
+automake
 podman
 podman-compose
 lshw
