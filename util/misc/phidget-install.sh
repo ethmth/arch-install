@@ -27,3 +27,30 @@ pip3 install Phidget22
 #DIR_NAME=$(ls /tmp/phidget-temp/ -1 | grep "Python" | grep -v "zip")
 #cd /tmp/phidget-temp/$DIR_NAME
 #sudo -k python3 /tmp/phidget-temp/$DIR_NAME/setup.py install
+
+wget -O /tmp/phidget-temp/libphidgetextra.tar.gz https://www.phidgets.com/downloads/phidget22/libraries/linux/libphidget22extra.tar.gz
+cd /tmp/phidget-temp
+tar -xvf libphidgetextra.tar.gz
+DIR_NAME=$(ls /tmp/phidget-temp/ -1 | grep "extra" | grep -v "tar.gz")
+cd /tmp/phidget-temp/$DIR_NAME
+bash /tmp/phidget-temp/$DIR_NAME/configure
+make
+sudo make install
+
+wget -O /tmp/phidget-temp/phidgetnetworkserver.tar.gz https://www.phidgets.com/downloads/phidget22/servers/linux/phidget22networkserver.tar.gz
+cd /tmp/phidget-temp
+tar -xvf phidgetnetworkserver.tar.gz
+DIR_NAME=$(ls /tmp/phidget-temp/ -1 | grep "networkserver" | grep -v "tar.gz")
+cd /tmp/phidget-temp/$DIR_NAME
+bash /tmp/phidget-temp/$DIR_NAME/configure
+make
+sudo make install
+
+wget -O /tmp/phidget-temp/phidgetadmin.tar.gz https://www.phidgets.com/downloads/phidget22/tools/linux/phidget22admin.tar.gz
+cd /tmp/phidget-temp
+tar -xvf phidgetadmin.tar.gz
+DIR_NAME=$(ls /tmp/phidget-temp/ -1 | grep "admin" | grep -v "tar.gz")
+cd /tmp/phidget-temp/$DIR_NAME
+bash /tmp/phidget-temp/$DIR_NAME/configure
+make
+sudo make install
