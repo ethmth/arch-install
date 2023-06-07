@@ -14,6 +14,7 @@ sudo systemctl enable libvirtd
 sudo systemctl enable virtlogd.socket
 sudo systemctl enable cronie
 sudo systemctl enable docker
+sudo systemctl enable podman
 sudo systemctl enable sshd
 sudo systemctl enable cups
 if (( LAPTOP )); then
