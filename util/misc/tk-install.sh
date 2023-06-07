@@ -6,14 +6,14 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 CUR_USER=$(whoami)
 
-mkdir /tmp/tk-temp
-wget -O /tmp/tk-temp/tk-src.zip http://prdownloads.sourceforge.net/tcl/tk8613-src.zip
-cd /tmp/tk-temp
-unzip tk-src.zip
-DIR_NAME=$(ls /tmp/tk-temp/ -1 | grep -v "zip")
+#mkdir /tmp/tk-temp
+#wget -O /tmp/tk-temp/tk-src.zip http://prdownloads.sourceforge.net/tcl/tk8613-src.zip
+#cd /tmp/tk-temp
+#unzip tk-src.zip
+#DIR_NAME=$(ls /tmp/tk-temp/ -1 | grep -v "zip")
 
-cd /tmp/tk-temp/$DIR_NAME/unix
-bash /tmp/tk-temp/$DIR_NAME/unix/configure
-make
-sudo make install
+#cd /tmp/tk-temp/$DIR_NAME/unix
+#bash /tmp/tk-temp/$DIR_NAME/unix/configure
+#make
+#sudo make install
 
