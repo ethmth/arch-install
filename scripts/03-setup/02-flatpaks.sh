@@ -35,6 +35,7 @@ org.chromium.Chromium
 org.kde.kdenlive
 org.signal.Signal
 rest.insomnia.Insomnia
+io.freetubeapp.FreeTube
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="

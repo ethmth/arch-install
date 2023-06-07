@@ -98,6 +98,7 @@ python-socketio
 python-virtualenv
 python-websockets
 python-dotenv
+pyenv
 qemu-arch-extra
 qemu-desktop
 qjackctl
