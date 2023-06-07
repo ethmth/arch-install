@@ -18,6 +18,7 @@ cmake ..
 make
 sudo -k make install
 
+# DONT RUN THESE AS SUDO ON ARCH:
 # Might be necessary to install python library (check first):
 # sudo python /tmp/lcm-temp/$DIR_NAME/lcm-python/setup.py install
 # & Run this for all python(s) you want to install it for. Ex:

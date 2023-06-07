@@ -20,6 +20,7 @@ sudo make install
 # Automatic:
 pip3 install Phidget22
 
+# DONT RUN THIS AS SUDO ON ARCH:
 # Manual:
 #wget -O /tmp/phidget-temp/Phidget22Python.zip https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
 #cd /tmp/phidget-temp
