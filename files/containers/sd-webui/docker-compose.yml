@@ -6,8 +6,12 @@ services:
       context: .
     container_name: stable-diffusion
     volumes:
-      - ./stable-diffusion-webui:/home/user/stable-diffusion-webui
-      - ./stable-diffusion-webui:/home/user/stable-diffusion-webui
+      # - ./stable-diffusion-webui:/home/user/stable-diffusion-webui
+      - ./volumes/configs:/home/user/stable-diffusion-webui/configs
+      - ./volumes/embeddings:/home/user/stable-diffusion-webui/embeddings
+      - ./volumes/extensions:/home/user/stable-diffusion-webui/extensions
+      - ./volumes/localizations:/home/user/stable-diffusion-webui/localizations
+      - ./volumes/models:/home/user/stable-diffusion-webui/models
     ports:
       - "7860:7860"
     deploy:

@@ -29,5 +29,12 @@ mkdir -p $LOC
 
 cp -r /home/$CUR_USER/arch-install/files/containers/sd-webui $LOC/
 
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/sd-webui/stable-diffusion-webui
+# git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/sd-webui/stable-diffusion-webui
+mkdir $LOC/sd-webui/volumes
+mkdir $LOC/sd-webui/volumes/configs
+mkdir $LOC/sd-webui/volumes/embeddings
+mkdir $LOC/sd-webui/volumes/extensions
+mkdir $LOC/sd-webui/volumes/localizations
+mkdir $LOC/sd-webui/volumes/models
+
 docker compose --project-directory $LOC/sd-webui up --build
