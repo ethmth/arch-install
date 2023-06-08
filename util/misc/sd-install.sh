@@ -27,20 +27,23 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-read -p "Do you need to use prime-run for an Nvidia GPU (Y for Yes, otherwise No)? " primeStr
-
-PRIME=0
-if ([ "$primeStr" == "Y" ] || [ "$primeStr" == "y"]); then
-    PRIME=1
-fi
-
 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/stable-diffusion-webui
 
-sed -i 's/python_cmd="python3"/python_cmd="python3.10"/g' $LOC/stable-diffusion-webui/webui.sh
+read -p "Input username for webui (will be echoed): " username
+read -p "Input password for webui (will be echoed): " password
 
-cd $LOC
-if (( PRIME )); then
-    bash prime-run stable-diffusion-webui/webui.sh
-else
-    bash stable-diffusion-webui/webui.sh
-fi
+LAST_LINE=$(tail -1 $LOC/stable-diffusion-webui/webui-user.sh)
+
+sed -i '$ d' "$LOC/stable-diffusion-webui/webui-user.sh"
+
+echo "install_dir=\"$LOC\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "export TORCH_COMMAND=\"pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "python_cmd=\"python3.10\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--listen --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --api-log\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "$LAST_LINE" >> $LOC/stable-diffusion-webui/webui-user.sh
+
+cd $LOC/stable-diffusion-webui
+bash ./webui.sh
+
+echo "Installation complete. Install models into"
+echo "$LOC/stable-diffusion-webui/models"
