@@ -203,6 +203,7 @@
     jq
     mesa
     libsForQt5.kate
+    vscodium
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
