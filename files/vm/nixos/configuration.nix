@@ -134,10 +134,13 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    curl
     spice-vdagent
     git
+    git-lfs
     killall
     docker
+    docker-compose
     wl-clipboard
     xdg-desktop-portal
     xdg-desktop-portal-gtk
@@ -147,6 +150,59 @@
     yaru-theme
     ubuntu-themes
     ubuntu_font_family
+    proxychains
+    tsocks
+    xfce.thunar
+    gthumb
+    mpv
+    ffmpeg
+    lxqt.qterminal
+    vlc
+    youtube-dl
+    yt-dlp
+    john
+    hashcat
+    nmap
+    neofetch
+    keepassxc
+    python311Full
+    python311Packages.venvShellHook
+    python311Packages.pip
+    python311Packages.selenium
+    nodejs_18
+    nettools
+    speedtest-cli
+    netcat-openbsd
+    jdk8
+    jdk17
+    cmake
+    httrack
+    samba
+    gcc
+    p7zip
+    gnutar
+    qbittorrent
+    gvfs
+    gnome.gvfs
+    libelf
+    tmux
+    plocate
+    wireguard-go
+    go
+    whois
+    android-tools
+    scrcpy
+    squid
+    openvpn
+    networkmanager-openvpn
+    gnome.networkmanager-openvpn
+    unzip
+    rar
+    xfce.catfish
+    pkg-config
+    jq
+    mesa
+    libsForQt5.kate
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
