@@ -58,6 +58,27 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    gedit # text editor
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
+
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ]; 
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -120,6 +141,12 @@
     wl-clipboard
     xdg-desktop-portal
     xdg-desktop-portal-gtk
+    gnomeExtensions.appindicator 
+    gnomeExtensions.dash-to-dock
+    gnome.adwaita-icon-theme
+    yaru-theme
+    ubuntu-themes
+    ubuntu_font_family
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
