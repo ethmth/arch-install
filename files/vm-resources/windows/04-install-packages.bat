@@ -22,6 +22,8 @@ set "packages=%packages% audacity"
 set "packages=%packages% obs-studio"
 set "packages=%packages% vscode"
 
+:: set "packages=%packages% spice-agent"
+:: set "packages=%packages% qemu-guest-agent"
 
 set "package_list="
 

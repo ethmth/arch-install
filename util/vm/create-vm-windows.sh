@@ -106,5 +106,6 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
-echo "Virtual machine $NAME defined. Setup Windows."
-echo "Then, run ./update-vm-windows.sh to setup PCIe passthrough"
+echo "Virtual machine $NAME defined."
+echo "Add your GPU to the VM, install Chocolatey & packages using resources.iso, and setup Graphics drivers."
+echo "Then, run ./update-vm-windows.sh to remove Virtual Graphics Devices"
