@@ -3,3 +3,4 @@ config/vm.conf
 config/last_disk.txt
 scripts/vm/04-downloaders/BaseSystem.dmg
 scripts/vm/04-downloaders/BaseSystem.chunklist
+files/resources.iso

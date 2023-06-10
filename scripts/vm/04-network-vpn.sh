@@ -13,5 +13,5 @@ sudo virsh -c qemu:///system net-autostart VPN-Gateway
 sudo virsh -c qemu:///system net-start VPN-Gateway
 
 echo "VPN-Gateway should have been successfully defined"
-echo "If you haven't yet, you may want to setup vfio by running the ../vfio/ scripts"
-echo "Otherwise, you may want to setup Whonix by running the ../whonix/ scripts."
+echo "If you haven't yet, you may want to setup vfio by running the ../06-vfio/ scripts"
+echo "Otherwise, you may want to setup Whonix by running the ../07-whonix/ scripts."

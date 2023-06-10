@@ -40,4 +40,4 @@ echo "You can manually edit $OFILE if needed"
 
 echo "If successful, begin downloading iso files by running the scripts in the ./downloaders/ directory:"
 echo "Manually download Windows from https://www.microsoft.com/software-download/windows11 and place it in vm/os/"
-echo "Then, run ./02-network-default.sh to define the default network."
+echo "Then, run ./02-resources-disk.sh to generate the disk for mounting."
