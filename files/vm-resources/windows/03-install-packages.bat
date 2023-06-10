@@ -1,15 +1,15 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "packages=firefox"
+set "packages=curl"
+set "packages=%packages% wget"
+set "packages=%packages% git"
+set "packages=%packages% firefox"
 set "packages=%packages% vlc"
 set "packages=%packages% notepadplusplus"
 set "packages=%packages% librewolf"
 set "packages=%packages% steam"
 set "packages=%packages% ea-app"
-set "packages=%packages% curl"
-set "packages=%packages% wget"
-set "packages=%packages% git"
 set "packages=%packages% python"
 set "packages=%packages% 7zip"
 set "packages=%packages% epicgameslauncher"
