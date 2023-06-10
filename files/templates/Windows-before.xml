@@ -55,7 +55,7 @@
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
       <source file="VIRT_RESOURCESDISK_HERE"/>
-      <target dev="sdc" bus="usb" removable="on"/>
+      <target dev="sdc" bus="sata"/>
       <readonly/>
     </disk>
     <controller type="usb" model="qemu-xhci" ports="15"/>
