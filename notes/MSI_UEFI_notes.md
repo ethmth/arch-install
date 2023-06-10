@@ -7,5 +7,8 @@ Enter Advanced Mode
   - Advanced
     - Integrated Graphics Configuration
       - Initiate Graphic Adapter
-        - IGD - uses integrated graphics
+        - *IGD - uses integrated graphics
         - PEG - uses graphics from PCIe slot
+    - PCIe
+      - PCI Sub-system Settings
+        - *Re-Size BAR Support - Disabled
