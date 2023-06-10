@@ -29,6 +29,7 @@ steam-devices
 vscodium-bin
 xpadneo-dkms
 python310
+etcher-bin
 "
 
 if (( NVIDIA )); then
