@@ -88,12 +88,15 @@ MAC="52:54:00:$MAC"
 UUID=$(uuidgen)
 
 mkdir -p /home/$CUR_USER/vm/templates
-cp /home/$CUR_USER/arch-install/files/templates/Windows.xml /home/$CUR_USER/vm/templates/$NAME.xml
+cp /home/$CUR_USER/arch-install/files/templates/Windows-before.xml /home/$CUR_USER/vm/templates/$NAME.xml
+
+RESOURCES_DISK="/home/$CUR_USER/arch-install/files/resources.iso"
 
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_ISODISK_HERE|$OS_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s|VIRT_RESOURCESDISK_HERE|$RESOURCES_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
 
@@ -103,4 +106,5 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
-echo "Virtual machine $NAME defined. Add your PCIe devices in virt-manager and you're good to go."
+echo "Virtual machine $NAME defined. Setup Windows."
+echo "Then, run ./update-vm-windows.sh to setup PCIe passthrough"
