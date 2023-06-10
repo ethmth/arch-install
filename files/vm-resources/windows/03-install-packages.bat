@@ -21,6 +21,7 @@ set "packages=%packages% discord"
 set "packages=%packages% audacity"
 set "packages=%packages% obs-studio"
 set "packages=%packages% vscode"
+set "packages=%packages% virtio-drivers"
 
 :: set "packages=%packages% spice-agent"
 :: set "packages=%packages% qemu-guest-agent"

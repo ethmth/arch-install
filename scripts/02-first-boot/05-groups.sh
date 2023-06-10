@@ -10,7 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 sudo -k groupadd autologin
 sudo usermod -aG network,libvirt,kvm,input,docker,vboxusers,wireshark,autologin $CUR_USER
-sudo usermod -aG libvirt-qemu $CUR_USER
+# sudo usermod -aG libvirt-qemu $CUR_USER
 
 groups $CUR_USER
 
