@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
 packages="
+iptables-nft
 cdrtools
 iotop
 libtool
@@ -179,7 +180,8 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
-echo "NOTE: sddm-git may not install due to being in conflict with sddm"
+echo "Make sure you have sddm-git instead of sddm"
+echo "Make sure you have iptables-nft instead of iptables"
 echo "Run yay -S sddm-git to be sure it's installed"
 echo "If so, run ./04-services.sh"
 
