@@ -5,6 +5,7 @@ set "packages=curl"
 set "packages=%packages% wget"
 set "packages=%packages% git"
 set "packages=%packages% ddu"
+set "packages=%packages% virtio-drivers"
 set "packages=%packages% firefox"
 set "packages=%packages% vlc"
 set "packages=%packages% notepadplusplus"
@@ -22,7 +23,7 @@ set "packages=%packages% discord"
 set "packages=%packages% audacity"
 set "packages=%packages% obs-studio"
 set "packages=%packages% vscode"
-set "packages=%packages% virtio-drivers"
+set "packages=%packages% partition-assistant-standard"
 
 :: set "packages=%packages% spice-agent"
 :: set "packages=%packages% qemu-guest-agent"
@@ -37,4 +38,4 @@ set "package_list=!package_list:~0,-1!"
 
 echo Packages to be installed: !package_list!
 
-choco install !package_list! -y
+choco install --ignore-checksums !package_list! -y

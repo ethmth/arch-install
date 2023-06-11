@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-git clone https://github.com/aircrack-ng/rtl8812au.git /tmp/rtl8812au
+git clone --depth 1 https://github.com/aircrack-ng/rtl8812au.git /tmp/rtl8812au
 
 cd /tmp/rtl8812au
 make dkms_install
