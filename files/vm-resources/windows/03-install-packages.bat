@@ -4,6 +4,7 @@ setlocal enabledelayedexpansion
 set "packages=curl"
 set "packages=%packages% wget"
 set "packages=%packages% git"
+set "packages=%packages% ddu"
 set "packages=%packages% firefox"
 set "packages=%packages% vlc"
 set "packages=%packages% notepadplusplus"
