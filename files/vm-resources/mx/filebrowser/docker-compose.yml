@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  filebrowser:
+    container_name: filebrowser
+    image: filebrowser/filebrowser
+    volumes:
+      - /home/CUR_USER_HERE/Content:/srv
+      - /home/CUR_USER_HERE/programs/filebrowser/filebrowser.db:/database.db
+    ports:
+      - 8080:80
+    user: USER_ID_HERE:GROUP_ID_HERE
+    restart: unless-stopped

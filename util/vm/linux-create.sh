@@ -110,6 +110,14 @@ cp /home/$CUR_USER/arch-install/files/templates/$TEMPLATE_STRING.xml /home/$CUR_
 
 RESOURCES_DISK="/home/$CUR_USER/arch-install/files/resources.iso"
 
+SHAREPOINT_BOOL=$(cat /home/$CUR_USER/arch-install/files/templates/$TEMPLATE_STRING.xml | grep "VIRT_SHAREPOINT_HERE" | wc -l)
+SHAREPOINT_DISK=$(echo "$DISK" | cut -d'/' -f1-3)
+
+if (( SHAREPOINT_BOOL )); then
+    mkdir -p $SHAREPOINT_DISK/vm/share
+    sed -i "s|VIRT_SHAREPOINT_HERE|$SHAREPOINT_DISK/vm/share|g" /home/$CUR_USER/vm/templates/$NAME.xml
+fi
+
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml

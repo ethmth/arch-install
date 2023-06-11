@@ -19,15 +19,17 @@ if [ "$1" == "stop" ]; then
     START=0
 elif [ "$1" == "start" ]; then
     START=1
+else
+   	echo "Usage: filebrowser <start|stop>"
+	exit 1
 fi
 
+DIRECTORY="/home/$CUR_USER/programs/filebrowser/"
+
 if (( START )); then
-    docker run -d --name filebrowser \
-    -v /home/$CUR_USER/Content:/srv \
-    -v /home/$CUR_USER/programs/filebrowser/filebrowser.db:/database.db \
-    -u $(id -u):$(id -g) \
-    -p 8080:80 \
-    filebrowser/filebrowser -d
+    docker-compose --project-directory $DIRECTORY up -d --build
 else
-    docker stop filebrowser
+    docker-compose --project-directory $DIRECTORY stop
 fi
+
+echo "The default login credentials are admin:admin"

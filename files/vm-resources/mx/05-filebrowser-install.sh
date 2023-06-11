@@ -7,15 +7,25 @@ fi
 
 CUR_USER=$(whoami)
 
+GROUP_ID=$(id -g)
+USER_ID=$(id -u)
+
 mkdir -p /home/$CUR_USER/programs/filebrowser
 mkdir -p /home/$CUR_USER/Content
 touch /home/$CUR_USER/programs/filebrowser/filebrowser.db
 
-if ! [ -e "filebrowser" ]; then
-	echo "Make sure you run this script in the same directory as ./filebrowser"
+if ! [ -e "filebrowser/filebrowser" ]; then
+	echo "Make sure you run this script in the same directory as ./filebrowser/filebrowser"
 	exit 1
 fi
-sudo -k cp filebrowser /usr/bin/filebrowser
+
+cp filebrowser/docker-compose.yml /home/$CUR_USER/programs/filebrowser/docker-compose.yaml
+
+sed -i "s/CUR_USER_HERE/$CUR_USER/g" /home/$CUR_USER/programs/filebrowser/docker-compose.yaml
+sed -i "s/USER_ID_HERE/$USER_ID/g" /home/$CUR_USER/programs/filebrowser/docker-compose.yaml
+sed -i "s/GROUP_ID_HERE/$GROUP_ID/g" /home/$CUR_USER/programs/filebrowser/docker-compose.yaml
+
+sudo -k cp filebrowser/filebrowser /usr/bin/filebrowser
 sudo chmod +x /usr/bin/filebrowser
 
 echo "Installed filebrowser to bin"
