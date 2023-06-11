@@ -63,6 +63,12 @@
       <target dev="sda" bus="sata"/>
       <boot order="1"/>
     </disk>
+    <disk type="file" device="cdrom">
+      <driver name="qemu" type="raw"/>
+      <source file="VIRT_RESOURCESDISK_HERE"/>
+      <target dev="sdb" bus="sata"/>
+      <readonly/>
+    </disk>
     <controller type="usb" model="qemu-xhci" ports="15"/>
     <controller type="pci" model="pcie-root"/>
     <controller type="pci" model="pcie-root-port"/>
@@ -84,14 +90,11 @@
       <mac address="VIRT_MAC_ADDRESS_HERE"/>
       <model type="e1000e"/>
     </interface>
-    <console type="pty"/>
     <input type='mouse' bus='virtio'/>
     <input type='keyboard' bus='virtio'/>
     <tpm model="tpm-crb">
       <backend type="emulator" version="2.0"/>
     </tpm>
-    <redirdev bus="usb" type="spicevmc"/>
-    <redirdev bus="usb" type="spicevmc"/>
   </devices>
   VIRT_EVDEV_HERE
 </domain>

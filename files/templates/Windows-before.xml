@@ -52,16 +52,16 @@
     </disk>
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
-      <source file="VIRT_ISODISK_HERE"/>
+      <source file="VIRT_RESOURCESDISK_HERE"/>
       <target dev="sdb" bus="sata"/>
       <readonly/>
-      <boot order="2"/>
     </disk>
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
-      <source file="VIRT_RESOURCESDISK_HERE"/>
+      <source file="VIRT_ISODISK_HERE"/>
       <target dev="sdc" bus="sata"/>
       <readonly/>
+      <boot order="2"/>
     </disk>
     <controller type="usb" model="qemu-xhci" ports="15"/>
     <controller type="pci" model="pcie-root"/>

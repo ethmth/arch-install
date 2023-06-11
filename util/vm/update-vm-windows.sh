@@ -42,6 +42,9 @@ MAC=${MAC%\'*}
 NETWORK=$(cat /home/$CUR_USER/vm/templates/$VM | grep "<source network=")
 NETWORK=${NETWORK#*=\'}
 NETWORK=${NETWORK%\'*}
+RESOURCES_DISK=$(cat /home/$CUR_USER/vm/templates/$VM | grep "resources.iso")
+RESOURCES_DISK=${RESOURCES_DISK#*=\'}
+RESOURCES_DISK=${RESOURCES_DISK%\'*}
 
 mv /home/$CUR_USER/vm/templates/$VM /home/$CUR_USER/vm/templates/$VM.old
 cp /home/$CUR_USER/arch-install/files/templates/Windows-after.xml /home/$CUR_USER/vm/templates/$NAME.xml
@@ -51,11 +54,9 @@ NEW_QEMU=$(cat /home/$CUR_USER/vm/tools/evdev_helper/evdev.txt | grep . | grep -
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
-# sed -i "s|VIRT_ISODISK_HERE|$OS_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
-# sed -i "s|VIRT_RESOURCESDISK_HERE|$RESOURCES_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s|VIRT_RESOURCESDISK_HERE|$RESOURCES_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
-# sed -i "s|VIRT_EVDEV_HERE|$NEW_QEMU|g" /home/$CUR_USER/vm/templates/$NAME.xml
 
 awk -v new="$NEW_QEMU" '/VIRT_EVDEV_HERE/ {print $0 "\n" new; next} 1' /home/$CUR_USER/vm/templates/$VM > /home/$CUR_USER/vm/templates/$VM.temp && mv /home/$CUR_USER/vm/templates/$VM.temp /home/$CUR_USER/vm/templates/$VM
 sed -i '/VIRT_EVDEV_HERE/d' /home/$CUR_USER/vm/templates/$VM
