@@ -9,4 +9,4 @@ virsh -c qemu:///system net-autostart default
 virsh -c qemu:///system net-start default
 
 echo "If the default network started successfully,"
-echo "Run ./04-network-vpn.sh to define the VPN-Gateway network"
+echo "Run ./06-network-vpn.sh to define the VPN-Gateway network"

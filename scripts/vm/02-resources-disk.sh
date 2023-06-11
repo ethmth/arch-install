@@ -13,4 +13,4 @@ chmod g+rw /home/$CUR_USER/arch-install/files/resources.iso
 chmod o+rw /home/$CUR_USER/arch-install/files/resources.iso
 
 echo "If the iso file at /home/$CUR_USER/arch-install/files/resources.iso was created successfully,"
-echo "Run ./03-network-default.sh to define the default network."
+echo "Run ./03-evdev-setup.sh to update the /etc/libvirt/qemu.conf file."
