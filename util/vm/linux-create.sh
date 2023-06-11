@@ -8,6 +8,24 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
+if [ $# -ne 1 ]; then
+	echo "Usage: ./linux-create.sh <nix|mx>"
+	exit 1
+fi
+
+TEMPLATE_STRING=""
+SEARCH_STRING=""
+if [ "$1" == "nix" ]; then
+    TEMPLATE_STRING="Nix"
+    SEARCH_STRING="nixos"
+elif [ "$1" == "mx" ]; then
+    TEMPLATE_STRING="MX"
+    SEARCH_STRING="MX"
+else 
+    echo "Usage: ./linux-create.sh <nix|mx>"
+	exit 1
+fi
+
 DISK="Nothing"
 
 if ! [ "$LAST_DISK" == "" ]; then
@@ -58,7 +76,7 @@ fi
 
 
 OS_DISK="Nothing"
-oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep nixos | head -n 1)
+oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep "$SEARCH_STRING" | head -n 1)
 read -p "Do you want to use $oses as the iso (N for No, Otherwise Yes)? " userInput
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
@@ -88,12 +106,15 @@ MAC="52:54:00:$MAC"
 UUID=$(uuidgen)
 
 mkdir -p /home/$CUR_USER/vm/templates
-cp /home/$CUR_USER/arch-install/files/templates/Nix.xml /home/$CUR_USER/vm/templates/$NAME.xml
+cp /home/$CUR_USER/arch-install/files/templates/$TEMPLATE_STRING.xml /home/$CUR_USER/vm/templates/$NAME.xml
+
+RESOURCES_DISK="/home/$CUR_USER/arch-install/files/resources.iso"
 
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_ISODISK_HERE|$OS_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s|VIRT_RESOURCESDISK_HERE|$RESOURCES_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
 
@@ -103,4 +124,4 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
-echo "Virtual machine $NAME defined. Add your PCIe devices in virt-manager and you're good to go."
+echo "Virtual machine $NAME defined."

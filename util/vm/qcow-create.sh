@@ -47,4 +47,4 @@ qemu-img create -f qcow2 "$DISK_LOC/$DISK_NAME.qcow2" "${DISK_SIZE}G"
 echo "LAST_DISK=$DISK_LOC/$DISK_NAME.qcow2" > /home/$CUR_USER/arch-install/config/last_disk.txt
 
 echo "Disk $DISK_LOC/$DISK_NAME.qcow2 created."
-echo "Now run ./create-vm-windows.sh to define a Virtual machine"
+echo "Now run one of the vm creation scripts to define a Virtual machine"
