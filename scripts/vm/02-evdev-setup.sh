@@ -17,4 +17,4 @@ chmod +x run_ev_helper.sh
 sudo -k ./run_ev_helper.sh
 
 echo "Results in /home/$CUR_USER/vm/tools/evdev_helper/evdev.txt"
-echo "Run ./04-qemu-conf-update.sh to put the correct user in /etc/libvirt/qemu.conf"
+echo "Run ./03-qemu-conf-update.sh to put the correct user in /etc/libvirt/qemu.conf"
