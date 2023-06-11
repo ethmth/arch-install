@@ -15,6 +15,7 @@ nano
 curl
 wget
 openssh-server
+apparmor
 flatpak
 proxychains
 tsocks
@@ -25,7 +26,7 @@ qterminal
 vlc
 yt-dlp
 gallery-dl
-docker
+docker.io
 docker-compose
 nmap
 neofetch

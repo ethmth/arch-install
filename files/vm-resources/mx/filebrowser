@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if ! [[ $EUID -ne 0 ]]; then
+	echo "This script should not be run with root/sudo privileges."
+	exit 1
+fi
+
+CUR_USER=$(whoami)
+
+START=1
+if [ $# -ge 2 ]; then
+	echo "Usage: filebrowser <start|stop>"
+	exit 1
+fi
+if [ $# -eq 0 ]; then
+	START=1
+fi
+if [ "$1" == "stop" ]; then
+    START=0
+elif [ "$1" == "start" ]; then
+    START=1
+fi
+
+if (( START )); then
+    docker run -d --name filebrowser \
+    -v /home/$CUR_USER/Content:/srv \
+    -v /home/$CUR_USER/programs/filebrowser/filebrowser.db:/database.db \
+    -u $(id -u):$(id -g) \
+    -p 8080:80 \
+    filebrowser/filebrowser -d
+else
+    docker stop filebrowser
+fi
