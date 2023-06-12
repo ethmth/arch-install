@@ -9,27 +9,24 @@ CUR_USER=$(whoami)
 
 START=1
 if [ $# -ge 2 ]; then
-	echo "Usage: filebrowser <start|stop>"
+	echo "Usage: wireguard <start|stop>"
 	exit 1
 fi
 if [ $# -eq 0 ]; then
 	START=1
-fi
-if [ "$1" == "stop" ]; then
+elif [ "$1" == "stop" ]; then
     START=0
 elif [ "$1" == "start" ]; then
     START=1
 else
-   	echo "Usage: filebrowser <start|stop>"
+   	echo "Usage: wireguard <start|stop>"
 	exit 1
 fi
 
-DIRECTORY="/home/$CUR_USER/programs/filebrowser/docker-compose.yaml"
+DIRECTORY="/home/$CUR_USER/programs/wireguard/docker-compose.yaml"
 
 if (( START )); then
     docker-compose --file $DIRECTORY up -d --build
 else
     docker-compose --file $DIRECTORY stop
 fi
-
-echo "The default login credentials are admin:admin"

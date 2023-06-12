@@ -64,7 +64,6 @@
   ]) ++ (with pkgs.gnome; [
     cheese # webcam tool
     gnome-music
-    gnome-terminal
     gedit # text editor
     epiphany # web browser
     geary # email reader
@@ -144,6 +143,7 @@
     wl-clipboard
     xdg-desktop-portal
     xdg-desktop-portal-gtk
+    gnome.gnome-terminal
     gnomeExtensions.appindicator 
     gnomeExtensions.dash-to-dock
     gnome.adwaita-icon-theme
@@ -204,6 +204,7 @@
     mesa
     libsForQt5.kate
     vscodium
+    riseup-vpn
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
