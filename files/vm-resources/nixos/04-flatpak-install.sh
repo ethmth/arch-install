@@ -25,7 +25,6 @@ com.obsproject.Studio
 io.gitlab.theevilskeleton.Upscaler
 fr.handbrake.ghb
 org.filezillaproject.Filezilla
-org.wireshark.Wireshark
 network.loki.Session
 org.cryptomator.Cryptomator
 com.opera.Opera
