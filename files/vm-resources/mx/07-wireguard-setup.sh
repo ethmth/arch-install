@@ -28,4 +28,6 @@ echo "Running 'wireguard' to start the container"
 wireguard
 
 echo "Run feh /opt/wireguard-server/config/peer1/"
-echo "Use this on Android. Then, run ./05-wireguard-client.sh on Nix"
+echo "Use this on Android. Change AllowedIPs in the Wireguard config to 10.13.13.0/24"
+
+echo "Then, run ./05-wireguard-client.sh on Nix"

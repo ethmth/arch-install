@@ -7,7 +7,7 @@ fi
 
 CUR_USER=$(whoami)
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpaks="
 org.gimp.GIMP
