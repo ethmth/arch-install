@@ -146,6 +146,7 @@
     gnome.gnome-terminal
     gnomeExtensions.appindicator 
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.gsconnect
     gnome.adwaita-icon-theme
     yaru-theme
     ubuntu-themes
@@ -206,6 +207,8 @@
     libsForQt5.kate
     vscodium
     riseup-vpn
+    wireshark-qt
+    libsForQt5.kdeconnect-kde
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -226,6 +229,24 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.13.13.3" ];
+      dns = [ "10.152.152.15" ];
+      privateKey = "WIREGUARD_PRIVATE_KEY_HERE";
+      
+      peers = [
+        {
+          publicKey = "WIREGUARD_PUBLIC_KEY_HERE";
+          presharedKey = "WIREGUARD_PRESHARED_KEY_HERE";
+          allowedIPs = [ "10.13.13.0/24" ];
+          endpoint = "10.152.152.15:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
