@@ -140,6 +140,8 @@
     killall
     docker
     docker-compose
+    dnsmasq
+    dig
     wl-clipboard
     xdg-desktop-portal
     xdg-desktop-portal-gtk
