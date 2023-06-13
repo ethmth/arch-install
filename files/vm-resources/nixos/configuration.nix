@@ -188,6 +188,7 @@
     tmux
     plocate
     wireguard-go
+    wireguard-tools
     go
     whois
     android-tools

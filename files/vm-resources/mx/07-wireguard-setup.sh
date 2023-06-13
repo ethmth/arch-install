@@ -23,4 +23,9 @@ sudo chmod +x /usr/bin/wireguard
 sudo chmod -R 777 /opt/wireguard-server
 
 echo "Installed wireguard to bin"
-echo "Run 'wireguard' to start the container"
+echo "Running 'wireguard' to start the container"
+
+wireguard
+
+echo "Run feh /opt/wireguard-server/config/peer1/"
+echo "Use this on Android. Then, run ./05-wireguard-client.sh on Nix"
