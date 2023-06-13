@@ -36,9 +36,47 @@ PRIVATE_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PrivateKey" | c
 PUBLIC_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PublicKey" | cut -d '=' -f 2- | sed -e 's/^[[:space:]]*//')
 PRESHARED_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PresharedKey" | cut -d '=' -f 2- | sed -e 's/^[[:space:]]*//')
 
+string_to_echo=$(echo "  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ \"10.13.13.3\" ];
+      dns = [ \"10.152.152.15\" ];
+      privateKey = \"$PRIVATE_KEY\";
+      
+      peers = [
+        {
+          publicKey = \"$PUBLIC_KEY\";
+          presharedKey = \"$PRESHARED_KEY\";
+          allowedIPs = [ \"10.13.13.0/24\" ];
+          endpoint = \"10.152.152.15:51820\";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };")
 
-sed -i "s/WIREGUARD_PRIVATE_KEY_HERE/$PRIVATE_KEY/g" /etc/nixos/configuration.nix
-sed -i "s/WIREGUARD_PUBLIC_KEY_HERE/$PUBLIC_KEY/g" /etc/nixos/configuration.nix
-sed -i "s/WIREGUARD_PRESHARED_KEY_HERE/$PRESHARED_KEY/g" /etc/nixos/configuration.nix
+search_string="ADD_WIREGUARD_SECTION_HERE"
+file="/etc/nixos/configuration.nix"
+tmp_file="/tmp/configuration.nix"
+
+mv $file $tmp_file
+touch $file
+
+# tmp_file=$(mktemp)
+
+while IFS= read -r line; do
+  echo "$line" >> "$file"
+  if [[ $line == *"$search_string"* ]]; then
+    echo "$string_to_echo" >> "$file"
+  fi
+done < "$tmp_file"
+
+rm $file
+mv "$tmp_file" "$file"
+
+# sed -i "|.*ADD_WIREGUARD_SECTION_HERE.*|a $string_to_echo" /etc/nixos/configuration.nix
+
+# sed -i "s/WIREGUARD_PRIVATE_KEY_HERE/$PRIVATE_KEY/g" /etc/nixos/configuration.nix
+# sed -i "s/WIREGUARD_PUBLIC_KEY_HERE/$PUBLIC_KEY/g" /etc/nixos/configuration.nix
+# sed -i "s/WIREGUARD_PRESHARED_KEY_HERE/$PRESHARED_KEY/g" /etc/nixos/configuration.nix
 
 nixos-rebuild switch

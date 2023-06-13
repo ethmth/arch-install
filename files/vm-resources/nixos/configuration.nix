@@ -230,23 +230,8 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      address = [ "10.13.13.3" ];
-      dns = [ "10.152.152.15" ];
-      privateKey = "WIREGUARD_PRIVATE_KEY_HERE";
-      
-      peers = [
-        {
-          publicKey = "WIREGUARD_PUBLIC_KEY_HERE";
-          presharedKey = "WIREGUARD_PRESHARED_KEY_HERE";
-          allowedIPs = [ "10.13.13.0/24" ];
-          endpoint = "10.152.152.15:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
-  };
+
+  # ADD_WIREGUARD_SECTION_HERE
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
