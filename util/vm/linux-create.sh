@@ -103,6 +103,8 @@ fi
 
 MAC=$(hexdump -n 3 -ve '1/1 "%.2x "' /dev/random | awk -v a="2,6,a,e" -v r="$RANDOM" 'BEGIN{srand(r);}NR==1{split(a,b,",");r=int(rand()*4+1);printf "%s%s:%s:%s\n",substr($1,0,1),b[r],$2,$3,$4,$5,$6}')
 MAC="52:54:00:$MAC"
+MAC2=$(hexdump -n 3 -ve '1/1 "%.2x "' /dev/random | awk -v a="2,6,a,e" -v r="$RANDOM" 'BEGIN{srand(r);}NR==1{split(a,b,",");r=int(rand()*4+1);printf "%s%s:%s:%s\n",substr($1,0,1),b[r],$2,$3,$4,$5,$6}')
+MAC2="52:54:00:$MAC2"
 UUID=$(uuidgen)
 
 mkdir -p /home/$CUR_USER/vm/templates
@@ -120,6 +122,7 @@ fi
 
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
+sed -i "s/VIRT_MAC_ADDRESS2_HERE/$MAC2/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_ISODISK_HERE|$OS_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_RESOURCESDISK_HERE|$RESOURCES_DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
