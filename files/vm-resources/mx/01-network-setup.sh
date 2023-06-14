@@ -3,15 +3,10 @@
 CONNECTION=$(nmcli connection show | grep "ethernet" | awk '{for(i=1; i<=NF-3; i++) printf "%s ", $i; print ""}')
 CONNECTION="${CONNECTION%% }"
 
-# CONNECTION1=$(echo "$CONNECTION" | head -n 1)
 CONNECTION1=$(echo "$CONNECTION" | grep "1")
 CONNECTION1="${CONNECTION1%% }"
-# CONNECTION2=$(echo "$CONNECTION" | tail -n 1)
 CONNECTION2=$(echo "$CONNECTION" | grep "2")
 CONNECTION2="${CONNECTION2%% }"
-
-# CONNECTION1="eth0"
-# CONNECTION2="eth1"
 
 INTERFACE1="eth0"
 INTERFACE2="eth1"
