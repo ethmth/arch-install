@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.raspberrypi.rpi-imager
+cc.arduino.IDE2
 org.godotengine.Godot
 org.gimp.GIMP
 org.libreoffice.LibreOffice
