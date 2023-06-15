@@ -30,6 +30,7 @@ vscodium-bin
 xpadneo-dkms
 python310
 etcher-bin
+flutter
 "
 
 if (( NVIDIA )); then
