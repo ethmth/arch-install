@@ -149,7 +149,7 @@ packages+="
 brightnessctl
 dunst
 grimblast-git
-hyprpicker-git
+hyprpicker
 otf-font-awesome
 polkit-gnome
 rofi
