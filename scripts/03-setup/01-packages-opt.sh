@@ -9,13 +9,13 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 #python2
+#android-sdk
 packages="
 python-torchvision
 python-pycocotools
 remmina
 rstudio-desktop-bin
 cryptomator-bin
-android-sdk
 scrcpy
 anaconda
 emacs29-git

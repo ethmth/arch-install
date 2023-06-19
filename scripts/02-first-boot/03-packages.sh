@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
 packages="
+android-tools
+android-udev
 hexyl
 libcaca
 feh
