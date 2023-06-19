@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #python2
 #android-sdk
 packages="
+qbittorrent
 python-torchvision
 python-pycocotools
 remmina
