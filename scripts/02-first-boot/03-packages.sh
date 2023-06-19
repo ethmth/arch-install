@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
 packages="
+github-cli
 android-tools
 android-udev
 hexyl
