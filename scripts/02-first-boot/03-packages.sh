@@ -132,6 +132,7 @@ edk2-ovmf
 jdk-openjdk
 jdk17-openjdk
 jdk8-openjdk
+ninja
 "
 
 if (( HYPRLAND && AMD )); then
