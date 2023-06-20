@@ -10,7 +10,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 #python2
 #android-sdk
-#lcm
 packages="
 qbittorrent
 python-torchvision
