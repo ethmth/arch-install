@@ -44,5 +44,8 @@ mkdir -p /home/$CUR_USER/Documents/Programs
 # echo "command -v pyenv >/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"" >> /home/$CUR_USER/.bashrc
 # echo "eval \"$(pyenv init -)\"" >> /home/$CUR_USER/.bashrc
 
+# npm user setup
+echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
+
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
