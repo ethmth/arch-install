@@ -28,6 +28,7 @@ set "packages=%packages% partition-assistant-standard"
 :: set "packages=%packages% motrixyyyy"
 set "packages=%packages% jdownloader"
 set "packages=%packages% lghub"
+set "packages=%packages% opera"
 :: set "packages=%packages% free-hex-editor-neo"
 
 :: set "packages=%packages% spice-agent"
