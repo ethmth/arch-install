@@ -80,6 +80,8 @@ libvirt
 linux-headers
 linux-zen
 linux-zen-headers
+linux-lts
+linux-lts-headers
 neofetch
 neovim
 net-tools
