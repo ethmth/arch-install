@@ -9,6 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # eddie-ui
+# bluez-hciconfig
 packages="
 arch-install-scripts
 github-cli
@@ -31,7 +32,6 @@ podman-compose
 lshw
 bluez
 bluez-utils
-bluez-hciconfig
 vlc
 mpv
 socat
