@@ -31,6 +31,7 @@ podman-compose
 lshw
 bluez
 bluez-utils
+bluez-hciconfig
 vlc
 mpv
 socat
