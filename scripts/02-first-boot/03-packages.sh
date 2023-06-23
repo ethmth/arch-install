@@ -12,6 +12,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 packages="
 arch-install-scripts
 github-cli
+dotnet-sdk
 android-tools
 android-udev
 hexyl
