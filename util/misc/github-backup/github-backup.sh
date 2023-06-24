@@ -8,10 +8,10 @@ fi
 CUR_USER=$(whoami)
 
 current_directory=$(pwd)
-last_three_directories=$(basename "$(dirname "$(dirname "$current_directory")")")/$(basename "$(dirname "$current_directory")")/$(basename "$current_directory")
+last_four_directories=$(basename "$(dirname "$(dirname "$(dirname "$current_directory")")")")/$(basename "$(dirname "$(dirname "$current_directory")")")/$(basename "$(dirname "$current_directory")")/$(basename "$current_directory")
 
-if ! [ "$last_three_directories" == "arch-install/util/misc" ]; then
-    echo "Please run this script in arch-install/util/misc"
+if ! [ "$last_four_directories" == "arch-install/util/misc/github-backup" ]; then
+    echo "Please run this script in arch-install/util/misc/github-backup"
     exit 1
 fi
 
@@ -25,7 +25,20 @@ github_username=$1
 mkdir -p workdir/repos
 cd workdir/repos
 
-echo "Cloning repositories for $github_username..."
+if [ -f "../../privates.conf" ]; then
+    echo "Cloning private repositories for $github_username..."
+    repos=$(cat ../../privates.conf | grep -v "#")
+
+    for repo in $repos; do
+        repo="https://github.com/$github_username/$repo"
+        echo "Repo: $repo"
+        git clone "$repo"
+    done
+
+    echo "Private cloning completed."
+fi
+
+echo "Cloning public repositories for $github_username..."
 repos_url="https://api.github.com/users/$github_username/repos?per_page=100"
 repos=$(curl -s "$repos_url" | grep -o 'git://[^"]*')
 
@@ -35,7 +48,7 @@ for repo in $repos; do
     git clone "$repo"
 done
 
-echo "Cloning completed."
+echo "Public cloning completed."
 
 echo "Creating zip files for cloned repositories..."
 
