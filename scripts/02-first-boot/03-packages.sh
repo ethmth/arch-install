@@ -121,7 +121,7 @@ python-websockets
 python-dotenv
 pyenv
 qemu-arch-extra
-qemu-desktop
+qemu-full
 qjackctl
 qterminal
 sddm
