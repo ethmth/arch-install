@@ -124,7 +124,7 @@ qemu-arch-extra
 qemu-desktop
 qjackctl
 qterminal
-sddm-git
+sddm
 swtpm
 thunar
 thunar-archive-plugin
@@ -141,6 +141,7 @@ jdk-openjdk
 jdk17-openjdk
 jdk8-openjdk
 ninja
+downgrade
 "
 
 if (( HYPRLAND && AMD )); then
@@ -194,8 +195,8 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
-echo "Make sure you have sddm-git instead of sddm"
 echo "Make sure you have iptables-nft instead of iptables"
-echo "Run yay -S sddm-git to be sure it's installed"
+#echo "Make sure you have sddm-git instead of sddm"
+#echo "Run yay -S sddm-git to be sure it's installed"
 echo "If so, run ./04-services.sh"
 
