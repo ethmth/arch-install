@@ -59,7 +59,7 @@ file_array=()
 for mnt in "${MNT_ARRAY[@]}"; do
     files=$(ls $mnt/vm/osx 2>/dev/null | grep -v "OSX-KVM")
     for file in $files; do
-        file_array+=("$mnt/vm/disk/$file")
+        file_array+=("$mnt/vm/osx/$file")
     done
 done
 
@@ -72,7 +72,7 @@ if ([ "$VM_FOLDER" == "" ] || [ "$VM_FOLDER" == "Nothing" ]); then
     exit 1
 fi
 
-NAME=$VM_FOLDER
+NAME=$(basename "$VM_FOLDER")
 
 read -p "Do you want to use $NAME as the name (N for No, Otherwise Yes)? " userInput
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then

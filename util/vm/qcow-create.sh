@@ -7,7 +7,7 @@ fi
 
 CUR_USER=$(whoami)
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired Whonix installation location")
+LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired qcow2 installation location")
 
 if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
     echo "Nothing was selected"
