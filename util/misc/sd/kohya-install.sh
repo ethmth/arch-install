@@ -40,5 +40,13 @@ echo "#!/bin/bash" > $LOC/kohya_ss/run.sh
 echo "bash $LOC/kohya_ss/gui.sh --headless --listen 0.0.0.0 --server_port 7861  --username $username --password $password" >> $LOC/kohya_ss/run.sh
 chmod +x $LOC/kohya_ss/run.sh
 
+echo "Now, you will go through the accelerate config setup process"
+echo "Default values are fine. fp16 mixed precision."
+read -p "Press ENTER to continue" userInput
+
+source venv/bin/activate
+# accelerate config --config_file config_files/accelerate/default_config.yaml
+accelerate config
+
 echo "Installation complete. To run:"
 echo "bash $LOC/kohya_ss/run.sh"
