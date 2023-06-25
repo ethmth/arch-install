@@ -80,7 +80,9 @@ while ! (( VALUES_ACCEPTED )); do
     printf "\tBOARD_SERIAL: $BOARD_SERIAL\n"
     printf "\tUUID: $UUID\n"
     printf "\tMAC_ADDRESS: $MAC_ADDRESS\n"
-    read -p "Do you accept these values? (Y/n)? " userInput
+    echo "Go to https://checkcoverage.apple.com/ to check validity of SERIAL"
+    echo "You want a SERIAL that is NOT YET VALIDATED ('Please enter a valid serial number' is GOOD)"
+    read -p "Do you accept these values (Y/n)? " userInput
     if ([ "$userInput" == "n" ] || [ "$userInput" == "N" ]); then
         echo "Generating new values"
     else
@@ -104,26 +106,24 @@ cat $LOC/values.conf
 
 read -p "Press ENTER to continue " userInput
 
+git clone --depth 1 --recurse-submodules https://github.com/kholia/OSX-KVM.git OSX-KVM
+cd OSX-KVM/OpenCore
 
-CUSTOM_PLIST=https://raw.githubusercontent.com/kholia/OSX-KVM/master/OpenCore/config.plist
-# CUSTOM_PLIST=https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-nopicker-custom.plist
+sed -i "s/$MODEL_TO_REPLACE/$MODEL/g" config.plist
+sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist
+sed -i "s/$BOARD_SERIAL_TO_REPLACE/$BOARD_SERIAL/g" config.plist
+sed -i "s/$UUID_TO_REPLACE/$UUID/g" config.plist
+sed -i "s/$ROM_TO_REPLACE/$ROM/g" config.plist
 
-./generate-specific-bootdisk.sh \
-    --input-plist-url="${CUSTOM_PLIST}" \
-    --model "${MODEL}" \
-    --serial "${SERIAL}" \
-    --board-serial "${BOARD_SERIAL}" \
-    --uuid "${UUID}" \
-    --mac-address "${MAC_ADDRESS}" \
-    --output-bootdisk ./OpenCore.qcow2 \
-    --width 1280 \
-    --height 720
-
-
-exit
-
-# To generate new OpenCore image
+rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
 
+cd $LOC
+mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
+
+echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
+echo "To edit/check config.plist inside the OpenCore image, run:"
+echo "EDITOR=vim virt-edit -m /dev/sda1 $LOC/OpenCore.qcow2 /EFI/OC/config.plist"
+
 # To edit config.plist inside OpenCore Image
-EDITOR=vim virt-edit -m /dev/sda1 OpenCore.qcow2 /EFI/OC/config.plist
+# EDITOR=vim virt-edit -m /dev/sda1 OpenCore.qcow2 /EFI/OC/config.plist
