@@ -11,6 +11,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+tumbler
+android-file-transfer
+mtpfs
 arch-install-scripts
 github-cli
 dotnet-sdk
