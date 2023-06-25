@@ -32,7 +32,7 @@ read -p "Please input your desired MacOS VM name: " DISK_NAME
 if [ -d "$LOC/$DISK_NAME" ]; then
     echo "Folder at $LOC/$DISK_NAME already exists. Please try a new name, or remove it and try again"
     exit 1
-else
+fi
 
 LOC="$LOC/$DISK_NAME"
 mkdir -p $LOC
@@ -43,10 +43,53 @@ cd osx-serial-generator
 
 CUSTOM_PLIST=https://raw.githubusercontent.com/kholia/OSX-KVM/master/OpenCore/config.plist
 
-./generate-unique-machine-values.sh \
-    -c 1 \
-    --master-plist-url="${CUSTOM_PLIST}" \
-    --create-bootdisks
+MODEL=""
+SERIAL=""
+BOARD_SERIAL=""
+UUID=""
+MAC_ADDRESS=""
+
+VALUES_ACCEPTED=0
+
+while ! (( VALUES_ACCEPTED )); do
+    tsv_file=$(./generate-unique-machine-values.sh \
+        -c 1 \
+        --model="iMacPro1,1" | grep "Wrote TSV" | tr ' ' '\n' | grep ".tsv")
+
+    values=$(cat $tsv_file | tr '\t' '\n')
+
+    variables=("MODEL" "SERIAL" "BOARD_SERIAL" "UUID" "MAC_ADDRESS" "WIDTH" "HEIGHT")
+    IFS=$'\n' read -r -d '' -a lines <<< "$values"
+
+    for i in "${!lines[@]}"; do
+        variable_name="${variables[$i]}"
+        variable_value="${lines[$i]}"
+        declare "$variable_name=$variable_value"
+    done
+
+
+    printf "Here are the generated values:\n"
+    printf "\tMODEL: $MODEL\n"
+    printf "\tSERIAL: $SERIAL\n"
+    printf "\tBOARD_SERIAL: $BOARD_SERIAL\n"
+    printf "\tUUID: $UUID\n"
+    printf "\tMAC_ADDRESS: $MAC_ADDRESS\n"
+    read -p "Do you accept these values? (Y/n)? " userInput
+    if ([ "$userInput" == "n" ] || [ "$userInput" == "N" ]); then
+        echo "Generating new values"
+    else
+        VALUES_ACCEPTED=1
+    fi
+done
+
+
+printf "Here are the FINAL values:\n"
+printf "\tMODEL: $MODEL\n"
+printf "\tSERIAL: $SERIAL\n"
+printf "\tBOARD_SERIAL: $BOARD_SERIAL\n"
+printf "\tUUID: $UUID\n"
+printf "\tMAC_ADDRESS: $MAC_ADDRESS\n"
+
 
 exit
 
