@@ -131,5 +131,10 @@ chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined."
-echo "Add your GPU to the VM, install Chocolatey & packages using resources.iso, and setup Graphics drivers."
-echo "Then, run ./update-vm-windows.sh to remove Virtual Graphics Devices"
+echo "Go through and setup MacOS. First, erase and format the disk using a non-APFS system."
+echo "Then, reinstall macOS. It can take a long time"
+
+# Repos to backup:
+# https://github.com/sickcodes/osx-serial-generator.git
+# https://github.com/kholia/OSX-KVM.git
+# https://github.com/acidanthera/OcBinaryData.git
