@@ -27,26 +27,31 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-git clone https://github.com/bmaltais/kohya_ss.git $LOC/kohya_ss
+# git clone https://github.com/bmaltais/kohya_ss.git $LOC/kohya_ss
 
 cd $LOC/kohya_ss
-chmod +x ./setup.sh
-./setup.sh
+# chmod +x ./setup.sh
+# ./setup.sh
 
 read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
 
-echo "#!/bin/bash" > $LOC/kohya_ss/run.sh
-echo "bash $LOC/kohya_ss/gui.sh --headless --listen 0.0.0.0 --server_port 7861  --username $username --password $password" >> $LOC/kohya_ss/run.sh
-chmod +x $LOC/kohya_ss/run.sh
+sed -i "s/127.0.0.1/0.0.0.0/g" docker-compose.yaml
+sed -i "s|CLI_ARGS: \"\"|CLI_ARGS: \"--headless --listen 0.0.0.0 --server_port 7861  --username $username --password $password\"|g" docker-compose.yaml
 
-echo "Now, you will go through the accelerate config setup process"
-echo "Default values are fine. fp16 mixed precision."
-read -p "Press ENTER to continue" userInput
+docker compose build
 
-source venv/bin/activate
-# accelerate config --config_file config_files/accelerate/default_config.yaml
-accelerate config
+# echo "#!/bin/bash" > $LOC/kohya_ss/run.sh
+# echo "bash $LOC/kohya_ss/gui.sh --headless --listen 0.0.0.0 --server_port 7861  --username $username --password $password" >> $LOC/kohya_ss/run.sh
+# chmod +x $LOC/kohya_ss/run.sh
 
-echo "Installation complete. To run:"
-echo "bash $LOC/kohya_ss/run.sh"
+# echo "Now, you will go through the accelerate config setup process"
+# echo "Default values are fine. fp16 mixed precision."
+# read -p "Press ENTER to continue" userInput
+
+# source venv/bin/activate
+# # accelerate config --config_file config_files/accelerate/default_config.yaml
+# accelerate config
+
+# echo "Installation complete. To run:"
+# echo "bash $LOC/kohya_ss/run.sh"

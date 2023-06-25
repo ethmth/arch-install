@@ -132,7 +132,8 @@ chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined."
 echo "Go through and setup MacOS. First, erase and format the disk using a non-APFS system."
-echo "Then, reinstall macOS. It can take a long time"
+echo "Then, reinstall macOS. It can take a long time. Go through the installation setup."
+echo "Then, run ./macos-vm-update.sh to remove Virtual Graphics Devices"
 
 # Repos to backup:
 # https://github.com/sickcodes/osx-serial-generator.git
