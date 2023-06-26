@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 MODEL_TO_REPLACE="iMacPro1,1"
 SERIAL_TO_REPLACE="C02TM2ZBHX87"
 BOARD_SERIAL_TO_REPLACE="C02717306J9JG361M"
@@ -48,6 +47,13 @@ cd osx-serial-generator
 
 git clone --depth 1 --recurse-submodules https://github.com/kholia/OSX-KVM.git OSX-KVM
 cd OSX-KVM/OpenCore
+
+if ! [ -e "/home/$CUR_USER/arch-install/files/templates/config-before.plist" ]; then
+    echo "config-before.plist template doesn't exist in /home/$CUR_USER/arch-install/files/templates/config-before.plist"
+    exit 1
+fi
+
+cp /home/$CUR_USER/arch-install/files/templates/config-before.plist config.plist
 
 sed -i "s/$MODEL_TO_REPLACE/$MODEL/g" config.plist
 sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist

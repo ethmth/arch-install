@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 MODEL_TO_REPLACE="iMacPro1,1"
 SERIAL_TO_REPLACE="C02TM2ZBHX87"
 BOARD_SERIAL_TO_REPLACE="C02717306J9JG361M"
@@ -41,7 +40,6 @@ fi
 
 LOC=$VM_FOLDER
 
-rm $LOC/OpenCore.qcow2
 source $LOC/values.conf
 
 cd $LOC
@@ -50,16 +48,18 @@ cd osx-serial-generator
 git clone --depth 1 --recurse-submodules https://github.com/kholia/OSX-KVM.git OSX-KVM
 cd OSX-KVM/OpenCore
 
+if ! [ -e "/home/$CUR_USER/arch-install/files/templates/config-after.plist" ]; then
+    echo "config-after.plist template doesn't exist in /home/$CUR_USER/arch-install/files/templates/config-after.plist"
+    exit 1
+fi
+
+cp /home/$CUR_USER/arch-install/files/templates/config-after.plist config.plist
+
 sed -i "s/$MODEL_TO_REPLACE/$MODEL/g" config.plist
 sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist
 sed -i "s/$BOARD_SERIAL_TO_REPLACE/$BOARD_SERIAL/g" config.plist
 sed -i "s/$UUID_TO_REPLACE/$UUID/g" config.plist
 sed -i "s/$ROM_TO_REPLACE/$ROM/g" config.plist
-
-sed -i "s|<string>-v keepsyms=1 tlbto_us=0 vti=9</string>|<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>|g" config.plist
-sed -i "s|<integer>45</integer>|<integer>10</integer>|g" config.plist
-sed -i "s|ZwAAAA==|5wMAAA==|g" config.plist
-
 
 rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
@@ -70,6 +70,3 @@ mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
 echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
 echo "To edit/check config.plist inside the OpenCore image, run:"
 echo "EDITOR=vim virt-edit -m /dev/sda1 $LOC/OpenCore.qcow2 /EFI/OC/config.plist"
-
-# To edit config.plist inside OpenCore Image
-# EDITOR=vim virt-edit -m /dev/sda1 OpenCore.qcow2 /EFI/OC/config.plist
