@@ -42,6 +42,15 @@ echo "#!/bin/bash" > $LOC/kohya_ss/run.sh
 echo "docker compose --project-directory=$LOC/kohya_ss run --service-ports kohya-ss-gui" >> $LOC/kohya_ss/run.sh
 chmod +x $LOC/kohya_ss/run.sh
 
+read -p "Do you want to create a system executable (y/N)? " userInput
+
+if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
+    read -p "Please enter the name for the executable: " executableName
+    sudo cp $LOC/kohya_ss/run.sh /usr/bin/$executableName
+    sudo chmod +x /usr/bin/$executableName
+    echo "Executable /usr/bin/$executableName created"
+fi
+
 file_path="docker-compose.yaml" 
 temp_file="docker-compose.temp"
 
