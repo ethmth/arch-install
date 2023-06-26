@@ -65,7 +65,7 @@ done
 
 files_string=$(printf "%s\n" "${file_array[@]}")
 
-VM_FOLDER=$(echo "$files_string" | fzf --prompt="Select your MacOS OpenCore folder. If you've not created one, press ESC and run ./01-macos-opencore-create.sh, then come back")
+VM_FOLDER=$(echo "$files_string" | fzf --prompt="Select your MacOS OpenCore folder. If you've not created one, press ESC and create a serial folder and OpenCore image, then come back")
 
 if ([ "$VM_FOLDER" == "" ] || [ "$VM_FOLDER" == "Nothing" ]); then
     echo "No action taken."

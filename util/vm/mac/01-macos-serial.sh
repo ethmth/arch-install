@@ -1,12 +1,5 @@
 #!/bin/bash
 
-
-MODEL_TO_REPLACE="iMacPro1,1"
-SERIAL_TO_REPLACE="C02TM2ZBHX87"
-BOARD_SERIAL_TO_REPLACE="C02717306J9JG361M"
-UUID_TO_REPLACE="007076A6-F2A2-4461-BBE5-BAD019F8025A"
-ROM_TO_REPLACE="m7zhIYfl"
-
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
@@ -101,29 +94,5 @@ echo "MAC_ADDRESS='$MAC_ADDRESS'" >> $LOC/values.conf
 echo "ROM='$ROM'" >> $LOC/values.conf
 
 echo "These values have been stored in $LOC/values.conf"
-echo "IMPORTANT: Be sure to backup/save these values."
+echo "IMPORTANT: Be sure to backup/save these values. Then, run ./02-macos-opencore-create.sh"
 cat $LOC/values.conf
-
-read -p "Press ENTER to continue " userInput
-
-git clone --depth 1 --recurse-submodules https://github.com/kholia/OSX-KVM.git OSX-KVM
-cd OSX-KVM/OpenCore
-
-sed -i "s/$MODEL_TO_REPLACE/$MODEL/g" config.plist
-sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist
-sed -i "s/$BOARD_SERIAL_TO_REPLACE/$BOARD_SERIAL/g" config.plist
-sed -i "s/$UUID_TO_REPLACE/$UUID/g" config.plist
-sed -i "s/$ROM_TO_REPLACE/$ROM/g" config.plist
-
-rm OpenCore.qcow2
-./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
-
-cd $LOC
-mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
-
-echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
-echo "To edit/check config.plist inside the OpenCore image, run:"
-echo "EDITOR=vim virt-edit -m /dev/sda1 $LOC/OpenCore.qcow2 /EFI/OC/config.plist"
-
-# To edit config.plist inside OpenCore Image
-# EDITOR=vim virt-edit -m /dev/sda1 OpenCore.qcow2 /EFI/OC/config.plist
