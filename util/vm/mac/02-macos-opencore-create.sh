@@ -55,6 +55,8 @@ sed -i "s/$BOARD_SERIAL_TO_REPLACE/$BOARD_SERIAL/g" config.plist
 sed -i "s/$UUID_TO_REPLACE/$UUID/g" config.plist
 sed -i "s/$ROM_TO_REPLACE/$ROM/g" config.plist
 
+sed -i "s|<string>-v keepsyms=1 tlbto_us=0 vti=9</string>|<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>|g" config.plist
+
 rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
 
