@@ -41,6 +41,7 @@ fi
 
 LOC=$VM_FOLDER
 
+rm $LOC/OpenCore.qcow2
 source $LOC/values.conf
 
 cd $LOC
@@ -54,6 +55,11 @@ sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist
 sed -i "s/$BOARD_SERIAL_TO_REPLACE/$BOARD_SERIAL/g" config.plist
 sed -i "s/$UUID_TO_REPLACE/$UUID/g" config.plist
 sed -i "s/$ROM_TO_REPLACE/$ROM/g" config.plist
+
+sed -i "s|<string>-v keepsyms=1 tlbto_us=0 vti=9</string>|<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>|g" config.plist
+sed -i "s|<integer>45</integer>|<integer>10</integer>|g" config.plist
+sed -i "s|ZwAAAA==|5wMAAA==|g" config.plist
+
 
 rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
