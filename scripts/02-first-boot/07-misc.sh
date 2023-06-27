@@ -38,11 +38,8 @@ EOF
 
 mkdir -p /home/$CUR_USER/Documents/Programs
 
-# Pyenv install python 3.10
-# pyenv install 3.10
-# echo "export PYENV_ROOT=\"$HOME/.pyenv\"" >> /home/$CUR_USER/.bashrc
-# echo "command -v pyenv >/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"" >> /home/$CUR_USER/.bashrc
-# echo "eval \"$(pyenv init -)\"" >> /home/$CUR_USER/.bashrc
+# source pyenv
+echo "eval \"$(pyenv init -)\"" >> /home/$CUR_USER/.bashrc
 
 # npm user setup
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
