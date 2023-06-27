@@ -1,3 +1,3 @@
 #!/bin/bash
 
-brew install tree wget
+brew install tree wget vlc

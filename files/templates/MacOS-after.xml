@@ -188,7 +188,7 @@
     </hostdev> -->
     <memballoon model='none'/>
     <sound model="ich9">
-      <codec type="micro"/>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x08" function="0x0"/>
     </sound>
     <audio id="1" type="jack">
       <input clientName="vm-VIRT_NAME_HERE" connectPorts="VIRT_PIPEWIRE_INPUT"/>

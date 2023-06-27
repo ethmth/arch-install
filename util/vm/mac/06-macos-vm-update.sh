@@ -87,3 +87,4 @@ chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME updated."
 echo "Add your GPU to the VM, then play away."
+echo "IMPORTANT: For GPU audio, add the GPU and the GPU Audio Device on the same virtual bus, just with a different function."
