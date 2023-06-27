@@ -10,6 +10,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.freecadweb.FreeCAD
+org.blender.Blender
+org.octave.Octave
 org.raspberrypi.rpi-imager
 cc.arduino.IDE2
 org.godotengine.Godot
