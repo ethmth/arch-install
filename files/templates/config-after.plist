@@ -415,6 +415,12 @@
 				<string>Contents/Info.plist</string>
 			</dict>
 			<dict>
+    			<key>BundlePath</key>
+    			<string>AppleHDA.kext</string>
+    			<key>Enabled</key>
+    			<false/>
+			</dict>
+			<dict>
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>BundlePath</key>
@@ -983,6 +989,10 @@
 			<true/>
 			<key>DisableRtcChecksum</key>
 			<false/>
+			<key>DisableAppleHDA</key>
+			<true/>
+			<key>DisableAppleHDAController</key>
+			<true/>
 			<key>ExtendBTFeatureFlags</key>
 			<false/>
 			<key>ExternalDiskIcons</key>
