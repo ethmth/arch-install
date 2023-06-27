@@ -1207,7 +1207,7 @@
 				<key>boot-args</key>
 				<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>
 				<key>csr-active-config</key>
-				<data>AwgAAA==</data>
+				<data>bwIAAA==</data>
 				<key>prev-lang:kbd</key>
 				<data>ZW4tVVM6MA==</data>
 				<key>run-efi-updater</key>
