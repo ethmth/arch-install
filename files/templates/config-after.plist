@@ -419,8 +419,6 @@
 				<string>x86_64</string>
 				<key>BundlePath</key>
 				<string>VoodooHDA.kext</string>
-				<key>Comment</key>
-				<string>Intel audio patches</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -428,7 +426,7 @@
 				<key>MaxKernel</key>
 				<string></string>
 				<key>MinKernel</key>
-				<string>15.0.0</string>
+				<string></string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
@@ -1209,7 +1207,7 @@
 				<key>boot-args</key>
 				<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>
 				<key>csr-active-config</key>
-				<data>5wMAAA==</data>
+				<data>ZwAAAA==</data>
 				<key>prev-lang:kbd</key>
 				<data>ZW4tVVM6MA==</data>
 				<key>run-efi-updater</key>
@@ -1230,6 +1228,7 @@
 			<array>
 				<string>boot-args</string>
 				<string>ForceDisplayRotationInEFI</string>
+				<string>csr-active-config</string>
 			</array>
 		</dict>
 		<key>LegacyOverwrite</key>
