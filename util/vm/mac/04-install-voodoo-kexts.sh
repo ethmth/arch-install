@@ -36,7 +36,6 @@ LOC=$VM_FOLDER
 
 cd $LOC
 
-
 mkdir -p voodoo
 wget -O voodoo/voodoo.zip https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/RehabMan-Voodoo-2018-1008.zip
 cd voodoo
@@ -44,5 +43,16 @@ unzip voodoo.zip
 
 cp -R Release/VoodooPS2Controller.kext $LOC/osx-serial-generator/OSX-KVM/OpenCore/EFI/OC/Kexts
 
-echo "Voodoo kexts installed in $LOC/osx-serial-generator/OSX-KVM/OpenCore/EFI/OC/Kexts"
+
+
+cd $LOC
+
+mkdir -p voodooHDA
+wget -O voodooHDA/VoodooHDA.zip https://downloads.sourceforge.net/project/voodoohda/VoodooHDA.kext-v301.zip
+cd voodooHDA
+unzip VoodooHDA.zip
+
+cp -R VoodooHDA.kext $LOC/osx-serial-generator/OSX-KVM/OpenCore/EFI/OC/Kexts
+
+echo "Voodoo and VoodooHDA kexts installed in $LOC/osx-serial-generator/OSX-KVM/OpenCore/EFI/OC/Kexts"
 echo "You must regenerate the OpenCore disk by running ./05-macos-opencore-update.sh for changes to take effect."
