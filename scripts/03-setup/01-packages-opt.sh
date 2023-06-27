@@ -49,12 +49,10 @@ packages+="
 cuda
 cuda-tools
 python-cuda
-tensorflow-cuda
 python-tensorflow-cuda
 "
 else
 packages+="
-tensorflow
 python-tensorflow
 "
 fi
