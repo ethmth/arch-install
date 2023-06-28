@@ -12,7 +12,7 @@ if ([ "$userInput" == "n" ] || [ "$userInput" == "N" ]); then
     read -p "Please enter the ip: " ip
 fi
 
-scp -o StrictHostKeyChecking=no ~/Desktop/Ventura.dmg $username@$ip:/home/$username/vm/osx/OSX-KVM/Ventura.dmg
+scp -o StrictHostKeyChecking=no ~/Desktop/Ventura.dmg $username@$ip:/home/$username/vm/osx/Ventura.dmg
 
-echo "Ventura.dmg transferred to host at /home/$username/vm/osx/OSX-KVM/Ventura.dmg"
+echo "Ventura.dmg transferred to host at /home/$username/vm/osx/Ventura.dmg"
 echo "Please run util/vm/mac/create-ventura-img.sh to finish img creation"
