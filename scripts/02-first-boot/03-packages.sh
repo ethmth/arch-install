@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+autopep8
 tumbler
 android-file-transfer
 mtpfs
