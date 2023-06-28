@@ -94,6 +94,7 @@ networkmanager-openvpn
 nodejs-lts-hydrogen
 npm
 openbsd-netcat
+nmap
 openresolv
 openssh
 openvpn
