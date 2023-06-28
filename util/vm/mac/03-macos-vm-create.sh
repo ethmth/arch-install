@@ -11,9 +11,11 @@ source /home/$CUR_USER/arch-install/config/last_disk.txt
 DISK="Nothing"
 
 if ! [ "$LAST_DISK" == "" ]; then
-    read -p "Do you want to use $LAST_DISK (N for No, Otherwise Yes)? " userInput
-    if ! ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
-        DISK=$LAST_DISK
+    if [ -e "$LAST_DISK" ]; then
+        read -p "Do you want to use $LAST_DISK (N for No, Otherwise Yes)? " userInput
+        if ! ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+            DISK=$LAST_DISK
+        fi
     fi
 fi
 
@@ -81,8 +83,9 @@ fi
 
 
 OS_DISK="Nothing"
-oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep macos | head -n 1)
-read -p "Do you want to use $oses as the iso (N for No, Otherwise Yes)? " userInput
+oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep macos)
+top_os=$(echo "$oses" | head -n 1)
+read -p "Do you want to use $top_os as the iso (N for No, Otherwise Yes)? " userInput
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
 else

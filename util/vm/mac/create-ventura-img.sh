@@ -19,9 +19,9 @@ if ! [ -e "/home/$CUR_USER/vm/osx/OSX-KVM/Ventura.dmg" ]; then
     exit 1
 fi
 
-dmg2img -i /home/$CUR_USER/vm/osx/OSX-KVM/Ventura.dmg /home/$CUR_USER/vm/os/macos-Ventura.img
+#dmg2img -i /home/$CUR_USER/vm/osx/OSX-KVM/Ventura.dmg /home/$CUR_USER/vm/os/macos-Ventura.img
 
-echo "If dmg2img says dmg is corrupted, try just renameing the dmg file to an img"
-# mv /home/$CUR_USER/vm/osx/OSX-KVM/Ventura.dmg /home/$CUR_USER/vm/os/macos-Ventura.img
+#echo "If dmg2img says dmg is corrupted, try just renameing the dmg file to an img"
+mv /home/$CUR_USER/vm/osx/OSX-KVM/Ventura.dmg /home/$CUR_USER/vm/os/macos-Ventura.img
 
 echo "/home/$CUR_USER/vm/os/macos-Ventura.img created"

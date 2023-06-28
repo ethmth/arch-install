@@ -67,6 +67,10 @@ rm OpenCore.qcow2
 cd $LOC
 mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
 
+
+mv $LOC/osx-serial-generator/OSX-KVM
+git restore OVMF_VARS.fd
+
 echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
 echo "To edit/check config.plist inside the OpenCore image, run:"
 echo "EDITOR=vim virt-edit -m /dev/sda1 $LOC/OpenCore.qcow2 /EFI/OC/config.plist"
