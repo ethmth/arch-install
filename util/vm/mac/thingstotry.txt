@@ -1,0 +1,5 @@
+Default CPU, not passthrough
+Change VGA to Virtio
+Change OVMF_VARSx128... NVRAM to just OVMF_VARS
+
+https://www.youtube.com/watch?v=_5XVYF4CwR4
