@@ -335,19 +335,6 @@
 				<string>pci8086,2916</string>
 			</dict>
 		</dict>
-		<dict>
-            <key>PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)</key>
-            <dict>
-                <key>@0,name</key>
-                <string>ATY,Belknap</string>
-                <key>@1,name</key>
-                <string>ATY,Belknap</string>
-                <key>@2,name</key>
-                <string>ATY,Belknap</string>
-                <key>@3,name</key>
-                <string>ATY,Belknap</string>
-            </dict>
-        </dict>
 		<key>Delete</key>
 		<dict/>
 	</dict>
@@ -1114,7 +1101,7 @@
 			<key>ScanPolicy</key>
 			<integer>0</integer>
 			<key>SecureBootModel</key>
-			<string>j160</string>
+			<string>Disabled</string>
 			<key>Vault</key>
 			<string>Optional</string>
 		</dict>
@@ -1218,9 +1205,9 @@
 				<key>SystemAudioVolume</key>
 				<data>Rg==</data>
 				<key>boot-args</key>
-				<string>-v alcid=7 agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>
+				<string>-v agdpmod=pikera keepsyms=1 tlbto_us=0 vti=9</string>
 				<key>csr-active-config</key>
-				<data>AAAAAA==</data>
+				<data>bwIAAA==</data>
 				<key>prev-lang:kbd</key>
 				<data>ZW4tVVM6MA==</data>
 				<key>run-efi-updater</key>
