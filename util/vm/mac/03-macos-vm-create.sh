@@ -133,6 +133,10 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
+cd $VM_FOLDER/osx-serial-generator/OSX-KVM
+git restore OVMF_VARS.fd
+
+
 echo "Virtual machine $NAME defined."
 echo "Go through and setup MacOS. First, erase and format the disk using a non-APFS system."
 echo "Then, reinstall macOS. It can take a long time. Go through the installation setup."

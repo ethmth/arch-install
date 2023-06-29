@@ -85,6 +85,9 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
+cd $VM_FOLDER/osx-serial-generator/OSX-KVM
+git restore OVMF_VARS.fd
+
 echo "Virtual machine $NAME updated."
 echo "Add your GPU to the VM, then play away."
 echo "IMPORTANT: For GPU audio, add the GPU and the GPU Audio Device on the same virtual bus, just with a different function."

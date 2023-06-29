@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NEW_MODEL="iMacPro1,1"
+
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
@@ -53,7 +55,7 @@ VALUES_ACCEPTED=0
 while ! (( VALUES_ACCEPTED )); do
     tsv_file=$(./generate-unique-machine-values.sh \
         -c 1 \
-        --model="iMacPro1,1" | grep "Wrote TSV" | tr ' ' '\n' | grep ".tsv")
+        --model="$NEW_MODEL" | grep "Wrote TSV" | tr ' ' '\n' | grep ".tsv")
 
     values=$(cat $tsv_file | tr '\t' '\n')
 
