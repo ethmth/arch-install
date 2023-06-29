@@ -136,3 +136,8 @@ chmod o+x /home/$CUR_USER/vm/os
 echo "Virtual machine $NAME defined."
 echo "Go through and setup MacOS. First, erase and format the disk using a non-APFS system."
 echo "Then, reinstall macOS. It can take a long time. Go through the installation setup."
+
+echo "After the installer runs, if your Mac Disk doesn't show up in OpenCore, keep selecting MacOS Installer until it shows up"
+echo "If you keep trying, you should eventually get to the 'Select your Country or Region' page, where you should wait until CPU activity slows down before installing"
+# echo "After installing, run everying in 01-setup in the Resources ISO before moving on on the host, installing Voodoo kexts, and passing GPU"
+
