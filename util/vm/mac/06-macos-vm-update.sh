@@ -85,7 +85,7 @@ chmod o+x /home/$CUR_USER
 chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
-cd $VM_FOLDER/osx-serial-generator/OSX-KVM
+cd $DIRECTORY/osx-serial-generator/OSX-KVM
 git restore OVMF_VARS.fd
 
 echo "Virtual machine $NAME updated."
