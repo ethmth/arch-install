@@ -13,6 +13,7 @@ chmod +x /home/$CUR_USER/scripts/pia-ip/pia-port-detect.sh
 chmod +x /home/$CUR_USER/scripts/pia-ip/pia-reconnect.sh
 chmod +x /home/$CUR_USER/scripts/pia-ip/pia-report.sh
 
+echo "@reboot /usr/local/bin/piactl connect" > /tmp/pia-cron
 echo "@reboot /home/$CUR_USER/scripts/pia-ip/ipcheck.sh" >> /tmp/pia-cron
 echo "@reboot /home/$CUR_USER/scripts/pia-ip/pia-port-detect.sh" >> /tmp/pia-cron
 echo "5 5 * * * /home/$CUR_USER/scripts/pia-ip/pia-reconnect.sh 30" >> /tmp/pia-cron
