@@ -13,7 +13,7 @@ sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DEFAULT=saved"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_TIMEOUT=3"
 if (( NVIDIA )); then
-    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh ibt=off usbcore.autosuspend=-1 video=efifb:off
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh ibt=off nvidia_drm.modeset=1 usbcore.autosuspend=-1 video=efifb:off
     echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
 else
     sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 video=efifb:off
