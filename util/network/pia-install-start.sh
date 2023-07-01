@@ -6,6 +6,7 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 CUR_USER=$(whoami)
+source /home/$CUR_USER/arch-install/config/network-interface.conf
 
 read -p "Are you on ARM architecture (Y for Yes, otherwise No)? " onArm
 
@@ -35,6 +36,8 @@ git clone https://github.com/ethmth/pia-ip /home/$CUR_USER/scripts/pia-ip
 cp /home/$CUR_USER/scripts/pia-ip/.env.example /home/$CUR_USER/scripts/pia-ip/.env
 
 bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/scripts/pia-ip/pia-fwd.sh "ABSOLUTE_PATH=\'/home/$CUR_USER/scripts/pia-ip\'"
+
+sed -i "s/wlan0/$NETWORK_INTERFACE/g" /home/$CUR_USER/scripts/pia-ip/.env
 
 echo "Edit the /home/$CUR_USER/scripts/pia-ip/.env file with the correct values."
 echo "When done, run ./pia-install-finish.sh"
