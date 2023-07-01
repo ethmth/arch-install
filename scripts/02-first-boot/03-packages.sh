@@ -149,33 +149,35 @@ ninja
 downgrade
 "
 
-if (( HYPRLAND && AMD )); then
-packages+="
-hyprland
-"
-fi
-if (( HYPRLAND && NVIDIA )); then
-packages+="
-hyprland-nvidia-git
-"
-fi
 if (( HYPRLAND )); then
+#grimblast-git
+#waybar-hyprland
 packages+="
 brightnessctl
 dunst
-grimblast-git
 hyprpicker
 otf-font-awesome
 polkit-gnome
 rofi
 swaybg
 swaylock-effects
-waybar-hyprland
+waybar-hyprland-git
 wf-recorder
 wlogout
 xdg-desktop-portal-hyprland
 xorg
+gammastep
+nwg-look
 "
+if (( NVIDIA && ! INTEL )); then
+packages+="
+hyprland-nvidia-git
+"
+else
+packages+="
+hyprland
+"
+fi
 fi
 
 if (( PLASMA )); then
@@ -193,7 +195,6 @@ auto-cpufreq
 "
 fi
 
-
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
@@ -201,7 +202,5 @@ yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
 echo "Make sure you have iptables-nft instead of iptables"
-#echo "Make sure you have sddm-git instead of sddm"
-#echo "Run yay -S sddm-git to be sure it's installed"
 echo "If so, run ./04-services.sh"
 

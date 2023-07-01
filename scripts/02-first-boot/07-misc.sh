@@ -37,9 +37,10 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | ssh-keygen
 EOF
 
 mkdir -p /home/$CUR_USER/Documents/Programs
+mkdir -p /home/$CUR_USER/Pictures/Wallpapers
 
 # source pyenv
-echo "eval \"$(pyenv init -)\"" >> /home/$CUR_USER/.bashrc
+echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
 
 # npm user setup
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc

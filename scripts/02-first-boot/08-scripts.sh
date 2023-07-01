@@ -13,7 +13,7 @@ sudo -k mkdir -p /etc/systemd/system.conf.d
 sudo mkdir -p /etc/sddm.conf.d
 sudo sh -c 'printf "[Manager]\nDefaultTimeoutStopSec=25s\n" > /etc/systemd/system.conf.d/10-timeout.conf'
 if (( LAPTOP )); then
-    sudo mkdir -p /etc/systemd/login.conf.d
+    sudo mkdir -p /etc/systemd/logind.conf.d
     sudo sh -c 'printf "[Login]\nHandleLidSwitch=sleep\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n" > /etc/systemd/logind.conf.d/10-lidswitch.conf'
     sudo cp /home/$CUR_USER/arch-install/files/configs/backlight.rules /etc/udev/rules.d/backlight.rules
 fi
