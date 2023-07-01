@@ -10,6 +10,10 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 if (( NVIDIA )); then
     sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh remove-hook "kms"
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -b start nvidia nvidia_modeset nvidia_uvm nvidia_drm
+
+    sudo mkdir -p /etc/pacman.d/hooks
+    sudo cp /home/$CUR_USER/arch-install/files/configs/nvidia.hook /etc/pacman.d/hooks/nvidia.hook
     sudo mkinitcpio -P
 fi
 
