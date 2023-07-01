@@ -64,8 +64,17 @@ echo "NVIDIA=$NVIDIA" >> $OFILE
 echo "HYPRLAND=$HYPRLAND" >> $OFILE
 echo "PLASMA=$PLASMA" >> $OFILE
 
-cat $OFILE
+INTERFACE=$(ls -1 /sys/class/net | grep -v "lo" | grep -v "docker" | grep -v "virbr" | grep -v "vnet" | fzf --prompt "Please select your primary network interface")
+OFILE_INTERFACE="/home/$CUR_USER/arch-install/config/network-interface.conf"
 
-echo "Verify the contents of $OFILE (Output above)"
+echo "NETWORK_INTERFACE=$INTERFACE" > $OFILE_INTERFACE
+
+echo "system.conf:"
+cat $OFILE
+echo ""
+echo "network-interface.conf:"
+cat $OFILE_INTERFACE
+
+echo "Verify the contents of $OFILE and network-interface.conf (Output above)"
 echo "You can manually edit $OFILE with 1 or 0 if needed"
 echo "If successful, run ./02-yay.sh"

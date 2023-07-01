@@ -1,4 +1,5 @@
 config/system.conf
+config/network-interface.conf
 config/vm.conf
 config/last_disk.txt
 scripts/vm/04-downloaders/BaseSystem.dmg

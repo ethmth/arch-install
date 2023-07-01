@@ -7,6 +7,7 @@ fi
 
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
+source /home/$CUR_USER/arch-install/config/network-interface.conf
 
 # Install Magic Status Executables
 if (( PLASMA )); then
