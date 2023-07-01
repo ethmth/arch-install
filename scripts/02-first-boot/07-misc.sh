@@ -38,6 +38,9 @@ EOF
 
 mkdir -p /home/$CUR_USER/Documents/Programs
 mkdir -p /home/$CUR_USER/Pictures/Wallpapers
+mkdir -p /home/$CUR_USER/Downloads
+
+wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.com/images/wallpapers/windows-11-purple-abstract-dark-background-dark-purple-dark-3840x2400-8995.png
 
 # source pyenv
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc

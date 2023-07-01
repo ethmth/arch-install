@@ -167,7 +167,22 @@ wlogout
 xdg-desktop-portal-hyprland
 xorg
 gammastep
-nwg-look
+nwg-look-bin
+"
+# Font packages:
+packages+="
+ttf-nerd-fonts-symbols-common
+otf-firamono-nerd
+inter-font
+otf-sora
+ttf-fantasque-nerd
+noto-fonts
+noto-fonts-emoji
+ttf-comfortaa
+ttf-jetbrains-mono-nerd
+ttf-icomoon-feather
+ttf-iosevka-nerd
+adobe-source-code-pro-fonts
 "
 if (( NVIDIA && ! INTEL )); then
 packages+="
