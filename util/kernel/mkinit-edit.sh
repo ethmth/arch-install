@@ -9,25 +9,56 @@ fi
 
 EDIT_HOOKS=0
 EDIT_MODULES=0
+REMOVE_HOOK=0
 if [ "$1" == "add-hooks" ]; then
     EDIT_HOOKS=1
 elif [ "$1" == "add-modules" ]; then
     EDIT_MODULES=1
+elif [ "$1" == "remove-hook" ]; then
+    REMOVE_HOOK=1
 else
 	printf "Options \n"
 	printf	"\t add-hooks\n"
 	printf	"\t add-modules\n"
+	printf	"\t remove-hook\n"
     exit 1
 fi
 
 edit_string=""
 if (( EDIT_HOOKS )); then
     edit_string="HOOKS"
+elif (( REMOVE_HOOK )); then
+    edit_string="HOOKS"
 elif (( EDIT_MODULES )); then
     edit_string="MODULES"
 fi
 
 shift
+
+if (( REMOVE_HOOK )); then
+
+    if [ "$#" -ne 1 ]; then
+        echo "Only one hook can be removed at a time"
+        exit 1
+    fi
+    
+    current_hooks=$(grep "^$edit_string=" "$conf_file" | sed -e "s/^$edit_string=//")
+    new_hooks=$(echo "$current_hooks" | sed "s/\b$1 \b//g")
+
+    echo "$current_hooks"
+    echo "$new_hooks"
+
+    read -p "Do these $edit_string look right (YES for yes, otherwise No)? " userInput
+
+    if ! [ "$userInput" == "YES" ]; then
+        echo "Cancelling. No damage done."
+        exit 1
+    fi
+
+    sed -i "s/^$edit_string=.*/$edit_string=$new_hooks/" "$conf_file"
+    echo "Changes written to $conf_file, remember to run mkinitcpio -P"
+    exit 0
+fi
 
 AFTER=0
 BEFORE=0

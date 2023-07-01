@@ -25,22 +25,15 @@ echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel-group
 usermod -aG audio,video,optical,storage $username
 
 # Grub configuration
-#/tmp/arch-install/util/kernel/mkinit-edit.sh
-#sed -i '/^HOOKS/s/block/block encrypt lvm2/' /etc/mkinitcpio.conf
 bash /tmp/arch-install/util/kernel/mkinit-edit.sh add-hooks -a block encrypt lvm2
 echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
-#sed -i '/^HOOKS/s/keyboard //' /etc/mkinitcpio.conf
-#sed -i '/^HOOKS/s/autodetect/keyboard autodetect/' /etc/mkinitcpio.conf
 bash /tmp/arch-install/util/kernel/mkinit-edit.sh add-hooks -b autodetect keyboard
 echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
 mkinitcpio -P
 
 # Grub Command Line Arguments
-#/tmp/arch-install/util/kernel/grub-add.sh
 grub_string=$(cat /opt/grub_string.txt)
 rm /opt/grub_string.txt
-#current_arguments=$(grep "^GRUB_CMDLINE_LINUX_DEFAULT" /etc/default/grub | sed 's/GRUB_CMDLINE_LINUX_DEFAULT=//' | tr -d '"')
-#sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1\"$current_arguments $grub_string\"/" /etc/default/grub
 sed -i 's/ quiet//g' /etc/default/grub
 bash /tmp/arch-install/util/kernel/grub-add.sh "$grub_string"
 echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
