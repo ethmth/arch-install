@@ -5,6 +5,8 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-driver=$(dkms status -m 8812au | sed 's/\s\+/\n/g' | grep "8812" | sed 's/,*$//g')
+git clone --depth 1 https://github.com/cilynx/rtl88x2bu.git /opt/rtl88x2bu
 
-dkms remove $driver
+cd /opt/rtl88x2bu
+make
+bash deploy.sh

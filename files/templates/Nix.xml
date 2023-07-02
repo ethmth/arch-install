@@ -66,6 +66,10 @@
     <controller type="pci" model="pcie-root-port"/>
     <controller type="pci" model="pcie-root-port"/>
     <controller type="pci" model="pcie-root-port"/>
+    <filesystem type="mount" accessmode="mapped" fmode="0777" dmode="0777">
+      <source dir="VIRT_SHAREPOINT_HERE"/>
+      <target dir="/sharepoint"/>
+    </filesystem>
     <interface type="network">
       <source network="VIRT_NETWORK_HERE"/>
       <mac address="VIRT_MAC_ADDRESS_HERE"/>

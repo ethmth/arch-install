@@ -76,6 +76,7 @@ jq
 ca-certificates
 kate
 feh
+rtl8812au-dkms
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
