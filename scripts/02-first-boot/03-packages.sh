@@ -152,7 +152,6 @@ downgrade
 "
 
 if (( HYPRLAND )); then
-#grimblast-git
 #waybar-hyprland
 packages+="
 brightnessctl
@@ -170,6 +169,7 @@ xdg-desktop-portal-hyprland
 xorg
 gammastep
 nwg-look-bin
+grimblast-git
 "
 # Font packages:
 packages+="
