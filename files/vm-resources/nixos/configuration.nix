@@ -128,8 +128,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  let
+    my-python-packages = ps: with ps; [
+      requests
+    ];
+  in
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -167,10 +170,7 @@
     nmap
     neofetch
     keepassxc
-    python311Full
-    python311Packages.venvShellHook
-    python311Packages.pip
-    python311Packages.selenium
+    python3.withPackages my-python-packages
     nodejs_18
     nettools
     speedtest-cli
@@ -209,6 +209,8 @@
     vscodium
     riseup-vpn
     wireshark-qt
+    fzf
+    aria
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
