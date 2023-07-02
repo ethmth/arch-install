@@ -128,11 +128,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  let
-    my-python-packages = ps: with ps; [
-      requests
-    ];
-  in
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -170,7 +165,7 @@
     nmap
     neofetch
     keepassxc
-    python3.withPackages my-python-packages
+    (python3.withPackages(ps: with ps; [ requests ]))
     nodejs_18
     nettools
     speedtest-cli
