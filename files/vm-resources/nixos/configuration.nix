@@ -148,7 +148,6 @@
     gnome.gnome-terminal
     gnomeExtensions.appindicator 
     gnomeExtensions.dash-to-dock
-    gnomeExtensions.gsconnect
     gnome.adwaita-icon-theme
     yaru-theme
     ubuntu-themes
@@ -210,7 +209,6 @@
     vscodium
     riseup-vpn
     wireshark-qt
-    libsForQt5.kdeconnect-kde
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -220,6 +218,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.kdeconnect.enable = true;
 
   # List services that you want to enable:
 
@@ -230,7 +229,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # ADD_SHAREPOINT_SECTION_HERE
 
