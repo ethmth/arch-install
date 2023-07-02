@@ -9,6 +9,8 @@ mkdir -p /sharepoint
 mkdir -p /mnt/share
 mount -t 9p -o trans=virtio /sharepoint /mnt/share/
 
+chmod -R 777 /mnt/share
+
 string_to_echo=$(echo "  fileSystems.\"/mnt/share\" = {
     device = \"/sharepoint\";
     fsType = \"9p\";
@@ -19,8 +21,8 @@ search_string="ADD_SHAREPOINT_SECTION_HERE"
 file="/etc/nixos/configuration.nix"
 tmp_file="/tmp/configuration.nix"
 
-mv $file $tmp_file
-touch $file
+cp $file $tmp_file
+printf "" > $file
 
 while IFS= read -r line; do
   echo "$line" >> "$file"
@@ -29,8 +31,7 @@ while IFS= read -r line; do
   fi
 done < "$tmp_file"
 
-rm $file
-mv "$tmp_file" "$file"
+rm $tmp_file
 
 nixos-rebuild switch
 

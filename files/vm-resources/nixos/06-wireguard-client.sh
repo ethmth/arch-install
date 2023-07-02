@@ -19,14 +19,6 @@ fi
 
 chmod -R 777 /opt/wireguard-client
 
-# mkdir -p /etc/wireguard
-# cp /opt/wireguard-client/peer2/peer2.conf /etc/wireguard/wg0.conf
-# rm -rf /opt/wireguard-client
-
-# sed -i '/AllowedIPs/d' /etc/wireguard/wg0.conf
-# echo "AllowedIPs = 10.13.13.0/24" >> /etc/wireguard/wg0.conf
-
-# wg-quick up wg0
 
 PRIVATE_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PrivateKey" | cut -d '=' -f 2- | sed -e 's/^[[:space:]]*//')
 PUBLIC_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PublicKey" | cut -d '=' -f 2- | sed -e 's/^[[:space:]]*//')
@@ -54,8 +46,8 @@ search_string="ADD_WIREGUARD_SECTION_HERE"
 file="/etc/nixos/configuration.nix"
 tmp_file="/tmp/configuration.nix"
 
-mv $file $tmp_file
-touch $file
+cp $file $tmp_file
+printf "" > $file
 
 while IFS= read -r line; do
   echo "$line" >> "$file"
@@ -64,8 +56,7 @@ while IFS= read -r line; do
   fi
 done < "$tmp_file"
 
-rm $file
-mv "$tmp_file" "$file"
+rm $tmp_file
 
 rm -rf /opt/wireguard-client
 
