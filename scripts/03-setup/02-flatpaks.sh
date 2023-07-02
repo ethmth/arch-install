@@ -59,4 +59,5 @@ flatpak update
 echo "Verify that the installation of the flatpaks was successful"
 echo "Note: If you have clipboard issues with the address bar of Librewolf,"
 echo "consider disabling socket=wayland access in Flatseal to force xwayland"
+echo "If you're on Hyprland, run nwg-look and set the 'Prefer Dark' gtk theme"
 echo "Next, run ./03-openair-clone.sh"
