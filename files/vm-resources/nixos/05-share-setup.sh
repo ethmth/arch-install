@@ -10,6 +10,29 @@ sudo -k mkdir -p /sharepoint
 mkdir -p /home/$CUR_USER/share
 sudo mount -t 9p -o trans=virtio /sharepoint /home/$CUR_USER/share/
 
-sudo nixos-generate-config
+string_to_echo=$(echo "  fileSystems.\"/home/$CUR_USER/share\" = {
+    device = \"/sharepoint\";
+    fsType = \"9p\";
+    options = [ \"trans=virtio\" ];
+  };")
 
-echo "/etc/nixos/hardware-configuration.nix should be updated with shared drive"
+search_string="ADD_SHAREPOINT_SECTION_HERE"
+file="/etc/nixos/configuration.nix"
+tmp_file="/tmp/configuration.nix"
+
+mv $file $tmp_file
+touch $file
+
+while IFS= read -r line; do
+  echo "$line" >> "$file"
+  if [[ $line == *"$search_string"* ]]; then
+    echo "$string_to_echo" >> "$file"
+  fi
+done < "$tmp_file"
+
+rm $file
+mv "$tmp_file" "$file"
+
+nixos-rebuild switch
+
+echo "The ~/share directory should mount on boot now"

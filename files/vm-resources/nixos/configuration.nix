@@ -232,6 +232,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # ADD_SHAREPOINT_SECTION_HERE
 
   # ADD_WIREGUARD_SECTION_HERE
 
