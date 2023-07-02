@@ -153,6 +153,7 @@
     proxychains
     tsocks
     xfce.thunar
+    xfce.tumbler
     gthumb
     mpv
     ffmpeg
