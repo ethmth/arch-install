@@ -20,4 +20,4 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Verify that the grub config /etc/default/grub is correct."
 echo "Reboot. After, run '~/arch-install/util/vm/iommu_groups.sh' to view iommu groups"
-echo "If you can see iommu groups, run ./02-bind-vfio.sh"
+echo "If you can see iommu groups, run ./03-bind-vfio.sh. If you need the ACS override, run ./02-acs-patch.sh"
