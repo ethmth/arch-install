@@ -78,7 +78,7 @@ fi
 
 
 OS_DISK="Nothing"
-oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep macos)
+oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep $SEARCH_STRING)
 top_os=$(echo "$oses" | head -n 1)
 read -p "Do you want to use $top_os as the iso (N for No, Otherwise Yes)? " userInput
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
