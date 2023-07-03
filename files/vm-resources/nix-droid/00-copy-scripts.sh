@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run with root/sudo privileges."
+	echo "This script must not be run with root/sudo privileges."
 	exit 1
 fi
 
@@ -13,10 +13,4 @@ if ! [ -f "$SCRIPT_DIR/configuration.nix" ]; then
     exit 1
 fi
 
-cp "$SCRIPT_DIR/configuration.nix" /etc/nixos/configuration.nix
-
-nixos-rebuild switch
-systemctl daemon-reload
-
-echo "Reboot. Then, run ./03-waydroid.sh"
-
+cp -r "$SCRIPT_DIR" ~/nix-droid

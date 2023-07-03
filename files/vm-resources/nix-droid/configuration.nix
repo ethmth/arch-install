@@ -157,11 +157,6 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  #systemd.user.sockets.weston = {
-  #  enable = true;
-  #  description = "Weston, a Wayland compositor";
-  #  listenStreams = [ "%t/wayland-0" ];
-  #};
   systemd.user.services.weston = {
     enable = true;
     description = "Weston, a Wayland compositor, as a user service";
@@ -173,21 +168,6 @@
     };
     wantedBy = [ "default.target" ];
   };
-
-  #systemd.services.weston = {
-  #  enable = true;
-  #  description = "Weston Wayland Compositor";
-  #  unitConfig = {
-  #    After = "network.target";
-  #  };
-  #  serviceConfig = {
-  #    ExecStart = "/run/current-system/sw/bin/weston";
-  #    Restart = "always";
-  #    Environment = "XDG_RUNTIME_DIR=/run/user/1000";
-  #  };
-  #  wantedBy = [ "multi-user.target" ];
-  #};
-
 
   systemd.services.ipforward = {
     enable = true;
@@ -203,19 +183,19 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  #systemd.services.waydroid-session = {
-  #  enable = true;
-  #  description = "Waydroid Service";
-  #  unitConfig = {
-  #    Requires = "waydroid-container.service";
-  #    After = "weston.service waydroid-container.service";
-  #  };
-  #  serviceConfig = {
-  #    ExecStart = "/run/current-system/sw/bin/waydroid session start";
-  #    Restart = "always";
-  #  };
-  #  wantedBy = [ "multi-user.target" ];
-  #};
+  systemd.user.services.waydroid-session = {
+    enable = true;
+    description = "Waydroid Service";
+    unitConfig = {
+      Requires = "weston.service waydroid-container.service";
+      After = "weston.service waydroid-container.service";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/waydroid session start";
+      Restart = "always";
+    };
+    wantedBy = [ "default.target" ];
+  };
 
 
 
