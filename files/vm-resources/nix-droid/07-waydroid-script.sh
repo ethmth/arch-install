@@ -17,6 +17,4 @@ source .venv/bin/activate
 
 sudo python3 -m pip install -r requirements.txt
 
-sudo python3 main.py install gapps
-
-sudo python3 main.py install libhoudini
+echo "Waydroid script setup. Now, run ./08-install-gapps.sh"

@@ -13,6 +13,10 @@ if ! [ -f "$SCRIPT_DIR/configuration.nix" ]; then
     exit 1
 fi
 
+if [ -d "~/install-scripts" ]; then
+    rm -rf ~/install-scripts
+fi
+
 cp -r "$SCRIPT_DIR" ~/install-scripts
 
 echo "Install scripts placed in ~/install-scripts. Run ./02-network.sh there"
