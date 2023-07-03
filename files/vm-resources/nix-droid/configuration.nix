@@ -120,6 +120,7 @@
     wl-clipboard
     proxychains
     tsocks
+    socat
     xfce.thunar
     xfce.tumbler
     gthumb

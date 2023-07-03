@@ -152,6 +152,7 @@
     ubuntu_font_family
     proxychains
     tsocks
+    socat
     xfce.thunar
     xfce.tumbler
     gthumb

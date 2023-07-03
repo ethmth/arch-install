@@ -35,6 +35,7 @@ python310
 etcher-bin
 flutter
 hplip
+waydroid
 "
 
 if (( NVIDIA )); then
