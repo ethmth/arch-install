@@ -23,7 +23,7 @@
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nix-droid"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -52,31 +52,11 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
-
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ]; 
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -86,9 +66,8 @@
 
   services.printing.enable = false;
 
-
-  services.flatpak.enable = true;
-  virtualisation.docker.enable = true;
+  # services.flatpak.enable = true;
+  # virtualisation.docker.enable = true;
   virtualisation = {
     waydroid.enable = true;
     lxd.enable = true;
@@ -115,13 +94,12 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nix = {
+  users.users.android = {
     isNormalUser = true;
-    description = "nix";
+    description = "android";
     extraGroups = [ "networkmanager" "wheel" "audio" "input" "optical" "storage" "docker" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
     ];
   };
 
@@ -136,20 +114,9 @@
     git
     git-lfs
     killall
-    docker
-    docker-compose
     dnsmasq
     dig
     wl-clipboard
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    gnome.gnome-terminal
-    gnomeExtensions.appindicator 
-    gnomeExtensions.dash-to-dock
-    gnome.adwaita-icon-theme
-    yaru-theme
-    ubuntu-themes
-    ubuntu_font_family
     proxychains
     tsocks
     xfce.thunar
@@ -158,29 +125,19 @@
     feh
     mpv
     ffmpeg
-    lxqt.qterminal
     vlc
     youtube-dl
     yt-dlp
-    john
-    hashcat
     nmap
     neofetch
-    keepassxc
     (python3.withPackages(ps: with ps; [ requests ]))
-    nodejs_18
     nettools
     speedtest-cli
     netcat-openbsd
-    jdk8
-    jdk17
     cmake
-    httrack
-    samba
     gcc
     p7zip
     gnutar
-    qbittorrent
     gvfs
     gnome.gvfs
     libelf
@@ -198,16 +155,10 @@
     gnome.networkmanager-openvpn
     unzip
     rar
-    xfce.catfish
     pkg-config
     jq
-    mesa
-    libsForQt5.kate
-    vscodium
-    riseup-vpn
-    wireshark-qt
     fzf
-    aria
+    phoc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -217,7 +168,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  programs.kdeconnect.enable = true;
+  # programs.kdeconnect.enable = true;
 
   # List services that you want to enable:
 
