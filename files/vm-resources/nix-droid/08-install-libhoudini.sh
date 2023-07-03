@@ -12,3 +12,5 @@ cd /home/$CUR_USER/waydroid_script
 source .venv/bin/activate
 
 sudo python3 main.py install libhoudini
+
+echo "Restart, then run ./09-install-microg.sh"

@@ -13,4 +13,4 @@ source .venv/bin/activate
 
 sudo python3 main.py install gapps
 
-echo "Restart, then run ./09-install-libhoudini.sh"
+echo "Restart, then run ./OPT-02-register-gapps.sh"
