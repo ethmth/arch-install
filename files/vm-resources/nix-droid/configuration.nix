@@ -139,6 +139,7 @@
     scrcpy
     openvpn
     networkmanager-openvpn
+    riseup-vpn
     unzip
     rar
     pkg-config

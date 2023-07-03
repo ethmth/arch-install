@@ -6,9 +6,9 @@
       <libosinfo:os id="http://nixos.org/nixos/22.11"/>
     </libosinfo:libosinfo>
   </metadata>
-  <memory>13271040</memory>
-  <currentMemory>13271040</currentMemory>
-  <vcpu current="4">4</vcpu>
+  <memory>6291456</memory>
+  <currentMemory>6291456</currentMemory>
+  <vcpu current="2">2</vcpu>
   <os>
     <type arch="x86_64" machine="q35">hvm</type>
   </os>
@@ -18,7 +18,7 @@
     <vmport state="off"/>
   </features>
   <cpu mode="host-passthrough">
-    <topology sockets="1" cores="4" threads="1"/>
+    <topology sockets="1" cores="2" threads="1"/>
   </cpu>
   <clock offset="utc">
     <timer name="rtc" tickpolicy="catchup"/>

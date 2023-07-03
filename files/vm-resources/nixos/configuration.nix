@@ -164,6 +164,7 @@
     vlc
     youtube-dl
     yt-dlp
+    gallery-dl
     john
     hashcat
     nmap
