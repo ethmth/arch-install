@@ -53,7 +53,12 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.autoLogin.enable = true;
+  services.xserver.displayManager.sddm.autoLogin.user = "android";
+  # services.xserver.displayManager.sddm.autoLoginSession = "weston";
+  # services.xserver.desktopManager.plasma5.enable = true; 
+  services.xserver.desktopManager.weston.enable = true; 
 
   # Configure keymap in X11
   services.xserver = {
@@ -98,9 +103,6 @@
     packages = with pkgs; [
       firefox
     ];
-    shellHook = ''
-      /run/current-system/sw/bin/weston
-    '';
   };
 
   # Allow unfree packages
@@ -149,7 +151,7 @@
   ];
 
   # List services that you want to enable:
-  services.getty.autologinUser = "android";
+  # services.getty.autologinUser = "android";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
