@@ -28,6 +28,7 @@ feh
 usbutils
 carla
 iptables-nft
+firewalld
 cdrtools
 iotop
 libtool

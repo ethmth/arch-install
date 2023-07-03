@@ -14,4 +14,6 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
 gsettings set org.gnome.desktop.session idle-delay 0
 
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
 sudo ln -s /run/current-system/sw/bin/bash /bin/bash
