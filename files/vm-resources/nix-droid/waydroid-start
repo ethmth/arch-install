@@ -1,5 +1,3 @@
 #!/bin/sh
 
-echo "Hello there $(whoami) $(date)" >> /home/android/log.txt
-
 export WAYLAND_DISPLAY="wayland-1" && /run/current-system/sw/bin/waydroid session start

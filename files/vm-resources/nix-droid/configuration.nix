@@ -22,6 +22,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
+  boot.loader.timeout = 0;
 
   networking.hostName = "nix-droid"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -144,6 +145,7 @@
     jq
     fzf
     weston
+    lzip
   ];
 
   # List services that you want to enable:

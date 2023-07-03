@@ -209,6 +209,7 @@
     wireshark-qt
     fzf
     aria
+    lzip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
