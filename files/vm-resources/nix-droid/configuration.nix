@@ -189,7 +189,7 @@
     description = "Waydroid Service";
     unitConfig = {};
     serviceConfig = {
-      Type="simple"
+      Type="simple";
       ExecStart = "/home/android/bin/waydroid-start";
     };
     wantedBy = [ "default.target" ];

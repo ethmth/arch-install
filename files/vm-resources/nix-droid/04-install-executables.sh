@@ -13,6 +13,7 @@ if ! [ -f "$SCRIPT_DIR/waydroid-start" ]; then
     exit 1
 fi
 
+mkdir -p /home/android/bin
 cp "$SCRIPT_DIR/waydroid-start" /home/android/bin/waydroid-start
 chmod +x /home/android/bin/waydroid-start
 
