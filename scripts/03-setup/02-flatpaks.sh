@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.gnome.SimpleScan
 org.freecadweb.FreeCAD
 org.blender.Blender
 org.octave.Octave

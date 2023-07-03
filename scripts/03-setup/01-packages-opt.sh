@@ -8,8 +8,7 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
-#python2
-#android-sdk
+#issuu-dl
 packages="
 qbittorrent
 python-torchvision
@@ -21,7 +20,10 @@ scrcpy
 anaconda
 emacs29-git
 texlive-bin
+texlive-binextra
 texlive-bibtexextra
+texlive-latexrecommended
+pdftk
 biber
 perl-file-homedir
 perl-yaml-tiny
@@ -32,6 +34,7 @@ xpadneo-dkms
 python310
 etcher-bin
 flutter
+hplip
 "
 
 if (( NVIDIA )); then
