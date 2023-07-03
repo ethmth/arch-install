@@ -1,0 +1,10 @@
+[Unit]
+Description=Waydroid Service
+After=weston.service
+
+[Service]
+ExecStart=/run/current-system/sw/bin/waydroid session start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Weston Wayland Compositor
+After=network.target
+
+[Service]
+ExecStart=/run/current-system/sw/bin/weston  # Path to the Weston binary
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

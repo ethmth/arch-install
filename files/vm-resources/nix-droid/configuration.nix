@@ -188,6 +188,20 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
+  services.weston = {
+    enable = true;
+    wayland.enable = true;  # Enable Wayland protocol support
+  };
+
+  services.waydroid-session = {
+    enable = true;
+    wayland.enable = true;
+  };
+
+  services.ipforward = {
+    enable = true;
+  };
+
   # ADD_SHAREPOINT_SECTION_HERE
 
   # ADD_WIREGUARD_SECTION_HERE
