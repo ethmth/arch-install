@@ -119,14 +119,9 @@
     wl-clipboard
     proxychains
     tsocks
-    xfce.thunar
-    xfce.tumbler
-    gthumb
     feh
     mpv
     ffmpeg
-    vlc
-    youtube-dl
     yt-dlp
     nmap
     neofetch
@@ -139,26 +134,24 @@
     p7zip
     gnutar
     gvfs
-    gnome.gvfs
     libelf
     tmux
     plocate
     wireguard-go
     wireguard-tools
-    go
     whois
     android-tools
     scrcpy
-    squid
     openvpn
     networkmanager-openvpn
-    gnome.networkmanager-openvpn
     unzip
     rar
     pkg-config
     jq
     fzf
     phoc
+    cage
+    weston
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
