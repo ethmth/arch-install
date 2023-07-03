@@ -52,11 +52,12 @@
   };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.gdm.enable = false;
+  services.xserver.displayManager.startx.enable = true;
+  #services.xserver.desktopManager.gnome.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
@@ -119,9 +120,14 @@
     wl-clipboard
     proxychains
     tsocks
+    xfce.thunar
+    xfce.tumbler
+    gthumb
     feh
     mpv
     ffmpeg
+    vlc
+    youtube-dl
     yt-dlp
     nmap
     neofetch
@@ -134,16 +140,20 @@
     p7zip
     gnutar
     gvfs
+    gnome.gvfs
     libelf
     tmux
     plocate
     wireguard-go
     wireguard-tools
+    go
     whois
     android-tools
     scrcpy
+    squid
     openvpn
     networkmanager-openvpn
+    gnome.networkmanager-openvpn
     unzip
     rar
     pkg-config
@@ -164,6 +174,9 @@
   # programs.kdeconnect.enable = true;
 
   # List services that you want to enable:
+  #services.cage.enable = true;
+  #services.weston.enable = true;
+  #services.gdm.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
