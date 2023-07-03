@@ -98,6 +98,9 @@
     packages = with pkgs; [
       firefox
     ];
+    shellHook = ''
+      /run/current-system/sw/bin/weston
+    '';
   };
 
   # Allow unfree packages
@@ -146,6 +149,7 @@
   ];
 
   # List services that you want to enable:
+  services.getty.autologinUser = "android";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -157,19 +161,19 @@
   networking.firewall.enable = false;
 
 
-  systemd.services.weston = {
-    enable = true;
-    description = "Weston Wayland Compositor";
-    unitConfig = {
-      After = "network.target";
-    };
-    serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/weston";
-      Restart = "always";
-      Environment = "XDG_RUNTIME_DIR=/run/user/1000";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
+  #systemd.services.weston = {
+  #  enable = true;
+  #  description = "Weston Wayland Compositor";
+  #  unitConfig = {
+  #    After = "network.target";
+  #  };
+  #  serviceConfig = {
+  #    ExecStart = "/run/current-system/sw/bin/weston";
+  #    Restart = "always";
+  #    Environment = "XDG_RUNTIME_DIR=/run/user/1000";
+  #  };
+  #  wantedBy = [ "multi-user.target" ];
+  #};
 
 
   systemd.services.ipforward = {
@@ -186,19 +190,19 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  systemd.services.waydroid-session = {
-    enable = true;
-    description = "Waydroid Service";
-    unitConfig = {
-      Requires = "waydroid-container.service";
-      After = "weston.service waydroid-container.service";
-    };
-    serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/waydroid session start";
-      Restart = "always";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
+  #systemd.services.waydroid-session = {
+  #  enable = true;
+  #  description = "Waydroid Service";
+  #  unitConfig = {
+  #    Requires = "waydroid-container.service";
+  #    After = "weston.service waydroid-container.service";
+  #  };
+  #  serviceConfig = {
+  #    ExecStart = "/run/current-system/sw/bin/waydroid session start";
+  #    Restart = "always";
+  #  };
+  #  wantedBy = [ "multi-user.target" ];
+  #};
 
 
 

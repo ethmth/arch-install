@@ -18,7 +18,7 @@ cp "$SCRIPT_DIR/configuration.nix" /etc/nixos/configuration.nix
 # cp "$SCRIPT_DIR/waydroid-session.service" /etc/systemd/system/waydroid-session.service
 # cp "$SCRIPT_DIR/ipforward.service" /etc/systemd/system/ipforward.service
 
-nixos-generate-config
+# nixos-generate-config
 
 nixos-rebuild switch
 systemctl daemon-reload
