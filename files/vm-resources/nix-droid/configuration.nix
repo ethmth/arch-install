@@ -53,12 +53,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.sddm.autoLogin.enable = true;
-  services.xserver.displayManager.sddm.autoLogin.user = "android";
-  # services.xserver.displayManager.sddm.autoLoginSession = "weston";
-  # services.xserver.desktopManager.plasma5.enable = true; 
-  services.xserver.desktopManager.weston.enable = true; 
+  services.xserver.displayManager.startx.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -151,7 +146,7 @@
   ];
 
   # List services that you want to enable:
-  # services.getty.autologinUser = "android";
+  services.getty.autologinUser = "android";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -162,6 +157,28 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
+  systemd.user.sockets.weston = {
+    enable = true;
+    description = "Weston, a Wayland compositor";
+    listenStreams = [ "%t/wayland-0" ];
+  };
+  systemd.user.services.weston = {
+    enable = true;
+    description = "Weston, a Wayland compositor, as a user service";
+    unitConfig = {
+      Requires = "weston.socket";
+      After = "weston.socket";
+      Before = "graphical-session.target";
+    };
+    serviceConfig = {
+      Type = "notify";
+      TimeoutStartSec = "60";
+      WatchdogSec = "20";
+      StandardError = "journal";
+      ExecStart = "/run/current-system/sw/bin/weston --modules=systemd-notify.so";
+    };
+    wantedBy = [ "graphical-session.target" ];
+  };
 
   #systemd.services.weston = {
   #  enable = true;
