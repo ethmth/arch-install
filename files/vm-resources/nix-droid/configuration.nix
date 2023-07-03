@@ -53,11 +53,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = false;
   services.xserver.displayManager.startx.enable = true;
-  #services.xserver.desktopManager.gnome.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
@@ -108,7 +104,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     curl
     spice-vdagent
@@ -118,17 +114,10 @@
     dnsmasq
     dig
     wl-clipboard
-    proxychains
-    tsocks
     socat
-    xfce.thunar
-    xfce.tumbler
-    gthumb
     feh
     mpv
     ffmpeg
-    vlc
-    youtube-dl
     yt-dlp
     nmap
     neofetch
@@ -136,48 +125,27 @@
     nettools
     speedtest-cli
     netcat-openbsd
-    cmake
-    gcc
     p7zip
     gnutar
     gvfs
-    gnome.gvfs
-    libelf
     tmux
     plocate
     wireguard-go
     wireguard-tools
-    go
     whois
     android-tools
     scrcpy
-    squid
     openvpn
     networkmanager-openvpn
-    gnome.networkmanager-openvpn
     unzip
     rar
     pkg-config
     jq
     fzf
-    phoc
-    cage
     weston
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-  # programs.kdeconnect.enable = true;
-
   # List services that you want to enable:
-  #services.cage.enable = true;
-  #services.weston.enable = true;
-  #services.gdm.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -190,21 +158,8 @@
 
   services.weston = {
     enable = true;
-    wayland.enable = true;  # Enable Wayland protocol support
-  };
-
-  services.waydroid-session = {
-    enable = true;
     wayland.enable = true;
   };
-
-  services.ipforward = {
-    enable = true;
-  };
-
-  # ADD_SHAREPOINT_SECTION_HERE
-
-  # ADD_WIREGUARD_SECTION_HERE
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -2,10 +2,16 @@
 
 sudo waydroid init
 
-sudo systemctl enableg waydroid-container
+sudo systemctl enable waydroid-container
 sudo systemctl start waydroid-container
 
-waydroid session start
+sudo systemctl enable ipforward
+sudo systemctl start ipforward
+
+sudo systemctl enable waydroid-session
+sudo systemctl start waydroid-session
+
+# waydroid session start
 
 waydroid prop set persist.waydroid.width 768
 waydroid prop set persist.waydroid.height 1280
