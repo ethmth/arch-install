@@ -157,27 +157,21 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  systemd.user.sockets.weston = {
-    enable = true;
-    description = "Weston, a Wayland compositor";
-    listenStreams = [ "%t/wayland-0" ];
-  };
+  #systemd.user.sockets.weston = {
+  #  enable = true;
+  #  description = "Weston, a Wayland compositor";
+  #  listenStreams = [ "%t/wayland-0" ];
+  #};
   systemd.user.services.weston = {
     enable = true;
     description = "Weston, a Wayland compositor, as a user service";
-    unitConfig = {
-      Requires = "weston.socket";
-      After = "weston.socket";
-      Before = "graphical-session.target";
-    };
+    unitConfig = {};
     serviceConfig = {
-      Type = "notify";
-      TimeoutStartSec = "60";
-      WatchdogSec = "20";
-      StandardError = "journal";
-      ExecStart = "/run/current-system/sw/bin/weston --modules=systemd-notify.so";
+      Type = "simple";
+      TimeoutStartSec = "0";
+      ExecStart = "/run/current-system/sw/bin/weston";
     };
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = [ "default.target" ];
   };
 
   #systemd.services.weston = {
