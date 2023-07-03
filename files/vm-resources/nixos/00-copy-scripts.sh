@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
+if ! [[ $EUID -ne 0 ]]; then
 	echo "This script must not be run with root/sudo privileges."
 	exit 1
 fi
@@ -13,4 +13,4 @@ if ! [ -f "$SCRIPT_DIR/configuration.nix" ]; then
     exit 1
 fi
 
-cp -r "$SCRIPT_DIR" ~/nix-droid
+cp -r "$SCRIPT_DIR" ~/install-scripts

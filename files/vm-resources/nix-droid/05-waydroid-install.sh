@@ -8,4 +8,4 @@ fi
 sudo waydroid init
 sudo systemctl enable waydroid-container
 
-echo "Reboot, make sure --user waydroid-session.service is running, then run ./04-waydroid-props.sh"
+echo "Reboot, make sure --user waydroid-session.service is running, then run ./06-waydroid-props.sh"

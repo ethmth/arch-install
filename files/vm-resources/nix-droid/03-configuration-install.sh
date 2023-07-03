@@ -18,5 +18,5 @@ cp "$SCRIPT_DIR/configuration.nix" /etc/nixos/configuration.nix
 nixos-rebuild switch
 systemctl daemon-reload
 
-echo "Reboot. Then, run ./03-waydroid.sh"
+echo "Reboot. Then, run ./04-install-executables.sh"
 

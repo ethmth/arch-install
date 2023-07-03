@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Hello there $(whoami) $(date)" >> /home/android/log.txt
+
+waydroid session start

@@ -74,6 +74,7 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.sudo.wheelNeedsPassword = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -186,13 +187,10 @@
   systemd.user.services.waydroid-session = {
     enable = true;
     description = "Waydroid Service";
-    unitConfig = {
-      Requires = "weston.service waydroid-container.service";
-      After = "weston.service waydroid-container.service";
-    };
+    unitConfig = {};
     serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/waydroid session start";
-      Restart = "always";
+      Type="simple"
+      ExecStart = "/home/android/bin/waydroid-start";
     };
     wantedBy = [ "default.target" ];
   };
