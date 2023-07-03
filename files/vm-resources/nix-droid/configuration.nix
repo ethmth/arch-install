@@ -156,10 +156,52 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  services.weston = {
+
+  systemd.services.weston = {
     enable = true;
     wayland.enable = true;
+    description = "Weston Wayland Compositor";
+    unitConfig = {
+      After = "network.target"
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/weston";
+      Restart = "always"
+    };
+    wantedBy = [ "multi-user.target" ];
   };
+
+
+  systemd.services.ipforward = {
+    enable = true;
+    description = "Socat IP Forwarding for Waydroid";
+    unitConfig = {
+      Requires = "network.target"
+      After = "network.target"
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:5555,fork,reuseaddr tcp:192.168.240.112:5555";
+      Restart = "always"
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.waydroid-session = {
+    enable = true;
+    wayland.enable = true;
+    description = "Waydroid Service";
+    unitConfig = {
+      Requires = "waydroid-container.service"
+      After = "weston.service waydroid-container.service"
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/waydroid session start";
+      Restart = "always"
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -5,10 +5,10 @@ sudo waydroid init
 sudo systemctl enable waydroid-container
 sudo systemctl start waydroid-container
 
-sudo systemctl enable ipforward
-sudo systemctl start ipforward
+# sudo systemctl enable ipforward
+# sudo systemctl start ipforward
 
-sudo systemctl enable waydroid-session
+# sudo systemctl enable waydroid-session
 sudo systemctl start waydroid-session
 
 # waydroid session start

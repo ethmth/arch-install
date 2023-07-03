@@ -142,3 +142,10 @@ chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined."
+
+if [ "$1" == "nix-droid" ]; then
+    echo "IMPORTANT: Set the correct OpenGL device in virt-manager"
+    echo "Go through the installer with user 'android' and No Desktop"
+    echo "Once booted up, run:"
+    echo "sudo mkdir -p /mnt/sr0 && sudo mount /dev/sr0 /mnt/sr0 && cd /mnt/sr0/nix-droid"
+fi
