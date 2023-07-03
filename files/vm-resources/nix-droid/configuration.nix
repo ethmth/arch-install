@@ -159,14 +159,14 @@
 
   systemd.services.weston = {
     enable = true;
-    wayland.enable = true;
     description = "Weston Wayland Compositor";
     unitConfig = {
-      After = "network.target"
+      After = "network.target";
     };
     serviceConfig = {
       ExecStart = "/run/current-system/sw/bin/weston";
-      Restart = "always"
+      Restart = "always";
+      Environment = "XDG_RUNTIME_DIR=/run/user/1000";
     };
     wantedBy = [ "multi-user.target" ];
   };
@@ -176,27 +176,26 @@
     enable = true;
     description = "Socat IP Forwarding for Waydroid";
     unitConfig = {
-      Requires = "network.target"
-      After = "network.target"
+      Requires = "network.target";
+      After = "network.target";
     };
     serviceConfig = {
       ExecStart = "/run/current-system/sw/bin/socat tcp-listen:5555,fork,reuseaddr tcp:192.168.240.112:5555";
-      Restart = "always"
+      Restart = "always";
     };
     wantedBy = [ "multi-user.target" ];
   };
 
   systemd.services.waydroid-session = {
     enable = true;
-    wayland.enable = true;
     description = "Waydroid Service";
     unitConfig = {
-      Requires = "waydroid-container.service"
-      After = "weston.service waydroid-container.service"
+      Requires = "waydroid-container.service";
+      After = "weston.service waydroid-container.service";
     };
     serviceConfig = {
       ExecStart = "/run/current-system/sw/bin/waydroid session start";
-      Restart = "always"
+      Restart = "always";
     };
     wantedBy = [ "multi-user.target" ];
   };
