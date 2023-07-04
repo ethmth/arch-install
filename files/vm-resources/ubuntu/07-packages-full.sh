@@ -11,8 +11,8 @@ git-lfs
 proxychains
 tsocks
 thunar
+tumbler
 gthumb
-mpv
 qterminal
 vlc
 yt-dlp
@@ -54,8 +54,7 @@ squid
 libxi6 
 libgconf-2-4 
 default-jdk 
-ssh 
-chrome-gnome-shell 
+ssh
 rar
 catfish
 aria2
@@ -68,7 +67,6 @@ libbz2-dev
 mesa-utils 
 kate
 ca-certificates
-feh
 xvfb
 "
 packages=${packages//$'\n'/ }

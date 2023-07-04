@@ -36,6 +36,8 @@ jq
 fzf
 adb
 kdeconnect
+feh
+mpv
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
