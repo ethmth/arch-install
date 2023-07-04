@@ -26,11 +26,15 @@ python3-pip
 net-tools
 netcat-openbsd
 wireguard
+wireguard-go
+wireguard-tools
 leap-archive-keyring
 openvpn
 network-manager-openvpn
 unzip
 jq
+fzf
+kdeconnect
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

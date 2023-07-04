@@ -89,7 +89,9 @@
     </graphics>
     <sound model="ich9"/>
     <video>
-      <model type="qxl"/>
+      <model type="virtio">
+        <acceleration accel3d="no"/>
+      </model>
     </video>
     <redirdev bus="usb" type="spicevmc"/>
     <redirdev bus="usb" type="spicevmc"/>

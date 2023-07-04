@@ -7,9 +7,9 @@ fi
 
 CUR_USER=$(whoami)
 
-mkdir -p /sharepoint
+sudo mkdir -p /sharepoint
 mkdir -p /home/$CUR_USER/share
-mount -t 9p -o trans=virtio /sharepoint /home/$CUR_USER/share
+sudo mount -t 9p -o trans=virtio /sharepoint /home/$CUR_USER/share
 
 # chmod -R 777 /home/$CUR_USER/share
 

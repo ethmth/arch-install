@@ -12,3 +12,4 @@ nmcli connection up "$CONNECTION"
 
 
 echo "You may have to/want to run this twice for good measure if you get an error message"
+echo "The settings may not persist over boot. Create a new connection profile, and set that."
