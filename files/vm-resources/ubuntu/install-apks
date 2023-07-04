@@ -1,3 +1,23 @@
 #!/bin/bash
 
-echo "Tbd"
+if ! [[ $EUID -ne 0 ]]; then
+        echo "This script should not be run with root/sudo privileges."
+        exit 1
+fi
+
+SCRIPT_PATH=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+
+CUR_USER=$(whoami)
+
+FOLDERS=$(ls -1 $SCRIPT_DIR/installer/apps | fzf -m --prompt="Select apks to install")
+
+for folder in $FOLDERS; do
+    directory="$SCRIPT_DIR/installer/apps/$folder"
+    files=$(ls -1 $directory | grep ".apk")
+    for file in $files; do
+        apk_path=$directory/$file
+        echo "Installing $file"
+        adb install $apk_path
+    done
+done

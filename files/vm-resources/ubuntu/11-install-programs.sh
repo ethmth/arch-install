@@ -26,7 +26,7 @@ fi
 if [ "$FOLDER_NAME" == "SecurePrograms" ]; then
   destination="/usr/bin"
 elif [ "$FOLDER_NAME" == "SecureSoftware" ]; then
-  destination="/home/$CUR_USER/android/installer"
+  destination="/home/$CUR_USER/android"
   mkdir -p $destination
 fi
 
@@ -40,7 +40,8 @@ search_files() {
       file_without_extension="${file%.*}"
       file_without_extension=$(basename "$file_without_extension")
       sudo cp "$file" "$destination/$file_without_extension"
-      sudo chmod +x "$destination/$file_without_extension"
+
+      sudo chmod +rx "$destination/$file_without_extension"
 
       echo "Copied and made executable: $file_without_extension"
     fi
@@ -51,10 +52,10 @@ if [ "$FOLDER_NAME" == "SecurePrograms" ]; then
   search_files "$SOURCE"
   echo "Programs installed to /usr/bin"
 elif [ "$FOLDER_NAME" == "SecureSoftware" ]; then
-  cp -r $SOURCE $destination
-  echo "Android installer installed to ~/android/installer"
   if [ -f "$SCRIPT_DIR/install-apks" ]; then
     cp "$SCRIPT_DIR/install-apks" $destination/install-apks
     chmod +x $destination/install-apks
   fi
+  cp -r $SOURCE $destination
+  echo "Android installer installed to ~/android/installer"
 fi

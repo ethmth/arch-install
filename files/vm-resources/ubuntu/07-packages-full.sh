@@ -48,8 +48,7 @@ rdate
 leap-archive-keyring 
 libavcodec-extra 
 gstreamer1.0-libav 
-whois 
-adb 
+whois
 scrcpy 
 squid
 libxi6 

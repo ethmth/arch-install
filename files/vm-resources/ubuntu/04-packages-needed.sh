@@ -34,6 +34,7 @@ network-manager-openvpn
 unzip
 jq
 fzf
+adb
 kdeconnect
 "
 packages=${packages//$'\n'/ }
