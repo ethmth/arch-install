@@ -15,6 +15,8 @@ sudo systemctl enable virtlogd.socket
 sudo systemctl enable cronie
 sudo systemctl enable docker
 sudo systemctl enable dnsmasq
+sudo systemctl enable nftables
+sudo systemctl enable iptables
 sudo systemctl enable podman
 sudo systemctl enable sshd
 sudo systemctl enable cups
