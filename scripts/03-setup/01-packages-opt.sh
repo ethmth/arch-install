@@ -80,10 +80,9 @@ yay -Syu $packages --needed
 echo "Verify that the installation of the packages was successful"
 echo "If so, run ./02-flatpaks.sh"
 
-if (( NVIDIA )); then
-echo "If you're using an NVIDIA GPU as your main GPU (meaning displays plugged in), further action may be needed."
-echo "Read https://wiki.archlinux.org/title/NVIDIA section 1."
-echo "You may need to remove kms from the HOOKS array in /etc/mkinitcpio.conf and regenerate the initramfs to prevent the nouveau model from being loaded."
-echo "If you're using an NVIDIA GPU alongside your main GPU, you may want to ensure nvidia-prime is installed and ibt=off."
-
-fi
+#if (( NVIDIA )); then
+#echo "If you're using an NVIDIA GPU as your main GPU (meaning displays plugged in), further action may be needed."
+#echo "Read https://wiki.archlinux.org/title/NVIDIA section 1."
+#echo "You may need to remove kms from the HOOKS array in /etc/mkinitcpio.conf and regenerate the initramfs to prevent the nouveau model from being loaded."
+#echo "If you're using an NVIDIA GPU alongside your main GPU, you may want to ensure nvidia-prime is installed and ibt=off."
+#fi
