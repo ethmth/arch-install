@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/ping -W -c 5 10.13.13.2
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Ping Phone
+Name=Test
+Comment[en_US]=Ping wireguard phone
+Comment=Ping wireguard phone
