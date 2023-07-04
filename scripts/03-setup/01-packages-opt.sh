@@ -40,16 +40,6 @@ waydroid
 
 if (( NVIDIA )); then
 packages+="
-nvidia-dkms
-nvidia-settings
-nvidia-utils
-opencl-nvidia
-nvidia-container-toolkit
-nvidia-container-runtime
-"
-fi
-if (( NVIDIA )); then
-packages+="
 cuda
 cuda-tools
 python-cuda
@@ -58,11 +48,6 @@ python-tensorflow-cuda
 else
 packages+="
 python-tensorflow
-"
-fi
-if (( NVIDIA && LAPTOP )); then
-packages+="
-nvidia-prime
 "
 fi
 if ! (( AMD )); then

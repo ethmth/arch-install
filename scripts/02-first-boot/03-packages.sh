@@ -215,6 +215,22 @@ auto-cpufreq
 "
 fi
 
+if (( NVIDIA )); then
+packages+="
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+opencl-nvidia
+nvidia-container-toolkit
+nvidia-container-runtime
+"
+fi
+if (( NVIDIA && LAPTOP )); then
+packages+="
+nvidia-prime
+"
+fi
+
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
