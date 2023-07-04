@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if ! [[ $EUID -ne 0 ]]; then
+        echo "This script should not be run with root/sudo privileges."
+        exit 1
+fi
+
+last_part=$(($1 + 20))
+
+ip="10.152.152.$last_part"
+
+echo "Connecting to $ip:5555..."
+adb connect $ip:5555
+scrcpy --tcpip=$ip:5555 &

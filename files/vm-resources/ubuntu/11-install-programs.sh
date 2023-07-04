@@ -52,9 +52,13 @@ if [ "$FOLDER_NAME" == "SecurePrograms" ]; then
   search_files "$SOURCE"
   echo "Programs installed to /usr/bin"
 elif [ "$FOLDER_NAME" == "SecureSoftware" ]; then
-  if [ -f "$SCRIPT_DIR/install-apks" ]; then
-    cp "$SCRIPT_DIR/install-apks" $destination/install-apks
-    chmod +x $destination/install-apks
+  if [ -f "$SCRIPT_DIR/apk-install" ]; then
+    cp "$SCRIPT_DIR/apk-install" $destination/apk-install
+    chmod +x $destination/apk-install
+  fi
+  if [ -f "$SCRIPT_DIR/phone" ]; then
+    sudo cp "$SCRIPT_DIR/phone" /usr/bin/phone
+    sudo chmod +rx /usr/bin/phone
   fi
   cp -r $SOURCE $destination
   echo "Android installer installed to ~/android/installer"
