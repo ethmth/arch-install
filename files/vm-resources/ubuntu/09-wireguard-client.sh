@@ -5,8 +5,6 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-apt install wireguard-tools resolvconf
-
 read -p "Enter your username on the Wireguard machine: " username
 
 mkdir -p /opt/wireguard-client
@@ -29,5 +27,6 @@ sed -i '/AllowedIPs/d' /etc/wireguard/wg0.conf
 echo "AllowedIPs = 10.13.13.0/24" >> /etc/wireguard/wg0.conf
 
 wg-quick up wg0
-
 systemctl enable wg-quick@wg0
+
+echo "Restart"

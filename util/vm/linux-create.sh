@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <nix|mx|nix-droid>"
+	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu>"
 	exit 1
 fi
 
@@ -24,8 +24,11 @@ elif [ "$1" == "mx" ]; then
 elif [ "$1" == "nix-droid" ]; then
     TEMPLATE_STRING="Nix-droid"
     SEARCH_STRING="nixos"
+elif [ "$1" == "ubuntu" ]; then
+    TEMPLATE_STRING="Ubuntu"
+    SEARCH_STRING="ubuntu"
 else 
-    echo "Usage: ./linux-create.sh <nix|mx|nix-droid>"
+    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu>"
 	exit 1
 fi
 

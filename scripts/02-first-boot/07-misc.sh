@@ -47,7 +47,7 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.c
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
 
 # default
-xdg-mime default Thunar.desktop inode/directory
+xdg-mime default thunar.desktop inode/directory
 sudo update-mime-database /usr/share/mime
 
 # npm user setup
