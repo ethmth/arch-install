@@ -30,10 +30,7 @@ leap-archive-keyring
 openvpn
 network-manager-openvpn
 unzip
-xvfb
 jq
-ca-certificates
-feh
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

@@ -47,6 +47,7 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.c
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
 
 # default apps
+mkdir -p /home/$CUR_USER/.config/xfce4
 cp /etc/xdg/xfce4/helpers.rc /home/$CUR_USER/.config/xfce4/helpers.rc
 xdg-mime default thunar.desktop inode/directory
 if (( HYPRLAND )); then

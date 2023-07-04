@@ -66,9 +66,11 @@ pkg-config
 libgmp-dev
 libpcap-dev
 libbz2-dev
-jq 
 mesa-utils 
 kate
+ca-certificates
+feh
+xvfb
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
