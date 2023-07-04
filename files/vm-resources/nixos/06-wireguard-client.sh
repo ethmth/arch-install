@@ -27,7 +27,6 @@ PRESHARED_KEY=$(cat /opt/wireguard-client/peer2/peer2.conf | grep "PresharedKey"
 string_to_echo=$(echo "  networking.wg-quick.interfaces = {
     wg0 = {
       address = [ \"10.13.13.3\" ];
-      dns = [ \"10.152.152.10\" ];
       privateKey = \"$PRIVATE_KEY\";
       
       peers = [

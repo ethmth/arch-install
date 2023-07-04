@@ -23,8 +23,11 @@ mkdir -p /etc/wireguard
 cp /opt/wireguard-client/peer2/peer2.conf /etc/wireguard/wg0.conf
 rm -rf /opt/wireguard-client
 
+sed -i '/DNS/d' /etc/wireguard/wg0.conf
 sed -i '/AllowedIPs/d' /etc/wireguard/wg0.conf
 echo "AllowedIPs = 10.13.13.0/24" >> /etc/wireguard/wg0.conf
+
+ufw allow 51820/udp
 
 wg-quick up wg0
 systemctl enable wg-quick@wg0
