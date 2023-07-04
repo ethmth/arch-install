@@ -46,8 +46,18 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.c
 # source pyenv
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
 
-# default
+# default apps
+cp /etc/xdg/xfce4/helpers.rc /home/$CUR_USER/.config/xfce4/helpers.rc
 xdg-mime default thunar.desktop inode/directory
+if (( HYPRLAND )); then
+    xdg-mime default Alacritty.desktop application/x-shellscript
+    xdg-mime default Alacritty.desktop application/x-terminal-emulator
+    bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/.config/xfce4/helpers.rc "TerminalEmulator=alacritty"
+else
+    xdg-mime default qterminal.desktop application/x-shellscript
+    xdg-mime default qterminal.desktop application/x-terminal-emulator
+    bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/.config/xfce4/helpers.rc "TerminalEmulator=qterminal"
+fi
 sudo update-mime-database /usr/share/mime
 
 # npm user setup
