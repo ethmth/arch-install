@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+aptitude
 spice-vdagent
 qemu-guest-agent
 git

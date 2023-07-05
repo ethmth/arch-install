@@ -187,6 +187,90 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+  systemd.services.rust-forward1 = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (1)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:21115,fork,reuseaddr tcp:10.152.152.15:21115";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.rust-forward2 = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (2)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:21116,fork,reuseaddr tcp:10.152.152.15:21116";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.rust-forward2udp = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (2udp)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat udp-listen:21116,fork,reuseaddr udp:10.152.152.15:21116";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.rust-forward3 = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (3)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:21117,fork,reuseaddr tcp:10.152.152.15:21117";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+   systemd.services.rust-forward4 = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (4)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:21118,fork,reuseaddr tcp:10.152.152.15:21118";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.rust-forward5 = {
+    enable = true;
+    description = "Socat IP Forwarding for Rustdesk (5)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:21119,fork,reuseaddr tcp:10.152.152.15:21119";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   systemd.user.services.waydroid-session = {
     enable = true;
     description = "Waydroid Service";

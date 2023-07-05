@@ -16,7 +16,6 @@ com.github.tchx84.Flatseal
 io.gitlab.librewolf-community
 net.mullvad.MullvadBrowser
 nz.mega.MEGAsync
-org.chromium.Chromium
 org.jdownloader.JDownloader
 com.obsproject.Studio
 org.filezillaproject.Filezilla
