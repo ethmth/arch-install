@@ -22,15 +22,18 @@ if (( HYPRLAND )); then
     sudo chmod +x /usr/bin/wrappedhl
     sudo cp /home/$CUR_USER/arch-install/files/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
     sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=hyprlandwrapper\n\" > /etc/sddm.conf.d/autologin.conf"
+elif (( PLASMA )); then
+    if (( NVIDIA && ! INTEL )); then
+        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasma\n\" > /etc/sddm.conf.d/autologin.conf"
+    else
+        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasmawayland\n\" > /etc/sddm.conf.d/autologin.conf"
+    fi
 fi
 if (( LAPTOP && HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/brightlight /usr/bin/brightlight
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
     sudo chmod +x /usr/bin/brightlight
     sudo chmod +x /usr/bin/nightlight
-fi
-if (( PLASMA )); then
-    sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasmawayland\n\" > /etc/sddm.conf.d/autologin.conf"
 fi
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/sshbg /usr/bin/sshbg
