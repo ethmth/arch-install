@@ -12,3 +12,5 @@ sudo apt install waydroid -y
 sudo systemctl enable waydroid-container
 
 sudo waydroid init
+
+waydroid session start
