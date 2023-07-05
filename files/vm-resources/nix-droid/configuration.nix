@@ -301,7 +301,7 @@
     wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "30s";
-        OnUnitActiveSec = "10s";
+        OnUnitActiveSec = "20s";
         Unit = "waydroid-ping.service";
       };
   };
@@ -309,7 +309,7 @@
   systemd.services.waydroid-ping = {
     script = ''
       set -eu
-      /run/current-system/sw/bin/waydroid shell echo "hello"
+      /run/current-system/sw/bin/waydroid container unfreeze
     '';
     serviceConfig = {
       Type = "oneshot";
