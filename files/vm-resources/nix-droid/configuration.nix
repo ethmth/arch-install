@@ -148,6 +148,7 @@
     weston
     lzip
   ];
+  # rustdesk
 
   # List services that you want to enable:
   services.getty.autologinUser = "android";
@@ -182,6 +183,20 @@
     };
     serviceConfig = {
       ExecStart = "/run/current-system/sw/bin/socat tcp-listen:5555,fork,reuseaddr tcp:192.168.240.112:5555";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services.test-forward = {
+    enable = true;
+    description = "Socat IP Forwarding for Testing (1)";
+    unitConfig = {
+      Requires = "network.target";
+      After = "network.target";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/socat tcp-listen:7979,fork,reuseaddr tcp:10.152.152.15:7979";
       Restart = "always";
     };
     wantedBy = [ "multi-user.target" ];
@@ -282,7 +297,25 @@
     wantedBy = [ "default.target" ];
   };
 
+  systemd.timers.waydroid-ping-timer = {
+    wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "30s";
+        OnUnitActiveSec = "10s";
+        Unit = "waydroid-ping.service";
+      };
+  };
 
+  systemd.services.waydroid-ping = {
+    script = ''
+      set -eu
+      /run/current-system/sw/bin/waydroid shell echo "hello"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
