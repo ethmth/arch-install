@@ -13,6 +13,7 @@ packages="
 qbittorrent
 python-torchvision
 python-pycocotools
+python-opencv
 remmina
 rstudio-desktop-bin
 cryptomator-bin
