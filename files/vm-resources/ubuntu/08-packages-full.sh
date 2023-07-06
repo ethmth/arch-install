@@ -20,9 +20,12 @@ youtube-dl
 gallery-dl
 john 
 hashcat 
-keepassxc 
+keepassxc
+python3-full
 python3-selenium
 python3-bs4
+python3-requests
+python3-tqdm
 npm
 speedtest-cli
 openjdk-8-jdk
