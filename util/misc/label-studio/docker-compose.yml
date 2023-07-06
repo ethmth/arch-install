@@ -8,6 +8,6 @@ services:
       - 8085:8080
     volumes:
       - ./mydata:/label-studio/data:rw
-    user: root
     # command: sh -c "chown -R 1001:root /label-studio/data/" && label-studio-uwsgi
-    command: label-studio-uwsgi
+    # command: label-studio-uwsgi
+    command: label-studio start --username admin@admin.com --password password

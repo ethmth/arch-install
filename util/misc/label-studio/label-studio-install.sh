@@ -29,10 +29,13 @@ mkdir -p $LOC
 
 mkdir -p $LOC/label-studio/mydata
 
+chmod -R 777 $LOC/label-studio/mydata
+
 cp /home/$CUR_USER/arch-install/util/misc/label-studio/docker-compose.yml $LOC/label-studio/docker-compose.yml
 
 cd $LOC/label-studio/
 
+echo "Default login admin@admin.com:password"
 echo "Label studio installed at $LOC/label-studio/docker-compose.yml"
-echo "Run 'docker-compose up --build -d' to run it and 'docker-compose stop' to stop it from that directory"
+echo "Run 'docker compose up --build -d' to run it and 'docker compose stop' to stop it from that directory"
 echo "cd $LOC/label-studio"
