@@ -27,8 +27,11 @@ elif [ "$1" == "nix-droid" ]; then
 elif [ "$1" == "ubuntu" ]; then
     TEMPLATE_STRING="Ubuntu"
     SEARCH_STRING="ubuntu"
+elif [ "$1" == "ubu-droid" ]; then
+    TEMPLATE_STRING="Ubu-droid"
+    SEARCH_STRING="ubuntu"
 else 
-    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu>"
+    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid>"
 	exit 1
 fi
 

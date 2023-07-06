@@ -1,0 +1,7 @@
+[Unit]
+Description=Waydroid Ping Service
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/waydroid container unfreeze
