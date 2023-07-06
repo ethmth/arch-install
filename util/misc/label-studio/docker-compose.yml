@@ -1,8 +1,13 @@
 version: '3.9'
 services:
   label-studio:
+    stdin_open: true
+    tty: true
     image: heartexlabs/label-studio:latest
     ports:
       - 8085:8080
     volumes:
-      - ./mydata:/label-studio/data
+      - ./mydata:/label-studio/data:rw
+    user: root
+    # command: sh -c "chown -R 1001:root /label-studio/data/" && label-studio-uwsgi
+    command: label-studio-uwsgi
