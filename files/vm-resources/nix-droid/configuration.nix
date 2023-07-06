@@ -65,7 +65,7 @@
   services.printing.enable = false;
 
   # services.flatpak.enable = true;
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
   virtualisation = {
     waydroid.enable = true;
     lxd.enable = true;

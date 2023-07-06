@@ -25,3 +25,4 @@ nmcli connection down "$CONNECTION"
 nmcli connection up "$CONNECTION"
 
 echo "Manual connection with IP 10.152.152.$ipNumber setup in NetworkManager"
+echo "You may want to run this script twice (or until you get no errors)"
