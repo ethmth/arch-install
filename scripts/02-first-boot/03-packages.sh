@@ -98,6 +98,7 @@ neofetch
 neovim
 net-tools
 networkmanager-openvpn
+nm-connection-editor
 nodejs-lts-hydrogen
 npm
 openbsd-netcat
