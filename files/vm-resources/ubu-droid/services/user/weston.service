@@ -4,7 +4,7 @@ Description=Weston, a Wayland compositor, as a user service
 [Service]
 Type=simple
 TimeoutStartSec=0
-ExecStart=/usr/bin/weston
+ExecStart=/usr/bin/weston-launch
 
 [Install]
 WantedBy=default.target

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-        echo "This script should be run with root/sudo privileges."
+if ! [[ $EUID -ne 0 ]]; then
+        echo "This script should not be run with root/sudo privileges."
         exit 1
 fi
 
@@ -21,7 +21,7 @@ fi
 
 services=$(ls -1 $SCRIPT_DIR/services/system | grep -v ".txt")
 for service in $services; do
-    full_path="$SCRIPT_DIR/services/user/$service"
+    full_path="$SCRIPT_DIR/services/system/$service"
     sudo cp $full_path /etc/systemd/system/$service
     sudo systemctl enable $service
 done
@@ -33,7 +33,10 @@ for service in $services; do
     systemctl --user enable $service
 done
 
-systemctl stop packagekit.service
-systemctl disable packagekit.service
+sudo systemctl stop packagekit.service
+sudo systemctl disable packagekit.service
 
-systemctl disable gdm
+sudo systemctl disable gdm
+
+systemctl --user daemon-reload
+sudo systemctl daemon-reload

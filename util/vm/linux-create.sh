@@ -160,6 +160,7 @@ fi
 
 if [ "$1" == "ubu-droid" ]; then
     echo "IMPORTANT: Set the correct OpenGL device in virt-manager"
-    echo "Go through the installer with user 'android'"
+    echo "Go through the installer with Minimal Install, and no downloading updates."
+    echo "Name your user 'android', and check 'Log in automatically'"
     echo "Once booted up, run the appropriate scripts"
 fi

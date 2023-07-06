@@ -18,7 +18,6 @@ CONNECTION="${CONNECTION%% }"
 read -p "Enter the phone number: " phoneNumber
 
 ipNumber=$(($phoneNumber + 20))
-ipNumber="10.152.152.$ipNumber"
 
 nmcli connection modify "$CONNECTION" ipv4.method manual
 nmcli connection modify "$CONNECTION" ipv4.addresses 10.152.152.$ipNumber/18
