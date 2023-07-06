@@ -66,7 +66,7 @@ read -p "Do you want to use $top_os as the iso (N for No, Otherwise Yes)? " user
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
 else
-    OS_DISK=$oses
+    OS_DISK=$top_os
 fi
 
 if ([ "$OS_DISK" == "" ] || [ "$OS_DISK" == "Nothing" ]); then

@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu>"
+	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid>"
 	exit 1
 fi
 
@@ -93,7 +93,7 @@ read -p "Do you want to use $top_os as the iso (N for No, Otherwise Yes)? " user
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
 else
-    OS_DISK=$oses
+    OS_DISK=$top_os
 fi
 
 if ([ "$OS_DISK" == "" ] || [ "$OS_DISK" == "Nothing" ]); then
@@ -102,6 +102,8 @@ if ([ "$OS_DISK" == "" ] || [ "$OS_DISK" == "Nothing" ]); then
 fi
 
 OS_DISK="/home/$CUR_USER/vm/os/$OS_DISK"
+
+echo "OS DISK $OS_DISK w"
 
 networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
 NETWORK=$(echo "$networks" | fzf --prompt="Select your network")
@@ -154,4 +156,10 @@ if [ "$1" == "nix-droid" ]; then
     echo "Go through the installer with user 'android' and No Desktop"
     echo "Once booted up, run: 'nixos-generate-config'. Then,"
     echo "sudo mkdir -p /mnt/sr0 && sudo mount /dev/sr0 /mnt/sr0 && cd /mnt/sr0/nix-droid"
+fi
+
+if [ "$1" == "ubu-droid" ]; then
+    echo "IMPORTANT: Set the correct OpenGL device in virt-manager"
+    echo "Go through the installer with user 'android'"
+    echo "Once booted up, run the appropriate scripts"
 fi
