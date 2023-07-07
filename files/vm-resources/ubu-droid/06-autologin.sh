@@ -27,8 +27,10 @@ _EOF_
 
 systemctl enable getty@tty1.service
 
-# echo 'if [ "$WAYLAND_DISPLAY" == "" ]; then' >> /home/android/.bashrc
-# echo 'weston' >> /home/android/.bashrc
-# echo 'fi' >> /home/android/.bashrc
+
+echo 'TTY=$(tty)' >> /home/android/.bashrc
+echo 'if ([ "$WAYLAND_DISPLAY" == "" ] && [ $TTY == "/dev/tty1" ]); then' >> /home/android/.bashrc
+echo 'phoc' >> /home/android/.bashrc
+echo 'fi' >> /home/android/.bashrc
 
 echo "Reboot."

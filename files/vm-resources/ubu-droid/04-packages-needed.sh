@@ -11,7 +11,7 @@ vim
 curl
 ca-certificates
 mingetty
-weston
+phoc
 socat
 "
 packages=${packages//$'\n'/ }
