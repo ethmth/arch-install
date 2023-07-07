@@ -11,4 +11,4 @@ ip="10.152.152.$last_part"
 
 echo "Connecting to $ip:5555..."
 adb connect $ip:5555
-scrcpy --tcpip=$ip:5555 &
+scrcpy --tcpip=$ip:5555
