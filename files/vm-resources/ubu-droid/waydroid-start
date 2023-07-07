@@ -1,9 +1,5 @@
 #!/bin/bash
 
-while ! pgrep -x "weston" > /dev/null; do
-    sleep 1
-done
-
 until /usr/bin/waydroid session start; do
     echo "Command exited with a non-zero exit code. Retrying..."
     sleep 1
