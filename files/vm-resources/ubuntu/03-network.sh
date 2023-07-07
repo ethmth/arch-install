@@ -3,8 +3,17 @@
 CONNECTION=$(nmcli connection show | grep "ethernet" | awk '{for(i=1; i<=NF-3; i++) printf "%s ", $i; print ""}')
 CONNECTION="${CONNECTION%% }"
 
+read -p "Is this for Ubuntu manager (y/N)? " userInput
+
+ipNumber="14"
+if [ "$userInput" == "y" ] || [ "$userInput" == "Y" ]; then
+    ipNumber="16"
+fi
+
+
+
 nmcli connection modify "$CONNECTION" ipv4.method manual
-nmcli connection modify "$CONNECTION" ipv4.addresses 10.152.152.14/18
+nmcli connection modify "$CONNECTION" ipv4.addresses 10.152.152.$ipNumber/18
 nmcli connection modify "$CONNECTION" ipv4.gateway 10.152.152.10
 nmcli connection modify "$CONNECTION" ipv4.dns 10.152.152.10
 nmcli connection down "$CONNECTION"
