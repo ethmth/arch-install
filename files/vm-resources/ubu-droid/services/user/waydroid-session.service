@@ -1,0 +1,9 @@
+[Unit]
+Description=Waydroid Service
+
+[Service]
+Type=simple
+ExecStart=/home/android/bin/waydroid-start
+
+[Install]
+WantedBy=default.target
