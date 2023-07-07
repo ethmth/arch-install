@@ -9,9 +9,11 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid>"
+	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint>"
 	exit 1
 fi
+
+NETWORK_SELECT=1
 
 TEMPLATE_STRING=""
 SEARCH_STRING=""
@@ -30,8 +32,12 @@ elif [ "$1" == "ubuntu" ]; then
 elif [ "$1" == "ubu-droid" ]; then
     TEMPLATE_STRING="Ubu-droid"
     SEARCH_STRING="ubuntu"
+elif [ "$1" == "mint" ]; then
+    TEMPLATE_STRING="Mint"
+    SEARCH_STRING="linuxmint"
+    NETWORK_SELECT=0
 else 
-    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid>"
+    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint>"
 	exit 1
 fi
 
@@ -105,8 +111,11 @@ OS_DISK="/home/$CUR_USER/vm/os/$OS_DISK"
 
 echo "OS DISK $OS_DISK w"
 
-networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
-NETWORK=$(echo "$networks" | fzf --prompt="Select your network")
+NETWORK="Default"
+if (( NETWORK_SELECT )); then
+    networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
+    NETWORK=$(echo "$networks" | fzf --prompt="Select your network")
+fi
 
 read -p "Do you want to create $NAME on network $NETWORK with disk $DISK (YES for Yes, otherwise No)? " userInput
 
