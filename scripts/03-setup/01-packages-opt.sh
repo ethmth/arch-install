@@ -11,7 +11,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 packages="
 qbittorrent
-python-torchvision
 python-pycocotools
 python-opencv
 remmina
@@ -45,10 +44,14 @@ cuda
 cuda-tools
 python-cuda
 python-tensorflow-cuda
+python-torchvision-cuda
+python-pytorch-cuda
 "
 else
 packages+="
 python-tensorflow
+python-torchvision
+python-pytorch
 "
 fi
 if ! (( AMD )); then
