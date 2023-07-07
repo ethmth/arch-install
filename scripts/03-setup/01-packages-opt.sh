@@ -13,6 +13,8 @@ packages="
 qbittorrent
 python-pycocotools
 python-opencv
+python-seaborn
+python-scikit-learn
 remmina
 rstudio-desktop-bin
 cryptomator-bin
