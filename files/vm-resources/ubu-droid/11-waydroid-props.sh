@@ -10,3 +10,5 @@ waydroid prop set persist.waydroid.height 1480
 waydroid prop set persist.waydroid.suspend false
 waydroid prop set persist.waydroid.uevent true
 waydroid prop set persist.waydroid.multi_windows false
+
+echo "Run ./12-waydroid-libhoudini.sh"

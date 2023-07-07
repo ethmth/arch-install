@@ -12,7 +12,7 @@ sudo sh -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel"
 if ! grep -q "^wheel:" /etc/group; then
 	sudo groupadd wheel
 fi
-sudo usermod -aG wheel weston-launch $CUR_USER
+sudo usermod -aG wheel $CUR_USER
 
 groups $CUR_USER
 

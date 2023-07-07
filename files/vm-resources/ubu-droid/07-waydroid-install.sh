@@ -9,8 +9,4 @@ curl https://repo.waydro.id | sudo bash
 
 sudo apt install waydroid -y
 
-sudo systemctl enable waydroid-container
-
-sudo waydroid init
-
-waydroid session start
+echo "Now, run ./08-package-install.sh and ./09-waydroid-init simultaneously"

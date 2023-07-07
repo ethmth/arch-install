@@ -17,4 +17,4 @@ source .venv/bin/activate
 
 sudo .venv/bin/python -m pip install -r requirements.txt
 
-echo "Waydroid script setup. Now, run ./10-install-libhoudini.sh"
+echo "Waydroid script setup. Reboot, make sure waydroid runs, then run ./11-waydroid-props.sh"
