@@ -42,6 +42,7 @@ org.kde.kdenlive
 org.signal.Signal
 rest.insomnia.Insomnia
 io.freetubeapp.FreeTube
+org.getmonero.Monero
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
