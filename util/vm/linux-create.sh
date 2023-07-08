@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint>"
+	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint|mint-ext>"
 	exit 1
 fi
 
@@ -35,9 +35,12 @@ elif [ "$1" == "ubu-droid" ]; then
 elif [ "$1" == "mint" ]; then
     TEMPLATE_STRING="Mint"
     SEARCH_STRING="linuxmint"
+elif [ "$1" == "mint-ext" ]; then
+    TEMPLATE_STRING="Mint-extended"
+    SEARCH_STRING="linuxmint"
     NETWORK_SELECT=0
 else 
-    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint>"
+    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint|mint-ext>"
 	exit 1
 fi
 
