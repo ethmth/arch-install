@@ -56,6 +56,9 @@ flatpak install --noninteractive flathub $flatpaks
 
 #sudo -k flatpak override --reset io.gitlab.librewolf-community
 #sudo flatpak override --nosocket=wayland io.gitlab.librewolf-community
+
+sudo flatpak override org.getmonero.Monero --filesystem=~/monero-storage:create
+
 flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
