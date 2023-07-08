@@ -35,7 +35,7 @@ if ! [[ "$DISK_SIZE" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
-read -p "Do you want to create $DISK_LOC/$DISK_NAME of size $DISK_SIZE GB? (YES for Yes, otherwise No)" userInput
+read -p "Do you want to create $DISK_LOC/$DISK_NAME of size $DISK_SIZE GB (YES for Yes)? " userInput
 
 if ! [ "$userInput" == "YES" ]; then
     echo "Exiting. No damage done."
