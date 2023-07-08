@@ -65,7 +65,7 @@ rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
 
 cd $LOC
-mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
+cp $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
 
 echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
 echo "To edit/check config.plist inside the OpenCore image, run:"
