@@ -109,8 +109,6 @@ fi
 
 OS_DISK="/home/$CUR_USER/vm/os/$OS_DISK"
 
-echo "OS DISK $OS_DISK w"
-
 NETWORK="Default"
 if (( NETWORK_SELECT )); then
     networks=$(sudo virsh net-list --all | grep "yes" | awk '{print $1}')
