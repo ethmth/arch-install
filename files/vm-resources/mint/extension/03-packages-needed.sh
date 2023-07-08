@@ -24,9 +24,12 @@ network-manager-openvpn
 unzip
 jq
 fzf
+autossh
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 apt update
 apt install $packages -y
+
+echo "Note: Disable screen locking in 'Light Locker' and set display resolution in 'Display'"

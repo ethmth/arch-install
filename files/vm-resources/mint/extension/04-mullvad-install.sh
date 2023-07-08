@@ -14,3 +14,5 @@ wget -O /home/$CUR_USER/deb/MullvadVPN_amd64.deb --content-disposition https://m
 cd /home/$CUR_USER/deb
 
 sudo apt install -y ./MullvadVPN_amd64.deb
+
+echo "Configure Mullvad. Recommended: Launch on Startup, Auto Connect, Local Network Sharing, OpenVPN TCP, Custom: 10.152.152.10 DNS"
