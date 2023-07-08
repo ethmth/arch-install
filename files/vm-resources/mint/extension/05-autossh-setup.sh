@@ -15,7 +15,10 @@ EOF
 
 read -p "Enter your username on the Wireguard machine: " username
 
-scp /home/$CUR_USER/.ssh/id_rsa.pub $username@10.153.153.18:/home/$username/.ssh/authorized_keys
+mkdir -p /tmp/sshtemp/.ssh
+cp /home/$CUR_USER/.ssh/id_rsa.pub /tmp/sshtemp/.ssh/authorized_keys
+
+scp -r /tmp/sshtemp/.ssh $username@10.153.153.18:/home/$username/.ssh
 
 echo "@reboot /usr/bin/autossh -D 0.0.0.0:6969 -N $username@10.153.153.18" > /tmp/crontemp
 
