@@ -7,6 +7,6 @@ fi
 
 CUR_USER=$(whoami)
 
-sudo sh -c "echo 'SUBSYSTEM==\"vfio\", OWNER=\"$CUR_USER\", GROUP=\"libvirt\", MODE=\"0660\"' > /etc/udev/rules.d/98-vfio.rules"
+# sudo sh -c "echo 'SUBSYSTEM==\"vfio\", OWNER=\"$CUR_USER\", GROUP=\"libvirt\", MODE=\"0660\"' > /etc/udev/rules.d/98-vfio.rules"
 
-echo "Udev rules written. Run ./02-enable-iommu.sh"
+echo "Udev rules (if any) written. Run ./02-enable-iommu.sh"
