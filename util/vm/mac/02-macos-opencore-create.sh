@@ -65,7 +65,7 @@ rm OpenCore.qcow2
 ./opencore-image-ng.sh --cfg config.plist --img OpenCore.qcow2
 
 cd $LOC
-cp $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
+mv $LOC/osx-serial-generator/OSX-KVM/OpenCore/OpenCore.qcow2 .
 
 cd $LOC/osx-serial-generator/OSX-KVM
 git restore OVMF_VARS.fd
