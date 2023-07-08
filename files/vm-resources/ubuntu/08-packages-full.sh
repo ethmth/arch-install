@@ -21,6 +21,7 @@ gallery-dl
 john 
 hashcat 
 keepassxc
+chromium-browser
 python3-full
 python3-selenium
 python3-bs4
