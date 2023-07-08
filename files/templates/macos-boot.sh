@@ -81,6 +81,10 @@ args=(
   -device ide-hd,bus=sata.4,drive=MacHDD
   # -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -device vmxnet3,netdev=net0,id=net0,mac=52:54:00:c9:18:27
   -netdev user,id=net0 -device vmxnet3,netdev=net0,id=net0,mac=52:54:00:c9:18:27
+  -object input-linux,id=mouse1,evdev=/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse
+  -object input-linux,id=kbd1,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-event-kbd,grab_all=on,repeat=on
+  -object input-linux,id=kbd2,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-if01-event-kbd,grab_all=on,repeat=on
+  -object input-linux,id=mouse2,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-if02-event-mouse
   -monitor stdio
   -display none
   # -object input-linux,id=kbd1,evdev=/dev/input/by-id/usb-SEMITEK_USB-HID_Gaming_Keyboard_SN0000000001-event-kbd,grab_all=on,repeat=on
