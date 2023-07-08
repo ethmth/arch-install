@@ -11,7 +11,7 @@ qemu-system-x86_64 \
   -device vfio-pci,host=06:00.1 \
   -device isa-applesmc,osk="ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc" \
   -drive if=pflash,format=raw,readonly=on,file="/home/e/vm/osx/MacVentura/osx-serial-generator/OSX-KVM/OVMF_CODE.fd" \
-  -drive if=pflash,format=raw,file="/home/e/vm/osx/MacVentura/osx-serial-generator/OSX-KVM/OVMF_VARS-1024x768.fd" \
+  -drive if=pflash,format=raw,file="/home/e/vm/osx/MacVentura/osx-serial-generator/OSX-KVM/OVMF_VARS.fd" \
   -smbios type=2 \
   -device ich9-intel-hda -device hda-duplex \
   -device ich9-ahci,id=sata \
