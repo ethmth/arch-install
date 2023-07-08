@@ -75,11 +75,6 @@
       <mac address="VIRT_MAC_ADDRESS_HERE"/>
       <model type="virtio"/>
     </interface>
-    <interface type="network">
-      <source network="VIRT_NETWORK_HERE"/>
-      <mac address="VIRT_MAC_ADDRESS2_HERE"/>
-      <model type="virtio"/>
-    </interface>
     <console type="pty"/>
     <channel type="unix">
       <source mode="bind"/>

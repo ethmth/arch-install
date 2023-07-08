@@ -10,7 +10,7 @@ read -p "Enter your username on the Wireguard machine: " username
 mkdir -p /opt/wireguard-client
 chmod -R 777 /opt/wireguard-client
 
-scp -r $username@10.152.152.15:/opt/wireguard-server/config/peer2 /opt/wireguard-client
+scp -r $username@10.153.153.15:/opt/wireguard-server/config/peer2 /opt/wireguard-client
 
 if ! [ -e "/opt/wireguard-client/peer2/peer2.conf" ]; then
 	echo "Make sure you have created peer2 on the $username machine"
