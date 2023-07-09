@@ -24,6 +24,7 @@ org.cryptomator.Cryptomator
 com.opera.Opera
 io.github.seadve.Kooha
 com.google.AndroidStudio
+org.gajim.Gajim
 "
 
 flatpaks=${flatpaks//$'\n'/ }
