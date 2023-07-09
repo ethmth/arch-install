@@ -67,7 +67,7 @@
     <controller type="pci" model="pcie-root-port"/>
     <controller type="pci" model="pcie-root-port"/>
     <interface type="network">
-      <source network="Whonix-Internal"/>
+      <source network="VPN-External"/>
       <mac address="VIRT_MAC_ADDRESS_HERE"/>
       <model type="virtio"/>
     </interface>

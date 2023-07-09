@@ -19,10 +19,10 @@ CONNECTION2="${CONNECTION2%% }"
 
 
 nmcli connection modify "$CONNECTION1" ipv4.method manual
-nmcli connection modify "$CONNECTION1" ipv4.addresses 10.152.152.17/18
+nmcli connection modify "$CONNECTION1" ipv4.addresses 10.0.3.15/18
 nmcli connection modify "$CONNECTION1" connection.interface-name "$INTERFACE1"
-nmcli connection modify "$CONNECTION1" ipv4.gateway 10.152.152.10
-nmcli connection modify "$CONNECTION1" ipv4.dns 10.152.152.10
+nmcli connection modify "$CONNECTION1" ipv4.gateway 10.0.3.0
+# nmcli connection modify "$CONNECTION1" ipv4.dns 10.152.152.10
 nmcli connection down "$CONNECTION1"
 nmcli connection up "$CONNECTION1"
 

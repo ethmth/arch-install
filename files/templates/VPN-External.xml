@@ -1,0 +1,6 @@
+<network>
+  <name>VPN-External</name>
+  <forward mode="nat" dev="tun0" />
+  <bridge name="virbr5" stp="on" delay="0" />
+  <ip address="10.0.3.2" netmask="255.255.255.0" />
+</network>
