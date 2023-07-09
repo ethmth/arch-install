@@ -7,9 +7,23 @@ fi
 
 flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# Install Flatpaks
 flatpaks="
-com.google.AndroidStudio
+org.gimp.GIMP
+com.brave.Browser
+com.github.micahflee.torbrowser-launcher
+com.github.tchx84.Flatseal
+io.gitlab.librewolf-community
+net.mullvad.MullvadBrowser
+nz.mega.MEGAsync
+org.jdownloader.JDownloader
 com.obsproject.Studio
+org.filezillaproject.Filezilla
+network.loki.Session
+org.cryptomator.Cryptomator
+com.opera.Opera
+io.github.seadve.Kooha
+com.google.AndroidStudio
 "
 
 flatpaks=${flatpaks//$'\n'/ }
@@ -19,3 +33,4 @@ flatpak install --noninteractive flathub $flatpaks
 flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
+echo "Add KOOHA_EXPERIMENTAL=1 to env variables for io.github.seadve.Kooha for window recording"

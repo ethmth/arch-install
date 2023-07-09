@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+xdg-desktop-portal-gtk
 snap
 git-lfs
 proxychains
