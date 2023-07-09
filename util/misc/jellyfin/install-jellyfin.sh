@@ -78,12 +78,21 @@ if (( GPU_ACCEL )); then
 fi
 
 mkdir -p $LOC
+
+mkdir -p $LOC/config
+mkdir -p $LOC/cache
+mkdir -p $LOC/media
+chmod -R 777 $LOC/config
+chmod -R 777 $LOC/cache
+chmod -R 777 $LOC/media
+
 cp docker-compose.yml $LOC/docker-compose.yml
 
 sed -i "s/USER_ID_HERE/$USER_ID/g" $LOC/docker-compose.yml
 sed -i "s/GROUP_ID_HERE/$GROUP_ID/g" $LOC/docker-compose.yml
 sed -i "s/RENDER_ID_HERE/$RENDER_ID/g" $LOC/docker-compose.yml
 sed -i "s/VIDEO_ID_HERE/$VIDEO_ID/g" $LOC/docker-compose.yml
+
 
 if (( GPU_ACCEL )); then
 string_to_echo=""
