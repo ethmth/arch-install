@@ -20,7 +20,7 @@ fi
 nmcli connection modify "$CONNECTION1" ipv4.method manual
 nmcli connection modify "$CONNECTION1" ipv4.addresses 10.153.153.$ipNumber/24
 nmcli connection modify "$CONNECTION1" ipv4.gateway 10.153.153.0
-nmcli connection modify "$CONNECTION1" ipv4.dns 10.152.152.10
+nmcli connection modify "$CONNECTION1" ipv4.dns 10.153.153.0
 nmcli connection down "$CONNECTION1"
 nmcli connection up "$CONNECTION1"
 

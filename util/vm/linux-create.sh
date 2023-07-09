@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint|mint-ext>"
+	echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw>"
 	exit 1
 fi
 
@@ -17,15 +17,9 @@ NETWORK_SELECT=1
 
 TEMPLATE_STRING=""
 SEARCH_STRING=""
-if [ "$1" == "nix" ]; then
-    TEMPLATE_STRING="Nix"
-    SEARCH_STRING="nixos"
-elif [ "$1" == "mx" ]; then
+if [ "$1" == "mx" ]; then
     TEMPLATE_STRING="MX"
     SEARCH_STRING="MX"
-elif [ "$1" == "nix-droid" ]; then
-    TEMPLATE_STRING="Nix-droid"
-    SEARCH_STRING="nixos"
 elif [ "$1" == "ubuntu" ]; then
     TEMPLATE_STRING="Ubuntu"
     SEARCH_STRING="ubuntu"
@@ -35,12 +29,12 @@ elif [ "$1" == "ubu-droid" ]; then
 elif [ "$1" == "mint" ]; then
     TEMPLATE_STRING="Mint"
     SEARCH_STRING="linuxmint"
-elif [ "$1" == "mint-ext" ]; then
-    TEMPLATE_STRING="Mint-extended"
+elif [ "$1" == "mull-gw" ]; then
+    TEMPLATE_STRING="Mullvad-Gateway"
     SEARCH_STRING="linuxmint"
     NETWORK_SELECT=0
 else 
-    echo "Usage: ./linux-create.sh <nix|mx|nix-droid|ubuntu|ubu-droid|mint|mint-ext>"
+    echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw>"
 	exit 1
 fi
 
