@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin:latest
+    user: USER_ID_HERE:GROUP_ID_HERE
+    group_add:
+      - "RENDER_ID_HERE" # Change this to match your "render" host group id and remove this comment
+      - "VIDEO_ID_HERE" # Change this to match your "video" host group id and remove this comment
+    network_mode: 'host'
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media
