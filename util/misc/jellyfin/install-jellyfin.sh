@@ -121,3 +121,4 @@ sudo sed -i "s|PROJECT_DIRECTORY_HERE|$LOC|g" /usr/bin/pirokit
 
 echo "jellyfin installed to /usr/bin. Run jellyfin to start"
 echo "Jellyfin will run on port 8096"
+echo "In qbittorrent, set Preferences -> Downloads -> Torrent Content Layout: Don't create subfolder"
