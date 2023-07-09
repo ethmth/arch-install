@@ -115,5 +115,9 @@ fi
 sudo cp jellyfin /usr/bin/jellyfin
 sudo chmod +rx /usr/bin/jellyfin
 sudo sed -i "s|PROJECT_DIRECTORY_HERE|$LOC|g" /usr/bin/jellyfin
+sudo cp pirokit /usr/bin/pirokit
+sudo chmod +rx /usr/bin/pirokit
+sudo sed -i "s|PROJECT_DIRECTORY_HERE|$LOC|g" /usr/bin/pirokit
 
 echo "jellyfin installed to /usr/bin. Run jellyfin to start"
+echo "Jellyfin will run on port 8096"
