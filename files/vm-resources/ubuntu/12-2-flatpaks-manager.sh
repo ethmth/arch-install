@@ -7,9 +7,9 @@ fi
 
 flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Flatpaks
 flatpaks="
 com.google.AndroidStudio
+com.obsproject.Studio
 "
 
 flatpaks=${flatpaks//$'\n'/ }
