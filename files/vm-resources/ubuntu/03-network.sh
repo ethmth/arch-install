@@ -10,12 +10,8 @@ CONNECTION1=$(echo "$CONNECTION" | head -n 1)
 CONNECTION1=$(echo "$CONNECTION1" | awk '{for(i=1; i<=NF-3; i++) printf "%s ", $i; print ""}')
 CONNECTION1="${CONNECTION1%% }"
 
-read -p "Is this for Ubuntu manager (y/N)? " userInput
 
 ipNumber="14"
-if [ "$userInput" == "y" ] || [ "$userInput" == "Y" ]; then
-    ipNumber="16"
-fi
 
 nmcli connection modify "$CONNECTION1" ipv4.method manual
 nmcli connection modify "$CONNECTION1" ipv4.addresses 10.153.153.$ipNumber/24
