@@ -55,6 +55,7 @@ VIDEO_NAMES=$(echo "$VIDEO_DEVICES" | awk -F ":" '{print $3}' | awk '{$NF=""; pr
 selected_device=$(echo "$VIDEO_NAMES" | fzf --prompt="Select the video device to use. Select none for no GPU Acceleration")
 
 GPU_ACCEL=1
+NVIDIA=0
 if [ "$selected_device" == "" ]; then
     echo "No device selected, proceeding without GPU Acceleration"
     GPU_ACCEL=0
@@ -62,6 +63,8 @@ fi
 
 DEVICE="Nothing"
 if (( GPU_ACCEL )); then
+    NVIDIA=$(echo "$selected_device" | grep "NVIDIA" | wc -l)
+
     pci_value=$(echo "$VIDEO_DEVICES" | grep -F "$selected_device")
     pci_value=$(echo "$pci_value" | cut -d ' ' -f 1)
     pci_value="${pci_value#"${pci_value%%[![:space:]]*}"}"
@@ -74,7 +77,6 @@ if (( GPU_ACCEL )); then
     fi
 fi
 
-
 mkdir -p $LOC
 cp docker-compose.yml $LOC/docker-compose.yml
 
@@ -84,10 +86,20 @@ sed -i "s/RENDER_ID_HERE/$RENDER_ID/g" $LOC/docker-compose.yml
 sed -i "s/VIDEO_ID_HERE/$VIDEO_ID/g" $LOC/docker-compose.yml
 
 if (( GPU_ACCEL )); then
+string_to_echo=""
+if (( NVIDIA )); then
+string_to_echo=$(echo "    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]")
+else
 string_to_echo=$(echo "    environment:
       - ROC_ENABLE_PRE_VEGA=1  
     devices:
       - $DEVICE:/dev/dri/renderD128")
+fi
 echo "$string_to_echo" >> $LOC/docker-compose.yml
 fi
 

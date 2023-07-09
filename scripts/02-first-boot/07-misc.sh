@@ -64,5 +64,19 @@ sudo update-mime-database /usr/share/mime
 # npm user setup
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
 
+# Docker container runtime setup
+string_to_echo=$(echo '{
+  "runtimes": {
+    "nvidia": {
+      "path": "/usr/bin/nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  }
+}')
+
+sudo mkdir -p /etc/docker
+sudo sh -c "echo '$string_to_echo' > /etc/docker/daemon.json"
+
+
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
