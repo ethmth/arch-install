@@ -1,18 +1,23 @@
-version: '3.9'
+version: "3.8"
 services:
-  jupyter:
-    stdin_open: true
-    tty: true
-    build: .
-    ports:
-      - 8888:8888
-    volumes:
-      - ./work:/home/jovyan/work
-    environment:
-      - JUPYTER_ENABLE_LAB=yes
-    runtime: nvidia
+  gpu-jupyter:
+    container_name: gpu-jupyter
+    image: cschranz/gpu-jupyter:v1.5_cuda-11.6_ubuntu-20.04
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - driver: nvidia
+              capabilities: [gpu]
+    ports:
+      - 8888:8888
+    volumes:
+      - ./data:/home/jovyan/work
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
+      NB_UID: ${JUPYTER_UID:-1000}
+      NB_GID: ${JUPYTER_GID:-1000}
+    user:
+      "root"
+    restart: unless-stopped
