@@ -65,6 +65,7 @@ sudo update-mime-database /usr/share/mime
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
 
 # Docker container runtime setup
+if (( NVIDIA )); then
 string_to_echo=$(echo '{
   "runtimes": {
     "nvidia": {
@@ -73,9 +74,9 @@ string_to_echo=$(echo '{
     }
   }
 }')
-
 sudo mkdir -p /etc/docker
 sudo sh -c "echo '$string_to_echo' > /etc/docker/daemon.json"
+fi
 
 
 echo "Verify that installation of various misc software was successful"
