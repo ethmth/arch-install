@@ -7,3 +7,4 @@ scripts/vm/04-downloaders/BaseSystem.chunklist
 files/resources.iso
 util/misc/github-backup/workdir
 util/misc/github-backup/privates.conf
+util/misc/jupyter-lab/data
