@@ -2,7 +2,7 @@ version: "3.8"
 services:
   gpu-jupyter:
     container_name: gpu-jupyter
-    image: cschranz/gpu-jupyter:v1.5_cuda-11.6_ubuntu-20.04
+    build: .
     deploy:
       resources:
         reservations:
