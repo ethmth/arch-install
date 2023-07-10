@@ -43,6 +43,7 @@ org.signal.Signal
 rest.insomnia.Insomnia
 io.freetubeapp.FreeTube
 org.getmonero.Monero
+org.electrum.electrum
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
