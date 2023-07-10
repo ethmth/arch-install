@@ -3,10 +3,16 @@ services:
   jupyter:
     stdin_open: true
     tty: true
-    image: jupyter/tensorflow-notebook
+    build: .
     ports:
       - 8888:8888
     volumes:
       - ./work:/home/jovyan/work
     environment:
       - JUPYTER_ENABLE_LAB=yes
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
