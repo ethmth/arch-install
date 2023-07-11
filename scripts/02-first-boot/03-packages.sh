@@ -68,6 +68,7 @@ gcc-fortran
 gdal
 proj
 unzip
+lzip
 tar
 alacritty
 bridge-utils
