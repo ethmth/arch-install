@@ -20,6 +20,8 @@ fi
 if (( HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/wrappedhl /usr/bin/wrappedhl
     sudo chmod +x /usr/bin/wrappedhl
+    sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lock /usr/bin/lock
+    sudo chmod +x /usr/bin/lock
     sudo cp /home/$CUR_USER/arch-install/files/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
     sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=hyprlandwrapper\n\" > /etc/sddm.conf.d/autologin.conf"
 elif (( PLASMA )); then

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+swaylock --config ~/.config/swaylock/imageconfig --image $1
