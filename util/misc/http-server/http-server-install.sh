@@ -35,11 +35,14 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
+if ! [ -e "$LOC/$NAME/html" ]; then
 mkdir -p $LOC/$NAME/html
-
 chmod -R 777 $LOC/$NAME/html
+fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
+cp Dockerfile $LOC/$NAME/Dockerfile
+cp nginx.conf $LOC/$NAME/nginx.conf
 
 cd $LOC/$NAME/
 
