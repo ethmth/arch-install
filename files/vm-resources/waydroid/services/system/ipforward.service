@@ -1,0 +1,11 @@
+[Unit]
+Description=Socat IP Forwarding for Waydroid
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/socat tcp-listen:5555,fork,reuseaddr tcp:192.168.240.112:5555
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

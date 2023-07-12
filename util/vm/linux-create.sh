@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|win10>"
+	echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10>"
 	exit 1
 fi
 
@@ -32,12 +32,15 @@ elif [ "$1" == "mint" ]; then
 elif [ "$1" == "win10" ]; then
     TEMPLATE_STRING="Windows10"
     SEARCH_STRING="Win10"
+elif [ "$1" == "waydroid" ]; then
+    TEMPLATE_STRING="Waydroid"
+    SEARCH_STRING="Waydroid"
 elif [ "$1" == "mull-gw" ]; then
     TEMPLATE_STRING="Mullvad-Gateway"
     SEARCH_STRING="linuxmint"
     NETWORK_SELECT=0
 else 
-    echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|win10>"
+    echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10>"
 	exit 1
 fi
 
@@ -168,6 +171,13 @@ fi
 if [ "$1" == "ubu-droid" ]; then
     echo "IMPORTANT: Set the correct OpenGL device in virt-manager"
     echo "Go through the installer with Minimal Install, and no downloading updates."
+    echo "Name your user 'android', and check 'Log in automatically'"
+    echo "Once booted up, run the appropriate scripts"
+fi
+
+if [ "$1" == "waydroid" ]; then
+    echo "Go through the setup without OpenGL in virt-manager"
+    echo "Go through the installer with No Swap."
     echo "Name your user 'android', and check 'Log in automatically'"
     echo "Once booted up, run the appropriate scripts"
 fi

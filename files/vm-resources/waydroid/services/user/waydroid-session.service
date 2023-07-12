@@ -1,0 +1,11 @@
+[Unit]
+Description=Waydroid Service
+Requires=phoc.service
+After=phoc.service
+
+[Service]
+Type=simple
+ExecStart=/home/android/bin/waydroid-start
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Phoc
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/phoc
+
+[Install]
+WantedBy=default.target
