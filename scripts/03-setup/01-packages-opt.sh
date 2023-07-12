@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 #issuu-dl
 packages="
+mp4fpsmod
 qbittorrent
 python-pycocotools
 python-opencv
