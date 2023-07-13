@@ -39,6 +39,7 @@ adb
 kdeconnect
 feh
 mpv
+xfce4-settings
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

@@ -22,3 +22,10 @@ fi
 mkdir -p /home/$CUR_USER/.config/autostart
 
 cp "$SCRIPT_DIR/pingphone.desktop" /home/$CUR_USER/.config/autostart/pingphone.desktop
+
+
+mkdir -p /home/$CUR_USER/.config/xfce4
+cp /etc/xdg/xfce4/helpers.rc /home/$CUR_USER/.config/xfce4/helpers.rc
+xdg-mime default thunar.desktop inode/directory
+sed -i "s|^TerminalEmulator=.*|TerminalEmulator=gnome-terminal|" /home/$CUR_USER/.config/xfce4/helpers.rc
+sudo update-mime-database /usr/share/mime
