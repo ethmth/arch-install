@@ -1,5 +1,24 @@
 #!/bin/bash
 
-docker images | awk 'NR>1 {system("docker pull " $1)}'
+compose_images=$(docker images --filter "label=com.docker.compose.project")
+
+#compose_images=$(echo "$compose_images" | tail -n +2 | awk 'NR>1 {system("echo " $1)}')
+compose_images=$(echo "$compose_images" | awk 'NR>1 {system("echo " $1)}')
+
+#echo "$compose_images"
+
+all_images=$(docker images)
+
+for image in $compose_images; do
+    all_images=$(echo "$all_images" | grep -v "$image")
+done
+
+pull_images=$(echo "$all_images" | grep "latest")
+
+pull_images=$(printf "NothingHere\n$pull_images")
+echo "$pull_images"
+
+echo $pull_images | awk 'NR>1 {system("docker pull " $1)}'
+#docker images | awk 'NR>1 {system("docker pull " $1)}'
 
 yes | docker system prune
