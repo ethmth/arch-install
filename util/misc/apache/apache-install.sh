@@ -41,6 +41,9 @@ chmod -R 777 $LOC/$NAME/website
 fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
+cp Dockerfile $LOC/$NAME/Dockerfile
+cp httpd.conf $LOC/$NAME/httpd.conf
+
 
 cd $LOC/$NAME/
 
