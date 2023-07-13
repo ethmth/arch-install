@@ -41,7 +41,6 @@ services:
             # add further configuration options from archivebox/config.py as needed (to apply them only to this container)
             # or set using `docker compose run archivebox config --set SOME_KEY=someval` (to persist config across all containers)
 
-
     ######## Optional Addons: tweak examples below as needed for your specific use case ########
 
     ### Example: To run the Sonic full-text search backend, first download the config file to sonic.cfg
@@ -50,12 +49,12 @@ services:
     #   $ docker-compose run archivebox update --index-only
 
     sonic:
-       image: valeriansaliou/sonic:latest
-       expose:
+        image: valeriansaliou/sonic:latest
+        expose:
            - 1491
-       environment:
+        environment:
            - SEARCH_BACKEND_PASSWORD=password
-       volumes:
+        volumes:
            - ./sonic.cfg:/etc/sonic.cfg:ro
            - ./data/sonic:/var/lib/sonic/store
     
