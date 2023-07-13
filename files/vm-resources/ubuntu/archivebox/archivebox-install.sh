@@ -29,19 +29,19 @@ mkdir -p $LOC/$NAME/data/sonic
 chmod -R 777 $LOC/$NAME/data
 fi
 
-if ! [ -e "$LOC/$NAME/etc" ]; then
-mkdir -p $LOC/$NAME/etc
-chmod -R 777 $LOC/$NAME/etc
-fi
+# if ! [ -e "$LOC/$NAME/etc" ]; then
+# mkdir -p $LOC/$NAME/etc
+# chmod -R 777 $LOC/$NAME/etc
+# fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 cp sonic.cfg $LOC/$NAME/sonic.cfg
 
 cd $LOC/$NAME/
-docker compose up --build -d
+docker-compose up --build -d
 
-docker compose run archivebox manage createsuperuser
+docker-compose run archivebox manage createsuperuser
 
 echo "$NAME installed in $LOC and started."
-echo "Run 'docker compose up --build -d' to run it and 'docker compose stop' to stop it."
+echo "Run 'docker-compose up --build -d' to run it and 'docker-compose stop' to stop it."
 echo "cd $LOC/$NAME"

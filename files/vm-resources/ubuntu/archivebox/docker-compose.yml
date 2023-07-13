@@ -21,8 +21,8 @@ services:
             # - ./etc/crontabs:/var/spool/cron/crontabs  # uncomment this and archivebox_scheduler below to set up automatic recurring archive jobs
             # - ./archivebox:/app/archivebox             # uncomment this to mount the ArchiveBox source code at runtime (for developers working on archivebox)
         # build: .                                       # uncomment this to build the image from source code at buildtime (for developers working on archivebox)
-        dns:                                           # uncomment this and pihole container below for ad-blocking during archiving
-            - pihole
+        # dns:                                           # uncomment this and pihole container below for ad-blocking during archiving
+        #     - pihole
         environment:
             - ALLOWED_HOSTS=*                   # restrict this to only accept incoming traffic via specific domain name
             - MEDIA_MAX_SIZE=1500m             # increase this filesize limit to allow archiving larger audio/video files
@@ -63,15 +63,15 @@ services:
     ### Example: To run pihole in order to block ad/tracker requests during archiving,
     # uncomment this block and set up pihole using its admin interface
 
-    pihole:
-      image: pihole/pihole:latest
-      ports:
-        - 8090:80       # uncomment to access the admin HTTP interface on http://localhost:8090
-      environment:
-        - WEBPASSWORD=password
-      volumes:
-        - ./etc/pihole:/etc/pihole
-        - ./etc/dnsmasq:/etc/dnsmasq.d
+    # pihole:
+    #   image: pihole/pihole:latest
+    #   ports:
+    #     - 8090:80       # uncomment to access the admin HTTP interface on http://localhost:8090
+    #   environment:
+    #     - WEBPASSWORD=password
+    #   volumes:
+    #     - ./etc/pihole:/etc/pihole
+    #     - ./etc/dnsmasq:/etc/dnsmasq.d
 
 
     ### Example: Enable ability to run regularly scheduled archiving tasks by uncommenting this container

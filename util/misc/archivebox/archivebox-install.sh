@@ -40,10 +40,10 @@ mkdir -p $LOC/$NAME/data/sonic
 chmod -R 777 $LOC/$NAME/data
 fi
 
-if ! [ -e "$LOC/$NAME/etc" ]; then
-mkdir -p $LOC/$NAME/etc
-chmod -R 777 $LOC/$NAME/etc
-fi
+# if ! [ -e "$LOC/$NAME/etc" ]; then
+# mkdir -p $LOC/$NAME/etc
+# chmod -R 777 $LOC/$NAME/etc
+# fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 cp sonic.cfg $LOC/$NAME/sonic.cfg
