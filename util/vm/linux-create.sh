@@ -177,7 +177,8 @@ fi
 
 if [ "$1" == "waydroid" ]; then
     echo "Go through the setup without OpenGL in virt-manager"
-    echo "Go through the installer with No Swap."
+    echo "Go through the installer with No Swap. If needed, login info is live:evolution"
     echo "Name your user 'android', and check 'Log in automatically'"
-    echo "Once booted up, run the appropriate scripts"
+	echo "After reboot, enable Spice OpenGL and Virtio 3D acceleration in virt-manager"
+    echo "Once booted up, run the appropriate scripts."
 fi
