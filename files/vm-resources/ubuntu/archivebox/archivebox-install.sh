@@ -14,18 +14,7 @@ if ! [ -e "../$NAME/docker-compose.yml" ]; then
 	exit 1
 fi
 
-
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired Label Studio installation location")
-
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected"
-    echo "Run this script again with target drive mounted."
-    exit 1
-fi
-
-if [ "$LOC" == "/" ]; then
-    LOC="/home/$CUR_USER"
-fi
+LOC="/home/$CUR_USER"
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"
