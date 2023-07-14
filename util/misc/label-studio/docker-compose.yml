@@ -11,5 +11,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      DATA_UPLOAD_MAX_MEMORY_SIZE: "8589934592"
+      DATA_UPLOAD_MAX_MEMORY_SIZE: "85899345920"
+      DATA_UPLOAD_MAX_NUMBER_FILES: "100000"
     command: label-studio start --username admin@admin.com --password password
