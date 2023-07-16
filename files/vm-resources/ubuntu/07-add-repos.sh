@@ -7,8 +7,12 @@ fi
 
 repos="
 ppa:unit193/encryption
+ppa:micahflee/ppa
 "
 repos=${repos//$'\n'/ }
 repos=$(echo "$repos" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
-add-apt-repository $repos
+
+for repo in $repos; do
+    add-apt-repository $repo
+done

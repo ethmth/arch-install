@@ -75,6 +75,8 @@ kate
 ca-certificates
 xvfb
 veracrypt
+unrar
+torbrowser-launcher
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

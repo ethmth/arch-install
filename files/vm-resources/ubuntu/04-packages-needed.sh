@@ -40,6 +40,7 @@ kdeconnect
 feh
 mpv
 xfce4-settings
+apt-transport-https
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
