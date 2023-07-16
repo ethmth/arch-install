@@ -44,6 +44,8 @@ rest.insomnia.Insomnia
 io.freetubeapp.FreeTube
 org.getmonero.Monero
 org.electrum.electrum
+org.kde.kalgebra
+org.kde.labplot2
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
