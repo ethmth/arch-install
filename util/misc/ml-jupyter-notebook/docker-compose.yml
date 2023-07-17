@@ -1,0 +1,18 @@
+version: '2.0'
+services:
+  main:
+    image: anupkumar/docker-ml-jupyterlab:galaxy-integration-0.2
+    environment:
+      - JUPYTER_TOKEN=password
+    volumes:
+      - ./import:/import
+    ports:
+      - 8888:8888
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
