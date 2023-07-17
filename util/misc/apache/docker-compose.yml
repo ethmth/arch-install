@@ -7,3 +7,4 @@ services:
     - '8080:80'
     volumes:
     - ./website:/usr/local/apache2/htdocs
+    restart: unless-stopped

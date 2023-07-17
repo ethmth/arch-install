@@ -1,9 +1,0 @@
-version: '3'  # You can adjust the version based on your Docker Compose version
-
-services:
-  tensorflow:
-    image: tensorflow/tensorflow:latest-gpu-jupyter
-    volumes:
-      - ./work:/home  # Mount the current directory into the container's /tmp directory
-    working_dir: /tmp  # Set the working directory to /tmp inside the container
-    command: python ./script.py  # Specify the command to be executed within the container
