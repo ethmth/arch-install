@@ -18,7 +18,6 @@ python-seaborn
 python-scikit-learn
 remmina
 rstudio-desktop-bin
-cryptomator-bin
 scrcpy
 anaconda
 emacs29-git
