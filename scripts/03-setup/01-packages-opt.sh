@@ -9,8 +9,9 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 #issuu-dl
+# mp4fpsmod
 packages="
-mp4fpsmod
+git-lfs
 qbittorrent
 python-pycocotools
 python-opencv
