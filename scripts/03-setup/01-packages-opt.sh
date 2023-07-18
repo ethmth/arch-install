@@ -16,6 +16,7 @@ python-pycocotools
 python-opencv
 python-seaborn
 python-scikit-learn
+python-systemd
 remmina
 rstudio-desktop-bin
 scrcpy
