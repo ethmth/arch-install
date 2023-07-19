@@ -45,4 +45,4 @@ git clone https://github.com/ArtVentureX/sd-webui-agent-scheduler.git $LOC/sd-we
 git clone https://github.com/Mikubill/sd-webui-controlnet.git $LOC/sd-webui-controlnet
 git clone https://github.com/Bing-su/adetailer.git $LOC/adetailer
 git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111.git $LOC/ultimate-upscale-for-automatic1111
-
+git clone https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor.git $LOC/dataset-tag-editor
