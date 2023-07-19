@@ -35,7 +35,7 @@ mkdir -p $LOC
 git clone --depth 1 https://github.com/oobabooga/text-generation-webui.git $LOC/text-generation-webui
 
 # ln -s $LOC/text-generation-webui/docker/{Dockerfile,docker-compose.yml,.dockerignore} $LOC/text-generation-webui
-cp $LOC/text-generation-webui/docker/* $LOC/text-generation-webui/
+cp -r $LOC/text-generation-webui/docker/. $LOC/text-generation-webui
 cp env.conf $LOC/text-generation-webui/.env
 
 echo "text-generation-webui installed to $LOC. Run 'docker compose up --build' to start"
