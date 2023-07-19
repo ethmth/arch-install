@@ -39,7 +39,7 @@ sed -i "s/127.0.0.1:7860/0.0.0.0:7861/g" docker-compose.yaml
 sed -i "s|CLI_ARGS: \"\"|CLI_ARGS: \"--headless --listen 0.0.0.0 --username $username --password $password\"|g" docker-compose.yaml
 
 echo "#!/bin/bash" > $LOC/kohya_ss/run.sh
-echo "docker compose --project-directory=$LOC/kohya_ss run --service-ports kohya-ss-gui" >> $LOC/kohya_ss/run.sh
+echo "docker compose --project-directory=$LOC/kohya_ss up --build" >> $LOC/kohya_ss/run.sh
 chmod +x $LOC/kohya_ss/run.sh
 
 read -p "Do you want to create a system executable (y/N)? " userInput
@@ -63,6 +63,10 @@ while IFS= read -r line; do
 
     if [[ $line == *"volumes"* ]]; then
         echo "      - $DISK/sd:/sd" >> "$temp_file"
+        if [ -e "config.json" ]; then
+            cp config.json $LOC/kohya_ss/config.json
+	        echo "      - ./config.json:/c.json:ro" >> "$temp_file"
+        fi
         if [ -d "$LOC/stable-diffusion-webui/models" ]; then
             chmod -R o+rwx $LOC/stable-diffusion-webui/models
             echo "      - $LOC/stable-diffusion-webui/models:/models" >> "$temp_file"
