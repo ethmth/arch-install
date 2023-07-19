@@ -4,3 +4,4 @@ USER root
 RUN apt install unzip -y
 
 USER gpuuser
+# RUN conda update --all -y

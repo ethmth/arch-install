@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
+jupyter-nbconvert
 git-lfs
 qbittorrent
 python-pycocotools
