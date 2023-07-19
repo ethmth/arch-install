@@ -40,6 +40,7 @@ mkdir -p $LOC/import
 chmod -R 777 $LOC/import
 
 cp docker-compose.yml $LOC/docker-compose.yml
+cp Dockerfile $LOC/Dockerfile
 
 echo "$NAME installed to $LOC. Run 'docker compose up --build' to start"
 echo "$NAME will run on port 8888"
