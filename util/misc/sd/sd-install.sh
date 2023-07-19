@@ -39,7 +39,7 @@ sed -i '$ d' "$LOC/stable-diffusion-webui/webui-user.sh"
 echo "install_dir=\"$LOC\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 echo "export TORCH_COMMAND=\"pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 echo "python_cmd=\"python3.10\"" >> $LOC/stable-diffusion-webui/webui-user.sh
-echo "export COMMANDLINE_ARGS=\"--listen --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --api-log --xformers --medvram\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--listen --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --api-log --no-half --xformers --medvram\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 echo "$LAST_LINE" >> $LOC/stable-diffusion-webui/webui-user.sh
 
 cd $LOC/stable-diffusion-webui
