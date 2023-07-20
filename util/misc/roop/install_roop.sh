@@ -27,30 +27,38 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
+# git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
+# git clone --depth 1 https://github.com/GosuDRM/nsfw-roop.git $LOC/roop
+git clone --depth 1 https://github.com/C0untFloyd/roop-unleashed.git $LOC/roop-unleashed
+
 
 if [ -e "requirements.pip" ]; then
-    cp requirements.pip $LOC/roop/requirements.pip
+    cp requirements.pip $LOC/roop-unleashed/requirements.pip
 fi
 
-cd $LOC/roop
+cd $LOC/roop-unleashed
 
 python -m venv .venv
 
-source $LOC/roop/.venv/bin/activate
+source $LOC/roop-unleashed/.venv/bin/activate
 
 # USE PROVIDED REQUIREMENTS:
-# $LOC/roop/.venv/bin/pip install -r requirements.txt
+# $LOC/roop-unleashed/.venv/bin/pip install -r requirements.txt
 
 # USE MY REQUIREMENTS:
-$LOC/roop/.venv/bin/pip install -r requirements.pip
+$LOC/roop-unleashed/.venv/bin/pip install -r requirements.pip
 
-echo "#!/bin/bash" > $LOC/roop/run.sh
-echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
-echo "$LOC/roop/.venv/bin/python run.py --execution-provider cuda" >> $LOC/roop/run.sh
+echo "#!/bin/bash" > $LOC/roop-unleashed/run.sh
+echo "source $LOC/roop-unleashed/.venv/bin/activate" >> $LOC/roop-unleashed/run.sh
+echo "$LOC/roop-unleashed/.venv/bin/python run.py --execution-provider cuda" >> $LOC/roop-unleashed/run.sh
 
-chmod +rx $LOC/roop/run.sh
+echo "#!/bin/bash" > $LOC/roop-unleashed/cpu-run.sh
+echo "source $LOC/roop-unleashed/.venv/bin/activate" >> $LOC/roop-unleashed/cpu-run.sh
+echo "$LOC/roop-unleashed/.venv/bin/python run.py" >> $LOC/roop-unleashed/cpu-run.sh
 
-echo "Installed roop in $LOC"
+chmod +rx $LOC/roop-unleashed/run.sh
+chmod +rx $LOC/roop-unleashed/cpu-run.sh
+
+echo "Installed roop-unleashed in $LOC"
 echo "Run ./run.sh to start it"
-echo "cd $LOC/roop"
+echo "cd $LOC/roop-unleashed"
