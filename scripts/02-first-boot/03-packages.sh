@@ -153,6 +153,7 @@ virtualbox-host-dkms
 wireshark-qt
 xdg-desktop-portal
 xdg-desktop-portal-gtk
+xorg-xeyes
 yt-dlp
 edk2-ovmf
 jdk-openjdk
