@@ -39,6 +39,9 @@ if ! [ -d "$LOC" ]; then
 	exit 1
 fi
 
+source $LOC/venv/bin/activate
+$LOC/venv/bin/pip install insightface==0.7.3
+
 LOC="$LOC/extensions"
 
 git clone https://github.com/ArtVentureX/sd-webui-agent-scheduler.git $LOC/sd-webui-agent-scheduler
@@ -46,3 +49,4 @@ git clone https://github.com/Mikubill/sd-webui-controlnet.git $LOC/sd-webui-cont
 git clone https://github.com/Bing-su/adetailer.git $LOC/adetailer
 git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111.git $LOC/ultimate-upscale-for-automatic1111
 git clone https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor.git $LOC/dataset-tag-editor
+git clone https://github.com/s0md3v/sd-webui-roop.git $LOC/sd-webui-roop

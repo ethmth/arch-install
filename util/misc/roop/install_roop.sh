@@ -29,17 +29,21 @@ mkdir -p $LOC
 
 git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
 
+if [ -e "requirements.pip" ]; then
+    cp requirements.pip $LOC/roop/requirements.pip
+fi
+
 cd $LOC/roop
 
 python -m venv .venv
 
 source $LOC/roop/.venv/bin/activate
 
-# $LOC/roop/.venv/bin/python -m $LOC/roop/.venv/bin/pip install -r requirements.txt
-# $LOC/roop/.venv/bin/python -m $LOC/roop/.venv/bin/pip install onnxruntime-gpu==1.15.1
+# USE PROVIDED REQUIREMENTS:
+# $LOC/roop/.venv/bin/pip install -r requirements.txt
 
-$LOC/roop/.venv/bin/pip install -r requirements.txt
-$LOC/roop/.venv/bin/pip install onnxruntime-gpu==1.15.1
+# USE MY REQUIREMENTS:
+$LOC/roop/.venv/bin/pip install -r requirements.pip
 
 echo "#!/bin/bash" > $LOC/roop/run.sh
 echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
