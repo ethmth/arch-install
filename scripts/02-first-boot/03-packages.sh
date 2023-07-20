@@ -29,6 +29,7 @@ android-tools
 android-udev
 hexyl
 libcaca
+libsixel
 feh
 usbutils
 carla
@@ -73,6 +74,7 @@ lzip
 tar
 alacritty
 foot
+lf
 bridge-utils
 cronie
 cups
