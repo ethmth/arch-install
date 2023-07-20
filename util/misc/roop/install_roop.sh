@@ -27,38 +27,39 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-# git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
-# git clone --depth 1 https://github.com/GosuDRM/nsfw-roop.git $LOC/roop
-git clone --depth 1 https://github.com/C0untFloyd/roop-unleashed.git $LOC/roop-unleashed
-
+git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
 
 if [ -e "requirements.pip" ]; then
-    cp requirements.pip $LOC/roop-unleashed/requirements.pip
+    cp requirements.pip $LOC/roop/requirements.pip
 fi
 
-cd $LOC/roop-unleashed
+cd $LOC/roop
 
 python -m venv .venv
 
-source $LOC/roop-unleashed/.venv/bin/activate
+source $LOC/roop/.venv/bin/activate
 
 # USE PROVIDED REQUIREMENTS:
-# $LOC/roop-unleashed/.venv/bin/pip install -r requirements.txt
+# $LOC/roop/.venv/bin/pip install -r requirements.txt
 
 # USE MY REQUIREMENTS:
-$LOC/roop-unleashed/.venv/bin/pip install -r requirements.pip
+$LOC/roop/.venv/bin/pip install -r requirements.pip
 
-echo "#!/bin/bash" > $LOC/roop-unleashed/run.sh
-echo "source $LOC/roop-unleashed/.venv/bin/activate" >> $LOC/roop-unleashed/run.sh
-echo "$LOC/roop-unleashed/.venv/bin/python run.py --execution-provider cuda" >> $LOC/roop-unleashed/run.sh
+echo "#!/bin/bash" > $LOC/roop/run.sh
+echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
+echo "$LOC/roop/.venv/bin/python run.py --execution-provider cuda" >> $LOC/roop/run.sh
 
-echo "#!/bin/bash" > $LOC/roop-unleashed/cpu-run.sh
-echo "source $LOC/roop-unleashed/.venv/bin/activate" >> $LOC/roop-unleashed/cpu-run.sh
-echo "$LOC/roop-unleashed/.venv/bin/python run.py" >> $LOC/roop-unleashed/cpu-run.sh
+echo "#!/bin/bash" > $LOC/roop/cpu-run.sh
+echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/cpu-run.sh
+echo "$LOC/roop/.venv/bin/python run.py" >> $LOC/roop/cpu-run.sh
 
-chmod +rx $LOC/roop-unleashed/run.sh
-chmod +rx $LOC/roop-unleashed/cpu-run.sh
+if grep -q "^MAX_PROBABILITY =" $LOC/roop/roop/predictor.py; then
+    sed -i "s|^MAX_PROBABILITY =.*|MAX_PROBABILITY = 9999|" $LOC/roop/roop/predictor.py
+fi
 
-echo "Installed roop-unleashed in $LOC"
+chmod +rx $LOC/roop/run.sh
+chmod +rx $LOC/roop/cpu-run.sh
+
+echo "Installed roop in $LOC"
 echo "Run ./run.sh to start it"
-echo "cd $LOC/roop-unleashed"
+echo "cd $LOC/roop"
