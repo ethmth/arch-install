@@ -72,6 +72,7 @@ unzip
 lzip
 tar
 alacritty
+foot
 bridge-utils
 cronie
 cups
