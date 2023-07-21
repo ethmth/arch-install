@@ -19,19 +19,19 @@ while IFS= read -r line; do
     MNT_ARRAY+=("$line")
 done <<< "$MNT_PTS"
 MNT_ARRAY+=("/home/$CUR_USER")
-file_array=()
+# file_array=()
 
-# files=()
+files=""
 for mnt in "${MNT_ARRAY[@]}"; do
-    file_array+=$(find $mnt/programs/stable-diffusion-webui/models/Stable-diffusion 2>/dev/null | grep -v ".txt")
+    files+=$(find $mnt/programs/stable-diffusion-webui/models/Stable-diffusion 2>/dev/null | grep -v ".txt")
     # files=$(printf "%s\n" "${files[@]}")
     # echo "$files"
 
     # files+=$(printf "\n")
-    file_array+=$(find $mnt/programs/stable-diffusion-webui/models/Lora 2>/dev/null | grep -v ".txt")
-    for ignored in $IGNORE_LIST; do
-        file_array=$(echo "$file_array" | grep -v "$ignored")
-    done
+    files=$(printf "$files\n$(find $mnt/programs/stable-diffusion-webui/models/Lora 2>/dev/null | grep -v ".txt")")
+    # for ignored in $IGNORE_LIST; do
+    #     files=$(echo "$files" | grep -v "$ignored")
+    # done
     # echo "$files"
     # new_files="$files"
     # for file in $files; do
@@ -51,12 +51,50 @@ for mnt in "${MNT_ARRAY[@]}"; do
     # echo "$files"
 done
 
-for something in $file_array; do
-    echo "HIU TTRHEIJTES"
-    echo "$something"
+echo "$files"
+
+for ignored in $IGNORE_LIST; do
+    echo "$ignored"
+    files=$(echo "$files" | grep -v "$ignored")
+    # files=$(echo "$files")
 done
+
+    # files=$(printf "$files")
+
+# new_files=""
+# for file in $files; do
+#     if ! [ -d "$file" ]; then
+#         # new_files=$(echo "$new_files" | grep -v "$file")
+#         new_files="$file SEP\n"
+#     fi
+# done
+# files=$new_files
+
+echo "Starting filter"
+filtered_files=()
+
+# Loop through each element in the file_list
+for item in "$files"; do
+    # echo "$item"
+    # Check if the current item is a regular file using find and -type f
+    if [ -f "$item" ]; then
+        # If it's a file, add it to the filtered_files array
+        filtered_files+=("$item")
+    fi
+done
+
+echo "AFTER"
+# Print the filtered files
+echo "${filtered_files[@]}"
+
+# echo "AFTER"
+# echo "$files"
+# for something in $files; do
+#     echo "HIU TTRHEIJTES"
+#     echo "$something"
+# done
 # echo "$file_array"
-files_string=$(printf "%s\n" "${file_array[@]}")
+# files_string=$(printf "%s\n" "${file_array[@]}")
 
 # echo "$files_string"
 
