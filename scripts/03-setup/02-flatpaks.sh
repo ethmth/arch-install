@@ -66,7 +66,14 @@ sudo flatpak override org.getmonero.Monero --filesystem=~/monero-storage:create
 flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
+echo "==========================================================="
 echo "Note: If you have clipboard issues with the address bar of Librewolf,"
 echo "consider disabling socket=wayland access in Flatseal to force xwayland"
+echo "==========================================================="
 echo "If you're on Hyprland, run nwg-look and set the 'Prefer Dark' gtk theme"
+echo "==========================================================="
+echo "If you have trouble with MEGAsync, consider rolling back the version."
+echo "sudo flatpak update --commit=7f30d8f2998e3376afb64525ae537f392c7b737b6209a13fc29a1610493f
+418c nz.mega.MEGAsync"
+echo "==========================================================="
 echo "Next, run ./03-openair-clone.sh"
