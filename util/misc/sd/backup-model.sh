@@ -21,28 +21,44 @@ done <<< "$MNT_PTS"
 MNT_ARRAY+=("/home/$CUR_USER")
 file_array=()
 
-
+# files=()
 for mnt in "${MNT_ARRAY[@]}"; do
-    files=$(find $mnt/programs/stable-diffusion-webui/models/Stable-diffusion 2>/dev/null | grep -v ".txt")
-    files+=$(find $mnt/programs/stable-diffusion-webui/models/Lora 2>/dev/null | grep -v ".txt")
+    file_array+=$(find $mnt/programs/stable-diffusion-webui/models/Stable-diffusion 2>/dev/null | grep -v ".txt")
+    # files=$(printf "%s\n" "${files[@]}")
+    # echo "$files"
+
+    # files+=$(printf "\n")
+    file_array+=$(find $mnt/programs/stable-diffusion-webui/models/Lora 2>/dev/null | grep -v ".txt")
     for ignored in $IGNORE_LIST; do
-        files=$(echo "$files" | grep -v "$ignored")
+        file_array=$(echo "$file_array" | grep -v "$ignored")
     done
-    new_files=""
-    for file in $files; do
-        if ! [ -d "$file" ]; then
-            # files=$(echo "$files" | grep -v "$file")
-            new_files="$new_files $file"
-        fi
-    done
-    files=$new_files
-    for file in $files; do
-        echo "$file"
-        # file_array+=("$mnt/programs/stable-diffusion-webui/$file")
-    done
+    # echo "$files"
+    # new_files="$files"
+    # for file in $files; do
+    #     if [ -d "$file" ]; then
+    #         new_files=$(echo "$new_files" | grep -v "$file")
+    #     fi
+    # done
+    # echo "$files"
+    # echo "$new_files"
+    # files=$new_files
+    # for file in $files; do
+    #     echo "$file"
+    #     # extracted_part=$(echo "$file" | awk -F "stable-diffusion-webui/models" '{print substr($0, length($1)+1)}')
+    #     # echo "$extracted_part"
+    # done
+    # echo "$mnt"
+    # echo "$files"
 done
 
+for something in $file_array; do
+    echo "HIU TTRHEIJTES"
+    echo "$something"
+done
+# echo "$file_array"
 files_string=$(printf "%s\n" "${file_array[@]}")
+
+# echo "$files_string"
 
 # POINT=$(echo "$files_string" | fzf --prompt="Select your disk. If you've not created one, press ESC and run ./create-qcow2.sh, then come back")
 
