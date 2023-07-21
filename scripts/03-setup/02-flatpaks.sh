@@ -75,5 +75,6 @@ echo "==========================================================="
 echo "If you have trouble with MEGAsync, consider rolling back the version."
 echo "sudo flatpak update --commit=7f30d8f2998e3376afb64525ae537f392c7b737b6209a13fc29a1610493f
 418c nz.mega.MEGAsync"
+echo "sudo flatpak mask nz.mega.MEGAsync"
 echo "==========================================================="
 echo "Next, run ./03-openair-clone.sh"
