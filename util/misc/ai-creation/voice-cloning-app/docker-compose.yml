@@ -1,0 +1,16 @@
+version: "3"
+services:
+  voice-cloning:
+    build:
+      context: .
+    ports:
+      - "8051:5000"
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]
+              capabilities: [gpu]
