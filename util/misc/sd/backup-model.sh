@@ -31,30 +31,22 @@ for ignored in $IGNORE_LIST; do
     files=$(echo "$files" | grep -v "$ignored")
 done
 
-# echo "$files"
+short_list=$(echo "$files" | awk -F "stable-diffusion-webui/models/" '{print $2}')
+short_list=$(printf "$short_list\nALL OF THEM")
+desired_files=$(echo "$short_list" | fzf -m --prompt="Please select files to backup")
 
-desired_files=$(echo "$files" | awk -F "stable-diffusion-webui/models/" '{print $2}' | fzf -m --prompt="Please select files to backup")
+ALL_OF_THEM=$(echo "$desired_files" | grep "ALL OF THEM" | wc -l)
 
-echo "$desired_files"
-echo "MOVING ON"
+if ! (( ALL_OF_THEM )); then
+    new_files=""
+    while IFS= read -r desired_file; do
+        new_file=$(echo "$files" | grep "$desired_file")
+        new_files=$(printf "$new_file\n$new_files")
+    done <<< "$desired_files"
+    files=$new_files
+fi
 
-new_files=""
-# for desired_file in $desired_files; do
-#     echo "DESIRED FILE IS $desired_file"
-#     new_file=$(echo "$files" | grep "$desired_file")
-#     new_files=$(printf "$new_files\n$new_file")
-# done
-
-
-while IFS= read -r desired_file; do
-#   echo "Processing: $line"
-  # Add your processing logic here for each line
-    new_file=$(echo "$files" | grep "$desired_file")
-    new_files=$(printf "$new_files\n$new_file")
-done <<< "$desired_files"
-
-
-echo "$new_files" 
+echo "$files" 
 
 
 # filtered_files=()
