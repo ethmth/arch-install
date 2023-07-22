@@ -50,6 +50,14 @@ else
     mega_mount=$(echo "$mega_mounts" | fzf --prompt "Select MEGA mount")
 fi
 mega_mount=$(echo "$mega_mount" | awk -F "MEGA" '{print $1}')
+if [ "$mega_mount" == "" ]; then
+    echo "Nothing selected"
+    exit 1
+fi
+if ! [ -e "$mega_mount" ]; then
+    echo "Selected location doesn't exist"
+    exit 1
+fi
 
 BACKUP_PATH="${mega_mount}MEGA/Personal/Software/Models/stable-diffusion-webui"
 
