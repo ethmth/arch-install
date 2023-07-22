@@ -49,13 +49,20 @@ echo "#!/bin/bash" > $LOC/roop/run.sh
 echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
 echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py --execution-provider cuda" >> $LOC/roop/run.sh
 
-echo "#!/bin/bash" > $LOC/roop/roop.sh
-echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/roop.sh
-echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --execution-provider cuda" >> $LOC/roop/roop.sh
-
 echo "#!/bin/bash" > $LOC/roop/cpu-run.sh
 echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/cpu-run.sh
 echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py" >> $LOC/roop/cpu-run.sh
+
+echo "#!/bin/bash" > $LOC/roop/roop.sh
+echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/roop.sh
+echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces --execution-provider cuda" >> $LOC/roop/roop.sh
+echo 'IFS='.' read -ra parts <<< "$2"' >> $LOC/roop/roop.sh
+echo 'file_name=$(basename "${parts[0]}")' >> $LOC/roop/roop.sh
+echo 'file_dir=$(dirname "${parts[0]}")' >> $LOC/roop/roop.sh
+echo 'mv $file_dir/temp/$file_name frames/$3' >> $LOC/roop/roop.sh
+echo 'rm frames/$3/*.mp4' >> $LOC/roop/roop.sh
+
+
 
 if grep -q "^MAX_PROBABILITY =" $LOC/roop/roop/predictor.py; then
     sed -i "s|^MAX_PROBABILITY =.*|MAX_PROBABILITY = 9999|" $LOC/roop/roop/predictor.py
