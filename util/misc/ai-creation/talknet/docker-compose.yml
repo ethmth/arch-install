@@ -1,0 +1,16 @@
+version: "3"
+services:
+  talknet:
+    build:
+      context: .
+    ports:
+      - "8050:8050"
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]
+              capabilities: [gpu]
