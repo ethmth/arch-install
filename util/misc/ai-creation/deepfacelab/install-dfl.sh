@@ -42,3 +42,8 @@ yes | conda install tensorflow-gpu==2.4.1
 
 echo "Checking GPU:"
 python -c "import tensorflow as tf;print(tf.__version__)"
+
+
+echo -e "#!/usr/bin/env bash\nsource /opt/anaconda/bin/activate" > /tmp/tmpfile.txt
+tail -n +2 "$LOC/DeepFaceLab_Linux/scripts/env.sh" >> /tmp/tmpfile.txt
+mv /tmp/tmpfile.txt $LOC/DeepFaceLab_Linux/scripts/env.sh

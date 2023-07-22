@@ -42,15 +42,12 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/sshbg /usr/bin/sshb
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/stream-dl /usr/bin/stream-dl
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/megasync /usr/bin/megasync
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/docker-update /usr/bin/docker-update
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/condac /usr/bin/condac
 
 sudo chmod +x /etc/openvpn/update-resolv-conf
 sudo chmod +x /usr/bin/sshbg
 sudo chmod +x /usr/bin/stream-dl
 sudo chmod +x /usr/bin/megasync
 sudo chmod +x /usr/bin/docker-update
-sudo chmod +x /usr/bin/condac
-
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync, etc)"
 echo "If so, run ./09-grub.sh"
