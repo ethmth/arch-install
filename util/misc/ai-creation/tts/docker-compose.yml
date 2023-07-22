@@ -1,12 +1,13 @@
 version: "3"
 services:
   tts:
-    build:
-      context: .
+    build: .
     ports:
       - "5002:5002"
     stdin_open: true
     tty: true
+    volumes:
+      - ./tts-output:/tts-output
     deploy:
       resources:
         reservations:
@@ -14,3 +15,4 @@ services:
             - driver: nvidia
               device_ids: ["0"]
               capabilities: [gpu]
+    # command: --text "Hello." --out_path /root/tts-output/hello.wav --use_cuda true
