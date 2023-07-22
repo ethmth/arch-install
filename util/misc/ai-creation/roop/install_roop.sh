@@ -47,11 +47,15 @@ $LOC/roop/.venv/bin/pip install -r requirements.pip
 
 echo "#!/bin/bash" > $LOC/roop/run.sh
 echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
-echo "$LOC/roop/.venv/bin/python run.py --execution-provider cuda" >> $LOC/roop/run.sh
+echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py --execution-provider cuda" >> $LOC/roop/run.sh
+
+echo "#!/bin/bash" > $LOC/roop/roop.sh
+echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/roop.sh
+echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --execution-provider cuda" >> $LOC/roop/roop.sh
 
 echo "#!/bin/bash" > $LOC/roop/cpu-run.sh
 echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/cpu-run.sh
-echo "$LOC/roop/.venv/bin/python run.py" >> $LOC/roop/cpu-run.sh
+echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py" >> $LOC/roop/cpu-run.sh
 
 if grep -q "^MAX_PROBABILITY =" $LOC/roop/roop/predictor.py; then
     sed -i "s|^MAX_PROBABILITY =.*|MAX_PROBABILITY = 9999|" $LOC/roop/roop/predictor.py
@@ -59,6 +63,10 @@ fi
 
 chmod +rx $LOC/roop/run.sh
 chmod +rx $LOC/roop/cpu-run.sh
+chmod +rx $LOC/roop/roop.sh
+
+sudo cp $LOC/roop/roop.sh /usr/bin/roop
+sudo chmod +rx /usr/bin/roop
 
 echo "Installed roop in $LOC"
 echo "Run ./run.sh to start it"
