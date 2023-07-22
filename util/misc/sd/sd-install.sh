@@ -45,5 +45,15 @@ echo "$LAST_LINE" >> $LOC/stable-diffusion-webui/webui-user.sh
 cd $LOC/stable-diffusion-webui
 bash ./webui.sh
 
+if [ -e "install-model.sh" ]; then
+    sudo cp install-model.sh /usr/bin/install-model
+    sudo chmod +rx /usr/bin/install-model
+fi
+
+if [ -e "backup-model.sh" ]; then
+    sudo cp backup-model.sh /usr/bin/backup-model
+    sudo chmod +rx /usr/bin/backup-model
+fi
+
 echo "Installation complete. Install models into"
 echo "$LOC/stable-diffusion-webui/models"
