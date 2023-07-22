@@ -84,22 +84,9 @@ if ! [ -e "$sd_mount" ]; then
     exit 1
 fi
 
-echo "$BACKUP_PATH"
-echo "$sd_mount"
-
-exit 1
-
-
-mkdir -p $BACKUP_PATH/backups
-
-for ignored in $IGNORE_LIST; do
-    files=$(echo "$files" | grep -v "$ignored")
-done
-
-short_list=$(echo "$files" | awk -F "stable-diffusion-webui/models/" '{print $2}')
-short_list=$(printf "$short_list\nALL OF THEM")
-desired_files=$(echo "$short_list" | fzf -m --prompt="Please select files to backup")
-
+files=$(cat "$INDEX_FILE" | grep "models")
+short_list=$(printf "$files\nALL OF THEM")
+desired_files=$(echo "$short_list" | fzf -m --prompt="Select backups to install")
 ALL_OF_THEM=$(echo "$desired_files" | grep "ALL OF THEM" | wc -l)
 
 if ! (( ALL_OF_THEM )); then
@@ -114,19 +101,11 @@ else
 fi
 
 while IFS= read -r file; do
-    short_file=$(echo "$file" | awk -F "stable-diffusion-webui/" '{print $2}')
+    file_name=$(echo "$file" | awk -F "," '{print $1}')
+    backup_name=$(echo "$file" | awk -F "," '{print $2}')
 
-    EXISTS=$(cat "$INDEX_FILE" | grep "$short_file" | wc -l)
-
-    random_name=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
-
-    if (( EXISTS )); then
-        echo "$short_file already backed up. Moving on."
-    else
-        echo "Backing up $short_file as $random_name"
-        echo "$short_file,$random_name" >> "$INDEX_FILE"
-        cp "$file" "$BACKUP_PATH/backups/$random_name"
-    fi
+    echo "Installing $file_name from $backup_name"
+    cp "$BACKUP_PATH/backups/$backup_name" "$sd_mount/$file_name"
 done <<< "$files"
 
-echo "Models backed up. Check $INDEX_FILE and $BACKUP_PATH/backups for sanity"
+echo "Models installed from backup. Check $sd_mount/$file_name for sanity"
