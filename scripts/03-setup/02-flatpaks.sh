@@ -47,6 +47,7 @@ org.getmonero.Monero
 org.electrum.electrum
 org.kde.kalgebra
 org.kde.labplot2
+fr.romainvigier.MetadataCleaner
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="

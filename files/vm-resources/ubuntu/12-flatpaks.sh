@@ -25,6 +25,7 @@ com.opera.Opera
 io.github.seadve.Kooha
 com.google.AndroidStudio
 org.gajim.Gajim
+fr.romainvigier.MetadataCleaner
 "
 
 flatpaks=${flatpaks//$'\n'/ }
