@@ -29,12 +29,27 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-git clone --depth 1 https://github.com/danielgatis/rembg.git $LOC/$NAME
-
+mkdir -p $LOC/$NAME
 cd $LOC/$NAME
 
 python -m venv $LOC/$NAME/.venv
 
 source $LOC/$NAME/.venv/bin/activate
 
-$LOC/$NAME/.venv/bin/python $LOC/$NAME/setup.py
+$LOC/$NAME/.venv/bin/pip install rembg[gpu,cli]
+
+echo "#!/bin/bash" > $LOC/$NAME/run.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
+# echo "$LOC/$NAME/.venv/bin/python -m rembg i \$1 rembg_$1" >> $LOC/$NAME/run.sh
+echo "rembg i \$1 rembg_\$1" >> $LOC/$NAME/run.sh
+
+read -p "Do you want to install to bin as $NAME (Y/n)? " userInput
+
+if ! ([ "$userInput" == "n" ] || [ "$userInput" == "N" ]); then
+    sudo cp $LOC/$NAME/run.sh /usr/bin/$NAME
+    sudo chmod +rx /usr/bin/$NAME
+    echo "$NAME installed to /usr/bin"
+else
+    echo "run.sh installed to $LOC/$NAME"
+    echo "cd $LOC/$NAME"
+fi
