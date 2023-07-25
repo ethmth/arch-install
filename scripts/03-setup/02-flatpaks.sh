@@ -48,6 +48,7 @@ org.electrum.electrum
 org.kde.kalgebra
 org.kde.labplot2
 fr.romainvigier.MetadataCleaner
+org.inkscape.Inkscape
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="

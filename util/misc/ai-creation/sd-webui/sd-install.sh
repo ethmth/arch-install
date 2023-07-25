@@ -42,8 +42,6 @@ echo "python_cmd=\"python3.10\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 echo "export COMMANDLINE_ARGS=\"--listen --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --api-log --no-half --xformers --medvram\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 echo "$LAST_LINE" >> $LOC/stable-diffusion-webui/webui-user.sh
 
-cd $LOC/stable-diffusion-webui
-bash ./webui.sh
 
 if [ -e "install-model.sh" ]; then
     sudo cp install-model.sh /usr/bin/install-model
@@ -54,6 +52,10 @@ if [ -e "backup-model.sh" ]; then
     sudo cp backup-model.sh /usr/bin/backup-model
     sudo chmod +rx /usr/bin/backup-model
 fi
+
+
+cd $LOC/stable-diffusion-webui
+bash ./webui.sh
 
 echo "Installation complete. Install models into"
 echo "$LOC/stable-diffusion-webui/models"

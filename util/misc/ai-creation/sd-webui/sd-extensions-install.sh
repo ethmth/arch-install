@@ -50,3 +50,4 @@ git clone https://github.com/Bing-su/adetailer.git $LOC/adetailer
 git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111.git $LOC/ultimate-upscale-for-automatic1111
 git clone https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor.git $LOC/dataset-tag-editor
 git clone https://github.com/Gourieff/sd-webui-roop-nsfw.git $LOC/sd-webui-roop-nsfw
+git clone https://github.com/GeorgLegato/stable-diffusion-webui-vectorstudio.git $LOC/stable-diffusion-webui-vectorstudio
