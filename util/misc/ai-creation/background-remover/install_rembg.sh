@@ -41,7 +41,7 @@ $LOC/$NAME/.venv/bin/pip install rembg[gpu,cli]
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
 # echo "$LOC/$NAME/.venv/bin/python -m rembg i \$1 rembg_$1" >> $LOC/$NAME/run.sh
-echo "rembg i \$1 rembg_\$1" >> $LOC/$NAME/run.sh
+echo "rembg i \$1 rembg_\$(echo \"\$1\" | cut -d'.' -f1).png" >> $LOC/$NAME/run.sh
 
 read -p "Do you want to install to bin as $NAME (Y/n)? " userInput
 
