@@ -3,10 +3,12 @@
 CONTAINER_NAME="kaggle-docker"
 
 VOLUMES="
+working
 "
 
 FILES="
 docker-compose.yml
+Dockerfile
 "
 
 if ! [[ $EUID -ne 0 ]]; then

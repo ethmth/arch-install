@@ -1,9 +1,11 @@
 version: '3'
 services:
   kaggle:
-    image: gcr.io/kaggle-gpu-images/python
+    build: .
     ports:
       - 8888:8888
+    volumes:
+      - ./working:/opt/working:rw
     deploy:
       resources:
         reservations:
