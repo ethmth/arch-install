@@ -15,6 +15,7 @@ gifsicle
 jupyter-nbconvert
 git-lfs
 qbittorrent
+python-tqdm
 python-pycocotools
 python-opencv
 python-seaborn
