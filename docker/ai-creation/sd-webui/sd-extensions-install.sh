@@ -39,8 +39,8 @@ if ! [ -d "$LOC" ]; then
 	exit 1
 fi
 
-source $LOC/venv/bin/activate
-$LOC/venv/bin/pip install insightface==0.7.3
+# source $LOC/venv/bin/activate
+# $LOC/venv/bin/pip install insightface==0.7.3
 
 LOC="$LOC/extensions"
 
