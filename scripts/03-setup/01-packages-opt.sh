@@ -30,6 +30,7 @@ texlive-bin
 texlive-binextra
 texlive-bibtexextra
 texlive-latexrecommended
+ttf-liberation
 pdftk
 biber
 perl-file-homedir

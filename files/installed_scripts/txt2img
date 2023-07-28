@@ -1,0 +1,3 @@
+#!/bin/bash
+
+convert -size 768x512 xc:black -font Liberation-Sans-Bold -fill white -gravity center -pointsize 128 -weight 900 -annotate 0 "$1" output.png
