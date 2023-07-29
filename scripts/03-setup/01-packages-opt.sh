@@ -11,6 +11,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
+certbot
+certbot-apache
 gifsicle
 jupyter-nbconvert
 git-lfs
