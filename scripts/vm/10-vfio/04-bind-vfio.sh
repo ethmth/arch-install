@@ -20,9 +20,30 @@ for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
     done;
 done;
 
-pci_ids=$(printf "$string" | fzf -m | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
+selected_line=$(printf "$string" | grep "VGA" | fzf --prompt="Please select your gpu")
+
+if [ "$selected_line" == "" ]; then
+	echo "Nothing selected"
+	exit 1
+fi
+
+AMD_GPU=$(echo "$selected_line" | grep "AMD" | wc -l)
+
+gpu_pci_group=$(echo "$selected_line" | cut -d ' ' -f 2)
+gpu_pci_id=$(echo "$selected_line" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
 
 ids=""
+gpu_pci_id="${gpu_pci_id//\[}"
+gpu_pci_id="${gpu_pci_id//\]}"
+ids+="$gpu_pci_id,"
+
+pci_ids=$(printf "$string" | grep -v "$gpu_pci_id" | fzf -m --prompt="Please select your other devices" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
+
+if [ "$pci_ids" == "" ]; then
+	echo "Nothing selected"
+	exit 1
+fi
+
 while IFS= read -r line; do
 	temp_line=$line
 	temp_line="${temp_line//\[}"
@@ -33,12 +54,17 @@ ids="${ids%?}"
 
 echo "Adding these ids to blocklist: $ids"
 
-sudo -k sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
-#sudo sh -c "echo \"softdep drm pre: vfio-pci\" >> /etc/modprobe.d/vfio.conf"
+if (( AMD_GPU )); then
+sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" > /usr/bin/startgpu"
+sudo chmod +rx /usr/bin/startgpu
+fi
+
+exit 1
+
+sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1
 echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 sudo mkinitcpio -P
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
-# echo "After you're done, begin setting up the virtual networks by running ./03-network-default.sh"
