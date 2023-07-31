@@ -40,7 +40,9 @@ pdftk
 biber
 perl-file-homedir
 perl-yaml-tiny
+perl-compress-raw-lzma
 hashcat
+john
 steam-devices
 vscodium-bin
 xpadneo-dkms

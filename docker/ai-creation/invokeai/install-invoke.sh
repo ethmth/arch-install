@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="ComfyUI"
+NAME="InvokeAI"
 
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
@@ -30,19 +30,25 @@ if ! [ -d "$LOC" ]; then
 	exit 1
 fi
 LOC="$LOC/programs"
-mkdir -p $LOC
 
-git clone https://github.com/comfyanonymous/ComfyUI.git $LOC/$NAME
+mkdir -p $LOC/$NAME
 cd $LOC/$NAME
 
-python -m venv .venv
+python -m venv .venv --prompt InvokeAI
 
 source $LOC/$NAME/.venv/bin/activate
 
-$LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118 xformers
-$LOC/$NAME/.venv/bin/pip install -r requirements.txt
+$LOC/$NAME/.venv/bin/pip install InvokeAI --use-pep517 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
+
+echo "#!/bin/bash" > $LOC/$NAME/configure.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/configure.sh
+echo "invokeai-configure" >> $LOC/$NAME/configure.sh
+chmod +rx $LOC/$NAME/configure.sh
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
-echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/main.py --listen 0.0.0.0 --port 8188 --enable-cors-header '*' --normalvram" >> $LOC/$NAME/run.sh
+echo "invokeai-web" >> $LOC/$NAME/run.sh
 chmod +rx $LOC/$NAME/run.sh
+
+echo "cd $LOC/$NAME"
+echo "./configure.sh"
