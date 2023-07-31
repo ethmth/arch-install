@@ -10,7 +10,7 @@ OFILE="/home/$CUR_USER/arch-install/config/system.conf"
 
 typeofcpu=$(printf "Desktop\nLaptop\n" | fzf --prompt="Select your type of computer")
 cpu=$(printf "AMD\nIntel\n" | fzf --prompt="Select your CPU")
-gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf -m --prompt="Select your host GPU")
+gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf -m --prompt="Select your host GPU(s). All but what you passthrough")
 de=$(printf "Hyprland\nKDE Plasma\n" | fzf -m --prompt="Select your preferred Desktop Environment")
 
 DESKTOP=0

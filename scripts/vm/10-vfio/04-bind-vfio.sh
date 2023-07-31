@@ -55,13 +55,15 @@ ids="${ids%?}"
 echo "Adding these ids to blocklist: $ids"
 
 if (( AMD_GPU )); then
-sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/startgpu"
-sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/bin/startgpu"
-sudo sh -c "echo \"echo \"\"'DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"'\"\"\" >> /usr/bin/startgpu"
-sudo chmod +rx /usr/bin/startgpu
-fi
+sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustart"
+sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/bin/gpustart"
+sudo sh -c "echo \"echo \"\"'DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"'\"\"\" >> /usr/bin/gpustart"
+sudo chmod +rx /usr/bin/gpustart
 
-exit 1
+sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpucheck"
+sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"\" >> /usr/bin/gpucheck"
+sudo chmod +rx /usr/bin/gpucheck
+fi
 
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1

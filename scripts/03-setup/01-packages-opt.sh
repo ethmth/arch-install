@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
+rocm-opencl-runtime
 okteta
 perl-image-exiftool
 certbot
@@ -39,7 +40,7 @@ pdftk
 biber
 perl-file-homedir
 perl-yaml-tiny
-hashcat-git
+hashcat
 steam-devices
 vscodium-bin
 xpadneo-dkms
@@ -81,7 +82,6 @@ obs-streamfx-git
 obs-studio-amf
 obs-vaapi
 obs-vkcapture-git
-rocm-opencl-runtime
 v4l2loopback-dkms
 vulkan-amdgpu-pro
 prismlauncher-bin
