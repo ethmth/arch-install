@@ -55,7 +55,9 @@ ids="${ids%?}"
 echo "Adding these ids to blocklist: $ids"
 
 if (( AMD_GPU )); then
-sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" > /usr/bin/startgpu"
+sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/startgpu"
+sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/bin/startgpu"
+sudo sh -c "echo \"echo \"\"'DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"'\"\"\" >> /usr/bin/startgpu"
 sudo chmod +rx /usr/bin/startgpu
 fi
 
