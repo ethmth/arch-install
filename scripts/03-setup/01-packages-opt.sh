@@ -28,7 +28,7 @@ remmina
 rstudio-desktop-bin
 scrcpy
 anaconda
-emacs29-git
+emacs
 texlive-bin
 texlive-binextra
 texlive-bibtexextra
