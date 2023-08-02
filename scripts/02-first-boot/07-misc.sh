@@ -61,6 +61,11 @@ else
 fi
 sudo update-mime-database /usr/share/mime
 
+# android home
+
+echo "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" >> /home/$CUR_USER/.bashrc
+
+
 # npm user setup
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
 
