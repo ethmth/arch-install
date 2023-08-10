@@ -56,4 +56,9 @@ chmod +x $LOC/$NAME/run.sh
 
 echo "#!/bin/bash" > $LOC/$NAME/webui-user.sh
 echo "python_cmd=\"python3.10\"" >> $LOC/$NAME/webui-user.sh
-echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --auth $username:$password --allow-code --upcast-sampling\"" >> $LOC/$NAME/webui-user.sh
+
+if (( AMD_GPU )); then
+echo "export COMMANDLINE_ARGS=\"--use-rocm --listen --port $PORT --auth $username:$password --allow-code --upcast-sampling\"" >> $LOC/$NAME/webui-user.sh
+else
+echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --auth $username:$password --allow-code\"" >> $LOC/$NAME/webui-user.sh
+fi
