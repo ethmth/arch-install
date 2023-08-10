@@ -12,6 +12,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 packages="
 rocm-opencl-runtime
+rocm-hip-runtime
+hip-runtime-amd
+rocminfo
 okteta
 perl-image-exiftool
 certbot
