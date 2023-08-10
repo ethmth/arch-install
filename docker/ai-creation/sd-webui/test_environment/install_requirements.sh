@@ -16,7 +16,7 @@ source $LOC/$NAME/venv/bin/activate
 
 $LOC/$NAME/venv/bin/pip install --upgrade pip wheel
 
-mkdir $LOC/$NAME/build
+mkdir -p $LOC/$NAME/build
 
 git clone --recursive https://github.com/pytorch/pytorch.git $LOC/$NAME/build/pytorch
 

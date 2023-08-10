@@ -14,6 +14,8 @@ packages="
 rocm-opencl-runtime
 xf86-video-amdgpu
 rocm-hip-runtime
+rocm-hip-sdk
+rocm-opencl-sdk
 hip-runtime-amd
 rocminfo
 okteta
