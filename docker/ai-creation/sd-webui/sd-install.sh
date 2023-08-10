@@ -59,11 +59,11 @@ fi
 
 if (( AMD_GPU )); then
     cd $LOC/$NAME
-    python -m venv venv
+    $PYTHON_COMMAND -m venv venv --system-site-packages
 
     source $LOC/$NAME/venv/bin/activate
 
-    $LOC/$NAME/venv/bin/pip install --upgrade pip wheel
+    $LOC/$NAME/venv/bin/pip install -r requirements.txt
 
 fi
 
@@ -72,14 +72,13 @@ LAST_LINE=$(tail -1 $LOC/$NAME/webui-user.sh)
 
 sed -i '$ d' "$LOC/$NAME/webui-user.sh"
 
-echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 if (( AMD_GPU )); then
-    echo "export TORCH_COMMAND=\"pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm5.1.1\"" >> $LOC/$NAME/webui-user.sh
-    # echo "export CUDA_VISIBLE_DEVICES=-1" >> $LOC/$NAME/webui-user.sh
-    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --upcast-sampling --skip-torch-cuda-test\"" >> $LOC/$NAME/webui-user.sh
+    echo "export TORCH_COMMAND=\"pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6\"" >> $LOC/$NAME/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --upcast-sampling\"" >> $LOC/$NAME/webui-user.sh
 else
-    echo "export CUDA_VISIBLE_DEVICES=0" >> $LOC/$NAME/webui-user.sh
+    echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh
+    # echo "export CUDA_VISIBLE_DEVICES=0" >> $LOC/$NAME/webui-user.sh
     echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae --xformers --medvram\"" >> $LOC/$NAME/webui-user.sh
 fi
 echo "$LAST_LINE" >> $LOC/$NAME/webui-user.sh
