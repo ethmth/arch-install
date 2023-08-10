@@ -46,13 +46,14 @@ fi
 
 git clone https://github.com/vladmandic/automatic.git $LOC/$NAME
 
+echo "#!/bin/bash" > $LOC/$NAME/run.sh
 if (( AMD_GPU )); then
-    echo "#!/bin/bash" > $LOC/$NAME/run.sh
-    echo "$LOC/$NAME/webui.sh --use-rocm --debug" >> $LOC/$NAME/run.sh
-    chmod +x $LOC/$NAME/run.sh
+echo "$LOC/$NAME/webui.sh --use-rocm --debug" >> $LOC/$NAME/run.sh
 else
-    echo "#!/bin/bash" > $LOC/$NAME/run.sh
-    echo "$LOC/$NAME/webui.sh --debug" >> $LOC/$NAME/run.sh
-    chmod +x $LOC/$NAME/run.sh
+echo "$LOC/$NAME/webui.sh --debug" >> $LOC/$NAME/run.sh
 fi
+chmod +x $LOC/$NAME/run.sh
 
+echo "#!/bin/bash" > $LOC/$NAME/webui-user.sh
+echo "python_cmd=\"python3.10\"" >> $LOC/$NAME/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --auth $username:$password --allow-code --upcast-sampling\"" >> $LOC/$NAME/webui-user.sh
