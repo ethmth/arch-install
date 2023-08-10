@@ -17,6 +17,8 @@ rocm-hip-runtime
 rocm-hip-sdk
 rocm-opencl-sdk
 hip-runtime-amd
+python-torchvision-rocm
+python-pytorch-opt-rocm
 rocminfo
 okteta
 perl-image-exiftool
@@ -65,14 +67,10 @@ cuda
 cuda-tools
 python-cuda
 python-tensorflow-cuda
-python-torchvision-cuda
-python-pytorch-cuda
 "
 else
 packages+="
 python-tensorflow
-python-torchvision
-python-pytorch
 "
 fi
 if ! (( AMD )); then
