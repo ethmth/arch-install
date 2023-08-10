@@ -12,6 +12,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 packages="
 rocm-opencl-runtime
+xf86-video-amdgpu
 rocm-hip-runtime
 hip-runtime-amd
 rocminfo
