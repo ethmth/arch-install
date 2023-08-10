@@ -2,8 +2,8 @@
 
 BASE_NAME="stable-diffusion-webui"
 NAME=$BASE_NAME
-# PYTHON_COMMAND="python3.10"
-PYTHON_COMMAND="python"
+PYTHON_COMMAND="python3.10"
+# PYTHON_COMMAND="python"
 PORT="7860"
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -63,15 +63,14 @@ sed -i '$ d' "$LOC/$NAME/webui-user.sh"
 
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 if (( AMD_GPU )); then
-    echo "export TORCH_COMMAND=\"pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6\"" >> $LOC/$NAME/webui-user.sh
-    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --upcast-sampling\"" >> $LOC/$NAME/webui-user.sh
+    # echo "export TORCH_COMMAND=\"pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6\"" >> $LOC/$NAME/webui-user.sh
+    echo "export TORCH_COMMAND=\"pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.4.2\"" >> $LOC/$NAME/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --precision full\"" >> $LOC/$NAME/webui-user.sh
 else
     echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh
     echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae --xformers --medvram\"" >> $LOC/$NAME/webui-user.sh
 fi
 echo "$LAST_LINE" >> $LOC/$NAME/webui-user.sh
-
-
 
 cd $LOC/$NAME
 bash ./webui.sh

@@ -11,16 +11,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
-rocm-opencl-runtime
-xf86-video-amdgpu
-rocm-hip-runtime
-rocm-hip-sdk
-rocm-opencl-sdk
-hip-runtime-amd
-python-torchvision-rocm
-python-pytorch-opt-rocm
-radeontop
-rocminfo
 okteta
 perl-image-exiftool
 certbot
@@ -61,6 +51,19 @@ flutter
 hplip
 waydroid
 "
+
+# packages+="
+# rocm-opencl-runtime
+# xf86-video-amdgpu
+# rocm-hip-runtime
+# rocm-hip-sdk
+# rocm-opencl-sdk
+# hip-runtime-amd
+# python-torchvision-rocm
+# python-pytorch-opt-rocm
+# radeontop
+# rocminfo
+# "
 
 if (( NVIDIA )); then
 packages+="
