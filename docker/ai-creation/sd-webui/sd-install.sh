@@ -1,5 +1,10 @@
 #!/bin/bash
 
+BASE_NAME="stable-diffusion-webui"
+NAME=$BASE_NAME
+PYTHON_COMMAND="python3.10"
+PORT="7860"
+
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
@@ -27,7 +32,16 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/stable-diffusion-webui
+AMD_GPU=0
+read -p "Do you want to use an AMD GPU (y/N)? " userInput
+
+if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
+    AMD_GPU=1
+    NAME="$NAME-amd"
+    PORT="8860"
+fi
+
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/$NAME
 
 read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
@@ -38,8 +52,14 @@ sed -i '$ d' "$LOC/stable-diffusion-webui/webui-user.sh"
 
 echo "install_dir=\"$LOC\"" >> $LOC/stable-diffusion-webui/webui-user.sh
 # echo "export TORCH_COMMAND=\"pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113\"" >> $LOC/stable-diffusion-webui/webui-user.sh
-echo "python_cmd=\"python3.10\"" >> $LOC/stable-diffusion-webui/webui-user.sh
-echo "export COMMANDLINE_ARGS=\"--listen --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --api-log --no-half --no-half-vae --xformers --medvram\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+if (( AMD_GPU )); then
+    echo "export CUDA_VISIBLE_DEVICES=-1" >> $LOC/stable-diffusion-webui/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --upcast-sampling --skip-torch-cuda-test\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+else
+    echo "export CUDA_VISIBLE_DEVICES=0" >> $LOC/stable-diffusion-webui/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae --xformers --medvram\"" >> $LOC/stable-diffusion-webui/webui-user.sh
+fi
 echo "$LAST_LINE" >> $LOC/stable-diffusion-webui/webui-user.sh
 
 
