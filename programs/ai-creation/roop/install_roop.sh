@@ -82,7 +82,11 @@ echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py --execution-provider cuda" >
 
 echo "#!/bin/bash" > $LOC/$NAME/$NAME.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/$NAME.sh
+if (( AMD_GPU )); then
 echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces" >> $LOC/$NAME/$NAME.sh
+else
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces --execution-provider cuda" >> $LOC/$NAME/$NAME.sh
+fi
 echo 'IFS='.' read -ra parts <<< "$2"' >> $LOC/$NAME/$NAME.sh
 echo 'file_name=$(basename "${parts[0]}")' >> $LOC/$NAME/$NAME.sh
 echo 'file_dir=$(dirname "${parts[0]}")' >> $LOC/$NAME/$NAME.sh

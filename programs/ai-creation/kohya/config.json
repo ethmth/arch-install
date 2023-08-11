@@ -42,7 +42,7 @@
   "gradient_accumulation_steps": 1.0,
   "mem_eff_attn": false,
   "output_name": "MyLoraName-v1.0",
-  "model_list": "custom",
+  "model_list": "runwayml/stable-diffusion-v1-5",
   "max_token_length": "75",
   "max_train_epochs": "",
   "max_data_loader_n_workers": "1",
