@@ -45,8 +45,36 @@ if (( AMD_GPU )); then
     NAME="$NAME-amd"
 fi
 
+EXTERNAL_MODELS=0
+read -p "Do you want to use an external models folder (y/N)? " userInput
+
+if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
+    EXTERNAL_MODELS=1
+fi
+
+models_dir=""
+if (( EXTERNAL_MODELS )); then
+
+    read -p "Please enter the models directory (ending in 'stable-diffusion-webui/'):" models_dir
+
+    if [ "$models_dir" == "" ]; then
+        echo "No models directory selected."
+        exit 1
+    fi
+
+    if ! [ -d "$models_dir" ]; then
+        echo "$models_dir is not a valid directory."
+        exit 1
+    fi
+fi
+
 git clone https://github.com/comfyanonymous/ComfyUI.git $LOC/$NAME
 cd $LOC/$NAME
+
+if (( EXTERNAL_MODELS )); then
+    cp $LOC/$NAME/extra_model_paths.yaml.example $LOC/$NAME/extra_model_paths.yaml
+    sed -i "s|path/to/stable-diffusion-webui/|$models_dir|g" $LOC/$NAME/extra_model_paths.yaml
+fi
 
 $PYTHON_COMMAND -m venv .venv
 

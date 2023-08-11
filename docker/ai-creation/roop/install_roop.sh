@@ -1,5 +1,8 @@
 #!/bin/bash
 
+NAME="roop"
+PYTHON_COMMAND="python3.10"
+
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
@@ -27,54 +30,71 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/roop
+AMD_GPU=0
+read -p "Do you want to use an AMD GPU (y/N)? " userInput
+
+if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
+    AMD_GPU=1
+fi
+
+if (( AMD_GPU )); then
+    NAME="$NAME-amd"
+fi
+
+git clone --depth 1 https://github.com/s0md3v/roop.git $LOC/$NAME
 
 if [ -e "requirements.pip" ]; then
-    cp requirements.pip $LOC/roop/requirements.pip
+    cp requirements.pip $LOC/$NAME/requirements.pip
 fi
 
-cd $LOC/roop
+cd $LOC/$NAME
 
-python -m venv .venv
+$PYTHON_COMMAND -m venv .venv
 
-source $LOC/roop/.venv/bin/activate
+source $LOC/$NAME/.venv/bin/activate
 
-# USE PROVIDED REQUIREMENTS:
-# $LOC/roop/.venv/bin/pip install -r requirements.txt
+$LOC/$NAME/.venv/bin/pip install -r requirements.txt
 
-# USE MY REQUIREMENTS:
-$LOC/roop/.venv/bin/pip install -r requirements.pip
-
-echo "#!/bin/bash" > $LOC/roop/run.sh
-echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/run.sh
-echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py --execution-provider cuda" >> $LOC/roop/run.sh
-
-echo "#!/bin/bash" > $LOC/roop/cpu-run.sh
-echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/cpu-run.sh
-echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py" >> $LOC/roop/cpu-run.sh
-
-echo "#!/bin/bash" > $LOC/roop/roop.sh
-echo "source $LOC/roop/.venv/bin/activate" >> $LOC/roop/roop.sh
-echo "$LOC/roop/.venv/bin/python $LOC/roop/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces --execution-provider cuda" >> $LOC/roop/roop.sh
-echo 'IFS='.' read -ra parts <<< "$2"' >> $LOC/roop/roop.sh
-echo 'file_name=$(basename "${parts[0]}")' >> $LOC/roop/roop.sh
-echo 'file_dir=$(dirname "${parts[0]}")' >> $LOC/roop/roop.sh
-echo 'mv $file_dir/temp/$file_name frames/$3' >> $LOC/roop/roop.sh
-echo 'rm frames/$3/*.mp4' >> $LOC/roop/roop.sh
-
-
-
-if grep -q "^MAX_PROBABILITY =" $LOC/roop/roop/predictor.py; then
-    sed -i "s|^MAX_PROBABILITY =.*|MAX_PROBABILITY = 9999|" $LOC/roop/roop/predictor.py
+if (( AMD_GPU )); then
+    $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
+    $LOC/$NAME/.venv/bin/pip uninstall onnxruntime
+    git clone https://github.com/microsoft/onnxruntime && cd onnxruntime
+    ./build.sh --config Release --build_wheel --update --build --parallel --cmake_extra_defines CMAKE_PREFIX_PATH=/opt/rocm/lib/cmake ONNXRUNTIME_VERSION=$ONNXRUNTIME_VERSION onnxruntime_BUILD_UNIT_TESTS=off --use_rocm --rocm_home=/opt/rocm
+    $LOC/$NAME/.venv/bin/pip install build/Linux/Release/dist/*.whl
+else
+    $LOC/$NAME/.venv/bin/pip uninstall onnxruntime onnxruntime-gpu
+    $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/cu118
+    $LOC/$NAME/.venv/bin/pip install onnxruntime-gpu
 fi
 
-chmod +rx $LOC/roop/run.sh
-chmod +rx $LOC/roop/cpu-run.sh
-chmod +rx $LOC/roop/roop.sh
+echo "#!/bin/bash" > $LOC/$NAME/run.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py" >> $LOC/$NAME/run.sh
 
-sudo cp $LOC/roop/roop.sh /usr/bin/roop
-sudo chmod +rx /usr/bin/roop
+echo "#!/bin/bash" > $LOC/$NAME/cuda-run.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/cuda-run.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py --execution-provider cuda" >> $LOC/$NAME/cuda-run.sh
 
-echo "Installed roop in $LOC"
+echo "#!/bin/bash" > $LOC/$NAME/$NAME.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/$NAME.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces" >> $LOC/$NAME/$NAME.sh
+echo 'IFS='.' read -ra parts <<< "$2"' >> $LOC/$NAME/$NAME.sh
+echo 'file_name=$(basename "${parts[0]}")' >> $LOC/$NAME/$NAME.sh
+echo 'file_dir=$(dirname "${parts[0]}")' >> $LOC/$NAME/$NAME.sh
+echo 'mv $file_dir/temp/$file_name frames/$3' >> $LOC/$NAME/$NAME.sh
+echo 'rm frames/$3/*.mp4' >> $LOC/$NAME/$NAME.sh
+
+if grep -q "^MAX_PROBABILITY =" $LOC/$NAME/roop/predictor.py; then
+    sed -i "s|^MAX_PROBABILITY =.*|MAX_PROBABILITY = 9999|" $LOC/$NAME/roop/predictor.py
+fi
+
+chmod +rx $LOC/$NAME/run.sh
+chmod +rx $LOC/$NAME/cuda-run.sh
+chmod +rx $LOC/$NAME/$NAME.sh
+
+sudo cp $LOC/$NAME/$NAME.sh /usr/bin/$NAME
+sudo chmod +rx /usr/bin/$NAME
+
+echo "Installed $NAME in $LOC"
 echo "Run ./run.sh to start it"
-echo "cd $LOC/roop"
+echo "cd $LOC/$NAME"

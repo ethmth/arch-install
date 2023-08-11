@@ -41,6 +41,34 @@ if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
     PORT="8860"
 fi
 
+EXTERNAL_MODELS=0
+read -p "Do you want to use an external models folder (y/N)? " userInput
+
+if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
+    EXTERNAL_MODELS=1
+fi
+
+folder_arguments=""
+if (( EXTERNAL_MODELS )); then
+    models_dir=""
+
+    read -p "Please enter the models directory (ending in 'stable-diffusion-webui/'):" models_dir
+
+    if [ "$models_dir" == "" ]; then
+        echo "No models directory selected."
+        exit 1
+    fi
+
+    if ! [ -d "$models_dir" ]; then
+        echo "$models_dir is not a valid directory."
+        exit 1
+    fi
+
+    folder_arguments="--ckpt-dir ${models_dir}models/Stable-diffusion --codeformer-models-path ${models_dir}models/Codeformer --gfpgan-models-path ${models_dir}models/GFPGAN --esrgan-models-path ${models_dir}models/ESRGAN"
+fi
+
+
+
 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git $LOC/$NAME
 
 read -p "Input username for webui (will be echoed): " username
@@ -63,10 +91,10 @@ sed -i '$ d' "$LOC/$NAME/webui-user.sh"
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 if (( AMD_GPU )); then
     echo "export TORCH_COMMAND=\"pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2\"" >> $LOC/$NAME/webui-user.sh
-    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae\"" >> $LOC/$NAME/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
 else
     echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh
-    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae --xformers --medvram\"" >> $LOC/$NAME/webui-user.sh
+    echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --no-half-vae --xformers --medvram $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
 fi
 echo "$LAST_LINE" >> $LOC/$NAME/webui-user.sh
 
