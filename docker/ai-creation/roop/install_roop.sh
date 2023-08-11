@@ -2,6 +2,7 @@
 
 NAME="roop"
 PYTHON_COMMAND="python3.10"
+# ONNXRUNTIME_VERSION="1.14.1"
 
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
@@ -58,10 +59,14 @@ $LOC/$NAME/.venv/bin/pip install -r requirements.txt
 if (( AMD_GPU )); then
     $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
     $LOC/$NAME/.venv/bin/pip uninstall onnxruntime
-    git clone https://github.com/microsoft/onnxruntime && cd onnxruntime
+    git clone https://github.com/microsoft/onnxruntime
+    cd onnxruntime
+    # $LOC/$NAME/.venv/bin/pip install ninja cmake
+    # wget -O $LOC/$NAME/onnxruntime/build/Linux/Release/_deps/onnx-subbuild/onnx-populate-prefix/src/rel-1.14.1.zip https://github.com/onnx/onnx/archive/refs/heads/rel-1.14.1.zip
     ./build.sh --config Release --build_wheel --update --build --parallel --cmake_extra_defines CMAKE_PREFIX_PATH=/opt/rocm/lib/cmake ONNXRUNTIME_VERSION=$ONNXRUNTIME_VERSION onnxruntime_BUILD_UNIT_TESTS=off --use_rocm --rocm_home=/opt/rocm
+    exit 1
     $LOC/$NAME/.venv/bin/pip install build/Linux/Release/dist/*.whl
-else
+els
     $LOC/$NAME/.venv/bin/pip uninstall onnxruntime onnxruntime-gpu
     $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/cu118
     $LOC/$NAME/.venv/bin/pip install onnxruntime-gpu

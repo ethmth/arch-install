@@ -140,6 +140,7 @@ python-socketio
 python-virtualenv
 python-websockets
 python-dotenv
+python-pyopenssl
 pyenv
 qemu-arch-extra
 qemu-full

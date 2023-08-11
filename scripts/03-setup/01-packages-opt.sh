@@ -12,6 +12,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 packages="
 miopen-hip
+rocm-hip-sdk
+rocm-opencl-sdk
 okteta
 perl-image-exiftool
 certbot
