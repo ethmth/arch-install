@@ -64,7 +64,7 @@ sed -i '$ d' "$LOC/$NAME/webui-user.sh"
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 if (( AMD_GPU )); then
     # echo "export TORCH_COMMAND=\"pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6\"" >> $LOC/$NAME/webui-user.sh
-    echo "export TORCH_COMMAND=\"pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.4.2\"" >> $LOC/$NAME/webui-user.sh
+    echo "export TORCH_COMMAND=\"pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2\"" >> $LOC/$NAME/webui-user.sh
     echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password --no-half --precision full\"" >> $LOC/$NAME/webui-user.sh
 else
     echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh

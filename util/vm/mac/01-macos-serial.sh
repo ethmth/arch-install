@@ -68,6 +68,8 @@ while ! (( VALUES_ACCEPTED )); do
         declare "$variable_name=$variable_value"
     done
 
+    MAC_ADDRESS="00:25:4B$MAC_ADDRESS"
+
 
     printf "Here are the generated values:\n"
     printf "\tMODEL: $MODEL\n"

@@ -50,6 +50,7 @@ org.kde.kalgebra
 org.kde.labplot2
 fr.romainvigier.MetadataCleaner
 org.inkscape.Inkscape
+org.tigervnc.vncviewer
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
