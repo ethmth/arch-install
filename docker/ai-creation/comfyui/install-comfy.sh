@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NAME="ComfyUI"
+PYTHON_COMMAND="python3.10"
 
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
@@ -47,15 +48,12 @@ fi
 git clone https://github.com/comfyanonymous/ComfyUI.git $LOC/$NAME
 cd $LOC/$NAME
 
-python -m venv .venv
+$PYTHON_COMMAND -m venv .venv
 
 source $LOC/$NAME/.venv/bin/activate
 
 if (( AMD_GPU )); then
-$LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
-# $LOC/$NAME/.venv/bin/pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6
-# $LOC/$NAME/.venv/bin/pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
-# $LOC/$NAME/.venv/bin/pip install torch==1.13.1 torchvision==0.14.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2
+$LOC/$NAME/.venv/bin/pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2
 else
 $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118 xformers
 fi
@@ -64,7 +62,7 @@ $LOC/$NAME/.venv/bin/pip install -r requirements.txt
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
 if (( AMD_GPU )); then
-echo "HSA_OVERRIDE_GFX_VERSION=10.3.0 $LOC/$NAME/.venv/bin/python $LOC/$NAME/main.py --listen 0.0.0.0 --port 8189 --enable-cors-header '*' --force-fp32" >> $LOC/$NAME/run.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/main.py --listen 0.0.0.0 --port 8189 --enable-cors-header '*'" >> $LOC/$NAME/run.sh
 else
 echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/main.py --listen 0.0.0.0 --port 8188 --enable-cors-header '*' --normalvram" >> $LOC/$NAME/run.sh
 fi
