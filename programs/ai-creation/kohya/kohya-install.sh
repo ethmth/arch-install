@@ -35,7 +35,7 @@ cd $LOC/kohya_ss
 read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
 
-sed -i "s/127.0.0.1:7860/0.0.0.0:7861/g" docker-compose.yaml
+sed -i "s/127.0.0.1:7860/0.0.0.0:7860/g" docker-compose.yaml
 sed -i "s|CLI_ARGS: \"\"|CLI_ARGS: \"--headless --listen 0.0.0.0 --username $username --password $password\"|g" docker-compose.yaml
 
 echo "#!/bin/bash" > $LOC/kohya_ss/run.sh

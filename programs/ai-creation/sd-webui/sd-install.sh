@@ -3,7 +3,7 @@
 BASE_NAME="stable-diffusion-webui"
 NAME=$BASE_NAME
 PYTHON_COMMAND="python3.10"
-PORT="7860"
+PORT="7861"
 
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
@@ -38,7 +38,7 @@ read -p "Do you want to use an AMD GPU (y/N)? " userInput
 if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
     AMD_GPU=1
     NAME="$NAME-amd"
-    PORT="8860"
+    PORT="8861"
 fi
 
 EXTERNAL_MODELS=0
