@@ -33,6 +33,10 @@ mkdir -p $LOC
 
 git clone https://github.com/bmaltais/kohya_ss.git $LOC/$NAME
 
+if [ -e "config-amd.json" ]; then
+    cp config-amd.json $LOC/$NAME/config.json
+fi
+
 cd $LOC/$NAME
 
 $PYTHON_COMMAND -m venv venv
@@ -48,6 +52,7 @@ $LOC/$NAME/venv/bin/pip install tensorflow-rocm
 
 read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
+
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/venv/bin/activate" >> $LOC/$NAME/run.sh
