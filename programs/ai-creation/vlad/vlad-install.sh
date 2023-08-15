@@ -67,17 +67,27 @@ if (( EXTERNAL_MODELS )); then
         exit 1
     fi
 
-    folder_arguments="--ckpt-dir ${models_dir}models/Stable-diffusion --codeformer-models-path ${models_dir}models/Codeformer --gfpgan-models-path ${models_dir}models/GFPGAN --esrgan-models-path ${models_dir}models/ESRGAN"
+    folder_arguments="--models-dir ${models_dir}models"
 fi
 
 git clone https://github.com/vladmandic/automatic.git $LOC/$NAME
+
+read -p "Input username for webui (will be echoed): " username
+read -p "Input password for webui (will be echoed): " password
+
+args_auth="--listen --port $PORT --auth $username:$password"
+args_models="--model epicrealism_pureEvolutionV5.safetensors --vae vae-ft-mse-840000-ema-pruned.ckpt"
+args_api="--api True --api-auth $username:$password"
+args_misc="--backend diffusers --allow-code"
+
+args="$args_auth $args_models $args_api $args_misc $folder_arguments"
 
 echo "#!/bin/bash" > $LOC/$NAME/webui-user.sh
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 
 if (( AMD_GPU )); then
 echo "export TORCH_COMMAND=\"pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2\"" >> $LOC/$NAME/webui-user.sh
-echo "export COMMANDLINE_ARGS=\"--use-rocm --listen --port $PORT --auth $username:$password --allow-code $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--use-rocm $args\"" >> $LOC/$NAME/webui-user.sh
 else
-echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --auth $username:$password --allow-code $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--use-cuda --xformers --medvram $args\"" >> $LOC/$NAME/webui-user.sh
 fi
