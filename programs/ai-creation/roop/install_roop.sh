@@ -48,6 +48,10 @@ if [ -e "requirements.pip" ]; then
     cp requirements.pip $LOC/$NAME/requirements.pip
 fi
 
+if [ -e "cuda_test.py" ]; then
+    cp cuda_test.py $LOC/$NAME/test_cuda.py
+fi
+
 cd $LOC/$NAME
 
 $PYTHON_COMMAND -m venv .venv
@@ -66,11 +70,15 @@ if (( AMD_GPU )); then
     ./build.sh --config Release --build_wheel --update --build --parallel --cmake_extra_defines CMAKE_PREFIX_PATH=/opt/rocm/lib/cmake ONNXRUNTIME_VERSION=$ONNXRUNTIME_VERSION onnxruntime_BUILD_UNIT_TESTS=off --use_rocm --rocm_home=/opt/rocm
     exit 1
     $LOC/$NAME/.venv/bin/pip install build/Linux/Release/dist/*.whl
-els
-    $LOC/$NAME/.venv/bin/pip uninstall onnxruntime onnxruntime-gpu
-    $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/cu118
+else
+    yes | $LOC/$NAME/.venv/bin/pip uninstall onnxruntime onnxruntime-gpu torch torchvision torchaudio
+    $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio
+    # $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/cu118
     $LOC/$NAME/.venv/bin/pip install onnxruntime-gpu
 fi
+
+args_roop="--keep-frames --keep-fps --many-faces"
+args_quality="--temp-frame-quality 90 --output-video-quality 90 --execution-threads 16"
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
@@ -83,9 +91,9 @@ echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py --execution-provider cuda" >
 echo "#!/bin/bash" > $LOC/$NAME/$NAME.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/$NAME.sh
 if (( AMD_GPU )); then
-echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces" >> $LOC/$NAME/$NAME.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 $args_roop $args_quality" >> $LOC/$NAME/$NAME.sh
 else
-echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 --keep-frames --keep-fps --many-faces --execution-provider cuda" >> $LOC/$NAME/$NAME.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/run.py -s \$1 -t \$2 -o output/\$3.mp4 $args_roop $args_quality --execution-provider cuda --output-video-encoder hevc_nvenc" >> $LOC/$NAME/$NAME.sh
 fi
 echo 'IFS='.' read -ra parts <<< "$2"' >> $LOC/$NAME/$NAME.sh
 echo 'file_name=$(basename "${parts[0]}")' >> $LOC/$NAME/$NAME.sh
