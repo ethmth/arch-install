@@ -76,11 +76,10 @@ read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
 
 args_auth="--listen --port $PORT --auth $username:$password"
-args_models="--model epicrealism_pureEvolutionV5.safetensors --vae vae-ft-mse-840000-ema-pruned.ckpt"
 args_api="--api True --api-auth $username:$password"
 args_misc="--backend diffusers --allow-code"
 
-args="$args_auth $args_models $args_api $args_misc $folder_arguments"
+args="$args_auth $args_api $args_misc $folder_arguments"
 
 echo "#!/bin/bash" > $LOC/$NAME/webui-user.sh
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
@@ -89,5 +88,5 @@ if (( AMD_GPU )); then
 echo "export TORCH_COMMAND=\"pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2\"" >> $LOC/$NAME/webui-user.sh
 echo "export COMMANDLINE_ARGS=\"--use-rocm $args\"" >> $LOC/$NAME/webui-user.sh
 else
-echo "export COMMANDLINE_ARGS=\"--use-cuda --xformers --medvram $args\"" >> $LOC/$NAME/webui-user.sh
+echo "export COMMANDLINE_ARGS=\"--use-cuda --medvram $args\"" >> $LOC/$NAME/webui-user.sh
 fi
