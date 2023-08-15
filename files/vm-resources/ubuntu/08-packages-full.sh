@@ -28,6 +28,7 @@ python3-selenium
 python3-bs4
 python3-requests
 python3-tqdm
+python3-django
 python-is-python3
 npm
 speedtest-cli
