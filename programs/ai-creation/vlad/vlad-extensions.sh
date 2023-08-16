@@ -49,7 +49,7 @@ mkdir -p $LOC/models/roop
 
 LOC="$LOC/extensions"
 
-git clone https://github.com/Bing-su/adetailer.git $LOC/adetailer
+# git clone https://github.com/Bing-su/adetailer.git $LOC/adetailer
 git clone https://github.com/Coyote-A/ultimate-upscale-for-automatic1111.git $LOC/ultimate-upscale-for-automatic1111
 git clone https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor.git $LOC/dataset-tag-editor
 git clone https://github.com/Gourieff/sd-webui-reactor.git $LOC/sd-webui-reactor

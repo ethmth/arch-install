@@ -75,7 +75,7 @@ git clone https://github.com/vladmandic/automatic.git $LOC/$NAME
 read -p "Input username for webui (will be echoed): " username
 read -p "Input password for webui (will be echoed): " password
 
-args_auth="--listen --port $PORT --auth $username:$password"
+args_auth="--debug --listen --port $PORT --auth $username:$password"
 args_api="--api True --api-auth $username:$password"
 args_misc="--backend original --allow-code"
 
