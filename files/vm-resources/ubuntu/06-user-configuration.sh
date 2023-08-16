@@ -29,3 +29,10 @@ cp /etc/xdg/xfce4/helpers.rc /home/$CUR_USER/.config/xfce4/helpers.rc
 xdg-mime default thunar.desktop inode/directory
 sed -i "s|^TerminalEmulator=.*|TerminalEmulator=gnome-terminal|" /home/$CUR_USER/.config/xfce4/helpers.rc
 sudo update-mime-database /usr/share/mime
+
+mkdir -p /home/$CUR_USER/.ssh
+
+echo "Host phone
+    Hostname 10.153.153.15
+    User u0_a154
+    Port 8022" > /home/$CUR_USER/.ssh/config
