@@ -1,0 +1,29 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          socat-port-forward
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start socat for port forwarding
+# Description:       Start socat to forward traffic from local port 8022 to remote host 10.42.0.2:8022
+### END INIT INFO
+
+case "$1" in
+  start)
+    /usr/bin/socat TCP-LISTEN:8022,fork,reuseaddr TCP:10.42.0.2:8022 &
+    ;;
+  stop)
+    pkill socat
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0

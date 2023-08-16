@@ -8,6 +8,6 @@ pkg install openssh openssh-sftp-server
 
 passwd
 
-# ssh-keygen
-
 sshd -D -e -ddd
+
+# ssh into phone, git clone these scripts.

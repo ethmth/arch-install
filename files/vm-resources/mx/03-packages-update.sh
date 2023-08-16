@@ -8,6 +8,7 @@ fi
 update-rc.d -f packagekit remove
 
 packages="
+socat
 spice-vdagent
 qemu-guest-agent
 vim

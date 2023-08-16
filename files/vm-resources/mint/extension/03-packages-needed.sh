@@ -25,6 +25,7 @@ unzip
 jq
 fzf
 autossh
+python3
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
