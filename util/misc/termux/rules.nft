@@ -1,0 +1,19 @@
+define local_subnet = {
+    10.42.0.1/24
+}
+
+table inet my_filter {
+    chain input {
+        type filter hook input priority 0; policy drop;
+        ip saddr $local_subnet udp dport 53 drop
+        ip saddr $local_subnet tcp dport 53 drop
+        ip saddr $local_subnet accept
+    }
+
+    chain output {
+        type filter hook output priority 0; policy drop;
+        ip daddr $local_subnet udp dport 53 drop
+        ip daddr $local_subnet tcp dport 53 drop
+        ip daddr $local_subnet accept
+    }
+}
