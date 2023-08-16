@@ -45,7 +45,7 @@ source $LOC/$NAME/.venv/bin/activate
 $LOC/$NAME/.venv/bin/pip install -r requirements.txt
 
 args_roop="--keep-frames --keep-fps --many-faces"
-args_quality="--video-encoder libx264 --video-quality 40 --execution-threads 16 --execution-provider cuda"
+args_quality="--video-encoder libx264 --video-quality 5 --execution-threads 16 --execution-provider cuda"
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
