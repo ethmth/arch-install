@@ -2,6 +2,7 @@
 
 NAME="roop"
 PYTHON_COMMAND="python3.10"
+# PYTHON_COMMAND="python"
 # ONNXRUNTIME_VERSION="1.14.1"
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -72,9 +73,11 @@ if (( AMD_GPU )); then
     $LOC/$NAME/.venv/bin/pip install build/Linux/Release/dist/*.whl
 else
     yes | $LOC/$NAME/.venv/bin/pip uninstall onnxruntime onnxruntime-gpu torch torchvision torchaudio
+    # $LOC/$NAME/.venv/bin/pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
     $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio
     # $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/cu118
     $LOC/$NAME/.venv/bin/pip install onnxruntime-gpu
+    # $LOC/$NAME/.venv/bin/pip install git+https://github.com/microsoft/onnxruntime.git#egg=onnxruntime
 fi
 
 args_roop="--keep-frames --keep-fps --many-faces"
