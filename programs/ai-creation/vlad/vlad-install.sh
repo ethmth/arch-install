@@ -77,7 +77,7 @@ read -p "Input password for webui (will be echoed): " password
 
 args_auth="--debug --listen --port $PORT --auth $username:$password"
 args_api="--api True --api-auth $username:$password"
-args_misc="--backend original --allow-code"
+args_misc="--backend original --allow-code --insecure"
 
 args="$args_auth $args_api $args_misc $folder_arguments"
 
