@@ -29,6 +29,9 @@ python3-bs4
 python3-requests
 python3-tqdm
 python3-django
+python3-phonenumbers
+python3-progressbar
+python3-autopep8
 python-is-python3
 npm
 speedtest-cli

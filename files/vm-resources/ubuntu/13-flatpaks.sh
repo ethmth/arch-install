@@ -27,6 +27,7 @@ com.google.AndroidStudio
 org.gajim.Gajim
 fr.romainvigier.MetadataCleaner
 "
+#com.vscodium.codium
 
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
@@ -36,3 +37,10 @@ flatpak update
 
 echo "Verify that the installation of the flatpaks was successful"
 echo "Add KOOHA_EXPERIMENTAL=1 to env variables for io.github.seadve.Kooha for window recording"
+echo "==========================================================="
+echo "If you have trouble with MEGAsync, consider rolling back the version."
+echo "flatpak remote-info --log flathub nz.mega.MEGAsync"
+echo "sudo flatpak update --commit=7f30d8f2998e3376afb64525ae537f392c7b737b6209a13fc29a1610493f
+418c nz.mega.MEGAsync"
+echo "sudo flatpak mask nz.mega.MEGAsync"
+echo "==========================================================="
