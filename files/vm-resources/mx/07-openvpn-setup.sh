@@ -101,3 +101,7 @@ docker-compose up -d
 
 echo "openvpn installed and running in /home/$CUR_USER/programs/openvpn."
 echo "Run 'openvpn stop' or 'openvpn start' to control it"
+
+echo "========================================================="
+echo "Transfer the client configuration file my_client1.ovpn to the phone manually"
+echo "Run ./openvpn-client.sh on Ubuntu to set that up"
