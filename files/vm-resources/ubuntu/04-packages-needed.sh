@@ -36,7 +36,9 @@ unzip
 jq
 fzf
 adb
-kdeconnect
+chrome-gnome-shell
+gnome-shell-extension-gsconnect
+gnome-shell-extension-gsconnect-browsers
 feh
 mpv
 xfce4-settings
