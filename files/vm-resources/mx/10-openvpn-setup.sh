@@ -12,56 +12,89 @@ if ! [ -e "openvpn/openvpn" ]; then
 	exit 1
 fi
 
-mkdir -p /home/$CUR_USER/programs/openvpn/
-cp openvpn/docker-compose.yml /home/$CUR_USER/programs/openvpn/docker-compose.yaml
-
-hostname=""
-read -p "Please enter your desired hostname (Ex: 10.153.153.15, server.mydomain.com): " hostname
-# echo -n Password: 
-# read -s password
-# echo
-
-if [ "$hostname" == "" ]; then
-    echo "No hostname specified"
-    exit 1
+if ! [ -e "openvpn/client.conf" ]; then
+	echo "openvpn/client.conf not found"
+	exit 1
 fi
 
+if ! [ -e "openvpn/server.conf" ]; then
+	echo "openvpn/server.conf not found"
+	exit 1
+fi
 
-# echo $password
+# mkdir -p /home/$CUR_USER/programs/openvpn/
+# cp openvpn/docker-compose.yml /home/$CUR_USER/programs/openvpn/docker-compose.yaml
+# cp openvpn/client.conf /home/$CUR_USER/programs/openvpn/client.conf
+# cp openvpn/server.conf /home/$CUR_USER/programs/openvpn/server.conf
+
+# hostname=""
+# read -p "Please enter your desired hostname (Ex: 10.153.153.15, server.mydomain.com): " hostname
+
+# if [ "$hostname" == "" ]; then
+#     echo "No hostname specified"
+#     exit 1
+# fi
 
 cd /home/$CUR_USER/programs/openvpn
 
-echo "Use same password for everything, leave DN as default (blank)"
+# echo "Use same password for everything, leave Common Name as default (blank)"
 
-# sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | docker-compose run --rm openvpn ovpn_genconfig -u udp://$hostname
-#   $password # password
-#   $password # confirm
-#     # default DN
-#   $password # pass again
-# EOF
 
-# exit 0
+# docker-compose run --rm openvpn ovpn_genconfig -u udp://$hostname
+# docker-compose run --rm openvpn ovpn_initpki
 
-docker-compose run --rm openvpn ovpn_genconfig -u udp://$hostname
-docker-compose run --rm openvpn ovpn_initpki
+# sudo chown -R $(whoami): ./openvpn-data
 
-sudo chown -R $(whoami): ./openvpn-data
+# docker-compose up -d
 
-docker-compose up -d
-
-# echo "#!/bin/bash" > up.sh
-# echo "docker-compose up -d openvpn" >> up.sh
-# chmod +x up.sh
-
-echo "#!/bin/bash" > check_logs.sh
-echo "docker-compose logs -f" >> check_logs.sh
-chmod +x check_logs.sh
+# echo "#!/bin/bash" > check_logs.sh
+# echo "docker-compose logs -f" >> check_logs.sh
+# chmod +x check_logs.sh
 
 NUM_CLIENTS=2
 
 for i in $(seq 1 $NUM_CLIENTS);
 do
     export CLIENTNAME="client$i"
-    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass
-    docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
+    # docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass
+    # docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
+
+
+    echo "$CLIENTNAME key:"
+    cp client.conf my_$CLIENTNAME.ovpn
+    # content_to_replace=$(sed -n 's|.*<key>\(.*\)<\/key>.*|\1|p' $CLIENTNAME.ovpn)
+    # content_to_replace=$(grep -oP '(?<=<key>).*?(?=</key>)' $CLIENTNAME.ovpn)
+    start_pattern="<key>"
+    end_pattern="<\/key>"
+    content_to_replace=$(awk "/$start_pattern/,/$end_pattern/" $CLIENTNAME.ovpn)
+
+    echo "$content_to_replace"
+    # sed -i "s|$start_pattern.*$end_pattern|$start_pattern$content_to_replace$end_pattern|" my_$CLIENTNAME.ovpn
+
+        # temp_file=$(mktemp)
+
+        # # Use sed to insert the multi-line string between the patterns
+        # sed -e "/$start_pattern/{r $temp_file" -e ':a;N;/\n.*'$end_pattern'/!ba}' "my_$CLIENTNAME.ovpn" > "$temp_file"
+        # echo "$content_to_replace" > "$temp_file"
+
+        # # Overwrite the original file with the modified content
+        # mv "$temp_file" "my_$CLIENTNAME.ovpn"
+
+    echo 'Ignore awk warning "escape sequence `\/' treated as plain `/'":'
+    awk -v start="$start_pattern" -v end="$end_pattern" -v new_content="$content_to_replace" '
+    $0 ~ start {
+        print $0
+        print new_content
+        found_start = 1
+        next
+    }
+    $0 ~ end && found_start {
+        found_start = 0
+    }
+    !found_start {
+        print $0
+    }
+    ' "my_$CLIENTNAME.ovpn" > "my_$CLIENTNAME.tmp"
+
+    mv "my_$CLIENTNAME.tmp" "my_$CLIENTNAME.ovpn"
 done
