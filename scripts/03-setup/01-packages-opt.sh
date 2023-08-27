@@ -11,6 +11,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
+pypy
+pypy3
 miopen-hip
 rocm-hip-sdk
 rocm-opencl-sdk
