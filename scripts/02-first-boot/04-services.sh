@@ -13,7 +13,8 @@ sudo systemctl enable sddm.service
 sudo systemctl enable libvirtd
 sudo systemctl enable virtlogd.socket
 sudo systemctl enable cronie
-sudo systemctl enable reflector
+sudo systemctl enable reflector.service
+sudo systemctl enable reflector.timer
 sudo systemctl enable docker
 sudo systemctl enable podman
 sudo systemctl enable sshd
