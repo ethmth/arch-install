@@ -35,7 +35,6 @@ com.usebottles.bottles
 com.valvesoftware.Steam
 eu.scarpetta.PDFMixTool
 io.gitlab.librewolf-community
-net.davidotek.pupgui2
 net.lutris.Lutris
 net.mullvad.MullvadBrowser
 nz.mega.MEGAsync
