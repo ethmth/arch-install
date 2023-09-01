@@ -22,6 +22,7 @@ mv BaseSystem.dmg /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.dmg
 dmg2img -i /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.dmg /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.img
 mv BaseSystem.chunklist /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.chunklist
 
+mkdir -p /home/$CUR_USER/vm/os
 cp /home/$CUR_USER/vm/osx/OSX-KVM/BaseSystem.img /home/$CUR_USER/vm/os/macos.img
 
 echo "OSX-KVM Download Complete"
