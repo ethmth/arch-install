@@ -15,3 +15,18 @@
 5. Run `/root/arch-install/scripts/01-installer/01-packages-time.sh` and follow the instructions.
 
 
+## chroot-ing into encrypted systems
+
+```sh
+lsblk
+
+cryptsetup open /dev/sda2 cryptlvm
+
+mount /dev/mapper/cryptlvm /mnt
+
+mount /dev/sda1 /mnt/boot
+
+arch-chroot /mnt
+
+# Do Stuff
+```
