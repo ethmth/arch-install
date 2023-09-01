@@ -16,6 +16,6 @@ if (( NVIDIA )); then
     sudo mkinitcpio -P
 fi
 
-echo "If using an Nvidia card, initcpio should have been regenerated without kms."
+# echo "If using an Nvidia card, initcpio should have been regenerated without kms."
 echo "Otherwise, no action was taken"
 echo "Next, run ./10-grub.sh"
