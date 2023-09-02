@@ -70,14 +70,54 @@ fi
 
 if (( NVIDIA && ! INTEL )); then
 sudo sh -c "echo \"#!/bin/sh
-DEVS=\"$groups\"
-if [ -z \"\$(ls -A /sys/class/iommu)\" ]; then
+DEVS=\\\"$groups\\\"
+if [ -z \\\"\\\$(ls -A /sys/class/iommu)\\\" ]; then
     exit 0
 fi
-for DEV in \$DEVS; do
-    echo \"vfio-pci\" > \"/sys/bus/pci/devices/\$DEV/driver_override\"
+for DEV in \\\$DEVS; do
+    echo \\\"vfio-pci\\\" > \\\"/sys/bus/pci/devices/\\\$DEV/driver_override\\\"
 done
 \" > /sbin/vfio-pci-override-vga.sh"
+sudo chmod +rx /sbin/vfio-pci-override-vga.sh
+
+sudo mkdir -p /etc/initcpio/hooks
+sudo sh -c "echo \"#!/usr/bin/bash
+run_hook() {
+    /sbin/vfio-pci-override-vga.sh
+}
+\" > /etc/initcpio/hooks/vfio"
+sudo chmod 644 /etc/initcpio/hooks/vfio
+
+sudo mkdir -p /etc/initcpio/install
+sudo sh -c "echo \"#!/usr/bin/env bash
+build() {
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+vfio hook help
+HELPEOF
+}
+\" > /etc/initcpio/install/vfio"
+sudo chmod 644 /etc/initcpio/install/vfio
+
+#sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-files -a "start" "/sbin/vfio-pci-override-vga.sh"
+sudo sed -i "s|FILES=()|FILES=(/sbin/vfio-pci-override-vga.sh)|" /etc/mkinitcpio.conf
+sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-hooks -a "base" vfio
+sudo sh -c "echo \"[Unit]
+Description=Insert vfio-pci driver
+
+[Service]
+Type=oneshot
+ExecStart=modprobe -i vfio-pci
+
+[Install]
+WantedBy=multi-user.target
+\" > /etc/systemd/system/vfio-load.service"
+
+sudo systemctl enable vfio-load.service
+sudo mkinitcpio -P
 else
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1

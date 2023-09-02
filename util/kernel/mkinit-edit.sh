@@ -14,12 +14,15 @@ if [ "$1" == "add-hooks" ]; then
     EDIT_HOOKS=1
 elif [ "$1" == "add-modules" ]; then
     EDIT_MODULES=1
+elif [ "$1" == "add-files" ]; then
+    EDIT_FILES=1
 elif [ "$1" == "remove-hook" ]; then
     REMOVE_HOOK=1
 else
 	printf "Options \n"
 	printf	"\t add-hooks\n"
 	printf	"\t add-modules\n"
+	printf	"\t add-files\n"
 	printf	"\t remove-hook\n"
     exit 1
 fi
@@ -31,6 +34,8 @@ elif (( REMOVE_HOOK )); then
     edit_string="HOOKS"
 elif (( EDIT_MODULES )); then
     edit_string="MODULES"
+elif (( EDIT_FILES )); then
+    edit_string="FILES"
 fi
 
 shift
@@ -131,9 +136,13 @@ for hook in "${hooks[@]}"; do
 done
 
 if (( AFTER )); then
-    new_hooks=$(echo "$new_hooks" | sed "s/$target_word/ $target_word $hooks_string /")
+    new_hooks=$(echo "$new_hooks" | sed "s|$target_word| $target_word $hooks_string |")
+    #new_hooks=$(echo "$new_hooks" | sed 's/\\//g' | sed "s|$target_word| $target_word $hooks_string |")
+    #new_hooks=$(echo ${new_hooks//\\/} | sed 's/||//g' | sed "s|$target_word| $target_word $hooks_string |")
 elif (( BEFORE )); then 
-    new_hooks=$(echo "$new_hooks" | sed "s/$target_word/ $hooks_string $target_word /")
+    #new_hooks=$(echo "$new_hooks" | sed 's/\\//g' | sed "s|$target_word| $hooks_string $target_word |")
+    #new_hooks=$(echo "$new_hooks" | sed 's/\\//g' | sed "s|$target_word| $hooks_string $target_word |")
+    new_hooks=$(echo "$new_hooks" | sed "s|$target_word| $hooks_string $target_word |")
 fi
 new_hooks=$(echo "$new_hooks" | sed 's/[()]//g' | tr -s ' ')
 new_hooks=$(echo "$new_hooks" | sed 's/[[:blank:]]*$//')
