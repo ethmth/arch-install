@@ -31,14 +31,14 @@ AMD_GPU=$(echo "$selected_line" | grep "AMD" | wc -l)
 
 gpu_pci_group=$(echo "$selected_line" | cut -d ' ' -f 2)
 gpu_pci_id=$(echo "$selected_line" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
-groups="$gpu_pci_group "
+groups="0000:$gpu_pci_group"
 
 ids=""
 gpu_pci_id="${gpu_pci_id//\[}"
 gpu_pci_id="${gpu_pci_id//\]}"
-ids+="0000:$gpu_pci_id,"
+ids+="$gpu_pci_id,"
 
-pci_ids=$(printf "$string" | grep -v "$gpu_pci_id" | fzf -m --prompt="Please select your other devices" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
+pci_ids=$(printf "$string" | grep -v "$gpu_pci_id" | fzf -m --prompt="Please select your other devices")
 
 if [ "$pci_ids" == "" ]; then
 	echo "Nothing selected"
@@ -47,11 +47,11 @@ fi
 
 while IFS= read -r line; do
 	temp_group=$(echo "$line" | cut -d ' ' -f 2)
-	temp_line=$line
+	temp_line=$(echo "$line" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
 	temp_line="${temp_line//\[}"
 	temp_line="${temp_line//\]}"
 	ids+="$temp_line,"
-	groups+="0000:$temp_group "
+	groups+=" 0000:$temp_group"
 done <<< "$pci_ids"
 ids="${ids%?}"
 
