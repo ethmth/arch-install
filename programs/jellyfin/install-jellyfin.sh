@@ -97,8 +97,7 @@ sed -i "s/VIDEO_ID_HERE/$VIDEO_ID/g" $LOC/docker-compose.yml
 if (( GPU_ACCEL )); then
 string_to_echo=""
 if (( NVIDIA )); then
-string_to_echo=$(echo "    runtime: nvidia
-    deploy:
+string_to_echo=$(echo "    deploy:
       resources:
         reservations:
           devices:
