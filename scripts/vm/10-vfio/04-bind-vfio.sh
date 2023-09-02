@@ -31,11 +31,12 @@ AMD_GPU=$(echo "$selected_line" | grep "AMD" | wc -l)
 
 gpu_pci_group=$(echo "$selected_line" | cut -d ' ' -f 2)
 gpu_pci_id=$(echo "$selected_line" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
+groups="$gpu_pci_group "
 
 ids=""
 gpu_pci_id="${gpu_pci_id//\[}"
 gpu_pci_id="${gpu_pci_id//\]}"
-ids+="$gpu_pci_id,"
+ids+="0000:$gpu_pci_id,"
 
 pci_ids=$(printf "$string" | grep -v "$gpu_pci_id" | fzf -m --prompt="Please select your other devices" | grep -o '\[[[:alnum:]]\{4\}:[[:alnum:]]\{4\}\]')
 
@@ -45,14 +46,16 @@ if [ "$pci_ids" == "" ]; then
 fi
 
 while IFS= read -r line; do
+	temp_group=$(echo "$line" | cut -d ' ' -f 2)
 	temp_line=$line
 	temp_line="${temp_line//\[}"
 	temp_line="${temp_line//\]}"
 	ids+="$temp_line,"
+	groups+="0000:$temp_group "
 done <<< "$pci_ids"
 ids="${ids%?}"
 
-echo "Adding these ids to blocklist: $ids"
+echo "Adding these ids to blocklist: $ids (groups: $groups)"
 
 if (( AMD_GPU )); then
 sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustart"
@@ -65,10 +68,22 @@ sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer
 sudo chmod +rx /usr/bin/gpucheck
 fi
 
+if (( NVIDIA && ! INTEL )); then
+sudo sh -c "echo \"#!/bin/sh
+DEVS=\"$groups\"
+if [ -z \"\$(ls -A /sys/class/iommu)\" ]; then
+    exit 0
+fi
+for DEV in \$DEVS; do
+    echo \"vfio-pci\" > \"/sys/bus/pci/devices/\$DEV/driver_override\"
+done
+\" > /sbin/vfio-pci-override-vga.sh"
+else
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1
 echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 sudo mkinitcpio -P
+fi
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
