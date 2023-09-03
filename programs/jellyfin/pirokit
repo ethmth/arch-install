@@ -10,7 +10,7 @@ fi
 
 read -p "Search Torrent: " query
 
-baseurl="https://1337x.to"
+baseurl="https://www.1337x.to"
 cachedir="$HOME/.cache/pirokit"
 savedir="PROJECT_DIRECTORY_HERE/media/$torrent_type"
 query="$(sed 's/ /+/g' <<<$query)"
