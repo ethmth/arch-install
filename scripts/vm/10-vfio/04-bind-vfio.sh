@@ -69,10 +69,8 @@ sudo sh -c "echo \"lspci -nnk -d $gpu_pci_id | grep Kernel\" >> /usr/bin/gpuchec
 sudo chmod +rx /usr/bin/gpucheck
 fi
 
-if (( NVIDIA && ! INTEL )); then
-echo "hi"
-else
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
+if ! (( NVIDIA && ! INTEL )); then
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1
 echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 sudo mkinitcpio -P
