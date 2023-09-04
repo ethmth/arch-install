@@ -26,6 +26,8 @@ ark
 xfce4-settings
 mesa
 mesa-utils
+xf86-video-amdgpu
+vulkan-mesa-layers
 autopep8
 tumbler
 android-file-transfer
