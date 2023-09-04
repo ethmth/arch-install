@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 #issuu-dl
 # mp4fpsmod
 packages="
+cryptomator-bin
 pypy
 pypy3
 miopen-hip
