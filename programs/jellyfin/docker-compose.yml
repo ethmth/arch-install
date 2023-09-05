@@ -12,3 +12,4 @@ services:
       - ./config:/config
       - ./cache:/cache
       - ./media:/media
+    restart: unless-stopped
