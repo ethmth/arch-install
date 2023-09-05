@@ -185,7 +185,7 @@ polkit-gnome
 rofi
 swaybg
 swaylock-effects
-waybar-hyprland-git
+waybar-hyprland
 wf-recorder
 wlogout
 xdg-desktop-portal-hyprland
