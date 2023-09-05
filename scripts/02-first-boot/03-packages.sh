@@ -12,6 +12,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # bluez-hciconfig
 packages="
 wireguard-tools
+inetutils
 libvncserver
 freerdp
 sshpass
