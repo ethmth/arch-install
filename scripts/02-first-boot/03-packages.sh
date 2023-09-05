@@ -194,6 +194,7 @@ xorg
 gammastep
 nwg-look-bin
 grimblast-git
+blueberry
 "
 # Font packages:
 packages+="
