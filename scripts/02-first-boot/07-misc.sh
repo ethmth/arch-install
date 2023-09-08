@@ -85,6 +85,8 @@ echo "osc7_cwd() {
 }
 PROMPT_COMMAND=\${PROMPT_COMMAND:+\$PROMPT_COMMAND; }osc7_cwd" >> /home/$CUR_USER/.bashrc
 
+echo "PATH=\$PATH:/home/$CUR_USER/.local/bin" >> /home/$CUR_USER/.bashrc
+
 # Docker container runtime setup
 if (( NVIDIA )); then
 string_to_echo=$(echo '{
