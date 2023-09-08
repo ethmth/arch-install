@@ -1,0 +1,35 @@
+#!/bin/bash
+
+NAME="CoverGPT"
+PYTHON_COMMAND="python"
+
+if ! [[ $EUID -ne 0 ]]; then
+        echo "This script should not be run with root/sudo privileges."
+        exit 1
+fi
+
+CUR_USER=$(whoami)
+
+LOC="/home/$CUR_USER/programs"
+mkdir -p $LOC/$NAME
+cd $LOC/$NAME
+
+$PYTHON_COMMAND -m venv .venv
+
+source $LOC/$NAME/.venv/bin/activate
+
+$LOC/$NAME/.venv/bin/pip install CoverGPT
+
+echo "#!/bin/bash" > $LOC/$NAME/run.sh
+echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
+echo "$LOC/$NAME/.venv/bin/python -m CoverGPT" >> $LOC/$NAME/run.sh
+
+chmod +rx $LOC/$NAME/run.sh
+
+sudo cp $LOC/$NAME/run.sh /usr/bin/$NAME
+sudo chmod +rx /usr/bin/$NAME
+
+echo "Installed $NAME in $LOC"
+echo "Run '$NAME' to start it"
+
+echo "Find your access token by visiting https://chat.openai.com/api/auth/session"

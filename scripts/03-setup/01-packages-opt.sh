@@ -41,6 +41,7 @@ texlive-bin
 texlive-binextra
 texlive-bibtexextra
 texlive-latexrecommended
+texlive-xetex
 ttf-liberation
 pdftk
 biber
