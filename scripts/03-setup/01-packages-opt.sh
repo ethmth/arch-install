@@ -42,6 +42,10 @@ texlive-binextra
 texlive-bibtexextra
 texlive-latexrecommended
 texlive-xetex
+texlive-games
+texlive-pictures
+texlive-mathscience
+texlive-latexextra
 ttf-liberation
 pdftk
 biber
