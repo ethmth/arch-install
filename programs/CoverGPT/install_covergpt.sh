@@ -11,18 +11,21 @@ fi
 CUR_USER=$(whoami)
 
 LOC="/home/$CUR_USER/programs"
-mkdir -p $LOC/$NAME
+mkdir -p $LOC
+
+git clone https://github.com/mahfoozm/CoverGPT.git $LOC/$NAME
+
 cd $LOC/$NAME
 
 $PYTHON_COMMAND -m venv .venv
 
 source $LOC/$NAME/.venv/bin/activate
 
-$LOC/$NAME/.venv/bin/pip install CoverGPT
+$LOC/$NAME/.venv/bin/pip install -r requirements.txt
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
-echo "$LOC/$NAME/.venv/bin/python -m CoverGPT" >> $LOC/$NAME/run.sh
+echo "$LOC/$NAME/.venv/bin/python $LOC/$NAME/gui.py" >> $LOC/$NAME/run.sh
 
 chmod +rx $LOC/$NAME/run.sh
 
