@@ -62,6 +62,7 @@ etcher-bin
 flutter
 hplip
 waydroid
+pgmodeler
 "
 
 if (( NVIDIA )); then

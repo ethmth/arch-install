@@ -49,6 +49,7 @@ org.kde.labplot2
 fr.romainvigier.MetadataCleaner
 org.inkscape.Inkscape
 org.tigervnc.vncviewer
+com.jgraph.drawio.desktop
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
