@@ -32,6 +32,7 @@ python-opencv
 python-seaborn
 python-scikit-learn
 python-systemd
+python-pysocks
 remmina
 rstudio-desktop-bin
 scrcpy
@@ -46,7 +47,9 @@ texlive-games
 texlive-pictures
 texlive-mathscience
 texlive-latexextra
+texlive-fontsextra
 ttf-liberation
+ttf-roboto
 pdftk
 biber
 perl-file-homedir
