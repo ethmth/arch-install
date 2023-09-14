@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="CoverGPT"
+NAME="ill-cover-you"
 PYTHON_COMMAND="python"
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -13,7 +13,9 @@ CUR_USER=$(whoami)
 LOC="/home/$CUR_USER/programs"
 mkdir -p $LOC
 
-git clone https://github.com/mahfoozm/CoverGPT.git $LOC/$NAME
+git clone https://github.com/ethmth/ill-cover-you.git $LOC/$NAME
+
+cp $LOC/$NAME/config.env.example $LOC/$NAME/config.env
 
 cd $LOC/$NAME
 
@@ -33,6 +35,12 @@ sudo cp $LOC/$NAME/run.sh /usr/bin/$NAME
 sudo chmod +rx /usr/bin/$NAME
 
 echo "Installed $NAME in $LOC"
+echo "Edit the environment file to begin using it:"
+echo "vim $LOC/$NAME/config.env"
+
+vim $LOC/$NAME/config.env
+
+echo "Copy your resume to $LOC/$NAME/resume.pdf"
 echo "Run '$NAME' to start it"
 
 echo "Find your access token by visiting https://chat.openai.com/api/auth/session"
