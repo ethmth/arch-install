@@ -118,6 +118,7 @@ networkmanager-openvpn
 nm-connection-editor
 nodejs-lts-hydrogen
 npm
+yarn
 openbsd-netcat
 nmap
 openresolv
