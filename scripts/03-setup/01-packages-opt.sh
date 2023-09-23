@@ -49,6 +49,7 @@ texlive-pictures
 texlive-mathscience
 texlive-latexextra
 texlive-fontsextra
+texlive-plaingeneric
 ttf-liberation
 ttf-roboto
 pdftk
