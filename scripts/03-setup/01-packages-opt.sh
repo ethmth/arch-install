@@ -8,8 +8,9 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
-#issuu-dl
+# issuu-dl
 # mp4fpsmod
+# google-cloud-cli
 packages="
 whois
 act
