@@ -40,6 +40,9 @@ python-seaborn
 python-scikit-learn
 python-systemd
 python-pysocks
+python-sqlalchemy
+python-flask-sqlalchemy
+python-psycopg2
 remmina
 rstudio-desktop-bin
 scrcpy
