@@ -101,6 +101,9 @@ sudo mkdir -p /etc/docker
 sudo sh -c "echo '$string_to_echo' > /etc/docker/daemon.json"
 fi
 
+# Disable kdewallet
+kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'Enabled' 'false'
+kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'First Use' 'false'
 
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
