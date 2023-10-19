@@ -45,7 +45,7 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/megasync /usr/bin/m
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/docker-update /usr/bin/docker-update
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/checkmount /usr/bin/checkmount
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/txt2img /usr/bin/txt2img
-
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/tab2space /usr/bin/tab2space
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -54,6 +54,7 @@ sudo chmod +rx /usr/bin/megasync
 sudo chmod +rx /usr/bin/docker-update
 sudo chmod +rx /usr/bin/checkmount
 sudo chmod +rx /usr/bin/txt2img
+sudo chmod +rx /usr/bin/tab2space
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync, etc)"
 echo "If so, run ./09-grub.sh"
