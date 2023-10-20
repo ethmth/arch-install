@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+com.visualstudio.code
 org.filezillaproject.Filezilla
 org.gnome.SimpleScan
 org.freecadweb.FreeCAD
