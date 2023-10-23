@@ -23,6 +23,7 @@ sudo systemctl enable cups
 sudo systemctl enable paccache.timer
 sudo systemctl enable fstrim.timer
 sudo systemctl enable etckeeper.timer
+sudo systemctl enable ntpd.service
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi

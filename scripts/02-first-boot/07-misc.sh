@@ -105,5 +105,8 @@ fi
 kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'Enabled' 'false'
 kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'First Use' 'false'
 
+# Enable NTP
+sudo timedatectl set-ntp true
+
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
