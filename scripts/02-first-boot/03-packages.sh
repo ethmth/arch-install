@@ -104,6 +104,7 @@ gparted
 gthumb
 guestfs-tools
 gvfs
+sshfs
 jq
 kate
 kdeconnect
