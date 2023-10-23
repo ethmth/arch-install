@@ -12,6 +12,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 # google-cloud-cli
 packages="
+motion
 postgresql
 kcalc
 jpegoptim
