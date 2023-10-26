@@ -5,4 +5,5 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-yay -S rtl8812au-dkms-git
+yay -S rtl8812au-dkms-git \
+    rtl88x2bu-dkms-git # For big device
