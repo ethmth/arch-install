@@ -6,5 +6,4 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 yay -S rtl8812au-dkms-git \
-    rtl88x2bu-dkms-git # For big device
-    rtl8821au-dkms-git # For little device
+    rtl88x2bu-dkms-git rtl8821au-dkms-git 
