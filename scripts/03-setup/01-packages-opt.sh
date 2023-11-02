@@ -80,18 +80,6 @@ waydroid
 pgmodeler
 "
 
-if (( NVIDIA )); then
-packages+="
-cuda
-cuda-tools
-python-cuda
-python-tensorflow-cuda
-"
-else
-packages+="
-python-tensorflow
-"
-fi
 if ! (( AMD )); then
 packages+="
 obs-studio
