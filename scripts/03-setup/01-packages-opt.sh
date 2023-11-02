@@ -12,6 +12,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 # google-cloud-cli
 packages="
+hollywood
+cmatrix
 motion
 postgresql
 kcalc
