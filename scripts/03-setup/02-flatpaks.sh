@@ -51,6 +51,7 @@ fr.romainvigier.MetadataCleaner
 org.inkscape.Inkscape
 org.tigervnc.vncviewer
 com.jgraph.drawio.desktop
+com.ultimaker.cura
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
