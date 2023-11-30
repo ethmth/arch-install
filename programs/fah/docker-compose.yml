@@ -1,0 +1,12 @@
+version: "3"
+services:
+  fah0:
+    image: foldingathome/fah-gpu:latest
+    runtime: nvidia
+    container_name: fah0
+    group_add:
+      - "RENDER_ID_HERE" # Change this to match your "render" host group id and remove this comment
+      - "VIDEO_ID_HERE" # Change this to match your "video" host group id and remove this comment
+    user: USER_ID_HERE:GROUP_ID_HERE
+    volumes:
+      - ./fah:/fah
