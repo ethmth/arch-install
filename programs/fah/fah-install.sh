@@ -41,11 +41,9 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-if ! [ -e "$LOC/$NAME" ]; then
 mkdir -p $LOC/$NAME
 mkdir -p $LOC/$NAME/$NAME
 chmod -R 777 $LOC/$NAME/$NAME
-fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 cp config.xml $LOC/$NAME/$NAME/config.xml
