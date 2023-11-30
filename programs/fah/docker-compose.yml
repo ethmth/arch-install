@@ -9,6 +9,8 @@ services:
     user: USER_ID_HERE:GROUP_ID_HERE
     volumes:
       - ./fah:/fah
+    ports:
+      - 7396:7396
     deploy:
       resources:
         reservations:

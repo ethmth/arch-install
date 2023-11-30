@@ -4,17 +4,17 @@
   <passkey value="PASSKEY_HERE"/>
   <team value="TEAM_NUMBER_HERE"/>
 
-  <power value="full"/>
-  <exit-when-done v='true'/>
+  <power value="medium"/>
+  <exit-when-done v='false'/>
 
-  <web-enable v='false'/>
-  <disable-viz v='true'/>
-  <gui-enabled v='false'/>
+  <web-enable v='true'/>
+  <disable-viz v='false'/>
+  <gui-enabled v='true'/>
 
   <!-- 1 slots for GPUs -->
   <slot id='0' type='GPU'> </slot>
 
   <!-- 16-1 = 15 = 3*5 for decomposition -->
-  <slot id='1' type='SMP'> <cpus v='15'/> </slot>
+  <slot id='1' type='SMP'> <cpus v='7'/> </slot>
 
 </config>
