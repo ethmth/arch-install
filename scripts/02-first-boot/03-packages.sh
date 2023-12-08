@@ -191,7 +191,7 @@ otf-font-awesome
 polkit-gnome
 rofi
 swaybg
-swaylock-effects
+swaylock-effects-git
 waybar-hyprland
 wf-recorder
 wlogout
