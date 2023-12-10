@@ -10,6 +10,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+io.dbeaver.DBeaverCommunity
+io.dbeaver.DBeaverCommunity.Client.pgsql
 com.visualstudio.code
 org.filezillaproject.Filezilla
 org.gnome.SimpleScan
