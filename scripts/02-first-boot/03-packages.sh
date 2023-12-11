@@ -78,6 +78,7 @@ gtk3
 gtk4
 gsettings-desktop-schemas
 wl-clipboard
+xclip
 openssl
 pandoc-cli
 plocate
