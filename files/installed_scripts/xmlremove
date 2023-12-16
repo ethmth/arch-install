@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$1" != "." ]; then
+    echo "Usage: xmlremove ."
+    exit 1
+fi
+
+# Initialize a counter for XML files
+xml_file_count=0
+
+# Iterate through each file in the current directory
+for file in *; do
+    # Use the "file" command to determine the file type
+    file_type=$(file -b "$file")
+
+    # Check if the file type contains "XML"
+    if [[ $file_type == *XML* ]]; then
+        # Remove the XML file
+        rm "$file"
+        echo "Removed XML file: $file"
+        # Increment the XML file count
+        ((xml_file_count++))
+    fi
+done
+
+# Print the total number of XML files removed
+echo "Total XML files removed: $xml_file_count"
