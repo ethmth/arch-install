@@ -12,6 +12,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 # google-cloud-cli
 packages="
+iperf
+iperf3
 ipscan-bin
 tcpdump
 hollywood
