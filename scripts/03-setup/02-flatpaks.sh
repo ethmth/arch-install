@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.upscayl.Upscayl
 io.dbeaver.DBeaverCommunity
 com.visualstudio.code
 org.filezillaproject.Filezilla
