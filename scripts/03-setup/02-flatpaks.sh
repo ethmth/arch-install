@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+one.flipperzero.qFlipper
 com.github.PintaProject.Pinta
 org.upscayl.Upscayl
 io.dbeaver.DBeaverCommunity
