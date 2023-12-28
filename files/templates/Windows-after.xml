@@ -98,14 +98,12 @@
     <sound model="ich9">
       <codec type="micro"/>
     </sound>
-    <audio id="1" type="jack">
-      <input clientName="vm-VIRT_NAME_HERE" connectPorts="VIRT_PIPEWIRE_INPUT"/>
-      <output clientName="vm-VIRT_NAME_HERE" connectPorts="VIRT_PIPEWIRE_OUTPUT"/>
+    <audio id="1" type="pipewire" runtimeDir="/run/user/VIRT_USERID_HERE">
+      <input name="qemuinput"/>
+      <output name="qemuoutput"/>
     </audio>
   </devices>
    <qemu:commandline>
-    <qemu:env name="PIPEWIRE_RUNTIME_DIR" value="/run/user/VIRT_USERID_HERE"/>
-    <qemu:env name="PIPEWIRE_LATENCY" value="512/48000"/>
     VIRT_EVDEV_HERE
   </qemu:commandline>
 </domain>
