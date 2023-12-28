@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # issuu-dl
 # mp4fpsmod
 # google-cloud-cli
+# pgmodeler
 packages="
 ts-node
 iperf
@@ -84,7 +85,6 @@ etcher-bin
 flutter
 hplip
 waydroid
-pgmodeler
 "
 
 if ! (( AMD )); then
