@@ -157,6 +157,7 @@ python-virtualenv
 python-websockets
 python-dotenv
 python-pyopenssl
+python-docker
 pyenv
 qemu-full
 qjackctl
