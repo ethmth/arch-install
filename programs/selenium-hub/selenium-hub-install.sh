@@ -1,9 +1,8 @@
 #!/bin/bash
 
-CONTAINER_NAME="zalenium"
+CONTAINER_NAME="selenium-hub"
 
 VOLUMES="
-videos
 "
 
 FILES="
