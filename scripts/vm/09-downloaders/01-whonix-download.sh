@@ -26,9 +26,10 @@ if [ -e "$WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz" ]; then
   exit 1
 fi
 
+rm -rf $WHONIX_LOC/whonix
 mkdir -p $WHONIX_LOC/whonix
 curl https://www.whonix.org/wiki/KVM#Network_Start > $WHONIX_LOC/whonix/whonix.html
-download=$(cat $WHONIX_LOC/whonix/whonix.html | grep "download.whonix.org" | grep "Whonix-XFCE" | grep "qcow2" | grep -v "archive" | grep -v "asc" | head -n 1 | awk -F'"' '{print $2}')
+download=$(cat $WHONIX_LOC/whonix/whonix.html | grep "download.whonix.org" | grep -i "Whonix-XFCE" | grep "qcow2" | grep -v "archive" | grep -v "asc" | head -n 1 | awk -F'"' '{print $2}')
 
 
 wget --output-document=$WHONIX_LOC/whonix/Whonix-XFCE-1.Intel_AMD64.qcow2.libvirt.xz $download
