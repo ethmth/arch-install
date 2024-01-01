@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+gobuster
+mitmproxy
 xdg-desktop-portal-gtk
 snap
 git-lfs
