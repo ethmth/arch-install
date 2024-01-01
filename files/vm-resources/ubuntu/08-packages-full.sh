@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+ubuntu-restricted-extras
 gobuster
 mitmproxy
 xdg-desktop-portal-gtk
