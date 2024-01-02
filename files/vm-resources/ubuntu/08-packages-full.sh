@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+gprename
 ncdu
 ubuntu-restricted-extras
 gobuster
