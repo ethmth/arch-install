@@ -9,6 +9,8 @@ flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/r
 
 # Install Flatpaks
 flatpaks="
+org.getmonero.Monero
+org.electrum.electrum
 org.gimp.GIMP
 com.brave.Browser
 com.github.micahflee.torbrowser-launcher
@@ -32,6 +34,8 @@ fr.romainvigier.MetadataCleaner
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
+
+flatpak override org.getmonero.Monero --filesystem=~/monero-storage:create
 
 flatpak update
 
