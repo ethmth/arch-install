@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+gparted
 gprename
 ncdu
 ubuntu-restricted-extras
