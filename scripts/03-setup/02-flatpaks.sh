@@ -56,6 +56,7 @@ org.inkscape.Inkscape
 org.tigervnc.vncviewer
 com.jgraph.drawio.desktop
 com.ultimaker.cura
+fr.handbrake.ghb
 "
 if (( NVIDIA || INTEL )); then
 flatpaks+="
