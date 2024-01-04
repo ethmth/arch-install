@@ -9,6 +9,8 @@ flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/r
 
 # Install Flatpaks
 flatpaks="
+fr.handbrake.ghb
+org.kde.avidemux
 org.getmonero.Monero
 org.electrum.electrum
 org.gimp.GIMP
