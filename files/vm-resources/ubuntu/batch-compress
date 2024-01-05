@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" != "." ]; then
+	echo "Usage: ./batch-compress ."
+	exit 1
+fi
+
+mkdir -p compressed
+
+for img in *.jpg; do
+	convert -resize 20% "$img" "compressed/$img"
+done
