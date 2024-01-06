@@ -6,8 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+linux-headers-$(uname -r)
 adb
-iw
 socat
 spice-vdagent
 qemu-guest-agent
@@ -28,7 +28,15 @@ speedtest-cli
 netcat-openbsd
 build-essential
 dkms
+gcc
 make
+bc
+build-essential
+git
+dkms
+rfkill
+iw
+libelf-dev
 cmake
 tmux
 unzip
