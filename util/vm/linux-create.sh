@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/last_disk.txt
 
 if [ $# -ne 1 ]; then
-	echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10>"
+	echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10|mitm>"
 	exit 1
 fi
 
@@ -39,8 +39,11 @@ elif [ "$1" == "mull-gw" ]; then
     TEMPLATE_STRING="Mullvad-Gateway"
     SEARCH_STRING="linuxmint"
     NETWORK_SELECT=0
+elif [ "$1" == "mitm" ]; then
+    TEMPLATE_STRING="MITM"
+    SEARCH_STRING="linuxmint"
 else 
-    echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10>"
+    echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10|mitm>"
 	exit 1
 fi
 
