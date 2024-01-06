@@ -12,5 +12,7 @@ fi
 
 
 cp ./iptables.sh /opt/iptables.sh
+chmod +rx /opt/iptables.sh
+chmod o+rx /opt/iptables.sh
 
 (crontab -l 2>/dev/null; echo "@reboot /opt/iptables.sh") | crontab -

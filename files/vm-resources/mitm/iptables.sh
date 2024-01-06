@@ -18,7 +18,7 @@ iptables -A FORWARD -i $SHARED_INTERFACE -o $HOST_INTERFACE -j ACCEPT
 iptables -A FORWARD -i $WIRELESS_INTERFACE -o $HOST_INTERFACE -j ACCEPT
 
 iptables -t nat -A PREROUTING -i $SHARED_INTERFACE -p tcp --dport 80 -j REDIRECT --to-port 8080
-iptables -t nat -A PREROUTING -i $SHARED_INTERFACE -p tcp --dport 443-j REDIRECT --to-port 8080
+iptables -t nat -A PREROUTING -i $SHARED_INTERFACE -p tcp --dport 443 -j REDIRECT --to-port 8080
 
 iptables -t nat -A PREROUTING -i $WIRELESS_INTERFACE -p tcp --dport 80 -j REDIRECT --to-port 8080
-iptables -t nat -A PREROUTING -i $WIRELESS_INTERFACE -p tcp --dport 443-j REDIRECT --to-port 8080
+iptables -t nat -A PREROUTING -i $WIRELESS_INTERFACE -p tcp --dport 443 -j REDIRECT --to-port 8080
