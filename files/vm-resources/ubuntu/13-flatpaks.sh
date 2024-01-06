@@ -9,6 +9,7 @@ flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/r
 
 # Install Flatpaks
 flatpaks="
+io.github.java_decompiler.jd-gui
 fr.handbrake.ghb
 org.kde.avidemux
 org.getmonero.Monero
