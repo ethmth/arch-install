@@ -7,6 +7,8 @@ fi
 
 packages="
 linux-headers-$(uname -r)
+iptables
+wireshark-qt
 adb
 socat
 spice-vdagent
@@ -16,6 +18,7 @@ nano
 curl
 wget
 openssh-server
+openssl
 proxychains
 nmap
 neofetch
