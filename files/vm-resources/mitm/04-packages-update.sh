@@ -43,3 +43,5 @@ apt update && apt upgrade -y
 apt install $packages -y
 
 apt remove ufw
+
+echo "Restart before proceeding."
