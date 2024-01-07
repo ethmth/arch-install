@@ -24,6 +24,7 @@ nz.mega.MEGAsync
 org.jdownloader.JDownloader
 com.obsproject.Studio
 org.filezillaproject.Filezilla
+org.telegram.desktop
 network.loki.Session
 org.cryptomator.Cryptomator
 com.opera.Opera
