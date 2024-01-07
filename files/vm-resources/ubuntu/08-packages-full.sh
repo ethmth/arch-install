@@ -91,6 +91,7 @@ unrar
 torbrowser-launcher
 apktool
 droidlysis
+pv
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
