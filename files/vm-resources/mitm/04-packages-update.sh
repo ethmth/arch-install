@@ -48,6 +48,8 @@ ca-certificates
 kate
 rtl8812au-dkms
 openjdk-11-jdk
+apktool
+droidlysis
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

@@ -45,6 +45,7 @@ npm
 speedtest-cli
 openjdk-8-jdk
 openjdk-17-jdk
+openjdk-11-jdk
 build-essential
 dkms
 make
@@ -71,7 +72,6 @@ scrcpy
 squid
 libxi6 
 libgconf-2-4 
-default-jdk 
 ssh
 rar
 catfish
@@ -89,6 +89,8 @@ xvfb
 veracrypt
 unrar
 torbrowser-launcher
+apktool
+droidlysis
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
