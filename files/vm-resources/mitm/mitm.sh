@@ -5,4 +5,4 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-mitmproxy --mode transparent --showhost
+mitmweb --mode transparent --showhost

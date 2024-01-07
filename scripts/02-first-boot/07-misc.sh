@@ -51,9 +51,9 @@ mkdir -p /home/$CUR_USER/.config/xfce4
 cp /etc/xdg/xfce4/helpers.rc /home/$CUR_USER/.config/xfce4/helpers.rc
 xdg-mime default thunar.desktop inode/directory
 if (( HYPRLAND )); then
-    xdg-mime default Alacritty.desktop application/x-shellscript
-    xdg-mime default Alacritty.desktop application/x-terminal-emulator
-    bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/.config/xfce4/helpers.rc "TerminalEmulator=alacritty"
+    xdg-mime default org.codeberg.dnkl.foot.desktop application/x-shellscript
+    xdg-mime default org.codeberg.dnkl.foot.desktop application/x-terminal-emulator
+    bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/.config/xfce4/helpers.rc "TerminalEmulator=foot"
 else
     xdg-mime default qterminal.desktop application/x-shellscript
     xdg-mime default qterminal.desktop application/x-terminal-emulator
