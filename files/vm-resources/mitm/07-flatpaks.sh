@@ -9,6 +9,7 @@ fi
 # Install Flatpaks
 flatpaks="
 io.github.java_decompiler.jd-gui
+com.google.AndroidStudio
 "
 
 flatpaks=${flatpaks//$'\n'/ }
