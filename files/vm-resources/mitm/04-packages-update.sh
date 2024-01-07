@@ -51,6 +51,7 @@ openjdk-11-jdk
 apktool
 droidlysis
 scrcpy
+whois
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
