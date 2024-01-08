@@ -1,0 +1,13 @@
+version: "3"
+services:
+  nginx:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./conf.d:/etc/nginx/conf.d
+      - /media/veracrypt1:/usr/share/nginx/media:ro
