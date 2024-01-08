@@ -35,7 +35,7 @@ for service in $services; do
     full_path="$SCRIPT_DIR/services/user/$service"
     sudo cp $full_path /etc/systemd/user/$service
     sudo chmod 755 /etc/systemd/user/$service
-    WANTED=$(cat /etc/systemd/system/$service | grep "WantedBy" | wc -l)
+    WANTED=$(cat /etc/systemd/user/$service | grep "WantedBy" | wc -l)
     if ((WANTED)); then
         systemctl --user enable $service
     fi
