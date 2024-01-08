@@ -10,5 +10,3 @@ waydroid prop set persist.waydroid.height 936
 waydroid prop set persist.waydroid.suspend false
 waydroid prop set persist.waydroid.uevent true
 waydroid prop set persist.waydroid.multi_windows false
-
-echo "Run 'waydroid-script' to install libndk. Restart. Then, run ./10-upgrade-packages.sh"

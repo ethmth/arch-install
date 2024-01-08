@@ -25,4 +25,4 @@ source .venv/bin/activate
 
 sudo .venv/bin/python -m pip install -r requirements.txt
 
-echo "Waydroid script setup. Run ./09-waydroid-props.sh"
+echo "Waydroid script setup. Run 'waydroid-script'"

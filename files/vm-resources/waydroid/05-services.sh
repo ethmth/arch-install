@@ -23,14 +23,22 @@ services=$(ls -1 $SCRIPT_DIR/services/system | grep -v ".txt")
 for service in $services; do
     full_path="$SCRIPT_DIR/services/system/$service"
     sudo cp $full_path /etc/systemd/system/$service
-    sudo systemctl enable $service
+    sudo chmod 755 /etc/systemd/system/$service
+    WANTED=$(cat /etc/systemd/system/$service | grep "WantedBy" | wc -l)
+    if ((WANTED)); then
+        sudo systemctl enable $service
+    fi
 done
 
 services=$(ls -1 $SCRIPT_DIR/services/user | grep -v ".txt")
 for service in $services; do
     full_path="$SCRIPT_DIR/services/user/$service"
     sudo cp $full_path /etc/systemd/user/$service
-    systemctl --user enable $service
+    sudo chmod 755 /etc/systemd/user/$service
+    WANTED=$(cat /etc/systemd/system/$service | grep "WantedBy" | wc -l)
+    if ((WANTED)); then
+        systemctl --user enable $service
+    fi
 done
 
 sudo systemctl stop packagekit.service

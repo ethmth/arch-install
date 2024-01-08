@@ -6,6 +6,14 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+git
+vim
+curl
+ca-certificates
+mingetty
+phoc
+socat
+tmux
 spice-vdagent
 qemu-guest-agent
 nano
@@ -31,6 +39,9 @@ packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 apt update
-apt install $packages -y
 
-echo "When this is finished, run ./08-waydroid-script.sh"
+apt install curl
+curl --progress-bar --proto '=https' --tlsv1.2 -Sf https://repo.waydro.id/waydroid.gpg --output /usr/share/keyrings/waydroid.gpg
+
+apt upgrade -y
+apt install $packages -y

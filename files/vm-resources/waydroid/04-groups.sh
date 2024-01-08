@@ -17,3 +17,4 @@ sudo usermod -aG wheel $CUR_USER
 groups $CUR_USER
 
 echo "Verify that you were added to the correct groups"
+echo "REBOOT"
