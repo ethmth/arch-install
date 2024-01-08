@@ -36,3 +36,6 @@ echo "Host phone
     Hostname 10.153.153.15
     User u0_a154
     Port 8022" > /home/$CUR_USER/.ssh/config
+
+
+echo "export SSHPASS=\"password\"" >> /home/$CUR_USER/.bashrc
