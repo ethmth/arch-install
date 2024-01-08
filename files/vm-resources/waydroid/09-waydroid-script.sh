@@ -5,7 +5,7 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-if [ -f "./waydroid-script" ]; then
+if ! [ -f "./waydroid-script" ]; then
 	echo "Make sure you're in the same directory as ./waydroid-script"
 	exit 1
 fi
