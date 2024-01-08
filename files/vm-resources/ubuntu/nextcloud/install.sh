@@ -11,6 +11,7 @@ FILES="
 Dockerfile
 docker-compose.yml
 preview-config.sh
+trigger-scan.sh
 "
 
 if ! [[ $EUID -ne 0 ]]; then
