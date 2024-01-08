@@ -1,13 +1,16 @@
-version: "3"
 services:
-  nginx:
-    build: .
-    ports:
-      - "80:80"
-      - "443:443"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+  nginxwebdav:
+    container_name: nginxwebdav
+    build:
+      context: .
     volumes:
-      - ./html:/usr/share/nginx/html
-      - ./conf.d:/etc/nginx/conf.d
-      - /media/veracrypt1:/usr/share/nginx/media:ro
+      - /media/veracrypt1:/data:ro
+      - ./config:/config
+    environment:
+      - TZ=Americas/Toronto
+      - WEBDAV_USERNAME=
+      - WEBDAV_PASSWORD=
+      - SERVER_NAMES=localhost,10.153.153.14,10.152.152.14
+      - TIMEOUTS_S=1200 # these are seconds
+    ports:
+      - 80:80

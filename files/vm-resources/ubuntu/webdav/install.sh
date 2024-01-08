@@ -3,16 +3,10 @@
 CONTAINER_NAME="webdav"
 
 VOLUMES="
-html
-conf.d
 "
 
 FILES="
 docker-compose.yml
-Dockerfile
-nginx.conf
-conf.d
-html
 "
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -41,7 +35,7 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC
 
-mkdir -p $LOC/$CONTAINER_NAME
+git clone https://github.com/dgraziotin/docker-nginx-webdav-nononsense.git $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
     if [ -d "$file" ]; then
