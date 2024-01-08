@@ -41,3 +41,4 @@ echo "Host phone
 echo "export SSHPASS=\"password\"" >> /home/$CUR_USER/.bashrc
 
 git config --global alias.pr '!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f'
+git config --global http.version HTTP/1.1
