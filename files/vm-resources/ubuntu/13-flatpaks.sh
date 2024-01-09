@@ -9,6 +9,7 @@ flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/r
 
 # Install Flatpaks
 flatpaks="
+org.cubocore.CoreRenamer
 io.github.java_decompiler.jd-gui
 fr.handbrake.ghb
 org.kde.avidemux
