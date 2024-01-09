@@ -17,3 +17,5 @@ writable = no
 '
 
 sudo sh -c "echo '$CONTENT' >> /etc/samba/smb.conf"
+
+sudo systemctl restart smbd nmbd
