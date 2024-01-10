@@ -4,7 +4,7 @@ services:
     build:
       context: .
     volumes:
-      - /media/veracrypt1:/data:ro
+      - /media:/data:ro
       - ./config:/config
     environment:
       - TZ=Americas/Toronto

@@ -10,7 +10,7 @@ CONTENT='
 [Media]
 
 comment = needs username and password to access
-path = /media/veracrypt1
+path = /media
 browseable = yes
 guest ok = yes
 writable = no
