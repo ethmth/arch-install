@@ -11,7 +11,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
-ufw
 iw
 screen
 ntp
