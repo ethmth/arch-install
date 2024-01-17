@@ -40,6 +40,7 @@ android-file-transfer
 mtpfs
 arch-install-scripts
 github-cli
+dotnet-runtime
 dotnet-sdk
 android-tools
 android-udev

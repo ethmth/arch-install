@@ -13,6 +13,10 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 packages="
+unityhub
+mono-msbuild
+mono-msbuild-sdkresolver
+mono
 vmware-workstation
 mitmproxy
 subversion
