@@ -30,7 +30,7 @@ app.bluebubbles.BlueBubbles
 com.belmoussaoui.Decoder
 com.brave.Browser
 com.github.Matoking.protontricks
-com.github.micahflee.torbrowser-launcher
+org.torproject.torbrowser-launcher
 com.github.tchx84.Flatseal
 com.google.AndroidStudio
 com.heroicgameslauncher.hgl
