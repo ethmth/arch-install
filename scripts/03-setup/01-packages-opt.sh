@@ -14,6 +14,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 packages="
 unityhub
+libicu50
+icu70
+gconf
 mono-msbuild
 mono-msbuild-sdkresolver
 mono
