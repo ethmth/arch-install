@@ -141,6 +141,9 @@ pipewire-audio
 pipewire-jack
 pipewire-pulse
 pipewire-v4l2
+alsa-firmware
+sof-firmware
+alsa-ucm-conf
 python
 python-poetry
 python-beautifulsoup4
