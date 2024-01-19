@@ -28,6 +28,9 @@ if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
 
+# Disable KDE Powerdevil
+# systemctl --user mask plasma-powerdevil.service
+
 sudo git config --global user.email "root"
 sudo git config --global user.name "root"
 sudo etckeeper init
