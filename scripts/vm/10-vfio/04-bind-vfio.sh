@@ -79,9 +79,9 @@ sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustart"
 sudo sh -c "echo \"sudo virsh nodedev-reattach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/bin/gpustart"
 sudo chmod +rx /usr/bin/gpustart
 
-sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustop"
-sudo sh -c "echo \"sudo virsh nodedev-detach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/bin/gpustop"
-sudo chmod +rx /usr/bin/gpustop
+# sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustop"
+# sudo sh -c "echo \"sudo virsh nodedev-detach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/bin/gpustop"
+# sudo chmod +rx /usr/bin/gpustop
 
 sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpucheck"
 sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"\" >> /usr/bin/gpucheck"
