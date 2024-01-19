@@ -72,11 +72,10 @@ fi
 if ! (( NVIDIA && ! INTEL )); then
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
 fi
-# if ! (( NVIDIA && ! INTEL )); then
-sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a "start" vfio_pci vfio vfio_iommu_type1
+
+sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -b "end" vfio_pci vfio vfio_iommu_type1
 echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 sudo mkinitcpio -P
-# fi
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
