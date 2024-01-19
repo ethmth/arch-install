@@ -1,0 +1,9 @@
+[Unit]
+Description=Insert vfio-pci driver
+
+[Service]
+Type=oneshot
+ExecStart=modprobe -i vfio-pci
+
+[Install]
+WantedBy=multi-user.target

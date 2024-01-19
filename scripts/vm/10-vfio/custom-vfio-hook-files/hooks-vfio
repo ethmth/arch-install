@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+run_hook() {
+    /sbin/vfio-pci-override-vga.sh
+}
