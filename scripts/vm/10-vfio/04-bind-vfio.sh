@@ -65,13 +65,23 @@ while IFS= read -r line; do
 done <<< "$pci_ids"
 ids="${ids%?}"
 
+gpu_pci_group_with_underscores=$(echo "$gpu_pci_group" | tr '.:' '_')
+
 echo "Adding these ids to blocklist: $ids (groups: $groups)"
 
 if (( AMD_GPU )); then
+# sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustart"
+# sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/bin/gpustart"
+# sudo sh -c "echo \"echo \"\"'DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"'\"\"\" >> /usr/bin/gpustart"
+# sudo chmod +rx /usr/bin/gpustart
+
 sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustart"
-sudo sh -c "echo \"echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/bin/gpustart"
-sudo sh -c "echo \"echo \"\"'DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"'\"\"\" >> /usr/bin/gpustart"
+sudo sh -c "echo \"sudo virsh nodedev-reattach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/bin/gpustart"
 sudo chmod +rx /usr/bin/gpustart
+
+sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustop"
+sudo sh -c "echo \"sudo virsh nodedev-detach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/bin/gpustop"
+sudo chmod +rx /usr/bin/gpustop
 
 sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpucheck"
 sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"\" >> /usr/bin/gpucheck"
