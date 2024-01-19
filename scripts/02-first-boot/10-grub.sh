@@ -17,7 +17,7 @@ if (( NVIDIA )); then
         sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 video=efifb:off nvidia_drm.modeset=1
         echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
     else
-        sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 nvidia_drm.modeset=1 nvidia_drm.fbdev=1
+        sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 nvidia_drm.modeset=1
         echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
     fi
 else
