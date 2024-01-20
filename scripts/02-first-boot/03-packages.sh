@@ -11,6 +11,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+gnome-keyring
+libsecret
+seahorse
 avahi
 nss-mdns
 iw
