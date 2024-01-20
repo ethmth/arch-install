@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME="fooocus"
-PYTHON_COMMAND="python"
+PYTHON_COMMAND="python3.10"
 
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
@@ -51,12 +51,11 @@ cd $LOC/$NAME
 $PYTHON_COMMAND -m venv fooocus_env
 
 source $LOC/$NAME/fooocus_env/bin/activate
-$LOC/$NAME/fooocus_env/bin/pip install -r requirements_versions.txt
 
 if (( AMD_GPU )); then
-$LOC/$NAME/fooocus_env/bin/pip uninstall torch torchvision torchaudio torchtext functorch xformers 
-$LOC/$NAME/fooocus_env/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
+$LOC/$NAME/fooocus_env/bin/pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2
 fi
+$LOC/$NAME/fooocus_env/bin/pip install -r requirements_versions.txt
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/fooocus_env/bin/activate" >> $LOC/$NAME/run.sh
