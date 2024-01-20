@@ -14,7 +14,6 @@ one.flipperzero.qFlipper
 com.github.PintaProject.Pinta
 org.upscayl.Upscayl
 io.dbeaver.DBeaverCommunity
-com.visualstudio.code
 org.filezillaproject.Filezilla
 org.gnome.SimpleScan
 org.freecadweb.FreeCAD
@@ -63,6 +62,7 @@ flatpaks+="
 org.prismlauncher.PrismLauncher
 "
 fi
+# com.visualstudio.code
 
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

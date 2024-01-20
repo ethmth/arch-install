@@ -89,6 +89,7 @@ hashcat
 john
 steam-devices
 vscodium-bin
+visual-studio-code-bin
 xpadneo-dkms
 python310
 etcher-bin
