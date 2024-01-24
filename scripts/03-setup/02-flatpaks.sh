@@ -10,7 +10,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
-org.audacityteam.Audacity
 org.processing.processingide
 one.flipperzero.qFlipper
 com.github.PintaProject.Pinta
