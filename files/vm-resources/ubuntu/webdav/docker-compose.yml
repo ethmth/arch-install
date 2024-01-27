@@ -14,3 +14,4 @@ services:
       - TIMEOUTS_S=1200 # these are seconds
     ports:
       - 80:80
+    restart: unless-stopped
