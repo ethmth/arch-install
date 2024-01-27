@@ -1,0 +1,11 @@
+version: "3"
+services:
+  elixir:
+    build:
+      context: .
+      args:
+        - GIT_REPO_URL="-b v5.10.205 https://gitlab.com/linux-kernel/stable.git"
+        - PROJECT=linux
+    image: elixir
+    ports:
+      - "4595:80"
