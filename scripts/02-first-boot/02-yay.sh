@@ -14,4 +14,5 @@ cd
 rm -rf yay
 
 echo "Verify that the installation of yay was successful"
+echo "ENABLE THE MULTILIB REPO BY UNCOMMENTING LINES IN /etc/pacman.conf"
 echo "If so, run ./03-packages.sh"

@@ -142,10 +142,14 @@ openvpn
 pavucontrol
 piper
 pipewire
+lib32-pipewire
 pipewire-alsa
+lib32-alsa-lib
+lib32-alsa-plugins
 pipewire-audio
 pipewire-jack
 pipewire-pulse
+lib32-libpulse
 pipewire-v4l2
 alsa-firmware
 sof-firmware

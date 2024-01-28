@@ -13,6 +13,9 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 packages="
+wine-stable
+wine-gecko
+wine-mono
 catfish
 juce
 pro-audio
