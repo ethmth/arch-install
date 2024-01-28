@@ -16,6 +16,7 @@ packages="
 wine
 wine-gecko
 wine-mono
+winetricks
 catfish
 juce
 pro-audio
