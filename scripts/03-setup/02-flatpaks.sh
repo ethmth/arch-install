@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.winehq.Wine
 io.itch.itch
 org.processing.processingide
 one.flipperzero.qFlipper
