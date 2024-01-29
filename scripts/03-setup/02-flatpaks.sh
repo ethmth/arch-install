@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.freedesktop.Platform.VulkanLayer.gamescope 
 org.winehq.Wine
 io.itch.itch
 org.processing.processingide
