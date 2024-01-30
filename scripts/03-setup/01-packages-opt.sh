@@ -13,6 +13,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 packages="
+siege
 wine
 wine-gecko
 wine-mono
