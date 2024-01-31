@@ -48,7 +48,6 @@ kcalc
 jpegoptim
 whois
 act
-unoconv
 thunderbird
 cryptomator-bin
 pypy
