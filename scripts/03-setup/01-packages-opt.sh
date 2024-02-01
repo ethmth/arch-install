@@ -13,6 +13,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 packages="
+godot
 siege
 wine
 wine-gecko
@@ -23,6 +24,8 @@ juce
 pro-audio
 bear
 man-pages
+opam
+ocamlbuild
 ocaml
 valgrind
 unityhub

@@ -25,7 +25,6 @@ org.blender.Blender
 org.octave.Octave
 org.raspberrypi.rpi-imager
 cc.arduino.IDE2
-org.godotengine.Godot
 org.gimp.GIMP
 org.libreoffice.LibreOffice
 org.onlyoffice.desktopeditors
