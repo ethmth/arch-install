@@ -45,6 +45,7 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.c
 
 # source pyenv
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
+echo 'eval $(opam env)' >> /home/$CUR_USER/.bashrc
 
 # default apps
 mkdir -p /home/$CUR_USER/.config/xfce4

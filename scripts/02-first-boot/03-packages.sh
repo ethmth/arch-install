@@ -11,6 +11,10 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+ocaml
+opam
+dune
+ocamlbuild
 gamescope
 signify
 gnome-keyring

@@ -24,9 +24,6 @@ juce
 pro-audio
 bear
 man-pages
-opam
-ocamlbuild
-ocaml
 valgrind
 unityhub
 libicu50
