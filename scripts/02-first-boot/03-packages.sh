@@ -223,6 +223,7 @@ xorg
 gammastep
 nwg-look-bin
 grimblast-git
+grim
 blueberry
 "
 # Font packages:
