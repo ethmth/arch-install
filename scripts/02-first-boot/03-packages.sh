@@ -14,6 +14,7 @@ packages="
 ocaml
 opam
 dune
+darcs
 ocamlbuild
 gamescope
 signify
