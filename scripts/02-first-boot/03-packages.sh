@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+bash-completion
 ocaml
 opam
 dune
@@ -215,7 +216,7 @@ otf-font-awesome
 polkit-gnome
 rofi
 swaybg
-swaylock-effects-git
+swaylock-effects
 waybar-hyprland
 wf-recorder
 wlogout
