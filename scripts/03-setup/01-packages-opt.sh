@@ -62,6 +62,7 @@ certbot-apache
 gifsicle
 jupyter-nbconvert
 git-lfs
+git-extras
 qbittorrent
 python-tqdm
 python-pycocotools
