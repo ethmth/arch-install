@@ -10,6 +10,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
 flatpaks="
+org.avidemux.Avidemux
 com.logseq.Logseq
 org.winehq.Wine
 io.itch.itch
