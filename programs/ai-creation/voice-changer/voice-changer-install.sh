@@ -37,10 +37,6 @@ read -p "Do you want to use an AMD GPU (y/N)? " userInput
 if ([ "$userInput" == "y" ] || [ "$userInput" == "Y" ]); then
     AMD_GPU=1
     NAME="$NAME-amd"
-else
-    # TODO: DO THIS
-   echo "Not yet implemented"
-   exit 1
 fi
 
 git clone --depth=1 https://github.com/w-okada/voice-changer.git $LOC/$NAME
@@ -53,9 +49,6 @@ source $LOC/$NAME/.venv/bin/activate
 
 if (( AMD_GPU )); then
     $LOC/$NAME/.venv/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7
-else
-   # TODO: DO THIS
-   echo "blah"
 fi
 $LOC/$NAME/.venv/bin/pip install -r server/requirements.txt
 $LOC/$NAME/.venv/bin/pip install fairseq
