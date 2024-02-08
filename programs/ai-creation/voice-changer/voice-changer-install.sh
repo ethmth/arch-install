@@ -59,6 +59,7 @@ else
 fi
 $LOC/$NAME/.venv/bin/pip install -r server/requirements.txt
 $LOC/$NAME/.venv/bin/pip install fairseq
+$LOC/$NAME/.venv/bin/pip install pyworld
 
 echo "#!/bin/bash" > $LOC/$NAME/run.sh
 echo "source $LOC/$NAME/.venv/bin/activate" >> $LOC/$NAME/run.sh
