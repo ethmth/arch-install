@@ -15,3 +15,4 @@ docker/archivebox/data
 docker/apache/website
 docker/ai-creation/sd-webui/test_environment/.venv
 docker/ai-creation/sd-webui/test_environment/test
+.env
