@@ -207,7 +207,6 @@ downgrade
 "
 
 if (( HYPRLAND )); then
-#waybar-hyprland
 packages+="
 brightnessctl
 dunst
@@ -217,7 +216,7 @@ polkit-gnome
 rofi
 swaybg
 swaylock-effects
-waybar-hyprland
+waybar
 wf-recorder
 wlogout
 xdg-desktop-portal-hyprland
