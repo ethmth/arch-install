@@ -156,6 +156,7 @@ lib32-alsa-plugins
 pipewire-audio
 pipewire-jack
 pipewire-pulse
+pamixer
 lib32-libpulse
 pipewire-v4l2
 alsa-firmware
