@@ -14,11 +14,8 @@ packages="
 gperf
 repo
 bash-completion
-ocaml
-opam
-dune
 darcs
-ocamlbuild
+opam
 gamescope
 signify
 gnome-keyring
