@@ -11,6 +11,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # eddie-ui
 # bluez-hciconfig
 packages="
+gperf
+repo
 bash-completion
 ocaml
 opam
@@ -138,7 +140,7 @@ neovim
 net-tools
 networkmanager-openvpn
 nm-connection-editor
-nodejs-lts-hydrogen
+nodejs-lts-iron
 npm
 yarn
 openbsd-netcat
