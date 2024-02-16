@@ -8,9 +8,8 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
-# eddie-ui
-# bluez-hciconfig
 packages="
+mercurial
 gperf
 repo
 bash-completion
