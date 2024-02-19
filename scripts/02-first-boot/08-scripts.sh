@@ -47,6 +47,8 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/checkmount /usr/bin
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/txt2img /usr/bin/txt2img
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/tab2space /usr/bin/tab2space
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/xmlremove /usr/bin/xmlremove
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/git-make-like
+
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -57,6 +59,7 @@ sudo chmod +rx /usr/bin/checkmount
 sudo chmod +rx /usr/bin/txt2img
 sudo chmod +rx /usr/bin/tab2space
 sudo chmod +rx /usr/bin/xmlremove
+sudo chmod +rx /usr/bin/git-make-like
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync, etc)"
 echo "If so, run ./09-grub.sh"
