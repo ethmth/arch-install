@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <branch_name>"
+    echo "Git-Make-Like Usage: git-make-like <branch_name>"
     exit 1
 fi
 
@@ -23,16 +23,16 @@ if [[ $(git status --porcelain) ]]; then
 fi
 
 if ! git rev-parse --verify "$FROM_BRANCH" >/dev/null 2>&1; then
-    echo "$FROM_BRANCH is not a valid Git branch."
+    echo "Git-Make-Like Error: $FROM_BRANCH is not a valid Git branch."
     cd $STARTING_DIR
     exit 1
 fi
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-git checkout $FROM_BRANCH
+git checkout $FROM_BRANCH >/dev/null 2>&1
 git diff --binary $CURRENT_BRANCH > /tmp/git_make_like_patch
-git checkout $CURRENT_BRANCH
+git checkout $CURRENT_BRANCH >/dev/null 2>&1
 git apply /tmp/git_make_like_patch
 
 cd $STARTING_DIR
