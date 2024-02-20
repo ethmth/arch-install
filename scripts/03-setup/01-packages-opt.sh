@@ -21,6 +21,7 @@ wine-gecko
 wine-mono
 winetricks
 catfish
+juce-docs
 juce
 pro-audio
 bear
