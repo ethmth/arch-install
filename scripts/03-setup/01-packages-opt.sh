@@ -23,6 +23,7 @@ winetricks
 catfish
 juce-docs
 juce
+vst3sdk
 pro-audio
 bear
 man-pages
