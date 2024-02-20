@@ -207,6 +207,9 @@ downgrade
 
 if (( HYPRLAND )); then
 packages+="
+hyprland
+hyprlang
+wlroots
 brightnessctl
 dunst
 hyprpicker
@@ -241,15 +244,6 @@ ttf-icomoon-feather
 ttf-iosevka-nerd
 adobe-source-code-pro-fonts
 "
-if (( NVIDIA && ! INTEL )); then
-packages+="
-hyprland-nvidia-git
-"
-else
-packages+="
-hyprland
-"
-fi
 fi
 
 if (( PLASMA )); then
