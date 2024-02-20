@@ -9,6 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
+# nz.mega.MEGAsync
 flatpaks="
 org.avidemux.Avidemux
 com.logseq.Logseq
@@ -44,7 +45,6 @@ eu.scarpetta.PDFMixTool
 io.gitlab.librewolf-community
 net.lutris.Lutris
 net.mullvad.MullvadBrowser
-nz.mega.MEGAsync
 org.chromium.Chromium
 org.kde.kdenlive
 org.signal.Signal
@@ -85,11 +85,11 @@ echo "Note: If you have clipboard issues with the address bar of Librewolf,"
 echo "consider disabling socket=wayland access in Flatseal to force xwayland"
 echo "==========================================================="
 echo "If you're on Hyprland, run nwg-look and set the 'Prefer Dark' gtk theme"
-echo "==========================================================="
-echo "If you have trouble with MEGAsync, consider rolling back the version."
-echo "flatpak remote-info --log flathub nz.mega.MEGAsync"
-echo "sudo flatpak update --commit=7f30d8f2998e3376afb64525ae537f392c7b737b6209a13fc29a1610493f
-418c nz.mega.MEGAsync"
-echo "sudo flatpak mask nz.mega.MEGAsync"
+# echo "==========================================================="
+# echo "If you have trouble with MEGAsync, consider rolling back the version."
+# echo "flatpak remote-info --log flathub nz.mega.MEGAsync"
+# echo "sudo flatpak update --commit=7f30d8f2998e3376afb64525ae537f392c7b737b6209a13fc29a1610493f
+# 418c nz.mega.MEGAsync"
+# echo "sudo flatpak mask nz.mega.MEGAsync"
 echo "==========================================================="
 echo "Next, run ./03-openair-clone.sh"

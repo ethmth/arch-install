@@ -41,7 +41,7 @@ fi
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/sshbg /usr/bin/sshbg
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/stream-dl /usr/bin/stream-dl
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/megasync /usr/bin/megasync
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/megasync-delay /usr/bin/megasync-delay
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/docker-update /usr/bin/docker-update
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/checkmount /usr/bin/checkmount
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/txt2img /usr/bin/txt2img
@@ -53,7 +53,7 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
 sudo chmod +rx /usr/bin/stream-dl
-sudo chmod +rx /usr/bin/megasync
+sudo chmod +rx /usr/bin/megasync-delay
 sudo chmod +rx /usr/bin/docker-update
 sudo chmod +rx /usr/bin/checkmount
 sudo chmod +rx /usr/bin/txt2img
@@ -61,5 +61,5 @@ sudo chmod +rx /usr/bin/tab2space
 sudo chmod +rx /usr/bin/xmlremove
 sudo chmod +rx /usr/bin/git-make-like
 
-echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync, etc)"
+echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
 echo "If so, run ./09-grub.sh"
