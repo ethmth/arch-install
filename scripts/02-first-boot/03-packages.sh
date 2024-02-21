@@ -95,6 +95,7 @@ xclip
 openssl
 pandoc-cli
 plocate
+gcc
 gcc-fortran
 gdal
 proj
@@ -243,6 +244,24 @@ ttf-jetbrains-mono-nerd
 ttf-icomoon-feather
 ttf-iosevka-nerd
 adobe-source-code-pro-fonts
+"
+
+# Building Packages
+packages+="
+gdb
+libxcb
+xcb-proto
+xcb-util
+xcb-util-keysyms
+libxfixes
+libx11
+libxcomposite
+xorg-xinput
+libxrender
+pixman
+wayland-protocols
+cairo
+tomlplusplus
 "
 fi
 
