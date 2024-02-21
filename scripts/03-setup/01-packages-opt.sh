@@ -71,6 +71,7 @@ qbittorrent
 python-tqdm
 python-pycocotools
 python-opencv
+python-opengl
 python-seaborn
 python-scikit-learn
 python-systemd
@@ -78,6 +79,8 @@ python-pysocks
 python-sqlalchemy
 python-flask-sqlalchemy
 python-psycopg2
+python-qtconsole
+jupyterlab
 remmina
 rstudio-desktop-bin
 scrcpy
