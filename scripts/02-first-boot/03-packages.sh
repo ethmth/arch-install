@@ -262,6 +262,9 @@ pixman
 wayland-protocols
 cairo
 tomlplusplus
+doxygen
+xmlto
+docbook-xsl
 "
 fi
 
