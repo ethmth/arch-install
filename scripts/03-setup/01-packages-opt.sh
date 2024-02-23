@@ -26,6 +26,7 @@ juce-docs
 juce
 vst3sdk
 pro-audio
+soundfonts
 bear
 man-pages
 valgrind
