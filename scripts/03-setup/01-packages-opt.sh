@@ -82,6 +82,7 @@ python-sqlalchemy
 python-flask-sqlalchemy
 python-psycopg2
 python-qtconsole
+python-regex
 jupyterlab
 remmina
 rstudio-desktop-bin
