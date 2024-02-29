@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Install Flatpaks
 # nz.mega.MEGAsync
 flatpaks="
+net.scribus.Scribus
 org.avidemux.Avidemux
 com.logseq.Logseq
 org.winehq.Wine
