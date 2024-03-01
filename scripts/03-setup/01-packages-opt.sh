@@ -13,6 +13,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 packages="
+inkscape
 hugo
 megasync-bin
 gobuster-bin
