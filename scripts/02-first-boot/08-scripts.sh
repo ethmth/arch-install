@@ -27,9 +27,9 @@ if (( HYPRLAND )); then
     sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=hyprlandwrapper\n\" > /etc/sddm.conf.d/autologin.conf"
 elif (( PLASMA )); then
     if (( NVIDIA && ! INTEL )); then
-        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasma\n\" > /etc/sddm.conf.d/autologin.conf"
+        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasmax11\n\" > /etc/sddm.conf.d/autologin.conf"
     else
-        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasmawayland\n\" > /etc/sddm.conf.d/autologin.conf"
+        sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasma\n\" > /etc/sddm.conf.d/autologin.conf"
     fi
 fi
 if (( LAPTOP && HYPRLAND )); then
