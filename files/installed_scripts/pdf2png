@@ -6,5 +6,5 @@ for file in *.pdf; do
     filename=$(basename -- "$file" .pdf)
     # Convert PDF to PNG
     # convert "$filename.pdf" -density 600 "$filename.png"
-    pdftoppm -png -r 600 "$filename.pdf" "$filename"
+    pdftoppm -png -r 300 "$filename.pdf" "$filename"
 done
