@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Loop through each PDF file
+for file in *.pdf; do
+    # Extract the file name without extension
+    filename=$(basename -- "$file" .pdf)
+    # Convert PDF to PNG
+    convert "$filename.pdf" "$filename.png"
+done
