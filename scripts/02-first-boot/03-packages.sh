@@ -272,7 +272,6 @@ if (( PLASMA )); then
 packages+="
 kde-applications
 plasma
-plasma-wayland-session
 xorg
 "
 fi
