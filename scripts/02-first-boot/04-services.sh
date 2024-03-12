@@ -34,8 +34,10 @@ fi
 
 sudo git config --global user.email "root"
 sudo git config --global user.name "root"
-sudo etckeeper init
-sudo etckeeper commit "first commit"
+if ! [ -d "/etc/.git" ]; then
+	sudo etckeeper init
+	sudo etckeeper commit "first commit"
+fi
 
 echo "Verify that the enabling of the systemd services was successful"
 echo "If so, run ./05-groups.sh"

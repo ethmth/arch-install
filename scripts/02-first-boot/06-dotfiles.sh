@@ -16,7 +16,7 @@ shopt -s dotglob
 cp -r /home/$CUR_USER/arch-dots/home/* /home/$CUR_USER/
 # TODO - change DEVICE variable in this hyprmon script depending on device:
 sudo cp /home/$CUR_USER/.config/hypr/hyprmon.sh /usr/bin/hyprmon
-sudo chmod +x /usr/bin/hyprmon
+sudo chmod +rx /usr/bin/hyprmon
 
 sed -i "s/eth0/$NETWORK_INTERFACE/g" /home/$CUR_USER/.config/waybar/config.jsonc
 rm -rf /home/$CUR_USER/arch-dots
