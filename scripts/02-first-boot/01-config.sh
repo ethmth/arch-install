@@ -9,9 +9,33 @@ CUR_USER=$(whoami)
 OFILE="/home/$CUR_USER/arch-install/config/system.conf"
 
 typeofcpu=$(printf "Desktop\nLaptop\n" | fzf --prompt="Select your type of computer")
+if [ "$typeofcpu" == "" ]; then
+    echo "Exiting. No action taken."
+    exit 1
+fi
+
 cpu=$(printf "AMD\nIntel\n" | fzf --prompt="Select your CPU")
+if [ "$cpu" == "" ]; then
+    echo "Exiting. No action taken."
+    exit 1
+fi
 gpu=$(printf "AMD GPU\nIntel Integrated Graphics\nNvidia GPU\n" | fzf -m --prompt="Select your host GPU(s). All but what you passthrough")
+if [ "$gpu" == "" ]; then
+    echo "Exiting. No action taken."
+    exit 1
+fi
 de=$(printf "Hyprland\nKDE Plasma\n" | fzf -m --prompt="Select your preferred Desktop Environment")
+if [ "$de" == "" ]; then
+    echo "Exiting. No action taken."
+    exit 1
+fi
+
+INTERFACE=$(ls -1 /sys/class/net | grep -v "lo" | grep -v "docker" | grep -v "virbr" | grep -v "vnet" | fzf --prompt "Please select your primary network interface")
+if [ "$INTERFACE" == "" ]; then
+    echo "Exiting. No action taken."
+    exit 1
+fi
+OFILE_INTERFACE="/home/$CUR_USER/arch-install/config/network-interface.conf"
 
 DESKTOP=0
 LAPTOP=0
@@ -63,9 +87,6 @@ echo "INTEL=$INTEL" >> $OFILE
 echo "NVIDIA=$NVIDIA" >> $OFILE
 echo "HYPRLAND=$HYPRLAND" >> $OFILE
 echo "PLASMA=$PLASMA" >> $OFILE
-
-INTERFACE=$(ls -1 /sys/class/net | grep -v "lo" | grep -v "docker" | grep -v "virbr" | grep -v "vnet" | fzf --prompt "Please select your primary network interface")
-OFILE_INTERFACE="/home/$CUR_USER/arch-install/config/network-interface.conf"
 
 echo "NETWORK_INTERFACE=$INTERFACE" > $OFILE_INTERFACE
 
