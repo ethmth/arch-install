@@ -16,32 +16,32 @@ fi
 NETWORK_SELECT=1
 
 TEMPLATE_STRING=""
-SEARCH_STRING=""
+SEARCH_STRING="NOISO"
 if [ "$1" == "mx" ]; then
     TEMPLATE_STRING="MX"
-    SEARCH_STRING="MX"
+    # SEARCH_STRING="MX"
 elif [ "$1" == "ubuntu" ]; then
     TEMPLATE_STRING="Ubuntu"
-    SEARCH_STRING="ubuntu"
+    # SEARCH_STRING="ubuntu"
 elif [ "$1" == "ubu-droid" ]; then
     TEMPLATE_STRING="Ubu-droid"
-    SEARCH_STRING="ubuntu"
+    # SEARCH_STRING="ubuntu"
 elif [ "$1" == "mint" ]; then
     TEMPLATE_STRING="Mint"
-    SEARCH_STRING="linuxmint"
+    # SEARCH_STRING="linuxmint"
 elif [ "$1" == "win10" ]; then
     TEMPLATE_STRING="Windows10"
-    SEARCH_STRING="Win10"
+    # SEARCH_STRING="Win10"
 elif [ "$1" == "waydroid" ]; then
     TEMPLATE_STRING="Waydroid"
-    SEARCH_STRING="Waydroid"
+    # SEARCH_STRING="Waydroid"
 elif [ "$1" == "mull-gw" ]; then
     TEMPLATE_STRING="Mullvad-Gateway"
-    SEARCH_STRING="linuxmint"
+    # SEARCH_STRING="linuxmint"
     NETWORK_SELECT=0
 elif [ "$1" == "mitm" ]; then
     TEMPLATE_STRING="MITM"
-    SEARCH_STRING="linuxmint"
+    # SEARCH_STRING="linuxmint"
 else 
     echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10|mitm>"
 	exit 1

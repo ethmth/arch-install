@@ -25,7 +25,7 @@ WHONIX_LOC="$WHONIX_LOC/vm"
 echo "WHONIX_LOC=$WHONIX_LOC" > $OFILE
 # echo "POOP=$POOP" >> $OFILE
 
-mkdir -p $WHONIX_LOC
+# mkdir -p $WHONIX_LOC
 
 cat $OFILE
 
