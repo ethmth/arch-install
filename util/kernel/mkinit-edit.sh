@@ -48,6 +48,10 @@ if (( REMOVE_HOOK )); then
     fi
     
     current_hooks=$(grep "^$edit_string=" "$conf_file" | sed -e "s/^$edit_string=//")
+    if ! ( echo "$current_hooks" | grep -qw "$1" ); then
+        echo "$1 is not in current hooks"
+        exit 1
+    fi
     new_hooks=$(echo "$current_hooks" | sed "s/\b$1 \b//g")
 
     echo "$current_hooks"
@@ -130,6 +134,10 @@ current_hooks=$(grep "^$edit_string=" "$conf_file" | sed -e "s/^$edit_string=//"
 new_hooks="$current_hooks"
 
 for hook in "${hooks[@]}"; do
+    if ( echo "$new_hooks" | grep -qw "$hook" ); then
+        echo "$hook is already in current hooks. No changes made."
+        exit 1
+    fi
     new_hooks=${new_hooks//"$hook "/}
     new_hooks=${new_hooks//"$hook)"}
     new_hooks=${new_hooks/". $hook"/}
