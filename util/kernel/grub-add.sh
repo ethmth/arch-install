@@ -1,6 +1,7 @@
 #!/bin/bash
 
 conf_file="/etc/default/grub"
+conf_file="./grub"
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run with root/sudo privileges."
@@ -22,6 +23,13 @@ result=("${current_array[@]}")
 
 for new_value in "${new_array[@]}"; do
   found=false
+
+  for item in "${current_array[@]}"; do
+    if [ "$item" == "$new_value" ]; then
+        echo "$new_value is already in the config. No changes made."
+        exit 1
+    fi
+  done
 
   for ((i=0; i<${#result[@]}; i++)); do
     # Check if the current value starts with the new value
