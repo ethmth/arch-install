@@ -12,40 +12,62 @@ source /home/$CUR_USER/arch-install/config/network-interface.conf
 # Install Magic Status Executables
 if (( PLASMA )); then
 	echo "Installing Plasma Widget - Magic Status Executables..."
-    sudo -k git clone https://github.com/ethmth/magic-status-executables.git /usr/share/plasma/plasmoids/com.github.ethmth.magic-status-executables
+    if ! [ -d "/usr/share/plasma/plasmoids/com.github.ethmth.magic-status-executables" ]; then
+        sudo -k git clone https://github.com/ethmth/magic-status-executables.git /usr/share/plasma/plasmoids/com.github.ethmth.magic-status-executables
+    fi
 fi
 
 # Install spacemacs
+if ! [ -d "/home/$CUR_USER/.emacs.d" ]; then
 echo "Installing spacemacs..."
 git clone https://github.com/syl20bnr/spacemacs /home/$CUR_USER/.emacs.d
+fi
 
 # Github Login
-echo "Login to Github..."
+# echo "Login to Github..."
+if ! (git config --global credential.helper); then
 git config --global credential.helper store
+fi
+if ! (git config --global user.name); then
 read -p "What is your Github username?: " git_user
-read -p "What is your Github email?: " git_email
 git config --global user.name "$git_user"
+fi
+if ! (git config --global user.email); then
+read -p "What is your Github email?: " git_email
 git config --global user.email "$git_email"
+fi
 
 # Set Default Java Version for Arch Linux
 sudo -k archlinux-java set java-17-openjdk
 
 # SSH-keygen
+if ! [ -f "/home/$CUR_USER/.ssh/id_rsa" ]; then
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | ssh-keygen
     # default dir 
     # no password
     # no password confirm
 EOF
+fi
 
 mkdir -p /home/$CUR_USER/Documents/Programs
 mkdir -p /home/$CUR_USER/Pictures/Wallpapers
 mkdir -p /home/$CUR_USER/Downloads
 
+if ! [ -f "/home/$CUR_USER/Pictures/Wallpapers/wallpaper.png" ]; then
 wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.com/images/wallpapers/windows-11-purple-abstract-dark-background-dark-purple-dark-3840x2400-8995.png
+fi
+
+if ! [ -f "/home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png" ]; then
+wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png https://512pixels.net/wp-content/uploads/2023/06/14-Sonoma-Dark-thumb-768x768.jpg
+fi
 
 # source pyenv
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep 'eval "$(pyenv init -)"' ); then
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
+fi
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep 'eval $(opam env)' ); then
 echo 'eval $(opam env)' >> /home/$CUR_USER/.bashrc
+fi
 
 # default apps
 mkdir -p /home/$CUR_USER/.config/xfce4
@@ -64,12 +86,16 @@ sudo update-mime-database /usr/share/mime
 
 # android home
 
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" ); then
 echo "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" >> /home/$CUR_USER/.bashrc
-
+fi
 
 # npm user setup
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep "export npm_config_prefix=\"\$HOME/.local\"" ); then
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
+fi
 
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep "osc7_cwd()" ); then
 echo "osc7_cwd() {
     local strlen=\${#PWD}
     local encoded=\"\"
@@ -85,8 +111,11 @@ echo "osc7_cwd() {
     printf '\e]7;file://%s%s\e\\\' \"\${HOSTNAME}\" \"\${encoded}\"
 }
 PROMPT_COMMAND=\${PROMPT_COMMAND:+\$PROMPT_COMMAND; }osc7_cwd" >> /home/$CUR_USER/.bashrc
+fi
 
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep "PATH=\$PATH:/home/$CUR_USER/.local/bin" ); then
 echo "PATH=\$PATH:/home/$CUR_USER/.local/bin" >> /home/$CUR_USER/.bashrc
+fi
 
 # Docker container runtime setup
 if (( NVIDIA )); then
@@ -103,8 +132,10 @@ sudo sh -c "echo '$string_to_echo' > /etc/docker/daemon.json"
 fi
 
 # Disable kdewallet
+if (( PLASMA )); then
 kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'Enabled' 'false'
 kwriteconfig5 --file kwalletrc --group 'Wallet' --key 'First Use' 'false'
+fi
 
 # Enable NTP
 sudo timedatectl set-ntp true
