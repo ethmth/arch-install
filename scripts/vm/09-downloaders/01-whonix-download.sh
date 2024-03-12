@@ -10,7 +10,7 @@ source /home/$CUR_USER/arch-install/config/vm.conf
 
 if [ "$WHONIX_LOC" == "" ]; then
 	echo "Whonix location not set in /home/$CUR_USER/arch-install/config/vm.conf"
-	echo "Run ./04-vm-config.sh first to set location"
+	echo "Run ./00-vm-config.sh first to set location"
 	exit 1
 fi
 

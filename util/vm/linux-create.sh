@@ -17,31 +17,40 @@ NETWORK_SELECT=1
 
 TEMPLATE_STRING=""
 SEARCH_STRING="NOISO"
+DISK_SEARCH_STRING=""
 if [ "$1" == "mx" ]; then
     TEMPLATE_STRING="MX"
     # SEARCH_STRING="MX"
+    DISK_SEARCH_STRING="Hotspot"
 elif [ "$1" == "ubuntu" ]; then
     TEMPLATE_STRING="Ubuntu"
     # SEARCH_STRING="ubuntu"
+    DISK_SEARCH_STRING="Ubuntu"
 elif [ "$1" == "ubu-droid" ]; then
     TEMPLATE_STRING="Ubu-droid"
     # SEARCH_STRING="ubuntu"
+    DISK_SEARCH_STRING="Android"
 elif [ "$1" == "mint" ]; then
     TEMPLATE_STRING="Mint"
     # SEARCH_STRING="linuxmint"
+    DISK_SEARCH_STRING="Mint"
 elif [ "$1" == "win10" ]; then
     TEMPLATE_STRING="Windows10"
     # SEARCH_STRING="Win10"
+    DISK_SEARCH_STRING="Windows"
 elif [ "$1" == "waydroid" ]; then
     TEMPLATE_STRING="Waydroid"
     # SEARCH_STRING="Waydroid"
+    DISK_SEARCH_STRING="Android"
 elif [ "$1" == "mull-gw" ]; then
     TEMPLATE_STRING="Mullvad-Gateway"
     # SEARCH_STRING="linuxmint"
+    DISK_SEARCH_STRING="VPN-Gateway"
     NETWORK_SELECT=0
 elif [ "$1" == "mitm" ]; then
     TEMPLATE_STRING="MITM"
     # SEARCH_STRING="linuxmint"
+    DISK_SEARCH_STRING="MITM"
 else 
     echo "Usage: ./linux-create.sh <mx|ubuntu|ubu-droid|mint|mull-gw|waydroid|win10|mitm>"
 	exit 1
@@ -49,36 +58,36 @@ fi
 
 DISK="Nothing"
 
-if ! [ "$LAST_DISK" == "" ]; then
-    if [ -e "$LAST_DISK" ]; then
-        read -p "Do you want to use $LAST_DISK (N for No, Otherwise Yes)? " userInput
-        if ! ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
-        DISK=$LAST_DISK
-        fi
+MNT_PTS=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | grep -v -x "/")
+MNT_ARRAY=()
+
+while IFS= read -r line; do
+    MNT_ARRAY+=("$line")
+done <<< "$MNT_PTS"
+MNT_ARRAY+=("/home/$CUR_USER")
+file_array=()
+
+for mnt in "${MNT_ARRAY[@]}"; do
+    files=$(ls $mnt/vm/disk 2>/dev/null)
+    for file in $files; do
+        file_array+=("$mnt/vm/disk/$file")
+    done
+done
+
+files_string=$(printf "%s\n" "${file_array[@]}")
+
+SUGGESTED_DISK=$(echo "$files_string" | grep $DISK_SEARCH_STRING | head -n 1)
+if [ "$SUGGESTED_DISK" == "" ]; then
+    SUGGESTED_DISK=$LAST_DISK
+fi
+if ! [ "$SUGGESTED_DISK" == "" ]; then
+    read -p "Do you want to use $SUGGESTED_DISK (N for No, Otherwise Yes)? " userInput
+    if ! ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+    DISK=$SUGGESTED_DISK
     fi
 fi
-
-if [ "$DISK" == "Nothing" ]; then
-    MNT_PTS=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | grep -v -x "/")
-    MNT_ARRAY=()
-
-    while IFS= read -r line; do
-        MNT_ARRAY+=("$line")
-    done <<< "$MNT_PTS"
-    MNT_ARRAY+=("/home/$CUR_USER")
-    file_array=()
-
-    for mnt in "${MNT_ARRAY[@]}"; do
-        files=$(ls $mnt/vm/disk 2>/dev/null)
-        for file in $files; do
-            file_array+=("$mnt/vm/disk/$file")
-        done
-    done
-
-    files_string=$(printf "%s\n" "${file_array[@]}")
-
+if ([ "$DISK" == "" ] || [ "$DISK" == "Nothing" ]); then
     DISK=$(echo "$files_string" | fzf --prompt="Select your disk. If you've not created one, press ESC and run ./create-qcow2.sh, then come back")
-
 fi
 
 if ([ "$DISK" == "" ] || [ "$DISK" == "Nothing" ]); then
