@@ -12,16 +12,17 @@ sudo -k bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/defa
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DISABLE_SUBMENU=y"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DEFAULT=saved"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_TIMEOUT=3"
+
+sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1
+
 if (( NVIDIA )); then
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh nvidia_drm.modeset=1
     if (( INTEL )); then
-        sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 video=efifb:off nvidia_drm.modeset=1
-        echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
-    else
-        sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 nvidia_drm.modeset=1
+        sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh video=efifb:off
         echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
     fi
 else
-    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1 video=efifb:off
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh video=efifb:off
     echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
 fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
