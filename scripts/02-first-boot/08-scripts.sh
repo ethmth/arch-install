@@ -20,9 +20,9 @@ if (( LAPTOP )); then
 fi
 if (( HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/wrappedhl /usr/bin/wrappedhl
-    sudo chmod +x /usr/bin/wrappedhl
+    sudo chmod +rx /usr/bin/wrappedhl
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lock /usr/bin/lock
-    sudo chmod +x /usr/bin/lock
+    sudo chmod +rx /usr/bin/lock
     sudo cp /home/$CUR_USER/arch-install/files/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
     sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=hyprlandwrapper\n\" > /etc/sddm.conf.d/autologin.conf"
 elif (( PLASMA )); then
@@ -34,9 +34,7 @@ elif (( PLASMA )); then
 fi
 if (( LAPTOP && HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/brightlight /usr/bin/brightlight
-    sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
-    sudo chmod +x /usr/bin/brightlight
-    sudo chmod +x /usr/bin/nightlight
+    sudo chmod +rx /usr/bin/brightlight
 fi
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/sshbg /usr/bin/sshbg
@@ -49,6 +47,7 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/tab2space /usr/bin/
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/xmlremove /usr/bin/xmlremove
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/git-make-like
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/pdf2png
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -61,6 +60,7 @@ sudo chmod +rx /usr/bin/tab2space
 sudo chmod +rx /usr/bin/xmlremove
 sudo chmod +rx /usr/bin/git-make-like
 sudo chmod +rx /usr/bin/pdf2png
+sudo chmod +rx /usr/bin/nightlight
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
-echo "If so, run ./09-grub.sh"
+echo "If so, run ./09-initcpio.sh"

@@ -62,10 +62,10 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png https://512pixels.net
 fi
 
 # source pyenv
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep 'eval "$(pyenv init -)"' ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q 'eval "$(pyenv init -)"' ); then
 echo 'eval "$(pyenv init -)"' >> /home/$CUR_USER/.bashrc
 fi
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep 'eval $(opam env)' ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q 'eval $(opam env)' ); then
 echo 'eval $(opam env)' >> /home/$CUR_USER/.bashrc
 fi
 
@@ -86,16 +86,16 @@ sudo update-mime-database /usr/share/mime
 
 # android home
 
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" ); then
 echo "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" >> /home/$CUR_USER/.bashrc
 fi
 
 # npm user setup
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep "export npm_config_prefix=\"\$HOME/.local\"" ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "export npm_config_prefix=\"\$HOME/.local\"" ); then
 echo "export npm_config_prefix=\"\$HOME/.local\"" >> /home/$CUR_USER/.bashrc
 fi
 
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep "osc7_cwd()" ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "osc7_cwd()" ); then
 echo "osc7_cwd() {
     local strlen=\${#PWD}
     local encoded=\"\"
@@ -113,7 +113,7 @@ echo "osc7_cwd() {
 PROMPT_COMMAND=\${PROMPT_COMMAND:+\$PROMPT_COMMAND; }osc7_cwd" >> /home/$CUR_USER/.bashrc
 fi
 
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep "PATH=\$PATH:/home/$CUR_USER/.local/bin" ); then
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "PATH=\$PATH:/home/$CUR_USER/.local/bin" ); then
 echo "PATH=\$PATH:/home/$CUR_USER/.local/bin" >> /home/$CUR_USER/.bashrc
 fi
 
