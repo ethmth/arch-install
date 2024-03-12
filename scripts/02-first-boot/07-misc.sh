@@ -58,7 +58,7 @@ wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper.png https://4kwallpapers.c
 fi
 
 if ! [ -f "/home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png" ]; then
-wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png https://512pixels.net/wp-content/uploads/2023/06/14-Sonoma-Dark-thumb-768x768.jpg
+wget -O /home/$CUR_USER/Pictures/Wallpapers/wallpaper2.png https://512pixels.net/downloads/macos-wallpapers-6k/12-Dark.jpg
 fi
 
 # source pyenv
