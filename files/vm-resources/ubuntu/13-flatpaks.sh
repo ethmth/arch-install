@@ -12,7 +12,7 @@ flatpaks="
 org.cubocore.CoreRenamer
 io.github.java_decompiler.jd-gui
 fr.handbrake.ghb
-org.kde.avidemux
+org.avidemux.Avidemux
 org.getmonero.Monero
 org.electrum.electrum
 org.gimp.GIMP
