@@ -140,5 +140,11 @@ fi
 # Enable NTP
 sudo timedatectl set-ntp true
 
+# TODO Add Hyprsome Install Command
+# git clone https://github.com/sopa0/hyprsome
+# cd hyprsome
+# cargo build
+# sudo cp target/debug/hyprsome /usr/bin/hyprsome
+
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
