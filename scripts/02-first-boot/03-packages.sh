@@ -245,6 +245,13 @@ ttf-icomoon-feather
 ttf-iosevka-nerd
 adobe-source-code-pro-fonts
 "
+# NVIDIA compat packages
+packages+="
+qt5-wayland
+qt5ct
+libva
+libva-nvidia-driver-git
+"
 
 # Building Packages
 packages+="
