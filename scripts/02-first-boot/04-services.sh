@@ -28,6 +28,11 @@ sudo systemctl enable avahi-daemon.service
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
+if (( NVIDIA && HYPRLAND && ! INTEL)); then
+	sudo systemctl enable nvidia-suspend.service
+	sudo systemctl enable nvidia-hibernate.service
+	sudo systemctl enable nvidia-resume.service
+fi
 
 # Disable KDE Powerdevil
 # systemctl --user mask plasma-powerdevil.service
