@@ -14,7 +14,8 @@ fi
 
 new="$@"
 
-current=$(grep -oP '(?<=GRUB_CMDLINE_LINUX_DEFAULT=")[^"]*' "$conf_file")
+# current=$(grep -oP '(?<=GRUB_CMDLINE_LINUX_DEFAULT=")[^"]*' "$conf_file")
+current=$(grep -oP '^GRUB_CMDLINE_LINUX_DEFAULT="\K[^"]*' "$conf_file")
 IFS=' ' read -r -a current_array <<< "$current"
 IFS=' ' read -r -a new_array <<< "$new"
 

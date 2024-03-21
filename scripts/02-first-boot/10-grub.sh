@@ -20,6 +20,11 @@ if (( NVIDIA )); then
     if (( INTEL )); then
         sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh video=efifb:off
         echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
+    else
+        if (( HYPRLAND )); then
+            sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh nvidia.NVreg_PreserveVideoMemoryAllocations=1
+            echo "NO NEED TO DO WHATEVER THIS SCRIPT SAYS ^"
+        fi
     fi
 else
     sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh video=efifb:off
