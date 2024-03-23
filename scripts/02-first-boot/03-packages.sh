@@ -96,6 +96,8 @@ xclip
 openssl
 pandoc-cli
 plocate
+clang
+ccls
 gcc
 gcc-fortran
 gdal
