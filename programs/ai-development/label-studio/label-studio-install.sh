@@ -31,7 +31,7 @@ mkdir -p $LOC/label-studio/mydata
 
 chmod -R 777 $LOC/label-studio/mydata
 
-cp /home/$CUR_USER/arch-install/util/misc/label-studio/docker-compose.yml $LOC/label-studio/docker-compose.yml
+cp /home/$CUR_USER/arch-install/programs/ai-development/label-studio/docker-compose.yml $LOC/label-studio/docker-compose.yml
 
 cd $LOC/label-studio/
 
