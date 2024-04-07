@@ -12,8 +12,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 # google-cloud-cli
 # pgmodeler
+# web-ext
 packages="
-web-ext
 inkscape
 hugo
 megasync-bin
