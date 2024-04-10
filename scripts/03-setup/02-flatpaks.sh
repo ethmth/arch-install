@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Install Flatpaks
 # nz.mega.MEGAsync
 flatpaks="
+com.bktus.gpgfrontend
 com.github.libresprite.LibreSprite
 com.sudovanilla.penpot-desktop
 net.scribus.Scribus
