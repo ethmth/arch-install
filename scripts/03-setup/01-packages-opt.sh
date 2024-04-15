@@ -78,6 +78,7 @@ python-tqdm
 python-pycocotools
 python-opencv
 python-opengl
+python-openai
 python-seaborn
 python-scikit-learn
 python-systemd
