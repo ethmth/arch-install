@@ -14,10 +14,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # web-ext
 packages="
-arm-none-eabi-gdb
-arm-none-eabi-gcc
-codeblocks
-qtcreator
 asciinema
 raylib
 inkscape
