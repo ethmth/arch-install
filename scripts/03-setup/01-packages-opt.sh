@@ -14,6 +14,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # web-ext
 packages="
+qtcreator
 asciinema
 raylib
 inkscape
