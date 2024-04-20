@@ -46,7 +46,7 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/txt2img /usr/bin/tx
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/tab2space /usr/bin/tab2space
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/xmlremove /usr/bin/xmlremove
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/git-make-like
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/pdf2png
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/pdf2png /usr/bin/pdf2png
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
