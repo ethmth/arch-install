@@ -191,6 +191,8 @@ python-dotenv
 python-pyopenssl
 python-docker
 pyenv
+qemu-user-static
+qemu-user-static-binfmt
 qemu-full
 qjackctl
 qterminal
