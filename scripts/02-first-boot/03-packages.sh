@@ -295,6 +295,12 @@ xorg
 "
 fi
 
+if (( INTEL_CPU )); then
+packages+="
+vulkan-intel
+"
+fi
+
 if (( LAPTOP )); then
 packages+="
 auto-cpufreq
