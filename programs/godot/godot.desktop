@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Godot Engine GODOT_VERSION
+GenericName=Libre game engine vGODOT_VERSION
+Comment=Multi-platform 2D and 3D game engine with a feature-rich editor vGODOT_VERSION
+Exec=godotGODOT_VERSION
+Icon=godot
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+MimeType=application/x-godot-project;
+Categories=Development;IDE;
+StartupWMClass=Godot

@@ -4,9 +4,15 @@ GODOT_VERSION="4.2.2"
 NAME="godot$GODOT_VERSION"
 
 if ! [[ $EUID -ne 0 ]]; then
-        echo "This script should not be run with root/sudo privileges."
-        exit 1
+    echo "This script should not be run with root/sudo privileges."
+    exit 1
 fi
+
+if ! [ -f "godot.desktop" ]; then
+    echo "Make sure you're in the correct directory with godot.desktop"
+    exit 1
+fi
+DESKTOP_FILE="$(pwd)/godot.desktop"
 
 CUR_USER=$(whoami)
 
@@ -38,8 +44,13 @@ echo "#!/bin/bash" > run.sh
 echo "$LOC/Godot_v$GODOT_VERSION-stable_linux.x86_64 --single-window" >> run.sh
 chmod +rx run.sh
 
+cp $DESKTOP_FILE $NAME.desktop
+sed -i "s/GODOT_VERSION/$GODOT_VERSION/g" $NAME.desktop
+
 sudo cp run.sh /usr/bin/$NAME
 sudo chmod +rx /usr/bin/$NAME
+sudo cp $NAME.desktop /usr/share/applications/$NAME.desktop
+sudo chmod 644 /usr/share/applications/$NAME.desktop
 
 echo "Installed $NAME in $LOC"
 echo "Run $NAME to start it"
