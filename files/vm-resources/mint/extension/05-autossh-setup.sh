@@ -25,7 +25,7 @@ read -p "Enter your username on the Wireguard machine: " username
 mkdir -p /tmp/sshtemp/.ssh
 cp /root/.ssh/id_rsa.pub /tmp/sshtemp/.ssh/authorized_keys
 
-scp -r /tmp/sshtemp/.ssh $username@10.153.153.18:/home/$username/.ssh
+scp -r /tmp/sshtemp/.ssh $username@10.152.153.18:/home/$username/.ssh
 
 cp $SCRIPT_DIR/autossh.service /etc/systemd/system/autossh.service
 sed -i "s/USERNAME/$username/g" /etc/systemd/system/autossh.service
@@ -34,4 +34,4 @@ systemctl enable autossh.service
 echo "If ssh setup was successful, you should end up in the remote shell"
 echo "Exit. Then, reboot"
 
-ssh $username@10.153.153.18
+ssh $username@10.152.153.18

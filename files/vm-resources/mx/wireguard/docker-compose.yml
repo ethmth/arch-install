@@ -10,10 +10,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Toronto
-      - SERVERURL=10.153.153.15
+      - SERVERURL=10.152.153.15
       - SERVERPORT=51820
       - PEERS=2
-      - PEERDNS=10.153.153.0
+      - PEERDNS=10.152.152.10,10.152.153.0
       - INTERNAL_SUBNET=10.13.13.0
     volumes:
       - /opt/wireguard-server/config:/config

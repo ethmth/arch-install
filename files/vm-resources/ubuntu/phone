@@ -7,7 +7,7 @@ fi
 
 last_part=$(($1 + 20))
 
-ip="10.153.153.$last_part"
+ip="10.152.153.$last_part"
 
 echo "Connecting to $ip:5555..."
 adb connect $ip:5555

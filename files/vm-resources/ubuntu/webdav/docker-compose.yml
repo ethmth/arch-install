@@ -10,7 +10,7 @@ services:
       - TZ=Americas/Toronto
       - WEBDAV_USERNAME=
       - WEBDAV_PASSWORD=
-      - SERVER_NAMES=localhost,10.153.153.14,10.152.152.14
+      - SERVER_NAMES=localhost,10.152.153.14,10.152.152.14
       - TIMEOUTS_S=1200 # these are seconds
     ports:
       - 80:80

@@ -29,7 +29,7 @@ cp openvpn/server.conf /home/$CUR_USER/programs/openvpn/server.conf
 
 hostname=""
 # read -p "Please enter your desired hostname (Ex: 10.153.153.15, server.mydomain.com): " hostname
-hostname="10.153.153.15"
+hostname="10.152.153.15"
 
 if [ "$hostname" == "" ]; then
     echo "No hostname specified"

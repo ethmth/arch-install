@@ -19,7 +19,7 @@ CONNECTION2="${CONNECTION2%% }"
 
 
 nmcli connection modify "$CONNECTION1" ipv4.method manual
-nmcli connection modify "$CONNECTION1" ipv4.addresses 10.0.3.15/18
+nmcli connection modify "$CONNECTION1" ipv4.addresses 10.0.3.15/24
 nmcli connection modify "$CONNECTION1" connection.interface-name "$INTERFACE1"
 nmcli connection modify "$CONNECTION1" ipv4.gateway 10.0.3.2
 nmcli connection modify "$CONNECTION1" ipv4.dns 10.0.3.2
@@ -28,7 +28,7 @@ nmcli connection up "$CONNECTION1"
 
 nmcli connection modify "$CONNECTION2" ipv4.method shared
 nmcli connection modify "$CONNECTION2" connection.interface-name "$INTERFACE2"
-nmcli connection modify "$CONNECTION2" ipv4.addresses 10.153.153.10/24
+nmcli connection modify "$CONNECTION2" ipv4.addresses 10.152.153.10/24
 nmcli connection modify "$CONNECTION2" ipv4.dhcp-client-id ""
 nmcli connection modify "$CONNECTION2" ipv4.dhcp-timeout 0
 nmcli connection modify "$CONNECTION2" ipv4.dhcp-send-hostname no

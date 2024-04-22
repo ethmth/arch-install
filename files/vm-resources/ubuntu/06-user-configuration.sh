@@ -33,7 +33,7 @@ sudo update-mime-database /usr/share/mime
 mkdir -p /home/$CUR_USER/.ssh
 
 echo "Host phone
-    Hostname 10.153.153.15
+    Hostname 10.152.153.15
     User u0_a154
     Port 8022" > /home/$CUR_USER/.ssh/config
 

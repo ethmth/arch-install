@@ -6,7 +6,7 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 last_part=$(($1 + 20))
-ip="10.153.153.$last_part"
+ip="10.152.153.$last_part"
 
 device=$(adb devices -l | grep $ip)
 
