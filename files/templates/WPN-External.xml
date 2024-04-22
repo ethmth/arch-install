@@ -1,0 +1,6 @@
+<network>
+  <name>WPN-External</name>
+  <forward mode="nat" dev="tun0" />
+  <bridge name="virbr7" stp="on" delay="0" />
+  <ip address="10.0.4.2" netmask="255.255.255.0" />
+</network>

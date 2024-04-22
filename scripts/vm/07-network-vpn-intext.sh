@@ -20,7 +20,19 @@ sudo virsh -c qemu:///system net-autostart VPN-External
 sudo virsh -c qemu:///system net-start VPN-External
 fi
 
-echo "VPN-Internal and VPN-External should have been successfully defined"
+if ! ( virsh net-list | grep -q "WPN-Internal" ); then
+sudo virsh -c qemu:///system net-define /home/$CUR_USER/arch-install/files/templates/WPN-Internal.xml
+sudo virsh -c qemu:///system net-autostart WPN-Internal
+sudo virsh -c qemu:///system net-start WPN-Internal
+fi
+
+if ! ( virsh net-list | grep -q "WPN-External" ); then
+sudo virsh -c qemu:///system net-define /home/$CUR_USER/arch-install/files/templates/WPN-External.xml
+sudo virsh -c qemu:///system net-autostart WPN-External
+sudo virsh -c qemu:///system net-start WPN-External
+fi
+
+echo "VPN-Internal, VPN-External, WPN-Internal, and VPN-External should have been successfully defined"
 echo "If you haven't yet, you may want to setup vfio by running the ../10-vfio/ scripts"
 echo "Otherwise, you may want to setup Whonix by running the ../11-whonix/ scripts."
 echo "Alternatively, define a bridged network using ./08-network-bridged.sh (WORK IN PROGRESS)"

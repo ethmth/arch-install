@@ -1,0 +1,4 @@
+<network>
+  <name>WPN-Internal</name>
+  <bridge name="virbr6" stp="on" delay="0" />
+</network>
