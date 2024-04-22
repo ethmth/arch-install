@@ -13,21 +13,30 @@ CONNECTION1="${CONNECTION1%% }"
 read -p "Enter the phone number: " phoneNumber
 ipNumber=$(($phoneNumber + 20))
 
-if [ "$1" == "vpn-gw" ]; then
+if [ "$1" == "vpn" ]; then
     nmcli connection modify "$CONNECTION1" ipv4.method manual
-    nmcli connection modify "$CONNECTION1" ipv4.addresses 10.153.153.$ipNumber/24
-    nmcli connection modify "$CONNECTION1" ipv4.gateway 10.153.153.10
-    nmcli connection modify "$CONNECTION1" ipv4.dns 10.153.153.10
+    nmcli connection modify "$CONNECTION1" ipv4.addresses 10.152.153.$ipNumber/24
+    nmcli connection modify "$CONNECTION1" ipv4.gateway 10.152.153.10
+    nmcli connection modify "$CONNECTION1" ipv4.dns 10.152.153.10
     nmcli connection down "$CONNECTION1"
     nmcli connection up "$CONNECTION1"
-elif [ "$1" == "mitm" ]; then
+elif [ "$1" == "tor" ]; then 
     nmcli connection modify "$CONNECTION1" ipv4.method manual
-    nmcli connection modify "$CONNECTION1" ipv4.addresses 10.153.153.$ipNumber/24
+    nmcli connection modify "$CONNECTION1" ipv4.addresses 10.152.153.$ipNumber/18
+    nmcli connection modify "$CONNECTION1" ipv4.gateway 10.152.152.10
+    nmcli connection modify "$CONNECTION1" ipv4.dns 10.152.152.10
+    nmcli connection down "$CONNECTION1"
+    nmcli connection up "$CONNECTION1"
+elif [ "$1" == "mitm" ]; then 
+    nmcli connection modify "$CONNECTION1" ipv4.method manual
+    nmcli connection modify "$CONNECTION1" ipv4.addresses 10.152.153.$ipNumber/24
     nmcli connection modify "$CONNECTION1" ipv4.gateway 10.154.154.40
     nmcli connection modify "$CONNECTION1" ipv4.dns 10.154.154.40
     nmcli connection down "$CONNECTION1"
     nmcli connection up "$CONNECTION1"
 else
-    echo "Usage: ./switch-script.sh <vpn-gw|mitm>"
+    echo "Usage: ./switch-script.sh <vpn|tor|mitm>"
     exit 1
 fi
+
+echo "Run this script until you get no errors/hangs"

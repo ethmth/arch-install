@@ -28,7 +28,7 @@ elif [ "$1" == "vpn" ]; then
 	nmcli connection down "$CONNECTION1"
 	nmcli connection up "$CONNECTION1"
 else
-    echo "Usage: ./03-network.sh <tor|vpn>"
+    echo "Usage: ./switch-script.sh <tor|vpn>"
     exit 1
 fi
 
