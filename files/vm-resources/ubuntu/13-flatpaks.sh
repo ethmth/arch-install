@@ -9,6 +9,7 @@ flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/r
 
 # Install Flatpaks
 flatpaks="
+org.kde.kleopatra
 org.cubocore.CoreRenamer
 io.github.java_decompiler.jd-gui
 fr.handbrake.ghb
@@ -17,7 +18,7 @@ org.getmonero.Monero
 org.electrum.electrum
 org.gimp.GIMP
 com.brave.Browser
-com.github.micahflee.torbrowser-launcher
+org.torproject.torbrowser-launcher
 com.github.tchx84.Flatseal
 io.gitlab.librewolf-community
 net.mullvad.MullvadBrowser

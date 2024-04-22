@@ -71,7 +71,6 @@ whois
 scrcpy 
 squid
 libxi6 
-libgconf-2-4 
 ssh
 sshpass
 rar

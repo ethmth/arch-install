@@ -5,5 +5,5 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-systemctl stop packagekit.service
-systemctl disable packagekit.service
+# systemctl stop packagekit.service
+# systemctl disable packagekit.service
