@@ -106,6 +106,7 @@ pandoc-cli
 plocate
 clang
 ccls
+gdb
 gcc
 gcc-fortran
 gdal
@@ -203,8 +204,6 @@ thunar
 thunar-archive-plugin
 veracrypt
 virt-manager
-virtualbox
-virtualbox-host-dkms
 wireshark-qt
 xdg-desktop-portal
 xdg-desktop-portal-gtk
@@ -217,6 +216,8 @@ jdk11-openjdk
 jdk8-openjdk
 ninja
 downgrade
+wayland-protocols
+doxygen
 "
 
 if (( HYPRLAND )); then
@@ -259,34 +260,35 @@ ttf-iosevka-nerd
 adobe-source-code-pro-fonts
 "
 # NVIDIA compat packages
+if (( NVIDIA && ! INTEL)); then
 packages+="
 qt5-wayland
 qt5ct
 libva
 libva-nvidia-driver-git
 "
+fi
 
 # Building Packages
-packages+="
-gdb
-libxcb
-xcb-proto
-xcb-util
-xcb-util-keysyms
-libxfixes
-libx11
-libxcomposite
-xorg-xinput
-libxrender
-pixman
-wayland-protocols
-cairo
-tomlplusplus
-doxygen
-xmlto
-docbook-xsl
-"
-fi
+# packages+="
+# libxcb
+# xcb-proto
+# xcb-util
+# xcb-util-keysyms
+# libxfixes
+# libx11
+# libxcomposite
+# xorg-xinput
+# libxrender
+# pixman
+# wayland-protocols
+# cairo
+# tomlplusplus
+# doxygen
+# xmlto
+# docbook-xsl
+# "
+# fi
 
 if (( PLASMA )); then
 packages+="

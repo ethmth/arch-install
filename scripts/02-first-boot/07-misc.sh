@@ -141,6 +141,7 @@ fi
 sudo timedatectl set-ntp true
 
 # TODO Add Hyprsome Install Command
+echo "Install hyprsome manually if on Hyprland Multi-monitor by following the instructions in this file."
 # git clone https://github.com/sopa0/hyprsome
 # cd hyprsome
 # cargo build

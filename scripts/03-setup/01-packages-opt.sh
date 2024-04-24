@@ -14,6 +14,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # web-ext
 packages="
+v4l2loopback-dkms
 xournalpp
 asciinema
 raylib
@@ -23,10 +24,6 @@ megasync-bin
 gobuster-bin
 godot
 siege
-wine
-wine-gecko
-wine-mono
-winetricks
 catfish
 juce-docs
 juce
@@ -36,14 +33,6 @@ soundfonts
 bear
 man-pages
 valgrind
-unityhub
-libicu50
-icu70
-gconf
-mono-msbuild
-mono-msbuild-sdkresolver
-mono
-vmware-workstation
 mitmproxy
 subversion
 ts-node
@@ -91,9 +80,7 @@ python-qtconsole
 python-regex
 jupyterlab
 remmina
-rstudio-desktop-bin
 scrcpy
-anaconda
 emacs
 texlive-bin
 texlive-binextra
@@ -121,31 +108,29 @@ visual-studio-code-bin
 xpadneo-dkms
 python310
 etcher-bin
-flutter
 hplip
 waydroid
-"
-
-if ! (( AMD )); then
-packages+="
 obs-studio
-v4l2loopback-dkms
 "
-fi
 
-if (( AMD )); then 
-packages+="
-amf-amdgpu-pro
-lib32-vulkan-amdgpu-pro
-obs-streamfx-git
-obs-studio-amf
-obs-vaapi
-obs-vkcapture-git
-v4l2loopback-dkms
-vulkan-amdgpu-pro
-prismlauncher-bin
-"
-fi
+# if ! (( AMD )); then
+# packages+="
+# obs-studio
+# "
+# fi
+
+# if (( AMD )); then 
+# packages+="
+# amf-amdgpu-pro
+# lib32-vulkan-amdgpu-pro
+# obs-streamfx-git
+# obs-studio-amf
+# obs-vaapi
+# obs-vkcapture-git
+# vulkan-amdgpu-pro
+# prismlauncher-bin
+# "
+# fi
 
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

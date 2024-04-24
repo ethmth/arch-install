@@ -5,6 +5,6 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-sudo systemctl start vmware-networks-configuration.service
-sudo systemctl enable vmware-networks.service
-sudo systemctl enable vmware-usbarbitrator.service
+# sudo systemctl start vmware-networks-configuration.service
+# sudo systemctl enable vmware-networks.service
+# sudo systemctl enable vmware-usbarbitrator.service
