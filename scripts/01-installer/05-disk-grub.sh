@@ -8,7 +8,7 @@ if [ "$disk" == "" ]; then
     exit 1
 fi
 
-uuid_crypt=$(lsblk -f | grep crypto_LUKS | grep $disk | awk '{print $4}')
+uuid_crypt=$(lsblk -f | grep crypto_LUKS | grep $disk | awk '{print $4}' | head -1)
 grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm:allow-discards"
 echo "$grub_string" > /mnt/opt/grub_string.txt
 genfstab -U /mnt >> /mnt/etc/fstab
