@@ -1,3 +1,5 @@
 MEGAsync
 sdk
 src
+pkg
+*.zst
