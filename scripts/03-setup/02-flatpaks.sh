@@ -18,7 +18,6 @@ com.sudovanilla.penpot-desktop
 net.scribus.Scribus
 org.avidemux.Avidemux
 com.logseq.Logseq
-org.winehq.Wine
 io.itch.itch
 org.processing.processingide
 one.flipperzero.qFlipper
