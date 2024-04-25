@@ -33,6 +33,19 @@ tar -xvf $WHONIX_LOC/whonix/Whonix*.libvirt.xz -C $WHONIX_LOC/whonix/
 
 touch $WHONIX_LOC/whonix/WHONIX_BINARY_LICENSE_AGREEMENT_accepted
 
+if [ -f "$WHONIX_LOC/whonix/Whonix-Gateway.xml" ]; then
+mv $WHONIX_LOC/whonix/Whonix-Gateway.xml $WHONIX_LOC/whonix/Whonix-Gateway.xml.OLD
+fi
+if [ -f "$WHONIX_LOC/whonix/Whonix-Workstation.xml" ]; then
+mv $WHONIX_LOC/whonix/Whonix-Workstation.xml $WHONIX_LOC/whonix/Whonix-Workstation.xml.OLD
+fi
+if [ -f "$WHONIX_LOC/whonix/Whonix_external.xml" ]; then
+mv $WHONIX_LOC/whonix/Whonix_external.xml $WHONIX_LOC/whonix/Whonix_external.xml.OLD
+fi
+if [ -f "$WHONIX_LOC/whonix/Whonix_internal.xml" ]; then
+mv $WHONIX_LOC/whonix/Whonix_internal.xml $WHONIX_LOC/whonix/Whonix_internal.xml.OLD
+fi
+
 cp $WHONIX_LOC/whonix/Whonix-Gateway*.xml $WHONIX_LOC/whonix/Whonix-Gateway.xml
 cp $WHONIX_LOC/whonix/Whonix-Workstation*.xml $WHONIX_LOC/whonix/Whonix-Workstation.xml
 cp $WHONIX_LOC/whonix/Whonix_external*.xml $WHONIX_LOC/whonix/Whonix_external.xml
