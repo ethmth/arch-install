@@ -28,7 +28,7 @@ fi
 
 read -p "Please the name for the disk: " name
 
-read -p "Are you sure you want to add /dev/$partition ($name - $typeofdisk) (YES for yes, otherwise No)? " userInput
+read -p "Are you sure you want to add $partition ($name - $typeofdisk) (YES for yes, otherwise No)? " userInput
 
 if ! [ "$userInput" == "YES" ]; then
     echo "Cancelling. No damage done."
