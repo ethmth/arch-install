@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # Disk partititioning
+disk=""
 disk=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk for BOOT and ROOT partitions" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
+if [ "$disk" == "" ]; then
+    echo "No disk selected. Nothing done."
+    exit 1
+fi
 disk="/dev/$disk"
 
 read -p "Are you sure you want to format $disk (YES for yes, otherwise No)? " userInput

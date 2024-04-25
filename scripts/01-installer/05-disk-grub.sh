@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # Disk things
-uuid_crypt=$(lsblk -f | grep crypto_LUKS | awk '{print $4}')
+disk=""
+disk=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk for BOOT and ROOT partitions" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
+if [ "$disk" == "" ]; then
+    echo "No disk selected. Nothing done."
+    exit 1
+fi
+
+uuid_crypt=$(lsblk -f | grep crypto_LUKS | grep $disk | awk '{print $4}')
 grub_string="cryptdevice=UUID=$uuid_crypt:cryptlvm:allow-discards"
 echo "$grub_string" > /mnt/opt/grub_string.txt
 genfstab -U /mnt >> /mnt/etc/fstab
