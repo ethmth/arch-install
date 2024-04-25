@@ -289,7 +289,7 @@ fi
 # xmlto
 # docbook-xsl
 # "
-# fi
+fi
 
 if (( PLASMA )); then
 packages+="
