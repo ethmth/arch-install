@@ -2,7 +2,7 @@
 
 # Disk things
 disk=""
-disk=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk for BOOT and ROOT partitions" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
+disk=$(echo "$(lsblk --list | grep disk | awk '{print $1}')" | fzf --prompt="Please select the disk you just formatted")
 if [ "$disk" == "" ]; then
     echo "No disk selected. Nothing done."
     exit 1

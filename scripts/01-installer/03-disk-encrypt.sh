@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # Disk formatting/encryption and mounting
+disk=""
 disk=$(echo "$(lsblk --list | grep disk | awk '{print $1}')" | fzf --prompt="Please select the disk you just formatted")
+if [ "$disk" == "" ]; then
+    echo "No disk selected. Nothing done."
+    exit 1
+fi
 partition=$(lsblk --list | grep $disk | grep part | awk '{print $1}' | grep '1$' | rev | cut -c 2- | rev)
 partitionsuffix=$partition
 partition="/dev/$partition"
