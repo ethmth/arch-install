@@ -12,7 +12,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # mp4fpsmod
 # google-cloud-cli
 # pgmodeler
-# web-ext
+# visual-studio-code-bin
 packages="
 v4l2loopback-dkms
 xournalpp
@@ -20,7 +20,6 @@ asciinema
 raylib
 inkscape
 hugo
-megasync-bin
 gobuster-bin
 godot
 siege
@@ -104,7 +103,6 @@ hashcat
 john
 steam-devices
 vscodium-bin
-visual-studio-code-bin
 xpadneo-dkms
 python310
 hplip
