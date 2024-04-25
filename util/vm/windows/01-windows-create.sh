@@ -6,7 +6,9 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 CUR_USER=$(whoami)
+if [ -f "/home/$CUR_USER/arch-install/config/last_disk.txt" ]; then
 source /home/$CUR_USER/arch-install/config/last_disk.txt
+fi
 
 DISK="Nothing"
 
@@ -58,10 +60,10 @@ if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     read -p "Please enter your desired name: " NAME
 fi
 
-
+SEARCH_STRING="NOISO"
 OS_DISK="Nothing"
-oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null | grep macos)
-top_os=$(echo "$oses" | head -n 1)
+oses=$(ls -1 /home/$CUR_USER/vm/os 2>/dev/null)
+top_os=$(echo "$oses" | grep $SEARCH_STRING | head -n 1)
 read -p "Do you want to use $top_os as the iso (N for No, Otherwise Yes)? " userInput
 if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
     OS_DISK=$(echo "$oses" | fzf --prompt="Please select the installation iso")
@@ -111,4 +113,4 @@ chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined."
 echo "Add your GPU to the VM, install Chocolatey & packages using resources.iso, and setup Graphics drivers."
-echo "Then, run ./update-vm-windows.sh to remove Virtual Graphics Devices"
+echo "Then, run ./02-windows-update.sh to remove Virtual Graphics Devices"
