@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
-isoimagewriter
+gnome-disk-utility
 ipcalc
 stress
 llvm
