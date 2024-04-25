@@ -107,7 +107,6 @@ vscodium-bin
 visual-studio-code-bin
 xpadneo-dkms
 python310
-etcher-bin
 hplip
 waydroid
 obs-studio
