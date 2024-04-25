@@ -254,7 +254,6 @@ otf-sora
 ttf-fantasque-nerd
 noto-fonts
 noto-fonts-emoji
-ttf-comfortaa
 ttf-jetbrains-mono-nerd
 ttf-icomoon-feather
 ttf-iosevka-nerd
