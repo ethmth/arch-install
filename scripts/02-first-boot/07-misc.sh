@@ -41,7 +41,7 @@ fi
 sudo -k archlinux-java set java-17-openjdk
 
 # SSH-keygen
-if ! [ -f "/home/$CUR_USER/.ssh/id_rsa" ]; then
+if ! ([ -f "/home/$CUR_USER/.ssh/id_rsa" ] || [ -f "/home/$CUR_USER/.ssh/id_ed25519" ]); then
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | ssh-keygen
     # default dir 
     # no password
@@ -141,11 +141,41 @@ fi
 sudo timedatectl set-ntp true
 
 # TODO Add Hyprsome Install Command
-echo "Install hyprsome manually if on Hyprland Multi-monitor by following the instructions in this file."
+# echo "Install hyprsome manually if on Hyprland Multi-monitor by following the instructions in this file."
 # git clone https://github.com/sopa0/hyprsome
 # cd hyprsome
 # cargo build
 # sudo cp target/debug/hyprsome /usr/bin/hyprsome
+
+# if (( HYPRLAND )); then
+# hyprpm update
+# hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
+# hyprpm enable split-monitor-workspaces
+# hyprpm reload
+# fi
+
+# if (( HYPRLAND )); then
+# echo "Install hyprload using this command if needed:"
+# echo "curl -sSL https://raw.githubusercontent.com/Duckonaut/hyprload/main/install.sh | bash"
+# fi
+
+if (( HYPRLAND )); then
+    sudo mkdir -p /opt/hyprland
+    sudo chmod -R 777 /opt/hyprland
+    if [ -d "/opt/hyprland/Hyprland" ]; then
+        rm -rf /opt/hyprland/Hyprland
+    fi
+    git clone https://github.com/hyprwm/Hyprland.git /opt/hyprland/Hyprland
+
+    if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
+        rm -rf /opt/hyprland/split-monitor-workspaces
+    fi
+    git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
+    cd /opt/hyprland/split-monitor-workspaces
+    git checkout 9981a3a66ad8df721fe46617233c58edac368f11
+    export HYPRLAND_HEADERS="/opt/hyprland/Hyprland"
+    make all
+fi
 
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
