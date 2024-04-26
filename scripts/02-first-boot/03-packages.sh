@@ -112,6 +112,7 @@ gcc
 gcc-fortran
 gdal
 proj
+zip
 unzip
 lzip
 tar
