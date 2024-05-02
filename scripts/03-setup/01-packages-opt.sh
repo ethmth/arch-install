@@ -14,6 +14,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # visual-studio-code-bin
 packages="
+gunicorn
 cscope
 krita
 v4l2loopback-dkms
