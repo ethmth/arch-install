@@ -16,9 +16,13 @@ fi
 mkdir -p /srv/elixir-data/$PROJECT/repo/
 cd /srv/elixir-data/$PROJECT/repo/
 
+echo "RUNNING SCRIPT"
+
 if [ -f "$FILE_NAME" ]; then
+    echo "" >> $FILE_NAME
     while IFS= read -r line; do
         if [ -n "$line" ]; then
+            echo "git clone --bare ${line}"
             git clone --bare "${line}"
         fi
     done < "$FILE_NAME"
