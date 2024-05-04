@@ -6,11 +6,13 @@ VOLUMES="
 "
 
 FILES="
+repos
 docker-compose.yml
 Dockerfile
 000-default.conf
 git_repos.txt
 clone_repos.sh
+zip_repos.sh
 "
 
 if ! [[ $EUID -ne 0 ]]; then

@@ -28,7 +28,7 @@ while IFS= read -r line; do
     mkdir -p /srv/elixir-data/$PROJECT/data
     mkdir -p /srv/elixir-data/$PROJECT/repo
 
-    git clone --recurse-submodules --remote-submodules --bare "${line}" /srv/elixir-data/$PROJECT/repo
+    git clone --recurse-submodules --remote-submodules "${line}" /srv/elixir-data/$PROJECT/repo
     git config --global --add safe.directory /srv/elixir-data/$PROJECT/repo
 
     export LXR_REPO_DIR="/srv/elixir-data/$PROJECT/repo"

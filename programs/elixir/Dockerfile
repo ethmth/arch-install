@@ -17,7 +17,8 @@ RUN \
     libapache2-mod-wsgi-py3 \
     libjansson4 \
     libyaml-0-2 \
-    wget
+    wget \
+    unzip
 
 RUN \
   wget https://bootlin.com/pub/elixir/universal-ctags_0+git20200526-0ubuntu1_amd64.deb
@@ -41,9 +42,13 @@ RUN \
 RUN \
   mkdir -p /srv/elixir-data
 
-COPY ./clone_repos.sh /tmp/clone_repos.sh
-COPY ./git_repos.txt /tmp/git_repos.txt
-RUN bash /tmp/clone_repos.sh /tmp/git_repos.txt
+COPY ./repos /opt/repos
+COPY ./zip_repos.sh /opt/zip_repos.sh
+RUN bash /opt/zip_repos.sh
+
+COPY ./clone_repos.sh /opt/clone_repos.sh
+COPY ./git_repos.txt /opt/git_repos.txt
+RUN bash /opt/clone_repos.sh /opt/git_repos.txt
 
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
