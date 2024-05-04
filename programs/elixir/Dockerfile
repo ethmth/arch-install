@@ -1,12 +1,12 @@
 FROM debian:bookworm
 # ARG GIT_REPO_URL
-ARG PROJECT
+# ARG PROJECT
 
 # RUN \
 #     : "${GIT_REPO_URL:?set GIT_REPO_URL to the repo git url}"
 
-RUN \
-    : "${PROJECT:?set PROJECT to set the project name}"
+# RUN \
+#     : "${PROJECT:?set PROJECT to set the project name}"
 
 # RUN \
 #     echo "repo url to index: ${GIT_REPO_URL}"
@@ -52,23 +52,30 @@ RUN \
 
 RUN \
   mkdir -p /srv/elixir-data/ && \
-  mkdir -p /srv/elixir-data/$PROJECT/repo && \
-  mkdir -p /srv/elixir-data/$PROJECT/data
+  mkdir -p /srv/elixir-data/projects
 
 COPY ./clone_repos.sh /tmp/clone_repos.sh
+COPY ./run_script.sh /tmp/run_script.sh
 COPY ./git_repos.txt /tmp/git_repos.txt
-RUN bash /tmp/clone_repos.sh $PROJECT /tmp/git_repos.txt
+RUN bash /tmp/clone_repos.sh /tmp/git_repos.txt
 
-RUN git config --global --add safe.directory /srv/elixir-data/$PROJECT/repo
+RUN git config --global --add safe.directory /srv/elixir-data/projects
 
-ENV LXR_REPO_DIR /srv/elixir-data/$PROJECT/repo
-ENV LXR_DATA_DIR /srv/elixir-data/$PROJECT/data
+# ENV LXR_REPO_DIR /srv/elixir-data/$PROJECT/repo
+# ENV LXR_DATA_DIR /srv/elixir-data/$PROJECT/data
+ENV LXR_PROJ_DIR /srv/elixir-data/projects
+
+# RUN \
+#   cd /usr/local/elixir/ && \
+#   ./script.sh list-tags && \
+#   python3 -u ./update.py && \
+#   chown -R www-data:www-data /srv/elixir-data/projects
 
 RUN \
   cd /usr/local/elixir/ && \
-  ./script.sh list-tags && \
+  bash /tmp/run_script.sh && \
   python3 -u ./update.py && \
-  chown -R www-data:www-data /srv/elixir-data/$PROJECT/repo
+  chown -R www-data:www-data /srv/elixir-data/projects
 
 # apache elixir config, see elixir README
 # make apache less stricter about cgitb spam headers

@@ -11,6 +11,7 @@ Dockerfile
 000-default.conf
 git_repos.txt
 clone_repos.sh
+run_script.sh
 "
 
 if ! [[ $EUID -ne 0 ]]; then
