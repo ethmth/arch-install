@@ -2,9 +2,6 @@ services:
   elixir:
     build:
       context: .
-      args:
-        # - GIT_REPO_URL=git://git.musl-libc.org/musl
-        - PROJECT=code
     ports: 
       - "8222:80"
     restart: unless-stopped

@@ -1,1 +1,2 @@
 git://git.musl-libc.org/musl
+https://github.com/hyprwm/Hyprland.git

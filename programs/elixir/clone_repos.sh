@@ -1,12 +1,6 @@
 #!/bin/bash
 
-# PROJECT=$1
 FILE_NAME=$1
-
-# if [ "$PROJECT" == "" ]; then
-#     echo "Usage: ./clone_repos.sh <PROJECT_NAME> <FILE_NAME>"
-#     exit 1
-# fi
 
 if [ "$FILE_NAME" == "" ]; then
     echo "Usage: ./clone_repos.sh <FILE_NAME>"
@@ -17,11 +11,6 @@ if ! [ -f "$FILE_NAME" ]; then
     echo "File not found!"
     exit 1
 fi
-
-# mkdir -p /srv/elixir-data/$PROJECT/repo/
-# cd /srv/elixir-data/projects
-
-# echo "RUNNING SCRIPT"
 
 echo "" >> $FILE_NAME
 while IFS= read -r line; do
@@ -51,6 +40,3 @@ while IFS= read -r line; do
         chown -R www-data:www-data /srv/elixir-data/$PROJECT/repo
 
 done < "$FILE_NAME"
-
-
-# git config --global --add safe.directory /srv/elixir-data/$PROJECT/repo

@@ -1,16 +1,4 @@
 FROM debian:bookworm
-# ARG GIT_REPO_URL
-ARG PROJECT
-
-# RUN \
-#     : "${GIT_REPO_URL:?set GIT_REPO_URL to the repo git url}"
-
-RUN \
-    : "${PROJECT:?set PROJECT to set the project name}"
-
-# RUN \
-#     echo "repo url to index: ${GIT_REPO_URL}"
-
 
 RUN \
   apt-get update && \
@@ -52,26 +40,11 @@ RUN \
 
 RUN \
   mkdir -p /srv/elixir-data
-#   mkdir -p /srv/elixir-data/$PROJECT/repo && \
-#   mkdir -p /srv/elixir-data/$PROJECT/data
 
 COPY ./clone_repos.sh /tmp/clone_repos.sh
 COPY ./git_repos.txt /tmp/git_repos.txt
 RUN bash /tmp/clone_repos.sh /tmp/git_repos.txt
 
-# RUN git config --global --add safe.directory /srv/elixir-data/$PROJECT/repo
-
-# ENV LXR_REPO_DIR /srv/elixir-data/$PROJECT/repo
-# ENV LXR_DATA_DIR /srv/elixir-data/$PROJECT/data
-
-# RUN \
-#   cd /usr/local/elixir/ && \
-#   ./script.sh list-tags && \
-#   python3 -u ./update.py && \
-#   chown -R www-data:www-data /srv/elixir-data/$PROJECT/repo
-
-# apache elixir config, see elixir README
-# make apache less stricter about cgitb spam headers
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN \
