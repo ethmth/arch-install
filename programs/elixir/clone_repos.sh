@@ -19,7 +19,7 @@ if ! [ -f "$FILE_NAME" ]; then
 fi
 
 # mkdir -p /srv/elixir-data/$PROJECT/repo/
-cd /srv/elixir-data/projects
+# cd /srv/elixir-data/projects
 
 # echo "RUNNING SCRIPT"
 
@@ -32,12 +32,23 @@ while IFS= read -r line; do
     repo_name=${line##*/}
     repo_name=${repo_name%%.*}
 
-    echo "Cloning project $repo_name from ${line}"
-    mkdir -p /srv/elixir-data/projects/$repo_name
-    mkdir -p /srv/elixir-data/projects/$repo_name/data
-    mkdir -p /srv/elixir-data/projects/$repo_name/repo
+    PROJECT=$repo_name
 
-    git clone --bare "${line}" /srv/elixir-data/projects/$repo_name/repo
+    echo "Setting up project $PROJECT from ${line}"
+    mkdir -p /srv/elixir-data/$PROJECT
+    mkdir -p /srv/elixir-data/$PROJECT/data
+    mkdir -p /srv/elixir-data/$PROJECT/repo
+
+    git clone --bare "${line}" /srv/elixir-data/$PROJECT/repo
+    git config --global --add safe.directory /srv/elixir-data/$PROJECT/repo
+
+    export LXR_REPO_DIR="/srv/elixir-data/$PROJECT/repo"
+    export LXR_DATA_DIR="/srv/elixir-data/$PROJECT/data"
+
+    cd /usr/local/elixir/ && \
+        ./script.sh list-tags && \
+        python3 -u ./update.py && \
+        chown -R www-data:www-data /srv/elixir-data/$PROJECT/repo
 
 done < "$FILE_NAME"
 
