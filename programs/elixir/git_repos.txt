@@ -1,2 +1,2 @@
-git://git.musl-libc.org/musl
 https://github.com/hyprwm/Hyprland.git
+https://github.com/alan-j-hu/llvm-dune.git
