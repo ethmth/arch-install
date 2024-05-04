@@ -1,15 +1,6 @@
 #!/bin/bash
 
 directory="/opt/repos"
-# unzip_directory="/srv/elixir-data/$PROJECT/repo"
-
-# find "$repository_directory" -type f -name "*.zip" -print0 |
-# while IFS= read -r -d '' zipfile; do
-#     echo "Processing zip file: $zipfile"
-#     1
-#     # Do something with each zip file, for example:
-#     # You can unzip the file, process its contents, etc.
-# done
 
 for file in "$directory"/*.zip; do
     ZIP_PATH=$(realpath "$file")
@@ -23,13 +14,12 @@ for file in "$directory"/*.zip; do
 
     echo "Setting up project $PROJECT from ${ZIP_PATH}"
     mkdir -p $project_dir
-    # mkdir -p /srv/elixir-data/$PROJECT/repo
 
     unzip -q "$ZIP_PATH" -d "$project_dir"
+    rm "$ZIP_PATH"
     folder_name=$(ls -1d $project_dir/* | head -1)
     mv $folder_name $project_dir/repo
 
-    # git clone --recurse-submodules --remote-submodules "${line}" /srv/elixir-data/$PROJECT/repo
     git config --global --add safe.directory $project_dir/repo
 
     export LXR_REPO_DIR="$project_dir/repo"

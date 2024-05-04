@@ -45,6 +45,7 @@ RUN \
 COPY ./repos /opt/repos
 COPY ./zip_repos.sh /opt/zip_repos.sh
 RUN bash /opt/zip_repos.sh
+RUN rm -rf /opt/repos
 
 COPY ./clone_repos.sh /opt/clone_repos.sh
 COPY ./git_repos.txt /opt/git_repos.txt

@@ -42,7 +42,7 @@ mkdir -p $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
     if [ -d "$file" ]; then
-        cp -r $file $LOC/$CONTAINER_NAME/$file
+        cp -r $file $LOC/$CONTAINER_NAME/
     elif [ -f "$file" ]; then
         cp $file $LOC/$CONTAINER_NAME/$file
     fi
