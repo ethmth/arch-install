@@ -106,6 +106,7 @@ openssl
 pandoc-cli
 plocate
 clang
+clang16
 ccls
 gdb
 gcc
