@@ -1,0 +1,8 @@
+services:
+  kobold:
+    build:
+      context: .
+    ports: 
+      - "5001:5001"
+    volumes:
+      - ./models:/opt/models
