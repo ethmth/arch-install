@@ -1,4 +1,5 @@
-FROM debian:bookworm
+# FROM debian:bookworm
+FROM ubuntu:24.04
 
 RUN \
     apt-get update && \
@@ -10,6 +11,12 @@ RUN \
       cmake \
       vim \
       radeontop \
+      make \
+      hipcc \
+      rocm-cmake \
+    #   rocm-device-libs \
+      rocm-smi \
+      rocminfo \
       g++ && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
