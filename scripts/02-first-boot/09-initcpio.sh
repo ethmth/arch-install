@@ -22,7 +22,7 @@ if (( NVIDIA )); then
     sudo mkdir -p /etc/pacman.d/hooks
     sudo cp /home/$CUR_USER/arch-install/files/configs/nvidia.hook /etc/pacman.d/hooks/nvidia.hook
 fi
-sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh remove-hook kms
+# sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh remove-hook kms
 
 sudo mkinitcpio -P
 
