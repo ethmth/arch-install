@@ -6,3 +6,8 @@ services:
       - "5001:5001"
     volumes:
       - ./models:/opt/models
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/kfd:/dev/kfd

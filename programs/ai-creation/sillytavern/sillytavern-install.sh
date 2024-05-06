@@ -2,13 +2,12 @@
 
 CONTAINER_NAME="sillytavern"
 
-REPO=""
+REPO="https://github.com/SillyTavern/SillyTavern"
 
 VOLUMES="
 "
 
 FILES="
-docker-compose.yml
 "
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -54,5 +53,5 @@ for vol in $VOLUMES; do
 done
 
 echo "Installed $CONTAINER_NAME to $LOC"
-echo "Run 'docker-compose up --build -d' to run"
+# echo "Run 'docker-compose up --build -d' to run"
 echo "cd $LOC/$CONTAINER_NAME"
