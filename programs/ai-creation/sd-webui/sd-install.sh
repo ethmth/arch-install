@@ -91,7 +91,9 @@ sed -i '$ d' "$LOC/$NAME/webui-user.sh"
 echo "python_cmd=\"$PYTHON_COMMAND\"" >> $LOC/$NAME/webui-user.sh
 echo "install_dir=\"$LOC\"" >> $LOC/$NAME/webui-user.sh
 if (( AMD_GPU )); then
-    echo "export TORCH_COMMAND=\"pip install torch==2.0.1+rocm5.4.2 torchvision==0.15.2+rocm5.4.2 --index-url https://download.pytorch.org/whl/rocm5.4.2\"" >> $LOC/$NAME/webui-user.sh
+    # echo "export TORCH_COMMAND=\"pip install torch==2.0.1+rocm5.4.2 torchvision==0.15.2+rocm5.4.2 --index-url https://download.pytorch.org/whl/rocm5.4.2\"" >> $LOC/$NAME/webui-user.sh
+    echo "export TORCH_COMMAND=\"pip install torch==2.3.0+rocm6.0 torchvision==0.18.0+rocm6.0 torchaudio==2.3.0+rocm6.0 --index-url https://download.pytorch.org/whl/rocm6.0\"" >> $LOC/$NAME/webui-user.sh
+    # echo "export TORCH_COMMAND=\"pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/rocm5.2\"" >> $LOC/$NAME/webui-user.sh
     echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
 else
     echo "export COMMANDLINE_ARGS=\"--listen --port $PORT --gradio-auth $username:$password --allow-code --enable-insecure-extension-access --api --api-auth $username:$password $folder_arguments\"" >> $LOC/$NAME/webui-user.sh
