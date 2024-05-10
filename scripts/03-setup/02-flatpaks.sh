@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Install Flatpaks
 # nz.mega.MEGAsync
 flatpaks="
+com.github.jeromerobert.pdfarranger
 io.github.dman95.SASM
 org.kde.kleopatra
 com.github.libresprite.LibreSprite
