@@ -51,7 +51,6 @@ jpegoptim
 whois
 act
 thunderbird
-cryptomator-bin
 pypy
 pypy3
 miopen-hip
