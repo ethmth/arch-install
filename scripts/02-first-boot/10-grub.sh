@@ -12,6 +12,7 @@ sudo -k bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/defa
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DISABLE_SUBMENU=y"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DEFAULT=saved"
 sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_TIMEOUT=3"
+#sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DISABLE_OS_PROBER=false"
 
 sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1
 
