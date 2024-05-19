@@ -162,18 +162,23 @@ sudo timedatectl set-ntp true
 if (( HYPRLAND )); then
     sudo mkdir -p /opt/hyprland
     sudo chmod -R 777 /opt/hyprland
-    if [ -d "/opt/hyprland/Hyprland" ]; then
-        rm -rf /opt/hyprland/Hyprland
+    if [ -d "/opt/hyprland/hyprland" ]; then
+        rm -rf /opt/hyprland/hyprland
     fi
-    git clone https://github.com/hyprwm/Hyprland.git /opt/hyprland/Hyprland
+    git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
+    cd /opt/hyprland/hyprland
+    # git checkout v0.40.0
+    make debug
 
     if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
         rm -rf /opt/hyprland/split-monitor-workspaces
     fi
     git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
     cd /opt/hyprland/split-monitor-workspaces
-    git checkout 9981a3a66ad8df721fe46617233c58edac368f11
-    export HYPRLAND_HEADERS="/opt/hyprland/Hyprland"
+    # git checkout e3cc1a8fc7dc623adf100e63ae5a9997647f1250
+    # export HYPRLAND_HEADERS="/opt/hyprland/Hyprland"
+    INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
+    sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
     make all
 fi
 

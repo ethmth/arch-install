@@ -277,24 +277,23 @@ libva-nvidia-driver-git
 fi
 
 # Building Packages
-# packages+="
-# libxcb
-# xcb-proto
-# xcb-util
-# xcb-util-keysyms
-# libxfixes
-# libx11
-# libxcomposite
-# xorg-xinput
-# libxrender
-# pixman
-# wayland-protocols
-# cairo
-# tomlplusplus
-# doxygen
-# xmlto
-# docbook-xsl
-# "
+packages+="
+libxcb
+xcb-proto
+xcb-util
+xcb-util-keysyms
+libxfixes
+libx11
+libxcomposite
+xorg-xinput
+libxrender
+pixman
+cairo
+tomlplusplus
+doxygen
+xmlto
+docbook-xsl
+"
 fi
 
 if (( PLASMA )); then
