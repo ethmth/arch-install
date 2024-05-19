@@ -167,7 +167,7 @@ if (( HYPRLAND )); then
     fi
     git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
     cd /opt/hyprland/hyprland
-    # git checkout v0.40.0
+    git checkout v0.40.0
     make debug
 
     if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
@@ -175,8 +175,8 @@ if (( HYPRLAND )); then
     fi
     git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
     cd /opt/hyprland/split-monitor-workspaces
-    # git checkout e3cc1a8fc7dc623adf100e63ae5a9997647f1250
-    # export HYPRLAND_HEADERS="/opt/hyprland/Hyprland"
+    git checkout b40147d96d62a9e9bbc56b18ea421211ee598357
+    export HYPRLAND_HEADERS="/opt/hyprland/hyprland"
     INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
     sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
     make all

@@ -231,6 +231,7 @@ doxygen
 if (( HYPRLAND )); then
 packages+="
 hyprland
+hyprwayland-scanner
 hyprlang
 wlroots
 brightnessctl
