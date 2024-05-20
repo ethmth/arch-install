@@ -47,7 +47,7 @@ for vol in $VOLUMES; do
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
-echo "Update wg0.conf in installed directory."
+echo "Update wg0.conf in installed directory. Replace domain name with IP address"
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
