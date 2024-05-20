@@ -1,0 +1,11 @@
+services:
+  gluetun-home:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+    volumes:
+      - ./wg0.conf:/gluetun/wireguard/wg0.conf
+    restart: unless-stopped
