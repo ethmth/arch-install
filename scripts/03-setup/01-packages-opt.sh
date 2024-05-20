@@ -81,6 +81,7 @@ python-psycopg2
 python-qtconsole
 python-regex
 jupyterlab
+jupyter-notebook
 remmina
 scrcpy
 emacs
