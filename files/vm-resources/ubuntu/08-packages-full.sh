@@ -26,7 +26,6 @@ gthumb
 qterminal
 vlc
 yt-dlp
-youtube-dl
 gallery-dl
 john 
 hashcat 
