@@ -187,6 +187,15 @@ if (( HYPRLAND )); then
 fi
 
 
+RAM_DIRS="
+/home/$CUR_USER/.cache/thumbnails
+/home/$CUR_USER/.cache/virt-manager
+/home/$CUR_USER/.cache/mpv
+/home/$CUR_USER/.cache/libvirt
+/home/$CUR_USER/.cache/yt-dlp
+/home/$CUR_USER/.cache/gallery-dl
+"
+
 # Move thumbnails to ram in fstab
 if ! ( cat "/etc/fstab" | grep -q ".cache/thumbnails" ); then
     USER_ID=$(id -u $CUR_USER)
