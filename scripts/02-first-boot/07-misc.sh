@@ -160,27 +160,41 @@ sudo timedatectl set-ntp true
 # fi
 
 if (( HYPRLAND )); then
-    sudo mkdir -p /opt/hyprland
-    sudo chmod -R 777 /opt/hyprland
-    if [ -d "/opt/hyprland/hyprland" ]; then
-        rm -rf /opt/hyprland/hyprland
-    fi
-    git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
-    cd /opt/hyprland/hyprland
-    #git checkout v0.40.0
-    make all
+    if [ -f "/opt/hyprland/split-monitor-workspaces/split-monitor-workspaces.so" ]; then
+        echo "Note: Delete /opt/hyprland/split-monitor-workspaces/split-monitor-workspaces.so to rebuild."
+    else
+        sudo mkdir -p /opt/hyprland
+        sudo chmod -R 777 /opt/hyprland
+        if [ -d "/opt/hyprland/hyprland" ]; then
+            rm -rf /opt/hyprland/hyprland
+        fi
+        git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
+        cd /opt/hyprland/hyprland
+        #git checkout v0.40.0
+        make all
 
-    if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
-        rm -rf /opt/hyprland/split-monitor-workspaces
+        if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
+            rm -rf /opt/hyprland/split-monitor-workspaces
+        fi
+        git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
+        cd /opt/hyprland/split-monitor-workspaces
+        #git checkout b40147d96d62a9e9bbc56b18ea421211ee598357
+        #export HYPRLAND_HEADERS="/opt/hyprland/hyprland"
+        #INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
+        #sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
+        make all
     fi
-    git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
-    cd /opt/hyprland/split-monitor-workspaces
-    #git checkout b40147d96d62a9e9bbc56b18ea421211ee598357
-    #export HYPRLAND_HEADERS="/opt/hyprland/hyprland"
-    #INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
-    #sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
-    make all
 fi
+
+
+# Move thumbnails to ram in fstab
+if ! ( cat "/etc/fstab" | grep -q ".cache/thumbnails" ); then
+    USER_ID=$(id -u $CUR_USER)
+    GROUP_ID=$(id -g $CUR_USER)
+    FSTAB_LINE="none /home/$CUR_USER/.cache/thumbnails  tmpfs   rw,noexec,nosuid,size=5%,uid=$USER_ID,gid=$GROUP_ID,mode=0755,noatime   0   0"
+    sudo sh -c "echo \"$FSTAB_LINE\" >> /etc/fstab"
+fi
+
 
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./08-scripts.sh"
