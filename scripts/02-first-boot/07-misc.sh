@@ -187,6 +187,7 @@ if (( HYPRLAND )); then
 fi
 
 
+# TODO: Implement these in RAM/also clipboard and bash history.
 RAM_DIRS="
 /home/$CUR_USER/.cache/thumbnails
 /home/$CUR_USER/.cache/virt-manager
