@@ -7,9 +7,12 @@ fi
 
 snaps="
 codium
+chromium
 "
 
 snaps=${snaps//$'\n'/ }
 snaps=$(echo "$snaps" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-sudo snap install --classic $snaps
 
+for snap in $snaps; do
+	sudo snap install --classic $snap
+done
