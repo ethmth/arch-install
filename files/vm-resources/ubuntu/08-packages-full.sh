@@ -92,6 +92,7 @@ apktool
 droidlysis
 pv
 hexyl
+qimgv
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

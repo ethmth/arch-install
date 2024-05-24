@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OS_VERSION="23.04"
+OS_VERSION="24.04"
 
 if ! [[ $EUID -ne 0 ]]; then
 	echo "This script should not be run with root/sudo privileges."
