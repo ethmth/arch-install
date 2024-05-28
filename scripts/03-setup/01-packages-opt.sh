@@ -9,11 +9,13 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # issuu-dl
+# ocrmypdf
 # mp4fpsmod
 # google-cloud-cli
 # pgmodeler
 # visual-studio-code-bin
 packages="
+tesseract-data-eng
 spyder
 gunicorn
 cscope
