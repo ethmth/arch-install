@@ -165,13 +165,13 @@ if (( HYPRLAND )); then
     else
         sudo mkdir -p /opt/hyprland
         sudo chmod -R 777 /opt/hyprland
-        if [ -d "/opt/hyprland/hyprland" ]; then
-            rm -rf /opt/hyprland/hyprland
-        fi
-        git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
-        cd /opt/hyprland/hyprland
+        # if [ -d "/opt/hyprland/hyprland" ]; then
+        #     rm -rf /opt/hyprland/hyprland
+        # fi
+        # git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
+        # cd /opt/hyprland/hyprland
         #git checkout v0.40.0
-        make all
+        # make all
 
         if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
             rm -rf /opt/hyprland/split-monitor-workspaces
