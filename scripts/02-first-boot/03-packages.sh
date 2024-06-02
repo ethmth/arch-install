@@ -325,6 +325,7 @@ nvidia-settings
 nvidia-utils
 opencl-nvidia
 nvidia-container-toolkit
+libva-nvidia-driver
 "
 fi
 if (( NVIDIA && LAPTOP )); then
