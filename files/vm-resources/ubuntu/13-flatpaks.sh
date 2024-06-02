@@ -23,6 +23,7 @@ com.github.tchx84.Flatseal
 io.gitlab.librewolf-community
 net.mullvad.MullvadBrowser
 nz.mega.MEGAsync
+com.tonikelope.MegaBasterd
 org.jdownloader.JDownloader
 com.obsproject.Studio
 org.filezillaproject.Filezilla
