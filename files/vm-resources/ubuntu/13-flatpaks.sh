@@ -8,14 +8,13 @@ fi
 flatpak remote-add --if-not-exists --no-gpg-verify flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install Flatpaks
+# org.jdownloader.JDownloader
 flatpaks="
 org.kde.kleopatra
-org.cubocore.CoreRenamer
 io.github.java_decompiler.jd-gui
 fr.handbrake.ghb
 org.avidemux.Avidemux
 org.getmonero.Monero
-org.electrum.electrum
 org.gimp.GIMP
 com.brave.Browser
 org.torproject.torbrowser-launcher
@@ -24,9 +23,7 @@ io.gitlab.librewolf-community
 net.mullvad.MullvadBrowser
 nz.mega.MEGAsync
 com.tonikelope.MegaBasterd
-org.jdownloader.JDownloader
 com.obsproject.Studio
-org.filezillaproject.Filezilla
 org.telegram.desktop
 network.loki.Session
 org.cryptomator.Cryptomator
