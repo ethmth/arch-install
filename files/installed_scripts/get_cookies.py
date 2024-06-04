@@ -4,6 +4,9 @@ import sqlite3
 import os
 import csv
 import sys
+from urllib.parse import urlparse
+
+domains = []
 
 def find_cookies_file():
     res = "cookies.sqlite"
@@ -13,6 +16,27 @@ def find_cookies_file():
         sys.exit(1)
 
     return res
+
+def extract_domains():
+    domains = []
+    # Check if at least one URL has been provided as a command-line argument
+    if len(sys.argv) > 1:
+        # Iterate over each argument passed to the script (skip the first one, which is the script name)
+        for url in sys.argv[1:]:
+            # Parse the URL to extract components
+            parsed_url = urlparse(url)
+            # Extract the domain (netloc) and add to the list
+            domain = parsed_url.netloc
+            if domain:  # Only add if the domain is successfully extracted
+                domains.append(domain)
+        
+        # Print or process the list of domains
+        print("Extracted domains:")
+        for domain in domains:
+            print(domain)
+    else:
+        print("Please provide one or more URLs as command-line arguments.")
+        sys.exit(1)
 
 def export_cookies_to_csv(sqlite_file, csv_file):
     """Exports cookies from SQLite to CSV format."""
@@ -52,17 +76,22 @@ def convert_csv_to_txt(csv_file, txt_file):
             value = row['value']
             txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
 
-# Define file paths
-#sqlite_file = 'cookies.sqlite'
-sqlite_file = 'cookies.sqlite'
-csv_file = 'cookies.csv'
-txt_file = 'cookies.txt'
+def main():
+    # Define file paths
+    #sqlite_file = 'cookies.sqlite'
+    extract_domains()
+    sqlite_file = find_cookies_file()
+    csv_file = 'cookies.csv'
+    txt_file = 'cookies.txt'
 
-# Export cookies to CSV
-export_cookies_to_csv(sqlite_file, csv_file)
+    # Export cookies to CSV
+    export_cookies_to_csv(sqlite_file, csv_file)
 
-# Convert CSV to cookies.txt format
-convert_csv_to_txt(csv_file, txt_file)
+    # Convert CSV to cookies.txt format
+    convert_csv_to_txt(csv_file, txt_file)
 
-print("Conversion completed. Check cookies.txt file.")
+    print("Conversion completed. Check cookies.txt file.")
+
+if __name__ == "__main__":
+    main()
 
