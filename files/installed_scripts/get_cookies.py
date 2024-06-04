@@ -4,6 +4,7 @@ import sqlite3
 import os
 import csv
 import sys
+import validators
 from urllib.parse import urlparse
 
 domains = []
@@ -23,6 +24,9 @@ def extract_domains():
     if len(sys.argv) > 1:
         # Iterate over each argument passed to the script (skip the first one, which is the script name)
         for url in sys.argv[1:]:
+            if validators.domain(url):
+                domains.append(url)
+                continue
             # Parse the URL to extract components
             parsed_url = urlparse(url)
             # Extract the domain (netloc) and add to the list

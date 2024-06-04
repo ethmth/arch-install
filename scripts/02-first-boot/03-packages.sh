@@ -201,6 +201,7 @@ python-websockets
 python-dotenv
 python-pyopenssl
 python-docker
+python-validators
 pyenv
 qemu-user-static
 qemu-user-static-binfmt
