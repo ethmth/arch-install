@@ -19,25 +19,15 @@ def find_cookies_file():
     return res
 
 def extract_domains():
-    domains = []
-    # Check if at least one URL has been provided as a command-line argument
     if len(sys.argv) > 1:
-        # Iterate over each argument passed to the script (skip the first one, which is the script name)
         for url in sys.argv[1:]:
             if validators.domain(url):
                 domains.append(url)
                 continue
-            # Parse the URL to extract components
             parsed_url = urlparse(url)
-            # Extract the domain (netloc) and add to the list
             domain = parsed_url.netloc
-            if domain:  # Only add if the domain is successfully extracted
+            if domain and validators.domain(domain):
                 domains.append(domain)
-        
-        # Print or process the list of domains
-        print("Extracted domains:")
-        for domain in domains:
-            print(domain)
     else:
         print("Please provide one or more URLs as command-line arguments.")
         sys.exit(1)
@@ -48,10 +38,16 @@ def export_cookies_to_csv(sqlite_file, csv_file):
     conn = sqlite3.connect(sqlite_file)
     cursor = conn.cursor()
 
-    # Query to extract needed cookie information
     query = """
-    SELECT host, path, isSecure, expiry, name, value FROM moz_cookies;
+    SELECT host, path, isSecure, expiry, name, value 
+    FROM moz_cookies
+    WHERE 
     """
+    for domain in domains:
+        query += f"host='{domain}' OR "
+    query += "host='poopoo';"
+
+    print("QUERY IS", query)
 
     # Execute the query and fetch all results
     cursor.execute(query)
@@ -82,8 +78,9 @@ def convert_csv_to_txt(csv_file, txt_file):
 
 def main():
     # Define file paths
-    #sqlite_file = 'cookies.sqlite'
     extract_domains()
+
+    print(domains)
     sqlite_file = find_cookies_file()
     csv_file = 'cookies.csv'
     txt_file = 'cookies.txt'
