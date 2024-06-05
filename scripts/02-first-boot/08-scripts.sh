@@ -50,6 +50,8 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/pdf2png /usr/bin/pdf2png
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/svg2ico /usr/bin/svg2ico
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/get-cookies /usr/bin/get-cookies
+
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -64,6 +66,7 @@ sudo chmod +rx /usr/bin/git-make-like
 sudo chmod +rx /usr/bin/pdf2png
 sudo chmod +rx /usr/bin/nightlight
 sudo chmod +rx /usr/bin/svg2ico
+sudo chmod +rx /usr/bin/get-cookies
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
 echo "If so, run ./09-initcpio.sh"

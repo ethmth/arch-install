@@ -19,6 +19,7 @@ if ! [ -f "$SCRIPT_DIR/pingphone.desktop" ]; then
     exit 0
 fi
 
+
 mkdir -p /home/$CUR_USER/.config/autostart
 
 cp "$SCRIPT_DIR/pingphone.desktop" /home/$CUR_USER/.config/autostart/pingphone.desktop
@@ -42,3 +43,11 @@ echo "export SSHPASS=\"password\"" >> /home/$CUR_USER/.bashrc
 
 git config --global alias.pr '!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f'
 git config --global http.version HTTP/1.1
+
+if ! [ -f "$SCRIPT_DIR/get-cookies" ]; then
+    echo "$SCRIPT_DIR/get-cookies not found"
+    exit 0
+fi
+
+sudo cp $SCRIPT_DIR/get-cookies /usr/bin/get-cookies
+sudo chmod +rx /usr/bin/get-cookies
