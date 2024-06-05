@@ -39,6 +39,7 @@ python3-django
 python3-phonenumbers
 python3-progressbar
 python3-autopep8
+python3-validators
 python-is-python3
 npm
 speedtest-cli
