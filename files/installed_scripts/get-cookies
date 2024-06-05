@@ -67,8 +67,11 @@ def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/
     cookies = cursor.fetchall()
 
     with open(txt_file, 'w') as txtfile:
+        txtfile.write("# Netscape HTTP Cookie File\n")
         for cookie in cookies:
             domain = cookie[0]
+            if domain[0] != '.' and domain.count(".") < 2:
+                domain = f".{domain}"
             path = cookie[1]
             secure = 'TRUE' if cookie[2] == '1' else 'FALSE'
             expiry = cookie[3]
