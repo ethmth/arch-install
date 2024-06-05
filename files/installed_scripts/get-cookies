@@ -9,11 +9,14 @@ from urllib.parse import urlparse
 
 domains = []
 
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
 def find_cookies_file():
     res = "cookies.sqlite"
 
     if not os.path.exists(res):
-        print(res, "does not exist")
+        eprint(res, "does not exist")
         sys.exit(1)
 
     return res
@@ -29,7 +32,7 @@ def extract_domains():
             if domain and validators.domain(domain):
                 domains.append(domain)
     else:
-        print("Please provide one or more URLs as command-line arguments.")
+        eprint("Please provide one or more URLs as command-line arguments.")
         sys.exit(1)
 
 def export_cookies_to_txt(sqlite_file, txt_file):
@@ -49,12 +52,6 @@ def export_cookies_to_txt(sqlite_file, txt_file):
     cursor.execute(query)
     cookies = cursor.fetchall()
 
-    # Write the results to a CSV file
-    #with open(csv_file, 'w', newline='') as file:
-    #    writer = csv.writer(file)
-    #    writer.writerow(['domain', 'path', 'secure', 'expiry', 'name', 'value'])
-    #    for cookie in cookies:
-    #        writer.writerow(cookie)
     with open(txt_file, 'w') as txtfile:
         for cookie in cookies:
             domain = cookie[0]
@@ -67,18 +64,13 @@ def export_cookies_to_txt(sqlite_file, txt_file):
 
     conn.close()
 
-#def convert_csv_to_txt(csv_file, txt_file):
-#    """Converts CSV format to the cookies.txt format."""
-#    with open(csv_file, 'r') as csvfile, open(txt_file, 'w') as txtfile:
-#        reader = csv.DictReader(csvfile)
-#        for row in reader:
-#            domain = row['domain']
-#            path = row['path']
-#            secure = 'TRUE' if row['secure'] == '1' else 'FALSE'
-#            expiry = row['expiry']
-#            name = row['name']
-#            value = row['value']
-#            txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
+    res = ""
+    with open(txt_file, 'r') as txtfile:
+        res = txtfile.readlines() 
+    res = "".join(res)
+        
+    return res
+
 
 def main():
     sqlite_file = find_cookies_file()
@@ -86,9 +78,8 @@ def main():
     
     txt_file = 'cookies.txt'
 
-    export_cookies_to_txt(sqlite_file, txt_file)
-
-    print("Conversion completed. Check cookies.txt file.")
+    res = export_cookies_to_txt(sqlite_file, txt_file)
+    print(res)
 
 if __name__ == "__main__":
     main()
