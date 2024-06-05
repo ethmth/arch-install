@@ -202,6 +202,9 @@ python-dotenv
 python-pyopenssl
 python-docker
 python-validators
+python-maxminddb
+python-aiodns
+python-aiohttp
 pyenv
 qemu-user-static
 qemu-user-static-binfmt

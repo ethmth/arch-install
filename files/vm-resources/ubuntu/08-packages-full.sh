@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+python3.9
+python3.9-venv
 pipx
 trimage
 smartmontools
@@ -40,6 +42,9 @@ python3-phonenumbers
 python3-progressbar
 python3-autopep8
 python3-validators
+python3-maxminddb
+python3-aiohttp
+python3-aiodns
 python-is-python3
 npm
 speedtest-cli
