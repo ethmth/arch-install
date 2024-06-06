@@ -12,6 +12,7 @@ Dockerfile
 docker-compose.yml
 preview-config.sh
 trigger-scan.sh
+database-connect.sh
 mount-checker
 mount-runner
 "

@@ -8,6 +8,7 @@ fi
 #python3.9
 #python3.9-venv
 #gh
+#mariadb-client-core
 packages="
 kdeconnect
 pipx
