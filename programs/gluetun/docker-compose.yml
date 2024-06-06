@@ -12,6 +12,16 @@ services:
       - 8880:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
+      - 1080:1080/tcp # Socks5
+      - 1080:1080/udp # Socks5
     volumes:
       - ./wg0.conf:/gluetun/wireguard/wg0.conf
+    restart: unless-stopped
+
+  gluetun-socks5:
+    image: serjs/go-socks5-proxy
+    container_name: gluetun-socks5
+    depends_on:
+      - gluetun-home
+    network_mode: "service:gluetun-home"
     restart: unless-stopped

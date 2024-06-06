@@ -18,3 +18,13 @@ services:
       - 8880:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
+      - 1080:1080/tcp # Socks5
+      - 1080:1080/udp # Socks5
+
+  gluetun-socks5:
+    image: serjs/go-socks5-proxy
+    container_name: gluetun-socks5
+    depends_on:
+      - gluetun-mullvad
+    network_mode: "service:gluetun-mullvad"
+    restart: unless-stopped
