@@ -3,11 +3,11 @@ services:
     build: mount-checker
     container_name: nextcloud-checker
     volumes:
-      - /media/veracrypt1:/media/veracrypt1
+      - /media:/media
     healthcheck:
-      test: ["CMD-SHELL", "mountpoint -q /media/veracrypt1"]
+      test: ["CMD-SHELL", "[ -d /media/veracrypt1 ]"]
       interval: 5s
-      timeout: 5s
+      timeout: 3s
       start_period: 0s
       retries: 2147483647
     restart: unless-stopped
