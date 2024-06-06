@@ -2,14 +2,28 @@ services:
   mount-checker:
     build: mount-checker
     container_name: nextcloud-checker
-    healthcheck:
-      test: ["CMD-SHELL", "mountpoint -q /media/veracrypt1"]
     volumes:
       - /media/veracrypt1:/media/veracrypt1
+    healthcheck:
+      test: ["CMD-SHELL", "mountpoint -q /media/veracrypt1"]
+    restart: unless-stopped
+
+  mount-runner:
+    build: mount-runner
+    container_name: nextcloud-runner
+    depends_on:
+      mount-checker:
+        condition: service_healthy
+    volumes:
+      - /media/veracrypt1:/media/veracrypt1
+    restart: unless-stopped
   
   db:
     image: mariadb:10.6
     container_name: nextcloud-db
+    depends_on:
+      mount-checker:
+        condition: service_healthy
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     volumes:
       - ./db:/var/lib/mysql
@@ -23,13 +37,13 @@ services:
   app:
     build: .
     container_name: nextcloud-app
+    depends_on:
+      mount-checker:
+        condition: service_healthy
     ports:
       - 8080:80
     links:
       - db
-    depends_on:
-      mount-checker:
-        condition: service_healthy
     volumes:
       - ./nextcloud:/var/www/html
       - /media/veracrypt1:/opt/mount
