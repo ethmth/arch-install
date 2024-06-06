@@ -14,16 +14,7 @@ if ! [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $CONTAINER_NAME installation location")
-
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected. Run this script again with target drive mounted."
-    exit 1
-fi
-
-if [ "$LOC" == "/" ]; then
-    LOC="$HOME"
-fi
+LOC="$HOME"
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"

@@ -1,11 +1,14 @@
+version: "3"
 services:
-  gluetun-home:
+  gluetun-mullvad:
+    container_name: gluetun-mullvad
     image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=openvpn
+      - OPENVPN_PROTOCOL=tcp
       - OPENVPN_USER=<MULLVAD_USER_ID>
       - VPN_ENDPOINT_PORT=443
       - HTTPPROXY=on
@@ -14,4 +17,3 @@ services:
       - 8880:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
-    restart: unless-stopped
