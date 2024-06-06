@@ -12,6 +12,8 @@ Dockerfile
 docker-compose.yml
 preview-config.sh
 trigger-scan.sh
+mount-checker
+mount-runner
 "
 
 if ! [[ $EUID -ne 0 ]]; then

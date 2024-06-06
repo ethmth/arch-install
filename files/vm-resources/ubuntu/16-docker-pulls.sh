@@ -8,6 +8,7 @@ fi
 dockers="
 nextcloud:stable
 mariadb:10.6
+alpine:latest
 "
 
 dockers=${dockers//$'\n'/ }

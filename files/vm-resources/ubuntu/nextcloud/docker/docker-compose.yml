@@ -6,6 +6,10 @@ services:
       - /media/veracrypt1:/media/veracrypt1
     healthcheck:
       test: ["CMD-SHELL", "mountpoint -q /media/veracrypt1"]
+      interval: 5s
+      timeout: 5s
+      start_period: 0s
+      retries: 2147483647
     restart: unless-stopped
 
   mount-runner:
