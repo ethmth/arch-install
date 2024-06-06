@@ -5,9 +5,9 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+#python3.9
+#python3.9-venv
 packages="
-python3.9
-python3.9-venv
 pipx
 trimage
 smartmontools

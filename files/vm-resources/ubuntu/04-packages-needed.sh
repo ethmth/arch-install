@@ -20,7 +20,7 @@ openssh-server
 apparmor
 flatpak
 docker.io
-docker-compose
+docker-compose-v2
 nmap
 neofetch
 python3
