@@ -21,11 +21,11 @@ services:
       - db
     volumes:
       - ./nextcloud:/var/www/html
-      - /media:/opt/mount:ro
+      - /media:/opt/mount
     environment:
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
-      - NEXTCLOUD_TRUSTED_DOMAINS="localhost:8080 10.152.153.14:8080 10.152.152.14:8080"
+      - NEXTCLOUD_TRUSTED_DOMAINS="localhost 10.152.153.14 10.152.152.14"
     restart: unless-stopped
