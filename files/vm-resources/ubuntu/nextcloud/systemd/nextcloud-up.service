@@ -1,0 +1,12 @@
+[Unit]
+Description=Run docker-compose up on nextcloud on startup.
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/CUR_USER/programs/nextcloud
+ExecStart=/usr/bin/docker compose up -d
+User=CUR_USER
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount nextloud webdav
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=http://localhost:8080/remote.php/dav/files/admin/Local
+Where=/media/nextcloud
+Options=uid=1000,file_mode=0664,dir_mode=2775,grpid
+Type=davfs
+TimeoutSec=5
+
+[Install]
+WantedBy=multi-user.target

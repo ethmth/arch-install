@@ -6,8 +6,8 @@ services:
       - /media:/media:ro
     healthcheck:
       test: ["CMD-SHELL", "[ -d /media/veracrypt1 ]"]
-      interval: 5s
-      timeout: 3s
+      interval: 1s
+      timeout: 1s
       start_period: 0s
       retries: 2147483647
     stop_grace_period: 1s
