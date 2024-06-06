@@ -21,7 +21,7 @@ services:
       - db
     volumes:
       - ./nextcloud:/var/www/html
-      - /media/veracrypt1:/opt/mount:ro
+      - /media:/opt/mount:ro
     environment:
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=nextcloud
