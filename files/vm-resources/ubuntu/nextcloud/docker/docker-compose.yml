@@ -3,13 +3,14 @@ services:
     build: mount-checker
     container_name: nextcloud-checker
     volumes:
-      - /media:/media
+      - /media:/media:ro
     healthcheck:
       test: ["CMD-SHELL", "[ -d /media/veracrypt1 ]"]
       interval: 5s
       timeout: 3s
       start_period: 0s
       retries: 2147483647
+    stop_grace_period: 1s
     restart: unless-stopped
 
   mount-runner:
@@ -19,7 +20,8 @@ services:
       mount-checker:
         condition: service_healthy
     volumes:
-      - /media/veracrypt1:/media/veracrypt1
+      - /media/veracrypt1:/media/veracrypt1:ro
+    stop_grace_period: 1s
     restart: unless-stopped
   
   db:
@@ -56,5 +58,5 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
-      - NEXTCLOUD_TRUSTED_DOMAINS="localhost 10.152.153.14 10.152.152.14"
+      - NEXTCLOUD_TRUSTED_DOMAINS="localhost 10.152.152.14 10.152.153.14"
     restart: unless-stopped

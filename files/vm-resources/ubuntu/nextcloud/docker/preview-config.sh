@@ -15,4 +15,4 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:syste
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 10 --value='OC\\Preview\\PDF'" www-data
 
 
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set trusted_domains 2 --value='10.152.153.14'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set trusted_domains 2 --value='10.152.153.14'" www-data
