@@ -7,7 +7,7 @@ fi
 
 CUR_USER=$(whoami)
 
-sudo usermod -aG docker $CUR_USER
+sudo usermod -aG docker,davfs2 $CUR_USER
 
 groups $CUR_USER
 
