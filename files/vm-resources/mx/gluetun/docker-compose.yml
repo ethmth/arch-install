@@ -10,6 +10,7 @@ services:
       - VPN_TYPE=openvpn
       - OPENVPN_PROTOCOL=tcp
       - OPENVPN_USER=<MULLVAD_USER_ID>
+      - SERVER_CITIES=amsterdam
       - VPN_ENDPOINT_PORT=443
       - HTTPPROXY=on
       - SHADOWSOCKS=on
