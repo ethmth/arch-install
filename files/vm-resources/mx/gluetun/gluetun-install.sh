@@ -1,17 +1,12 @@
 #!/bin/bash
 
-CONTAINER_NAME="nextcloud"
+CONTAINER_NAME="gluetun-mullvad"
 
 VOLUMES="
-nextcloud
-db
 "
 
 FILES="
-Dockerfile
 docker-compose.yml
-preview-config.sh
-trigger-scan.sh
 "
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -19,7 +14,7 @@ if ! [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
+LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $CONTAINER_NAME installation location")
 
 if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
     echo "Nothing was selected. Run this script again with target drive mounted."
@@ -32,16 +27,15 @@ fi
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"
-        exit 1
+	exit 1
 fi
 
 LOC="$LOC/programs"
 mkdir -p $LOC/$CONTAINER_NAME
 
-
 for file in $FILES; do
     if [ -d "$file" ]; then
-        cp -r $file $LOC/$CONTAINER_NAME/$file
+        cp -r $file $LOC/$CONTAINER_NAME/
     elif [ -f "$file" ]; then
         cp $file $LOC/$CONTAINER_NAME/$file
     fi
@@ -51,6 +45,8 @@ for vol in $VOLUMES; do
     mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
+
+echo "Add your VPN username to the file."
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
