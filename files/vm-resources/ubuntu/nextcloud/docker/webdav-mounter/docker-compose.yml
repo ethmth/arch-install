@@ -1,7 +1,0 @@
-services:
-  webdav-mounter:
-    build: .
-    container_name: nextcloud-webdav
-    volumes:
-      - /media:/media
-    restart: unless-stopped
