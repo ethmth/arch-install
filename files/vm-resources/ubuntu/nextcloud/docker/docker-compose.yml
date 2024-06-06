@@ -1,4 +1,12 @@
 services:
+  mount-checker:
+    build: mount-checker
+    container_name: nextcloud-checker
+    healthcheck:
+      test: ["CMD-SHELL", "mountpoint -q /media/veracrypt1"]
+    volumes:
+      - /media/veracrypt1:/media/veracrypt1
+  
   db:
     image: mariadb:10.6
     container_name: nextcloud-db
@@ -19,9 +27,12 @@ services:
       - 8080:80
     links:
       - db
+    depends_on:
+      mount-checker:
+        condition: service_healthy
     volumes:
       - ./nextcloud:/var/www/html
-      - /media:/opt/mount
+      - /media/veracrypt1:/opt/mount
     environment:
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=nextcloud
