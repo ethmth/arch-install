@@ -13,4 +13,4 @@ fi
 cd nextcloud-android
 ./gradlew assembleRelease
 
-mv app/build/outputs/apk/release/app*.apk ../Nextcloud.apk
+mv app/build/outputs/apk/generic/release/*.apk ../Nextcloud.apk
