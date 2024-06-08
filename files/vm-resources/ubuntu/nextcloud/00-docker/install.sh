@@ -15,6 +15,7 @@ trigger-scan.sh
 database-connect.sh
 mount-checker
 mount-runner
+web
 "
 
 if ! [[ $EUID -ne 0 ]]; then

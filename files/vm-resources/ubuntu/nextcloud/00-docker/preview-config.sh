@@ -30,6 +30,18 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:enable f
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set updatechecker --value=false --type=boolean" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set has_internet_connection --value=false --type=boolean" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set upgrade.disable-web --value=true --type=boolean" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set knowledgebaseenabled --value=false --type=boolean" www-data
 
 # disable filelocking
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set filelocking.enabled --value=false --type=boolean" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set filelocking.enabled --value=false --type=boolean" www-data
+
+# change default app
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set defaultapp --value='files,gallery'" www-data
+
+# disable background scan
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set files_no_background_scan --value=true --type=boolean" www-data
+
+# setup redis
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.local --value='\\OC\\Memcache\\Redis'" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.distributed --value='\\OC\\Memcache\\Redis'" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.locking --value='\\OC\\Memcache\\Redis'" www-data
