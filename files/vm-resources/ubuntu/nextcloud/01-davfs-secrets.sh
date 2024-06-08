@@ -7,6 +7,6 @@ fi
 
 CUR_USER=$(whoami)
 
-davfs_string="http://localhost:8080/remote.php/dav/files/admin/Local admin admin"
+davfs_string="https://nextcloud.local/remote.php/dav/files/admin/Local admin admin"
 sudo sh -c "echo \"$davfs_string\" >> /etc/davfs2/secrets"
 

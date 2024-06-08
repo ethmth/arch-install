@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# memories
 VERSION="v5.5.0"
 REPO="nextcloud/previewgenerator"
 

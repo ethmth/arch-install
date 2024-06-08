@@ -12,17 +12,6 @@ services:
       retries: 2147483647
     stop_grace_period: 1s
     restart: unless-stopped
-
-  mount-runner:
-    build: mount-runner
-    container_name: nextcloud-runner
-    depends_on:
-      mount-checker:
-        condition: service_healthy
-    volumes:
-      - /media/veracrypt1:/media/veracrypt1:ro
-    stop_grace_period: 1s
-    restart: on-failure
   
   db:
     image: postgres:alpine
@@ -83,9 +72,9 @@ services:
       - APACHE_BODY_LIMIT=0
     restart: on-failure
   
-  caddy:
-    build: caddy
-    container_name: nextcloud-caddy
+  web:
+    build: web
+    container_name: nextcloud-web
     depends_on:
       mount-checker:
         condition: service_healthy
@@ -95,30 +84,10 @@ services:
     links:
       - app
     volumes:
-      # - ./Caddyfile:/etc/caddy/Caddyfile
-      # - ./caddy_data:/data
       - ./nextcloud:/var/www/html:z,ro
       - ./nextcloud.local.crt:/etc/ssl/certs/cert.crt:ro
       - ./nextcloud.local.key:/etc/ssl/private/cert.key:ro
-    # volumes_from:
-    #   - app
     restart: on-failure
-
-  # caddy:
-  #   image: lucaslorentz/caddy-docker-proxy:ci-alpine
-  #   container_name: nextcloud-caddy
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - $DOCKERDIR/caddy/caddy_data:/data
-  #     - $DOCKERDIR/caddy/config:/config
-  #     - $DOCKERDIR/nextcloud/var/www/html:/nextcloud/var/www/html
-  #     - $DOCKERDIR/nextcloud/var/data:/nextcloud/var/nextdata
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #   networks: 
-  #     - web-proxy
-  #   restart: on-failure
   
   cron:
     image: nextcloud:fpm
@@ -134,4 +103,3 @@ services:
     entrypoint: /cron.sh
     stop_grace_period: 3s
     restart: on-failure
-

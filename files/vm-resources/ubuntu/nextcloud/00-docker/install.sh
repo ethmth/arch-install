@@ -5,7 +5,6 @@ CONTAINER_NAME="nextcloud"
 VOLUMES="
 nextcloud
 db
-caddy_data
 "
 
 FILES="
@@ -20,10 +19,7 @@ docker-compose.yml
 13-memories-scan.sh
 database-connect.sh
 mount-checker
-mount-runner
 web
-proxy
-caddy
 $HOME/certs/nextcloud.local.crt
 $HOME/certs/nextcloud.local.key
 "

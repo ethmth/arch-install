@@ -29,4 +29,9 @@ fi
 
 curl -L -o memories.tar.gz "$ASSET_URL"
 
+if ! [ -f "memories.tar.gz" ]; then
+  echo "File download failed."
+  exit 1
+fi
+
 sudo tar -xvf memories.tar.gz -C nextcloud/apps
