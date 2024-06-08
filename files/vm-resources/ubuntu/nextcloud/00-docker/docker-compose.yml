@@ -42,6 +42,15 @@ services:
       - MYSQL_USER=nextcloud
     restart: no
 
+  redis:
+    image: redis
+    container_name: nextcloud-redis
+    depends_on:
+      mount-checker:
+        condition: service_healthy
+    command: redis-server --requirepass password
+    restart: no
+
   app:
     build: .
     container_name: nextcloud-app
@@ -52,6 +61,7 @@ services:
       - 8080:80
     links:
       - db
+      - redis
     volumes:
       - ./nextcloud:/var/www/html
       - /media/veracrypt1:/opt/mount
@@ -60,6 +70,7 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
+      - REDIS_HOST_PASSWORD=password
       - NEXTCLOUD_TRUSTED_DOMAINS="localhost 10.152.152.14 10.152.153.14"
       - PHP_MEMORY_LIMIT=12G
       - PHP_UPLOAD_LIMIT=15G
