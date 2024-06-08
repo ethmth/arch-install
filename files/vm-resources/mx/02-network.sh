@@ -10,6 +10,10 @@ if ! [ -f "switch-script.sh" ]; then
 	exit 1
 fi
 
+if ! ( cat "/etc/hosts" | grep -q "nextcloud.local" ); then
+    sudo sh -c "echo '10.152.153.14     nextcloud.local' >> /etc/hosts"
+fi
+
 chmod +rx switch-script.sh
 cp switch-script.sh ~/switch-script.sh
 chmod +rx ~/switch-script.sh

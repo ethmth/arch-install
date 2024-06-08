@@ -8,6 +8,7 @@ fi
 update-rc.d -f packagekit remove
 
 packages="
+dnsmasq
 fzf
 socat
 spice-vdagent
