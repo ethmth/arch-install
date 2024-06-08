@@ -10,7 +10,9 @@ db
 FILES="
 Dockerfile
 docker-compose.yml
-preview-config.sh
+01-config.sh
+02-install-apps.sh
+03-app-config.sh
 trigger-scan.sh
 database-connect.sh
 mount-checker
