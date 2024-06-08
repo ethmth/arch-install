@@ -51,6 +51,7 @@ python3-aiodns
 python-is-python3
 npm
 speedtest-cli
+openssl
 openjdk-8-jdk
 openjdk-17-jdk
 openjdk-11-jdk

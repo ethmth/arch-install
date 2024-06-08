@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+ca-certificates
 wl-clipboard
 davfs2
 aptitude

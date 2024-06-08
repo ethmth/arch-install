@@ -14,7 +14,7 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:syste
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 6 --value='OC\\Preview\\PDF'" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 7 --value='OC\\Preview\\GIF'" www-data
 
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set preview_imaginary_url --value='http://host.docker.internal:9000'" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set preview_imaginary_url --value='http://imaginary:9000'" www-data
 
 
 # docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 0 --value='OC\\Preview\\Movie'" www-data

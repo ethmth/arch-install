@@ -25,19 +25,17 @@ services:
     restart: on-failure
   
   db:
-    image: mariadb:10.6
+    image: postgres:alpine
     container_name: nextcloud-db
     depends_on:
       mount-checker:
         condition: service_healthy
-    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db:/var/lib/postgresql/data:z
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
     restart: on-failure
 
   redis:
@@ -55,8 +53,6 @@ services:
       mount-checker:
         condition: service_healthy
     command: -p 9000 -enable-url-source
-    ports:
-      - 9000:9000
     restart: on-failure
 
   app:
@@ -70,13 +66,13 @@ services:
       - redis
       - imaginary
     volumes:
-      - ./nextcloud:/var/www/html
+      - ./nextcloud:/var/www/html:z
       - /media/veracrypt1:/opt/mount
     environment:
-      - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_HOST=db
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_HOST=db
       - REDIS_HOST=redis
       - NEXTCLOUD_ADMIN_USER=admin
       - NEXTCLOUD_ADMIN_PASSWORD=admin
@@ -85,8 +81,6 @@ services:
       - PHP_MEMORY_LIMIT=12G
       - PHP_UPLOAD_LIMIT=16G
       - APACHE_BODY_LIMIT=0
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     restart: on-failure
   
   web:
@@ -100,6 +94,20 @@ services:
     links:
       - app
     volumes:
-      - ./nextcloud:/var/www/html:ro
+      - ./nextcloud:/var/www/html:z,ro
+    restart: on-failure
+  
+  cron:
+    image: nextcloud:fpm
+    container_name: nextcloud-cron
+    depends_on:
+      mount-checker:
+        condition: service_healthy
+    links:
+      - db
+      - redis
+    volumes:
+      - ./nextcloud:/var/www/html:z
+    entrypoint: /cron.sh
     restart: on-failure
 
