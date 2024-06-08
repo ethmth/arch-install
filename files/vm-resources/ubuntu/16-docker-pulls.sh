@@ -6,11 +6,12 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 dockers="
-nextcloud:stable-fpm
-mariadb:10.6
 alpine:latest
-nginx:alpine
+postgres:alpine
 redis:alpine
+h2non/imaginary:latest
+nextcloud:fpm
+nginx:alpine
 "
 
 dockers=${dockers//$'\n'/ }

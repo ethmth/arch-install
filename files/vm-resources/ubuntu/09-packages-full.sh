@@ -93,7 +93,6 @@ libpcap-dev
 libbz2-dev
 mesa-utils 
 kate
-ca-certificates
 xvfb
 veracrypt
 unrar
