@@ -42,3 +42,18 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:syste
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.locking --value='\\OC\\Memcache\\Redis'" www-data
 
 # disable unused apps - TODO
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable files_sharing" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable federation" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable files_downloadlimit" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable weather_status" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable user_status" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable survey_client" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable circles" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable updatenotification" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable support" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable sharebymail" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable related_resources" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable recommendations" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable nextcloud_announcements" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable files_reminders" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable contactsinteraction" www-data

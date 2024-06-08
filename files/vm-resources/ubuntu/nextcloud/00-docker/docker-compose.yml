@@ -45,7 +45,7 @@ services:
     restart: on-failure
 
   app:
-    build: .
+    build: app
     container_name: nextcloud-app
     depends_on:
       mount-checker:
@@ -87,19 +87,4 @@ services:
       - ./nextcloud:/var/www/html:z,ro
       - ./nextcloud.local.crt:/etc/ssl/certs/cert.crt:ro
       - ./nextcloud.local.key:/etc/ssl/private/cert.key:ro
-    restart: on-failure
-  
-  cron:
-    image: nextcloud:fpm
-    container_name: nextcloud-cron
-    depends_on:
-      mount-checker:
-        condition: service_healthy
-    links:
-      - db
-      - redis
-    volumes:
-      - ./nextcloud:/var/www/html:z
-    entrypoint: /cron.sh
-    stop_grace_period: 3s
     restart: on-failure

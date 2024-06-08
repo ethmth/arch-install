@@ -1,0 +1,2 @@
+# Run the preview generation command every 10 minutes as www-data user
+*/10 * * * * www-data /var/www/html/occ preview:pre-generate
