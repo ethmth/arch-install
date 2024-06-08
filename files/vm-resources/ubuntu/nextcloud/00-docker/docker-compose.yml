@@ -83,7 +83,7 @@ services:
       - NEXTCLOUD_INIT_HTACCESS=true
       - NEXTCLOUD_TRUSTED_DOMAINS="localhost 10.152.152.14 10.152.153.14"
       - PHP_MEMORY_LIMIT=12G
-      - PHP_UPLOAD_LIMIT=15G
+      - PHP_UPLOAD_LIMIT=16G
       - APACHE_BODY_LIMIT=0
     extra_hosts:
       - "host.docker.internal:host-gateway"
