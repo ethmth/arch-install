@@ -11,15 +11,18 @@ FILES="
 Dockerfile
 docker-compose.yml
 01-config.sh
-02-install-apps.sh
-03-app-config.sh
-trigger-scan.sh
+02-install-previewgenerator.sh
+03-install-memories.sh
+04-app-config.sh
+11-trigger-scan.sh
+12-previewgenerator-scan.sh
+13-memories-scan.sh
 database-connect.sh
 mount-checker
 mount-runner
 web
-~/certs/nextcloud.local.crt
-~/certs/nextcloud.local.key
+$HOME/certs/nextcloud.local.crt
+$HOME/certs/nextcloud.local.key
 "
 
 if ! [[ $EUID -ne 0 ]]; then
