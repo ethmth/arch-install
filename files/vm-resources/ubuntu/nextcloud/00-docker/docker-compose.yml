@@ -10,8 +10,6 @@ services:
       timeout: 1s
       start_period: 0s
       retries: 2147483647
-    stop_grace_period: 1s
-    stop_signal: SIGKILL
     restart: unless-stopped
 
   mount-runner:
@@ -22,8 +20,6 @@ services:
         condition: service_healthy
     volumes:
       - /media/veracrypt1:/media/veracrypt1:ro
-    stop_grace_period: 1s
-    stop_signal: SIGKILL
     restart: on-failure
   
   db:

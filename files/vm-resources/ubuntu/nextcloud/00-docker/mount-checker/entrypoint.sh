@@ -1,2 +1,2 @@
 #!/bin/sh
-while :; do sleep 2073600; done
+while :; do sleep 1; done
