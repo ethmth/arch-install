@@ -91,10 +91,13 @@ services:
         condition: service_healthy
     ports:
       - 8080:80
+      - 443:443
     links:
       - app
     volumes:
       - ./nextcloud:/var/www/html:z,ro
+      - ./nextcloud.local.crt:/opt/nextcloud.local.crt:ro
+      - ./nextcloud.local.key:/opt/nextcloud.local.key:ro
     restart: on-failure
   
   cron:

@@ -18,6 +18,8 @@ database-connect.sh
 mount-checker
 mount-runner
 web
+~/certs/nextcloud.local.crt
+~/certs/nextcloud.local.key
 "
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -49,7 +51,7 @@ for file in $FILES; do
     if [ -d "$file" ]; then
         cp -r $file $LOC/$CONTAINER_NAME/$file
     elif [ -f "$file" ]; then
-        cp $file $LOC/$CONTAINER_NAME/$file
+        cp $file $LOC/$CONTAINER_NAME
     fi
 done
 
