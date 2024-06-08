@@ -23,6 +23,7 @@ mount-checker
 mount-runner
 web
 proxy
+caddy
 $HOME/certs/nextcloud.local.crt
 $HOME/certs/nextcloud.local.key
 "

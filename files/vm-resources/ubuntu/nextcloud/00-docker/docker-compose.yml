@@ -96,8 +96,10 @@ services:
       - app
     volumes:
       # - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy_data:/data
+      # - ./caddy_data:/data
       - ./nextcloud:/var/www/html:z,ro
+      - ./nextcloud.local.crt:/etc/ssl/certs/cert.crt:ro
+      - ./nextcloud.local.key:/etc/ssl/private/cert.key:ro
     # volumes_from:
     #   - app
     restart: on-failure
