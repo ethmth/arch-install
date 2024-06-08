@@ -27,5 +27,8 @@ Nextcloud Local Common Name
 .
 EOF
 
+# cp ~/certs/myCA.pem ~/certs/myCA.crt
+openssl x509 -outform der -in myCA.pem -out myCA.crt
+
 sudo cp ~/certs/myCA.pem /usr/local/share/ca-certificates/myCA.crt
 sudo update-ca-certificates

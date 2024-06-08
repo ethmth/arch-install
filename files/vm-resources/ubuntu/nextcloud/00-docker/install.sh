@@ -21,6 +21,7 @@ database-connect.sh
 mount-checker
 mount-runner
 web
+proxy
 $HOME/certs/nextcloud.local.crt
 $HOME/certs/nextcloud.local.key
 "
