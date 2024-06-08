@@ -11,7 +11,7 @@ postgres:alpine
 redis:alpine
 h2non/imaginary:latest
 nextcloud:fpm
-nginx:alpine
+caddy:alpine
 "
 
 dockers=${dockers//$'\n'/ }
