@@ -16,6 +16,8 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:syste
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 8 --value='OC\\Preview\\TXT'" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 9 --value='OC\\Preview\\MarkDown'" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 10 --value='OC\\Preview\\PDF'" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 11 --value='OC\\Preview\\RIFF'" www-data
+docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set enabledPreviewProviders 12 --value='OC\\Preview\\WEBP'" www-data
 
 # add trusted domain
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set trusted_domains 2 --value='10.152.153.14'" www-data
