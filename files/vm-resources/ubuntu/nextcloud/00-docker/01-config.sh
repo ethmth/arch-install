@@ -69,14 +69,8 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:syste
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.locking --value='\\OC\\Memcache\\Redis'" www-data
 
 # https stuff
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwritehost --value='nextcloud.local'" www-data
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwriteprotocol --value='https'" www-data
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwritewebroot --value='/'" www-data
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwrite.cli.url --value='https://nextcloud.local/'" www-data
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set htaccess.RewriteBase --value='/'" www-data
-
-
-
-
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.distributed --value='\\OC\\Memcache\\Redis'" www-data
-docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set memcache.locking --value='\\OC\\Memcache\\Redis'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwritehost --value='nextcloud.local'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwriteprotocol --value='https'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwritewebroot --value='/'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set overwrite.cli.url --value='https://nextcloud.local/'" www-data
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set htaccess.RewriteBase --value='/'" www-data

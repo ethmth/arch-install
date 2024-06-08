@@ -5,6 +5,7 @@ CONTAINER_NAME="nextcloud"
 VOLUMES="
 nextcloud
 db
+caddy_data
 "
 
 FILES="
