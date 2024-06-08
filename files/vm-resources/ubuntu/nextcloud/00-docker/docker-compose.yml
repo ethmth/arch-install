@@ -51,9 +51,13 @@ services:
   imaginary:
     image: h2non/imaginary:latest
     container_name: nextcloud-imaginary
+    depends_on:
+      mount-checker:
+        condition: service_healthy
     command: -p 9000 -enable-url-source
     ports:
       - 9000:9000
+    restart: on-failure
 
   app:
     build: .

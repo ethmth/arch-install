@@ -1,3 +1,4 @@
 FROM nextcloud:stable-fpm
 
-RUN apt update && apt install -y imagemagick-common ffmpeg libmagickcore-dev webp # php8.3-imagick libde265 libheif
+RUN apt update && apt install -y ffmpeg
+# RUN apt update && apt install -y imagemagick-common ffmpeg libmagickcore-dev webp # php8.3-imagick libde265 libheif
