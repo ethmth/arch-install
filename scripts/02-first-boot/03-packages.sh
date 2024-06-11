@@ -240,6 +240,7 @@ packages+="
 hyprland
 hyprwayland-scanner
 hyprlang
+hyprcursor
 wlroots
 brightnessctl
 dunst
