@@ -73,6 +73,17 @@ class FileSystemEntity:
 
     def get_size(self):
         raise NotImplementedError("Subclasses must implement this method")
+    
+    def _format_size(self, size_bytes):
+        for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+            if size_bytes < 1024.0:
+                break
+            size_bytes /= 1024.0
+        formatted_size = "{:.4g}".format(size_bytes)
+        # _str_after_decimal = formatted_size.split(".")[1]
+        # if len(_str_after_decimal) > 1 and _str_after_decimal[-1] == '0':
+            # formatted_size = "{:.3g}".format(size_bytes)
+        return f"{formatted_size} {unit}"
 
     def __str__(self):
         return self.name
@@ -81,28 +92,87 @@ class File(FileSystemEntity):
     def __init__(self, fid, name, size, file_id, timestamp):
         super().__init__(fid, name, timestamp)
         self.size = size
+    
+    def is_folder(self):
+        return False
 
-    def get_size(self):
+    def get_size_real(self):
         return self.size
 
+    def get_size(self):
+        return self._format_size(self.size)
+
     def __str__(self):
-        return f"File: {self.name}, ID: {self.fid}, Size: {self.size} bytes, Timestamp: {self.timestamp}"
+        # return self.name
+        return f"File: {self.name}, Size: {self.get_size()} bytes, Timestamp: {self.timestamp}"
 
 class Folder(FileSystemEntity):
     def __init__(self, fid, name, timestamp):
         super().__init__(fid, name, timestamp)
         self.contents = []
 
+    def is_folder(self):
+        return True
+
     def add(self, entity):
         self.contents.append(entity)
 
+    def get_size_real(self):
+        return sum(entity.get_size_real() for entity in self.contents)
+    
     def get_size(self):
-        return sum(entity.get_size() for entity in self.contents)
+        size_bytes = sum(entity.get_size_real() for entity in self.contents)
+        return self._format_size(size_bytes)
+
+    def __iter__(self):
+        return FolderIterator(self)
+
+    def list_contents(self):
+        def count_files_and_folders(folder):
+            num_files = sum(1 for entity in folder.contents if isinstance(entity, File))
+            num_folders = sum(1 for entity in folder.contents if isinstance(entity, Folder))
+            for entity in folder.contents:
+                if isinstance(entity, Folder):
+                    sub_files, sub_folders = count_files_and_folders(entity)
+                    num_files += sub_files
+                    num_folders += sub_folders
+            return num_files, num_folders
+
+        num_files, num_folders = count_files_and_folders(self)
+        # print(f"Number of files: {num_files}, Number of folders: {num_folders}")
+        return f"{num_files} files, {num_folders} folders"
 
     def __str__(self):
-        contents_str = "\n  ".join(str(entity) for entity in self.contents)
-        return f"Folder: {self.name}, ID: {self.fid}, Timestamp: {self.timestamp}\n  {contents_str}"
+        # contents_str = "\n  ".join(str(entity) for entity in self.contents)
+        
+        child_folders = [str(entity) for entity in self.contents if entity.is_folder()]
+        contents_str = "\n".join(child_folders)
 
+        if len(child_folders) > 0:
+            contents_str = "\n" + contents_str
+        # contents_str = "\n".join(str(entity) for entity in self.contents if entity.is_folder())
+
+        return f"{self.name} [{self.get_size()}] [{self.list_contents()}]{contents_str}"
+
+class FolderIterator:
+    def __init__(self, folder):
+        self.folder = folder
+        self.index = 0
+        self.stack = []
+
+    def __next__(self):
+        if not self.stack:
+            self.stack.append(iter(self.folder.contents))
+        while self.stack:
+            try:
+                entity = next(self.stack[-1])
+                if isinstance(entity, File):
+                    return entity
+                elif isinstance(entity, Folder):
+                    self.stack.append(iter(entity.contents))
+            except StopIteration:
+                self.stack.pop()
+        raise StopIteration
 
 # ======================= THE REST ========================
 
@@ -215,9 +285,14 @@ def main():
         file_info = decode_file(entry, folder_key)
         file_list.append(file_info)
 
+    with open('file_list.json', 'w') as file:
+        json.dump(file_list, file, indent=4)
+
     root_folder = get_root_folder(file_list)
 
     print(root_folder)
+
+    root_folder.list_contents()
 
 if __name__ == "__main__":
     main()
