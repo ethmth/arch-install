@@ -41,8 +41,8 @@ for entry in "$target_dir"/*/; do
     formatted_size=$(printf "%0.4g %s" $float "$unit")
 
     # Count the number of photos and videos in the directory
-    photos=$(find "$dir" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | wc -l)
-    videos=$(find "$dir" -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mov" -o -iname "*.avi" -o -iname "*.webm" \) | wc -l)
+    photos=$(find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | wc -l)
+    videos=$(find "$dir" -type f \( -iname "*.mp4" -o -iname "*.mov" -o -iname "*.avi" -o -iname "*.webm" \) | wc -l)
 
     dir_basename=$(basename "$dir")
 
