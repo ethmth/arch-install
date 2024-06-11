@@ -218,6 +218,7 @@ thunar
 thunar-archive-plugin
 veracrypt
 virt-manager
+virt-viewer
 wireshark-qt
 xdg-desktop-portal
 xdg-desktop-portal-gtk
