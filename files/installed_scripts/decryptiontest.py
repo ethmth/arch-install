@@ -52,16 +52,29 @@ AES_ZERO_IV = i32a2bin([0,0,0,0])
 
 # Provided data and key
 folder_key = 'apUUDxeKcint2uZeeuSGwg'
+
+# Folder
+data2 = {
+    "h": "1y52TTbY",
+    "p": "0rxgDQiS",
+    "u": "k267seRCb_8",
+    "t": 1,
+    "a": "p89O9IGNcaX9_00Cx0zFAMNowz7VtPyK6l-yVjtvQ0s",
+    "k": "0rxgDQiS:dWcrWncCXKBln4grSR8kRw",
+    "ts": 1717799835
+}
+# File in Folder
 data = {
     "h": "975izBhA",
-    "p": "1y52TTbY",
+    "p": "1y52TTbY", # parent
     "u": "k267seRCb_8",
     "t": 0,
     "a": "_Y7cW73fp5F0NvIJGkfjHlrLusI65kMiHvEU00GzVmUNi25J7PNRA9jM3joZDpF-Itc7btxH9mrZjJm3GaTxIFrPnLTR847rnhszJ2woGccK6bHnZLqORR-M4wOC0At5",
     "k": "0rxgDQiS:3BuniY2Re_JZfftK7Pse-N6MjDIfmhKhck7pxsTbapw",
     "s": 491918278,
     "fa": "930:0*zCZfN2m1P6M/930:1*K4LkSW_uN00/446:8*fprzR4K0VU4",
-    "ts": 1717799962
+    "ts": 1717799962,
+    "temptest": "jDNPE8lg_3RVLie4PrGh-gQHiWNm"
 }
 
 
@@ -72,6 +85,20 @@ dec_node_k = Bin2UrlBASE64(decryptKey(UrlBASE642Bin(node_k[1]), _urlBase64KeyDec
 
 
 encAttr = data["a"]
+
+decrypted_at = aes_cbc_decrypt_nopadding(UrlBASE642Bin(encAttr), _urlBase64KeyDecode(dec_node_k), AES_ZERO_IV)
+
+print(decrypted_at)
+print(decrypted_at.decode())
+
+
+node_k = data2["k"].split(":")
+
+
+dec_node_k = Bin2UrlBASE64(decryptKey(UrlBASE642Bin(node_k[1]), _urlBase64KeyDecode(folder_key)))
+
+
+encAttr = data2["a"]
 
 decrypted_at = aes_cbc_decrypt_nopadding(UrlBASE642Bin(encAttr), _urlBase64KeyDecode(dec_node_k), AES_ZERO_IV)
 
