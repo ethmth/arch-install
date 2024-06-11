@@ -205,6 +205,7 @@ python-validators
 python-maxminddb
 python-aiodns
 python-aiohttp
+python-pycryptodome
 pyenv
 qemu-user-static
 qemu-user-static-binfmt
