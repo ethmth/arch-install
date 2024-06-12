@@ -53,6 +53,7 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/svg2ico /usr/bin/sv
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/get-cookies /usr/bin/get-cookies
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/virsh-net-start /usr/bin/virsh-net-start
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lss /usr/bin/lss
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/timecode /usr/bin/timecode
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -70,6 +71,7 @@ sudo chmod +rx /usr/bin/svg2ico
 sudo chmod +rx /usr/bin/get-cookies
 sudo chmod +rx /usr/bin/virsh-net-start
 sudo chmod +rx /usr/bin/lss
+sudo chmod +rx /usr/bin/timecode
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
 echo "If so, run ./09-initcpio.sh"
