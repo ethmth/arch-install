@@ -241,6 +241,7 @@ hyprland
 hyprwayland-scanner
 hyprlang
 hyprcursor
+hyprutils
 wlroots
 brightnessctl
 dunst
