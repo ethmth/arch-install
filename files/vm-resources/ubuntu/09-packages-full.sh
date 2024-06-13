@@ -10,6 +10,10 @@ fi
 #gh
 #mariadb-client-core
 packages="
+gsmartcontrol
+smartmontools
+mediainfo
+megatools
 kdeconnect
 pipx
 trimage
