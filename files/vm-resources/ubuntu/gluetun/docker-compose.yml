@@ -1,4 +1,3 @@
-version: "3"
 services:
   gluetun-mullvad:
     container_name: gluetun-mullvad

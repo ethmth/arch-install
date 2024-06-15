@@ -12,6 +12,9 @@ postgres:alpine
 redis:alpine
 nextcloud:fpm
 caddy:alpine
+ghcr.io/flaresolverr/flaresolverr:latest
+qmcgaw/gluetun
+serjs/go-socks5-proxy
 "
 
 dockers=${dockers//$'\n'/ }
