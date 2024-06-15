@@ -10,9 +10,10 @@ db
 FILES="
 docker-compose.yml
 01-config.sh
-02-install-previewgenerator.sh
-03-install-memories.sh
-04-enable-apps.sh
+02-mime.sh
+03-install-previewgenerator.sh
+04-install-memories.sh
+05-enable-apps.sh
 11-trigger-scan.sh
 12-previewgenerator-scan.sh
 13-memories-scan.sh

@@ -5,11 +5,11 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+# h2non/imaginary:latest
 dockers="
 alpine:latest
 postgres:alpine
 redis:alpine
-h2non/imaginary:latest
 nextcloud:fpm
 caddy:alpine
 "
