@@ -10,6 +10,8 @@ fi
 #gh
 #mariadb-client-core
 packages="
+wireshark
+ipcalc
 meld
 gsmartcontrol
 smartmontools
