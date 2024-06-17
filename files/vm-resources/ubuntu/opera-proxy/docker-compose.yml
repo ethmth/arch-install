@@ -1,0 +1,7 @@
+services:
+  opera-proxy:
+    image: yarmak/opera-proxy
+    container_name: opera-proxy
+    ports:
+      - 18080:18080
+    restart: unless-stopped
