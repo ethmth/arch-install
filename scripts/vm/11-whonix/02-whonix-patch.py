@@ -53,7 +53,8 @@ ext_root = ext_tree.getroot()
 gw_root.find(".//memory").text = "1048576"
 
 # Tun0 killswitch
-ext_root.find('forward').set('dev', 'tun0')
+# TODO: Add this back?
+# ext_root.find('forward').set('dev', 'tun0')
 
 
 # ============= END XML CHANGES =========================
