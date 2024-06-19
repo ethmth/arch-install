@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Function to print usage
+usage() {
+    echo "Usage: $0 <input_file>"
+    exit 1
+}
+
+# Check if the script is run as root
+if [ "$EUID" -eq 0 ]; then
+    echo "Please do not run this script as root."
+    exit 1
+fi
+
+# Check if exactly one argument is provided
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+# Get the input file and check if it exists
+input_file="$1"
+if [ ! -f "$input_file" ]; then
+    echo "File '$input_file' not found!"
+    exit 1
+fi
+
+# Extract the filename and extension
+filename=$(basename -- "$input_file")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+mkdir -p "$filename"
+
+ffmpeg -i "$input_file" "$filename/${filename}_%d.png"
+
+# Check if the ffmpeg command was successful
+if [ $? -eq 0 ]; then
+    echo "Frames extracted successfully."
+else
+    echo "Failed to extract frames."
+    exit 1
+fi
+
+
