@@ -8,6 +8,7 @@ fi
 snaps="
 codium
 chromium
+john-the-ripper
 "
 
 snaps=${snaps//$'\n'/ }

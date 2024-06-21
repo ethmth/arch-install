@@ -10,6 +10,7 @@ fi
 #gh
 #mariadb-client-core
 packages="
+testdisk
 wireshark
 ipcalc
 meld
