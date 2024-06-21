@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Check if a directory argument is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+# Check if the provided argument is a directory
+if [ ! -d "$1" ]; then
+    echo "Error: $1 is not a directory"
+    exit 1
+fi
+
+# Function to recursively cat plaintext files
+cat_plaintext_files() {
+    local dir="$1"
+
+    # Loop through all files and subdirectories in the current directory
+    for item in "$dir"/*; do
+        if [ -f "$item" ]; then
+            # Check if the file is a plaintext file (based on MIME type)
+            if file --mime-type "$item" | grep -q 'text/plain'; then
+                #echo "==> $item <=="
+                cat "$item"
+                #echo
+            fi
+        elif [ -d "$item" ]; then
+            # Recursively call the function for subdirectories
+            cat_plaintext_files "$item"
+        fi
+    done
+}
+
+# Call the function with the provided directory
+cat_plaintext_files "$1"
