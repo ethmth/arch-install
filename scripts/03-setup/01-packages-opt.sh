@@ -15,6 +15,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # visual-studio-code-bin
 packages="
+testdisk
 tesseract-data-eng
 spyder
 gunicorn
