@@ -132,7 +132,6 @@ cups
 dkms
 dnsmasq
 docker
-docker-compose
 docker-buildx
 ffmpeg
 firefox
