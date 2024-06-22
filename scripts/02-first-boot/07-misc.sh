@@ -117,6 +117,10 @@ if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "PATH=\$PATH:/home/$CUR_USER/.loc
 echo "PATH=\$PATH:/home/$CUR_USER/.local/bin" >> /home/$CUR_USER/.bashrc
 fi
 
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "PATH=\$PATH:/home/$CUR_USER/.dotnet/tools" ); then
+echo "PATH=\$PATH:/home/$CUR_USER/.dotnet/tools" >> /home/$CUR_USER/.bashrc
+fi
+
 # Docker container runtime setup
 if (( NVIDIA )); then
 string_to_echo=$(echo '{
