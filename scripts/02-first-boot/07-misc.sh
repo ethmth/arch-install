@@ -168,7 +168,7 @@ if (( HYPRLAND )); then
         echo "Note: Delete /opt/hyprland/split-monitor-workspaces/split-monitor-workspaces.so to rebuild."
     else
         sudo mkdir -p /opt/hyprland
-        #sudo chmod -R 777 /opt/hyprland
+        sudo chmod -R 777 /opt/hyprland
         #if [ -d "/opt/hyprland/hyprland" ]; then
         #    rm -rf /opt/hyprland/hyprland
         #fi
