@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <video_file_path> <timestamp>"
+    exit 1
+fi
+
+# Get the arguments
+video_file_path="$1"
+timestamp="$2"
+
+# Extract the frame using ffmpeg
+output_file="frame_at_${timestamp//:/-}.jpg"
+ffmpeg -i "$video_file_path" -ss "$timestamp" -vframes 1 "$output_file"
+
+echo "Frame extracted to $output_file"
