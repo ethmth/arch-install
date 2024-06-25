@@ -54,8 +54,9 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/get-cookies /usr/bi
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/virsh-net-start /usr/bin/virsh-net-start
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lss /usr/bin/lss
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/timecode /usr/bin/timecode
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/frame-extract /usr/bin/frame-extract
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/cat-folder /usr/bin/cat-folder
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/extract-frame /usr/bin/extract-frame
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/extract-frames /usr/bin/extract-frames
 
 sudo chmod +rx /etc/openvpn/update-resolv-conf
 sudo chmod +rx /usr/bin/sshbg
@@ -74,8 +75,9 @@ sudo chmod +rx /usr/bin/get-cookies
 sudo chmod +rx /usr/bin/virsh-net-start
 sudo chmod +rx /usr/bin/lss
 sudo chmod +rx /usr/bin/timecode
-sudo chmod +rx /usr/bin/frame-extract
 sudo chmod +rx /usr/bin/cat-folder
+sudo chmod +rx /usr/bin/extract-frame
+sudo chmod +rx /usr/bin/extract-frames
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
 echo "If so, run ./09-initcpio.sh"
