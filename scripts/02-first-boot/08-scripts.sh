@@ -52,7 +52,6 @@ sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/svg2ico /usr/bin/svg2ico
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/get-cookies /usr/bin/get-cookies
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/virsh-net-start /usr/bin/virsh-net-start
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lss /usr/bin/lss
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/timecode /usr/bin/timecode
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/cat-folder /usr/bin/cat-folder
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/extract-frame /usr/bin/extract-frame
@@ -73,7 +72,6 @@ sudo chmod +rx /usr/bin/nightlight
 sudo chmod +rx /usr/bin/svg2ico
 sudo chmod +rx /usr/bin/get-cookies
 sudo chmod +rx /usr/bin/virsh-net-start
-sudo chmod +rx /usr/bin/lss
 sudo chmod +rx /usr/bin/timecode
 sudo chmod +rx /usr/bin/cat-folder
 sudo chmod +rx /usr/bin/extract-frame
