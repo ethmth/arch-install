@@ -48,4 +48,4 @@ for src_file in "/home/$CUR_USER/arch-install/files/installed_scripts"/*; do
 done
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
-echo "If so, run ./09-initcpio.sh"
+echo "If so, run ./08-misc.sh"

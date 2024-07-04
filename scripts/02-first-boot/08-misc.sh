@@ -9,6 +9,12 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 source /home/$CUR_USER/arch-install/config/network-interface.conf
 
+# alias my-git
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q 'alias git="my-git"' ); then
+    echo 'alias git="my-git"' >> /home/$CUR_USER/.bashrc
+    source /home/$CUR_USER/.bashrc
+fi
+
 # Install Magic Status Executables
 if (( PLASMA )); then
 	echo "Installing Plasma Widget - Magic Status Executables..."
@@ -217,4 +223,4 @@ fi
 
 
 echo "Verify that installation of various misc software was successful"
-echo "If so, run ./08-scripts.sh"
+echo "If so, run ./09-initcpio.sh"

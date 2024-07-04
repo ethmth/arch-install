@@ -37,14 +37,14 @@ if ((in_git_repo && global_config)); then
     
     in_global=0
     for domain in $USE_GLOBAL_LIST; do
-        if [ *"$domain"* == "$remote_url" ]; then
+        if [[ "$remote_url" == *"$domain"* ]]; then
             in_global=1
         fi
     done
 
     in_local=0
     for domain in $USE_LOCAL_LIST; do
-        if [ *"$domain"* == "$remote_url" ]; then
+        if [[ "$remote_url" == *"$domain"* ]]; then
             in_local=1
         fi
     done
@@ -64,12 +64,12 @@ if ((in_git_repo && global_config)); then
     fi
 
     if ((use_global)); then
-        git config user.name "$global_name"
-        git config user.email "$global_email"
+        /usr/bin/git config user.name "$global_name"
+        /usr/bin/git config user.email "$global_email"
         echo "Setting config to $global_name/$global_email"
     else
-        git config user.name "$NAME"
-        git config user.email "$EMAIL"
+        /usr/bin/git config user.name "$NAME"
+        /usr/bin/git config user.email "$EMAIL"
         echo "Setting config to $NAME/$EMAIL"
     fi
 fi
