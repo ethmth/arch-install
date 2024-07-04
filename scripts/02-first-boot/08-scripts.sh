@@ -37,45 +37,15 @@ if (( LAPTOP && HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/brightlight /usr/bin/brightlight
     sudo chmod +rx /usr/bin/brightlight
 fi
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/sshbg /usr/bin/sshbg
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/stream-dl /usr/bin/stream-dl
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/megasync-delay /usr/bin/megasync-delay
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/docker-update /usr/bin/docker-update
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/checkmount /usr/bin/checkmount
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/txt2img /usr/bin/txt2img
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/tab2space /usr/bin/tab2space
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/xmlremove /usr/bin/xmlremove
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/git-make-like /usr/bin/git-make-like
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/pdf2png /usr/bin/pdf2png
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/nightlight /usr/bin/nightlight
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/svg2ico /usr/bin/svg2ico
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/get-cookies /usr/bin/get-cookies
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/virsh-net-start /usr/bin/virsh-net-start
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/timecode /usr/bin/timecode
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/cat-folder /usr/bin/cat-folder
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/extract-frame /usr/bin/extract-frame
-sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/extract-frames /usr/bin/extract-frames
 
+sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo chmod +rx /etc/openvpn/update-resolv-conf
-sudo chmod +rx /usr/bin/sshbg
-sudo chmod +rx /usr/bin/stream-dl
-sudo chmod +rx /usr/bin/megasync-delay
-sudo chmod +rx /usr/bin/docker-update
-sudo chmod +rx /usr/bin/checkmount
-sudo chmod +rx /usr/bin/txt2img
-sudo chmod +rx /usr/bin/tab2space
-sudo chmod +rx /usr/bin/xmlremove
-sudo chmod +rx /usr/bin/git-make-like
-sudo chmod +rx /usr/bin/pdf2png
-sudo chmod +rx /usr/bin/nightlight
-sudo chmod +rx /usr/bin/svg2ico
-sudo chmod +rx /usr/bin/get-cookies
-sudo chmod +rx /usr/bin/virsh-net-start
-sudo chmod +rx /usr/bin/timecode
-sudo chmod +rx /usr/bin/cat-folder
-sudo chmod +rx /usr/bin/extract-frame
-sudo chmod +rx /usr/bin/extract-frames
+
+for src_file in "/home/$CUR_USER/arch-install/files/installed_scripts"/*; do
+    file_name=$(basename "$src_file")
+    sudo cp "$src_file" "/usr/local/bin/$file_name"
+    sudo chmod +rx "/usr/local/bin/$file_name"
+done
 
 echo "Verify that scripts were installed correctly (sshbg, stream-dl, megasync-delay, etc)"
 echo "If so, run ./09-initcpio.sh"
