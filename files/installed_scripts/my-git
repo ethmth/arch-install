@@ -1,0 +1,40 @@
+#!/bin/bash
+
+NAME="jeff"
+EMAIL="myname@jeff.com"
+
+ARGS=("$@")
+
+command="${ARGS[0]}"
+
+in_git_repo=0
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    in_git_repo=1
+fi
+
+# Use the boolean variable
+if [ "$in_git_repo" = true ]; then
+    echo "You are inside a Git repository."
+else
+    echo "You are not inside a Git repository."
+fi
+
+
+# if ([ "$command" == "commit" ]); then
+    # repo_config_file=$(git rev-parse --show-toplevel)/.git/config
+
+    config_origin=$(/usr/bin/git config --show-origin --get "user.name" 2>/dev/null | awk '{print $1}' | rev | cut -d':' -f1 | rev)
+
+    local_config=0
+    if [ *".git/config" == "$config_origin" ]; then
+        local_config=1
+    fi
+
+    if ((local_config)); then
+        echo "LOCAL CONFIG FOUND"
+    else
+        echo "GLOBAL CONFIG"
+    fi
+# fi
+
+# /usr/bin/git "${ARGS[@]}"
