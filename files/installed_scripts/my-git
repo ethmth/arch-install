@@ -13,8 +13,6 @@ github.com
 
 ARGS=("$@")
 
-# command="${ARGS[0]}"
-
 in_git_repo=0
 if /usr/bin/git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     in_git_repo=1
@@ -24,12 +22,12 @@ global_config=1
 
 if ((in_git_repo)); then
     config_origin=$(/usr/bin/git config --show-origin --get "user.name" 2>/dev/null | awk '{print $1}' | rev | cut -d':' -f1 | rev)
-    if [ *".git/config" == "$config_origin" ]; then
+    if [ ".git/config" == "$config_origin" ]; then
         global_config=0
     fi
 
     config_origin=$(/usr/bin/git config --show-origin --get "user.email" 2>/dev/null | awk '{print $1}' | rev | cut -d':' -f1 | rev)
-    if [ *".git/config" == "$config_origin" ]; then
+    if [ ".git/config" == "$config_origin" ]; then
         global_config=0
     fi
 fi
