@@ -56,6 +56,7 @@ python3-validators
 python3-maxminddb
 python3-aiohttp
 python3-aiodns
+python3-regex
 python-is-python3
 npm
 speedtest-cli
