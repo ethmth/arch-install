@@ -24,7 +24,7 @@ if ! [ -e "$SOURCE" ]; then
 fi
 
 if [ "$FOLDER_NAME" == "SecurePrograms" ]; then
-  destination="/usr/bin"
+  destination="/usr/local/bin"
 elif [ "$FOLDER_NAME" == "SecureSoftware" ]; then
   destination="/home/$CUR_USER/android"
   mkdir -p $destination
@@ -50,15 +50,15 @@ search_files() {
 
 if [ "$FOLDER_NAME" == "SecurePrograms" ]; then
   search_files "$SOURCE"
-  echo "Programs installed to /usr/bin"
+  echo "Programs installed to /usr/local/bin"
 elif [ "$FOLDER_NAME" == "SecureSoftware" ]; then
   if [ -f "$SCRIPT_DIR/apk-install" ]; then
     cp "$SCRIPT_DIR/apk-install" $destination/apk-install
     chmod +x $destination/apk-install
   fi
   if [ -f "$SCRIPT_DIR/phone" ]; then
-    sudo cp "$SCRIPT_DIR/phone" /usr/bin/phone
-    sudo chmod +rx /usr/bin/phone
+    sudo cp "$SCRIPT_DIR/phone" /usr/local/bin/phone
+    sudo chmod +rx /usr/local/bin/phone
   fi
   cp -r $SOURCE $destination
   echo "Android installer installed to ~/android/installer"
