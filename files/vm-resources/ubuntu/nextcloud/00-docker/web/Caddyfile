@@ -1,56 +1,31 @@
-http://localhost,
-http://10.152.153.14 {
-
-        root    * /var/www/html
-        file_server
-
-        php_fastcgi app:9000
-        header {
-		header_up -Upgrade
-		header_down -Upgrade
-        }
-
-
-        redir /.well-known/carddav /remote.php/dav 301
-        redir /.well-known/caldav /remote.php/dav 301
-
-        # .htaccess / data / config / ... shouldn't be accessible from outside
-        @forbidden {
-                path    /.htaccess
-                path    /data/*
-                path    /config/*
-                path    /db_structure
-                path    /.xml
-                path    /README
-                path    /3rdparty/*
-                path    /lib/*
-                path    /templates/*
-                path    /occ
-                path    /console.php
-        }
-
-        respond @forbidden 404
-
-}
-
 https://10.152.153.14,
 https://nextcloud.local {
 
-        root    * /var/www/html
-        file_server
+	root * /var/www/html
+	file_server
 
-        php_fastcgi app:9000
-        header {
-                enable HSTS
-                Strict-Transport-Security max-age=31536000;
-        }
+	php_fastcgi app:9000 {
+		root /var/www/html
+		env front_controller_active true
+	}
+	encode gzip
+
+	header {
+		Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+		Pragma "no-cache"
+		Expires "0"
+		header_up -Upgrade
+		header_down -Upgrade
+		header_up Cookie {http.request.header.Cookie}
+		Strict-Transport-Security "max-age=15768000;includeSubDomains;preload"
+	}
+
+	redir /.well-known/carddav /remote.php/dav 301
+	redir /.well-known/caldav /remote.php/dav 301
 
 	tls /etc/ssl/certs/cert.crt /etc/ssl/private/cert.key {
 		on_demand
 	}
-
-        redir /.well-known/carddav /remote.php/dav 301
-        redir /.well-known/caldav /remote.php/dav 301
 
         # .htaccess / data / config / ... shouldn't be accessible from outside
         @forbidden {
