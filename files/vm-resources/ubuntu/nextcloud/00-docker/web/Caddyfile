@@ -11,12 +11,12 @@ https://nextcloud.local {
 	encode gzip
 
 	header {
-		Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-		Pragma "no-cache"
-		Expires "0"
-		header_up -Upgrade
-		header_down -Upgrade
-		header_up Cookie {http.request.header.Cookie}
+		#Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+		#Pragma "no-cache"
+		#Expires "0"
+		#header_up -Upgrade
+		#header_down -Upgrade
+		#header_up Cookie {http.request.header.Cookie}
 		Strict-Transport-Security "max-age=15768000;includeSubDomains;preload"
 	}
 
@@ -45,3 +45,4 @@ https://nextcloud.local {
         respond @forbidden 404
 
 }
+
