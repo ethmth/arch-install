@@ -64,7 +64,7 @@ if (( EXTERNAL_MODELS )); then
         exit 1
     fi
 
-    folder_arguments="--ckpt-dir ${models_dir}models/Stable-diffusion --codeformer-models-path ${models_dir}models/Codeformer --gfpgan-models-path ${models_dir}models/GFPGAN --esrgan-models-path ${models_dir}models/ESRGAN"
+    folder_arguments="--embeddings-dir ${models_dir}embeddings --ckpt-dir ${models_dir}models/Stable-diffusion --codeformer-models-path ${models_dir}models/Codeformer --gfpgan-models-path ${models_dir}models/GFPGAN --esrgan-models-path ${models_dir}models/ESRGAN"
 fi
 
 
