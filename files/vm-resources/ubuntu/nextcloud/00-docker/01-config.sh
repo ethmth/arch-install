@@ -69,3 +69,5 @@ docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable 
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable nextcloud_announcements" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable files_reminders" www-data
 docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ app:disable contactsinteraction" www-data
+
+# docker exec -it nextcloud-app su -s /bin/bash -c "/var/www/html/occ config:system:set trusted_proxies 1 --value='172.18.0.5'" www-data

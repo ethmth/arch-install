@@ -6,9 +6,10 @@ http://10.152.153.14 {
 
         php_fastcgi app:9000
         header {
-                # enable HSTS
-                # Strict-Transport-Security max-age=31536000;
+		header_up -Upgrade
+		header_down -Upgrade
         }
+
 
         redir /.well-known/carddav /remote.php/dav 301
         redir /.well-known/caldav /remote.php/dav 301
@@ -32,6 +33,7 @@ http://10.152.153.14 {
 
 }
 
+https://10.152.153.14,
 https://nextcloud.local {
 
         root    * /var/www/html
@@ -39,8 +41,8 @@ https://nextcloud.local {
 
         php_fastcgi app:9000
         header {
-                # enable HSTS
-                # Strict-Transport-Security max-age=31536000;
+                enable HSTS
+                Strict-Transport-Security max-age=31536000;
         }
 
 	tls /etc/ssl/certs/cert.crt /etc/ssl/private/cert.key {
