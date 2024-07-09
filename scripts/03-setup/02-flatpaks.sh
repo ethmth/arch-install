@@ -52,6 +52,7 @@ io.gitlab.librewolf-community
 net.lutris.Lutris
 net.mullvad.MullvadBrowser
 org.chromium.Chromium
+com.google.Chrome
 org.kde.kdenlive
 org.signal.Signal
 rest.insomnia.Insomnia
