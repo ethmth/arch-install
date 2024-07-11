@@ -21,6 +21,94 @@ domains = []
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
+
+# https://gist.github.com/ivansaul/40ad4f23ee375b38654be02631902041?short_path=b2eff7e
+def to_netscape_string(cookie_data: list[dict]) -> str:
+    """
+    Convert cookies to Netscape cookie format.
+
+    This function takes a list of cookie dictionaries and transforms them into
+    a single string in Netscape cookie file format, which is commonly used by
+    web browsers and other HTTP clients for cookie storage. The Netscape string
+    can be used to programmatically interact with websites by simulating the
+    presence of cookies that might be set during normal web browsing.
+
+    Args:
+        cookie_data (list of dict): A list of dictionaries where each dictionary
+            represents a cookie. Each dictionary should have the following keys:
+            - 'domain': The domain of the cookie.
+            - 'expires': The expiration date of the cookie as a timestamp.
+            - 'path': The path for which the cookie is valid.
+            - 'secure': A boolean indicating if the cookie is secure.
+            - 'name': The name of the cookie.
+            - 'value': The value of the cookie.
+
+    Returns:
+        str: A string representing the cookie data in Netscape cookie file format.
+
+    Example of Netscape cookie file format:
+        .example.com	TRUE	/	TRUE	0	CloudFront-Key-Pair-Id	APKAIAHLS7PK3GAUR2RQ
+    """
+    result = []
+    for cookie in cookie_data:
+        domain = cookie.get("domain", "")
+        expiration_date = cookie.get("expires", 0)
+        path = cookie.get("path", "")
+        secure = cookie.get("secure", False)
+        name = cookie.get("name", "")
+        value = cookie.get("value", "")
+
+        include_sub_domain = domain.startswith(".") if domain else False
+        expiry = str(int(expiration_date)) if expiration_date > 0 else "0"
+        result.append(
+            [
+                domain,
+                str(include_sub_domain).upper(),
+                path,
+                str(secure).upper(),
+                expiry,
+                name,
+                value,
+            ]
+        )
+    return "\n".join("\t".join(cookie_parts) for cookie_parts in result)
+
+
+def save_cookies_to_file(
+    cookie_data: list[dict], file_path
+) -> None:
+    """
+    Save cookies to txt file
+    """
+    netscape_string = to_netscape_string(cookie_data)
+    with open(file_path, "w", encoding="utf-8") as file:
+
+        header = """\
+# Netscape HTTP Cookie File
+# http://www.netscape.com/newsref/std/cookie_spec.html
+# This is a generated file!  Do not edit.\n
+"""
+        file.write(header)
+        file.write(netscape_string)
+
+
+def write_cookies_file(cookies, file_path):
+    cookie_data = []
+    for c in cookies:
+        cookie = {
+            "domain": c[0],
+            "expires": c[3],
+            "path": c[1],
+            "secure": True if c[2] == '1' else False,
+            "name": c[4],
+            "value": c[5]
+        }
+
+        cookie_data.append(cookie)
+    
+    save_cookies_to_file(cookie_data, file_path)
+
+
 def find_cookies_file():
     location = LOCATIONS[BROWSER]
 
@@ -35,6 +123,7 @@ def find_cookies_file():
 
     return res
 
+
 def extract_domains():
     if len(sys.argv) > 1:
         for url in sys.argv[1:]:
@@ -48,6 +137,7 @@ def extract_domains():
     else:
         eprint("Please provide one or more URLs as command-line arguments.")
         sys.exit(1)
+
 
 def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/cookies.txt"):
     """Exports cookies from SQLite to CSV format."""
@@ -65,21 +155,22 @@ def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/
 
     cursor.execute(query)
     cookies = cursor.fetchall()
-
-    with open(txt_file, 'w') as txtfile:
-        txtfile.write("# Netscape HTTP Cookie File\n")
-        for cookie in cookies:
-            domain = cookie[0]
-            if domain[0] != '.' and domain.count(".") < 2:
-                domain = f".{domain}"
-            path = cookie[1]
-            secure = 'TRUE' if cookie[2] == '1' else 'FALSE'
-            expiry = cookie[3]
-            name = cookie[4]
-            value = cookie[5]
-            txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
-
     conn.close()
+
+    write_cookies_file(cookies, txt_file)
+
+    # with open(txt_file, 'w') as txtfile:
+    #     txtfile.write("# Netscape HTTP Cookie File\n")
+    #     for cookie in cookies:
+    #         domain = cookie[0]
+    #         if domain[0] != '.' and domain.count(".") < 2:
+    #             domain = f".{domain}"
+    #         path = cookie[1]
+    #         secure = 'TRUE' if cookie[2] == '1' else 'FALSE'
+    #         expiry = cookie[3]
+    #         name = cookie[4]
+    #         value = cookie[5]
+    #         txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
 
     res = ""
     with open(txt_file, 'r') as txtfile:
@@ -96,6 +187,7 @@ def main():
     
     res = export_cookies_to_txt()
     print(res)
+
 
 if __name__ == "__main__":
     main()
