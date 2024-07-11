@@ -15,6 +15,8 @@ services:
       - 8388:8388/udp # Shadowsocks
       - 1080:1080/tcp # Socks5
       - 1080:1080/udp # Socks5
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./wg0.conf:/gluetun/wireguard/wg0.conf
     restart: unless-stopped
