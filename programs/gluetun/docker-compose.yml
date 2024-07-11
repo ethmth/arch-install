@@ -1,6 +1,7 @@
 services:
   gluetun-home:
     image: qmcgaw/gluetun
+    container_name: gluetun
     cap_add:
       - NET_ADMIN
     environment:
