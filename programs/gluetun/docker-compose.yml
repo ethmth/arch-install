@@ -1,7 +1,7 @@
 services:
   gluetun-home:
     image: qmcgaw/gluetun
-    container_name: gluetun
+    container_name: gluetun-home
     cap_add:
       - NET_ADMIN
     environment:
@@ -10,20 +10,18 @@ services:
       - HTTPPROXY=on
       - SHADOWSOCKS=on
     ports:
-      - 8880:8888/tcp # HTTP proxy
-      - 8388:8388/tcp # Shadowsocks
-      - 8388:8388/udp # Shadowsocks
-      - 1080:1080/tcp # Socks5
-      - 1080:1080/udp # Socks5
+      - 8070:8888/tcp # HTTP proxy
+      - 1070:1080/tcp # Socks5
+      - 1070:1080/udp # Socks5
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./wg0.conf:/gluetun/wireguard/wg0.conf
     restart: unless-stopped
 
-  gluetun-socks5:
+  gluetun-home-socks5:
     image: serjs/go-socks5-proxy
-    container_name: gluetun-socks5
+    container_name: gluetun-home-socks5
     depends_on:
       - gluetun-home
     network_mode: "service:gluetun-home"
