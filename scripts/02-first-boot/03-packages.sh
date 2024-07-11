@@ -145,6 +145,7 @@ guestfs-tools
 gvfs
 sshfs
 jq
+tidy
 kate
 kdeconnect
 libvirt
