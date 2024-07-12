@@ -8,7 +8,7 @@ import opennsfw2 as n2
 import pickle
 
 IMAGE_EXT = "png"
-INTERVAL=5
+INTERVAL=1
 PROB_HIGH = 0.7
 PROB_LOW = 0.3
 
@@ -82,6 +82,19 @@ def extract_timestamps(files):
     return timestamps
 
 
+def get_timestamps_single(files):
+    timestamps = []
+
+    for file in files:
+        file_number, file_path, elapsed_seconds, prob = file
+        
+        if prob > PROB_HIGH:
+            timestamps.append(seconds_to_timestamp(elapsed_seconds))
+    
+    res = "\n".join(timestamps)
+
+    return res
+
 def seconds_to_timestamp(seconds):
     hours = seconds // 3600
     minutes = (seconds % 3600) // 60
@@ -154,8 +167,10 @@ def scan_video(video):
         write_data(data_file, files, f"{file_path}/probs.txt")
 
 
-    timestamps = extract_timestamps(files)
-    output = stringify_timestamps(timestamps)
+    # timestamps = extract_timestamps(files)
+    # output = stringify_timestamps(timestamps)
+
+    output = get_timestamps_single(files)
 
     with open(f"{file_path}/timestamps.txt", "w") as f:
         f.write(output)
