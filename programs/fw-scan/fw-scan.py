@@ -28,10 +28,12 @@ def get_images(output_dir):
 
     images = []
     for file in os.listdir(output_dir):
+        # print("FILE IS", file)
         filename, ext = os.path.splitext(file)
         file_path = os.path.join(output_dir, file)
 
-        if ext != IMAGE_EXT:
+        # print("EXT IS ", ext)
+        if ext != f".{IMAGE_EXT}":
             continue
 
         if not os.path.isfile(file_path):
@@ -41,10 +43,11 @@ def get_images(output_dir):
             number = int(filename)
         except:
             continue
-
+        # print("APPENDING", (number, file_path))
         images.append((number, file_path))
     
     images.sort()
+    print("IMAGES 1 is", images)
 
     images_elapsed = []
     elapsed_seconds = 0
@@ -56,6 +59,8 @@ def get_images(output_dir):
 
     
 def get_probs(images):
+    if len(images) <= 0:
+        return []
     fw_probabilities = n2.predict_images(images)
     return fw_probabilities
 
@@ -102,13 +107,13 @@ def stringify_timestamps(timestamps):
     return result
 
 
-def read_probs(file):
+def read_data(file):
     with open(file, 'rb') as f:
         files = pickle.load(f)
     return files
 
 
-def write_probs(filepath, files):
+def write_data(filepath, files):
     with open(filepath, 'wb') as f:
         pickle.dump(files, f)
 
@@ -136,10 +141,12 @@ def scan_video(video):
         files = read_data(data_file)
     else:
         images_elapsed = get_images(file_path)
+        # print("IMAGES ELAPSED", images_elapsed)
         images = [image for _,image,_ in images_elapsed]
+        # print("IMAGES ARE", images)
         probs = get_probs(images)
 
-        files = [images_elapsed[i] + (probs[i],) for i in len(images_elapsed)]
+        files = [images_elapsed[i] + (probs[i],) for i in range(0, len(images_elapsed))]
 
         write_data(data_file, files)
 
