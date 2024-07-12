@@ -5,6 +5,7 @@ import os
 import sys
 from shutil import which
 import opennsfw2 as n2
+import pickle
 
 IMAGE_EXT = "png"
 INTERVAL=5
@@ -22,10 +23,10 @@ def extract_images(video, output_dir):
 
     subprocess.run(cmd_args)
 
+
 def get_images(output_dir):
 
     images = []
-    # elapsed_seconds = 0
     for file in os.listdir(output_dir):
         filename, ext = os.splitext(file)
         file_path = os.path.join(output_dir, file)
@@ -41,7 +42,6 @@ def get_images(output_dir):
         except:
             continue
 
-        # images.append((file_path, elapsed_seconds))
         images.append((number, file_path))
     
     images.sort()
@@ -57,8 +57,6 @@ def get_images(output_dir):
     
 def get_probs(images):
     fw_probabilities = n2.predict_images(images)
-
-    # return [(images[i], fw_probabilities[i]) for i in range(0, len(images))]
     return fw_probabilities
 
 
@@ -67,7 +65,6 @@ def extract_timestamps(files):
     timestamps = []
 
     start = -1
-    # last = -1
     high = False
     for file in files:
         file_number, file_path, elapsed_seconds, prob = file
@@ -76,15 +73,10 @@ def extract_timestamps(files):
             if prob < PROB_LOW:
                 timestamps.append((start, elapsed_seconds))
                 high = False
-
-        # elif high == False or high == None:
-        
         else:
             if prob > PROB_HIGH:
-                # timestamps.append((start, last))
                 high = True
                 start = elapsed_seconds
-                # last = elapsed_seconds
     
     return timestamps
 
@@ -110,6 +102,17 @@ def stringify_timestamps(timestamps):
     return result
 
 
+def read_probs(file):
+    with open(file, 'rb') as f:
+        files = pickle.load(f)
+    return files
+
+
+def write_probs(filepath, files):
+    with open(filepath, 'wb') as f:
+        pickle.dump(files, f)
+
+
 def scan_video(video):
 
     if not os.path.isfile(video):
@@ -123,21 +126,32 @@ def scan_video(video):
         extract_images(video, file_path)
     else:
         eprint(f"WARNING: {file_path} already exists. Not re-extracting images.")
-    
-    images_elapsed = get_images(file_path)
 
-    images = [image for _,image,_ in images_elapsed]
 
-    probs = get_probs(images)
+    data_file = f"{file_path}/data.bin"
 
-    files = [images_elapsed[i] + (probs[i],) for i in len(images_elapsed)]
+    if os.path.isfile(data_file):
+        eprint(f"WARNING: Using existing data file.")
+
+        files = read_data(data_file)
+    else:
+        images_elapsed = get_images(file_path)
+        images = [image for _,image,_ in images_elapsed]
+        probs = get_probs(images)
+
+        files = [images_elapsed[i] + (probs[i],) for i in len(images_elapsed)]
+
+        write_data(data_file, files)
+
 
     timestamps = extract_timestamps(files)
-
     output = stringify_timestamps(timestamps)
 
     with open(f"{file_path}/timestamps.txt", "w") as f:
         f.write(output)
+    
+    print("Timestamps of interest:")
+    print(output)
 
 
 def main():
