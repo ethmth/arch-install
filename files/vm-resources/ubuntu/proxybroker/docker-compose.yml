@@ -1,0 +1,9 @@
+services:
+  proxy-broker:
+    image: bluet/proxybroker2
+    container_name: proxy-broker
+    ports:
+      - 8888:8888
+    # command: ["--log", "DEBUG", "--max-conn", "1", "serve", "--host", "0.0.0.0", "--port", "8888", "--types", "HTTP", "HTTPS"]
+    command: ["--log", "DEBUG", "serve", "--host", "0.0.0.0", "--port", "8888", "--types", "HTTP", "HTTPS", "--min-queue", "5"]
+    # restart: unless-stopped
