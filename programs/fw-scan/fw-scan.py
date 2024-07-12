@@ -28,12 +28,10 @@ def get_images(output_dir):
 
     images = []
     for file in os.listdir(output_dir):
-        # print("FILE IS", file)
         filename, ext = os.path.splitext(file)
         file_path = os.path.join(output_dir, file)
 
-        # print("EXT IS ", ext)
-        if ext != f".{IMAGE_EXT}":
+        if ext.lower() != f".{IMAGE_EXT.lower()}":
             continue
 
         if not os.path.isfile(file_path):
@@ -43,11 +41,9 @@ def get_images(output_dir):
             number = int(filename)
         except:
             continue
-        # print("APPENDING", (number, file_path))
         images.append((number, file_path))
     
     images.sort()
-    print("IMAGES 1 is", images)
 
     images_elapsed = []
     elapsed_seconds = 0
@@ -113,9 +109,18 @@ def read_data(file):
     return files
 
 
-def write_data(filepath, files):
+def write_data(filepath, files, probs_file = None):
     with open(filepath, 'wb') as f:
         pickle.dump(files, f)
+    
+    if not probs_file:
+        return
+
+    with open(probs_file, 'w') as f:
+        for file in files:
+            file_number, file_path, elapsed_seconds, prob = file
+            line = f"{str(file_number).ljust(8)}\t{prob:.3f}\t{str(elapsed_seconds).ljust(8)}\t{file_path}\n"
+            f.write(line)
 
 
 def scan_video(video):
@@ -141,14 +146,12 @@ def scan_video(video):
         files = read_data(data_file)
     else:
         images_elapsed = get_images(file_path)
-        # print("IMAGES ELAPSED", images_elapsed)
         images = [image for _,image,_ in images_elapsed]
-        # print("IMAGES ARE", images)
         probs = get_probs(images)
 
         files = [images_elapsed[i] + (probs[i],) for i in range(0, len(images_elapsed))]
 
-        write_data(data_file, files)
+        write_data(data_file, files, f"{file_path}/probs.txt")
 
 
     timestamps = extract_timestamps(files)
