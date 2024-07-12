@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYTHON_COMMAND="python"
+PYTHON_VERSION="3.11"
 
 NAME="fw-scan"
 
@@ -42,16 +42,22 @@ for file in $FILES; do
     fi
 done
 
+cd $LOC/$NAME
 
-$PYTHON_COMMAND -m venv .venv
+pyenv install $PYTHON_VERSION
+export PYENV_VERSION=$PYTHON_VERSION
 
-source $LOC/$NAME/.venv/bin/activate
+# pyenv exec python -m venv .venv
+# source $LOC/$NAME/.venv/bin/activate
 
-$LOC/$NAME/.venv/bin/pip install -r requirements.pip
+# pyenv exec $LOC/$NAME/.venv/bin/pip install -r requirements.pip
+pyenv exec pip install -r requirements.pip
 
 echo "#!/bin/bash
-source $LOC/$NAME/.venv/bin/activate
-$LOC/$NAME/.venv/bin/python $LOC/$NAME/fw-scan.py \"\$@\"
+export PYENV_VERSION=$PYTHON_VERSION
+#source $LOC/$NAME/.venv/bin/activate
+#pyenv exec $LOC/$NAME/.venv/bin/python $LOC/$NAME/fw-scan.py \"\$@\"
+pyenv exec python $LOC/$NAME/fw-scan.py
 " >> $LOC/$NAME/run.sh
 chmod +rx $LOC/$NAME/run.sh
 
