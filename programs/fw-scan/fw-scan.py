@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+import sys
+from shutil import which
+import opennsfw2 as n2
+
+IMAGE_EXT = "png"
+INTERVAL=5
+PROB_HIGH = 0.7
+PROB_LOW = 0.3
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def extract_images(video, output_dir):
+    ofile = f"{output_dir}/%04d.{IMAGE_EXT}"
+    cmd_args = ["ffmpeg", "-i", video, "-vf", f"fps=1/{INTERVAL}", ofile]
+
+    subprocess.run(cmd_args)
+
+def get_images(output_dir):
+
+    images = []
+    # elapsed_seconds = 0
+    for file in os.listdir(output_dir):
+        filename, ext = os.splitext(file)
+        file_path = os.path.join(output_dir, file)
+
+        if ext != IMAGE_EXT:
+            continue
+
+        if not os.path.isfile(file_path):
+            continue
+
+        try:
+            number = int(filename)
+        except:
+            continue
+
+        # images.append((file_path, elapsed_seconds))
+        images.append((number, file_path))
+    
+    images.sort()
+
+    images_elapsed = []
+    elapsed_seconds = 0
+    for number, file_path in images:
+        images_elapsed.append((number, file_path, elapsed_seconds))
+        elapsed_seconds += INTERVAL
+    
+    return images_elapsed
+
+    
+def get_probs(images):
+    fw_probabilities = n2.predict_images(images)
+
+    # return [(images[i], fw_probabilities[i]) for i in range(0, len(images))]
+    return fw_probabilities
+
+
+def extract_timestamps(files):
+
+    timestamps = []
+
+    start = -1
+    # last = -1
+    high = False
+    for file in files:
+        file_number, file_path, elapsed_seconds, prob = file
+        
+        if high == True:
+            if prob < PROB_LOW:
+                timestamps.append((start, elapsed_seconds))
+                high = False
+
+        # elif high == False or high == None:
+        
+        else:
+            if prob > PROB_HIGH:
+                # timestamps.append((start, last))
+                high = True
+                start = elapsed_seconds
+                # last = elapsed_seconds
+    
+    return timestamps
+
+
+def seconds_to_timestamp(seconds):
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    seconds = seconds % 60
+    return f"{hours:02}:{minutes:02}:{seconds:02}"
+
+
+def stringify_timestamps(timestamps):
+    timestamp_strs = []
+    for timestamp in timestamps:
+        start, end = timestamp
+
+        start_timestamp = seconds_to_timestamp(start).ljust(10)
+        end_timestamp = seconds_to_timestamp(end).ljust(10)
+
+        timestamp_strs.append(f"{start_timestamp} - {end_timestamp}")
+    
+    result = "\n".join(timestamp_strs)
+    return result
+
+
+def scan_video(video):
+
+    if not os.path.isfile(video):
+        eprint(video, "is not a file.")
+        sys.exit(1)
+    
+    file_path, ext = os.path.splitext(video)
+
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+        extract_images(video, file_path)
+    else:
+        eprint(f"WARNING: {file_path} already exists. Not re-extracting images.")
+    
+    images_elapsed = get_images(file_path)
+
+    images = [image for _,image,_ in images_elapsed]
+
+    probs = get_probs(images)
+
+    files = [images_elapsed[i] + (probs[i],) for i in len(images_elapsed)]
+
+    timestamps = extract_timestamps(files)
+
+    output = stringify_timestamps(timestamps)
+
+    with open(f"{file_path}/timestamps.txt", "w") as f:
+        f.write(output)
+
+
+def main():
+    if len(sys.argv) != 2:
+        eprint("Usage: fw-scan <video_file>")
+        sys.exit(1)
+    
+    if not which("ffmpeg"):
+        eprint("ffmpeg not found on system")
+        sys.exit(1)
+
+    video = sys.argv[1]
+
+    scan_video(video)
+
+
+if __name__ == "__main__":
+    main()
