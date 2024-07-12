@@ -28,7 +28,7 @@ def get_images(output_dir):
 
     images = []
     for file in os.listdir(output_dir):
-        filename, ext = os.splitext(file)
+        filename, ext = os.path.splitext(file)
         file_path = os.path.join(output_dir, file)
 
         if ext != IMAGE_EXT:

@@ -57,8 +57,8 @@ echo "#!/bin/bash
 export PYENV_VERSION=$PYTHON_VERSION
 #source $LOC/$NAME/.venv/bin/activate
 #pyenv exec $LOC/$NAME/.venv/bin/python $LOC/$NAME/fw-scan.py \"\$@\"
-pyenv exec python $LOC/$NAME/fw-scan.py
-" >> $LOC/$NAME/run.sh
+pyenv exec python $LOC/$NAME/fw-scan.py \"\$@\"
+" > $LOC/$NAME/run.sh
 chmod +rx $LOC/$NAME/run.sh
 
 sudo cp $LOC/$NAME/run.sh /usr/local/bin/fw-scan
