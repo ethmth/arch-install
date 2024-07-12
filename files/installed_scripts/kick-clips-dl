@@ -4,7 +4,10 @@ import sys
 import requests
 import subprocess
 import json
-import datetime
+from datetime import datetime
+import os
+import re
+import concurrent.futures
 
 USE_COOKIES = True
 COOKIES_LOCATION = "/tmp/kick-cookies.txt"
@@ -23,6 +26,14 @@ def get_cookies():
 
     with open(COOKIES_LOCATION, 'w') as f:
         f.write(cookies)
+
+
+def sanitize_filename(filename):
+    # Define a pattern for invalid characters
+    invalid_chars_pattern = r'[<>:"/\\|?*\x00-\x1F]'
+    # Replace invalid characters with an empty string
+    sanitized_filename = re.sub(invalid_chars_pattern, '', filename)
+    return sanitized_filename
 
 
 def get_clips(streamer):
@@ -59,7 +70,8 @@ def get_clips(streamer):
     for header in headers:
         cmd_args += ["-H", f"{header}:{headers[header]}"]
 
-    cmd_args += [f"https://kick.com/api/v2/channels/{streamer}/clips?cursor=0&sort=view&time=all"]
+    api_url = f"https://kick.com/api/v2/channels/{streamer}/clips?cursor=0&sort=view&time=all"
+    cmd_args += [api_url]
     
     subprocess.run(cmd_args)
 
@@ -67,7 +79,8 @@ def get_clips(streamer):
         with open(filename, 'r') as f:
             data = json.load(f)
     except:
-        eprint("JSON not fetched")
+        print(api_url)
+        eprint("JSON not fetched. Refresh cookies? Streamer name invalid?")
         sys.exit(1)
     
     # with open("dict.json", 'w') as f:
@@ -89,8 +102,15 @@ def download_clip(clip):
     video_url = clip["video_url"]
     timestamp_str = clip["created_at"]
 
-    dt = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-    timestamp = dt.strftime("%Y-%m-%dT%H-%M-%S-%f")
+    try:
+        dt = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
+        timestamp = dt.strftime("%Y-%m-%dT%H-%M-%S")
+    except:
+        try:
+            timestamp = sanitize_filename(timestamp_str)
+        except:
+            timestamp = ""
+
 
     cmd_args = ["yt-dlp", "--no-check-certificates"]
     cmd_args += ["--quiet"]
@@ -121,6 +141,7 @@ def download_clip(clip):
     
     cmd_args += [video_url]
 
+    print("Downloading", video_url)
     subprocess.run(cmd_args)
 
 
@@ -141,6 +162,8 @@ def main():
 
     if not os.path.exists(streamer):
         os.makedirs(streamer)
+
+    # download_clip(clips[0])
 
     max_threads = 4
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
