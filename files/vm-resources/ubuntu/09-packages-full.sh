@@ -57,6 +57,8 @@ python3-maxminddb
 python3-aiohttp
 python3-aiodns
 python3-regex
+python3-lxml
+python3-clint
 python-is-python3
 npm
 speedtest-cli
