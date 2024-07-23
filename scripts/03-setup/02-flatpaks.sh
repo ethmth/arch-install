@@ -16,7 +16,6 @@ com.github.jeromerobert.pdfarranger
 io.github.dman95.SASM
 org.kde.kleopatra
 com.github.libresprite.LibreSprite
-com.sudovanilla.penpot-desktop
 net.scribus.Scribus
 org.avidemux.Avidemux
 com.logseq.Logseq
