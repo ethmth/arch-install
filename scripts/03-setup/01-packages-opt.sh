@@ -116,13 +116,13 @@ hplip
 waydroid
 obs-studio
 "
-if (( NVIDIA )); then
-packages+="
-python-pytorch-cuda
-cuda
-cudnn
-"
-fi
+#if (( NVIDIA )); then
+#packages+="
+#python-pytorch-cuda
+#cuda
+#cudnn
+#"
+#fi
 
 # if ! (( AMD )); then
 # packages+="
