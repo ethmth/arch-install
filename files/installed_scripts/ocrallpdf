@@ -15,6 +15,15 @@ fi
 for file in "$1"/*.pdf; do
     filename=$(basename -- "$file" .pdf)
     dir=$(dirname "$file")
-    echo "ocrmypdf \"$dir/$filename.pdf\" \"$dir/OCR_$filename.pdf\""
-    ocrmypdf "$dir/$filename.pdf" "$dir/OCR_$filename.pdf"
+
+    # # Remove any tags on PDF
+    # echo "Removing tags on \"$dir/$filename.pdf\""
+    # pdftk "$dir/$filename.pdf" output "$dir/output_no_tags.pdf" uncompress
+    # sed -i '/^\/StructTreeRoot/d' "$dir/output_no_tags.pdf"
+    # pdftk "$dir/output_no_tags.pdf" output "$dir/$filename.pdf" compress
+    # rm "$dir/output_no_tags.pdf"
+
+    # OCR the PDF
+    echo "ocrmypdf --skip-text \"$dir/$filename.pdf\" \"$dir/OCR_$filename.pdf\""
+    ocrmypdf --skip-text "$dir/$filename.pdf" "$dir/OCR_$filename.pdf"
 done
