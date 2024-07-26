@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+# Check if the provided argument is a directory
+if [ ! -d "$1" ]; then
+    echo "Error: $1 is not a directory"
+    exit 1
+fi
+
+# Loop through each PDF file
+for file in "$1"/*.pdf; do
+    filename=$(basename -- "$file" .pdf)
+    dir=$(dirname "$file")
+    echo "ocrmypdf \"$dir/$filename.pdf\" \"$dir/OCR_$filename.pdf\""
+    ocrmypdf "$dir/$filename.pdf" "$dir/OCR_$filename.pdf"
+done
