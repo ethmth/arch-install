@@ -18,7 +18,7 @@ sudo systemctl enable reflector.timer
 sudo systemctl enable docker
 sudo systemctl enable podman
 sudo systemctl enable sshd
-sudo systemctl enable redis
+# sudo systemctl enable redis
 sudo systemctl enable cups
 sudo systemctl enable paccache.timer
 sudo systemctl enable fstrim.timer
