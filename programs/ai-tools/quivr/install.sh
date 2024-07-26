@@ -44,6 +44,10 @@ cp .env.example .env
 bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "OPENAI_API_KEY=$api_key"
 bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "TELEMETRY_ENABLED=false"
 
+bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_MAX_BRAIN_NUMBER=2147483647"
+bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_MAX_BRAIN_SIZE=2147483647"
+bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_DAILY_CHAT_CREDIT=2147483647"
+
 sed -i 's/backend-base:latest/stangirard\/quivr-backend-prebuilt:latest/g' $LOC/$NAME/docker-compose.yml
 
 echo "#!/bin/bash
