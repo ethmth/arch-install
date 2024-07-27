@@ -8,6 +8,7 @@ def main():
         message = line.strip()
         subprocess.run(["wl-copy", message])
         print(message, "COPIED")
+        sys.stdout.flush()
 
 if __name__ == "__main__":
     main()
