@@ -10,6 +10,8 @@ fi
 #gh
 #mariadb-client-core
 packages="
+ts-node
+node-axios
 testdisk
 wireshark
 ipcalc
