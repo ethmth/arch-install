@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+
+def main():
+    for line in sys.stdin:
+        message = line.strip()
+        subprocess.run(["wl-copy", message])
+        print(message, "COPIED")
+
+if __name__ == "__main__":
+    main()
