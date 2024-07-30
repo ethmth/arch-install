@@ -9,10 +9,20 @@ for image in $compose_images; do
     all_images=$(echo "$all_images" | grep -v "$image")
 done
 
-pull_images=$(echo "$all_images" | grep "latest")
+all_images=$(echo "$all_images" | grep -v "<none>" | grep -v "REPOSITORY")
 
-pull_images=$(printf "REPOSITORY                    TAG                           IMAGE ID       CREATED        SIZE\n$pull_images")
+all_images=$(echo "$all_images" | tr -s ' ' | cut -d" " -f1,2 --output-delimiter=":")
 
-echo "$pull_images" | awk 'NR>1 {system("docker pull " $1)}'
+for image in $all_images; do
+    echo "Pulling $image"
+    docker pull $image
+done
+
+
+# pull_images=$(echo "$all_images" | grep "latest")
+# 
+# pull_images=$(printf "REPOSITORY                    TAG                           IMAGE ID       CREATED        SIZE\n$pull_images")
+# 
+# echo "$pull_images" | awk 'NR>1 {system("docker pull " $1)}'
 
 yes | docker system prune
