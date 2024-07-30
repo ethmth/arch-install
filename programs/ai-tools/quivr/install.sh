@@ -31,6 +31,7 @@ mkdir -p $LOC
 
 git clone https://github.com/quivrhq/quivr.git $LOC/$NAME
 cd $LOC/$NAME
+git checkout 317277db734fdd03c656b487d9d2a8459be2f0e3
 
 read -p "What is your OpenAI API Key? (https://platform.openai.com/api-keys) " api_key
 
@@ -48,7 +49,8 @@ bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_MAX
 bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_MAX_BRAIN_SIZE=2147483647"
 bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh .env "PREMIUM_DAILY_CHAT_CREDIT=2147483647"
 
-sed -i 's/backend-base:latest/stangirard\/quivr-backend-prebuilt:latest/g' $LOC/$NAME/docker-compose.yml
+sed -i 's|backend-base:latest|stangirard/quivr-backend-prebuilt:latest|g' $LOC/$NAME/docker-compose.yml
+sed -i 's|stangirard/quivr-backend-prebuilt:latest|stangirard/quivr-backend-prebuilt:317277db734fdd03c656b487d9d2a8459be2f0e3|g' $LOC/$NAME/docker-compose.yml
 
 echo "#!/bin/bash
 cd $LOC/$NAME/backend && supabase start
