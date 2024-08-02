@@ -68,6 +68,7 @@ certbot
 certbot-apache
 gifsicle
 jupyter-nbconvert
+jupyter-nbformat
 git-lfs
 git-extras
 qbittorrent
