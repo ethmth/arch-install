@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Git-Make-Like Usage: git-make-like <branch_name>"
+    exit 1
+fi
+
+FROM_BRANCH=$1
+STARTING_DIR=$(pwd)
+GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+
+if [ $? -ne 0 ]; then
+    echo "Git-Make-Like Error: Not inside a Git repository."
+    exit 1
+fi
+
+cd $GIT_ROOT
+
+if [[ $(git status --porcelain) ]]; then
+    echo "Git-Make-Like Error: There are uncommitted changes in the working directory."
+    cd $STARTING_DIR
+    exit 1
+fi
+
+if ! git rev-parse --verify "$FROM_BRANCH" >/dev/null 2>&1; then
+    echo "Git-Make-Like Error: $FROM_BRANCH is not a valid Git branch."
+    cd $STARTING_DIR
+    exit 1
+fi
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+git checkout $FROM_BRANCH >/dev/null 2>&1
+git diff --binary $CURRENT_BRANCH > /tmp/git_make_like_patch
+git checkout $CURRENT_BRANCH >/dev/null 2>&1
+git apply /tmp/git_make_like_patch
+
+cd $STARTING_DIR
+exit 0

@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+import re
+
+
+# ~/.local/bin/tc connect xqc | sed -u 's/\x1b\[[0-9;]*m//g' | grep --line-buffered -i "zostradamus:" | stdbuf -oL cut -d":" -f2 | wl-copy-line
+
+
+def clean_string(s):
+    return re.sub(r'[^a-zA-Z0-9-]', '', s)
+
+
+def main():
+    # Set standard input (fd 0) to be unbuffered
+    # stdin_fd = sys.stdin.fileno()
+    # stdout_fd = sys.stdout.fileno()
+    # os.set_blocking(stdin_fd, False)
+    # os.set_blocking(stdout_fd, False)
+
+    while True:
+        try:
+            line = sys.stdin.readline()
+            if not line:
+                break
+            message = clean_string(line.strip())
+            subprocess.run(["wl-copy", message])
+            print(message, "COPIED")
+            sys.stdout.flush()  # Ensure immediate output
+        except BlockingIOError:
+            pass
+
+if __name__ == "__main__":
+    main()

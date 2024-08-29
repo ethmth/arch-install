@@ -1,0 +1,77 @@
+#!/bin/bash
+
+NAME="Your Name"
+EMAIL="you@example.com"
+
+USE_LOCAL_LIST="
+git.ethanmt.com
+"
+
+USE_GLOBAL_LIST="
+github.com
+"
+
+ARGS=("$@")
+
+in_git_repo=0
+if /usr/bin/git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    in_git_repo=1
+fi
+
+global_config=1
+
+if ((in_git_repo)); then
+    config_origin=$(/usr/bin/git config --show-origin --get "user.name" 2>/dev/null | awk '{print $1}' | rev | cut -d':' -f1 | rev)
+    if [ ".git/config" == "$config_origin" ]; then
+        global_config=0
+    fi
+
+    config_origin=$(/usr/bin/git config --show-origin --get "user.email" 2>/dev/null | awk '{print $1}' | rev | cut -d':' -f1 | rev)
+    if [ ".git/config" == "$config_origin" ]; then
+        global_config=0
+    fi
+fi
+
+if ((in_git_repo && global_config)); then
+    remote_url=$(/usr/bin/git remote -v | grep "push" | awk '{print($2)}')
+    
+    in_global=0
+    for domain in $USE_GLOBAL_LIST; do
+        if [[ "$remote_url" == *"$domain"* ]]; then
+            in_global=1
+        fi
+    done
+
+    in_local=0
+    for domain in $USE_LOCAL_LIST; do
+        if [[ "$remote_url" == *"$domain"* ]]; then
+            in_local=1
+        fi
+    done
+
+    global_name=$(/usr/bin/git config user.name)
+    global_email=$(/usr/bin/git config user.email)
+
+    use_global=1
+    if ! ((in_global || in_local)); then
+        read -p "Do you want to use $global_name/$global_email? (Y/n) " userInput
+
+        if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+            use_global=0
+        fi
+    elif ((in_local)); then
+        use_global=0
+    fi
+
+    if ((use_global)); then
+        /usr/bin/git config user.name "$global_name"
+        /usr/bin/git config user.email "$global_email"
+        echo "Setting config to $global_name/$global_email"
+    else
+        /usr/bin/git config user.name "$NAME"
+        /usr/bin/git config user.email "$EMAIL"
+        echo "Setting config to $NAME/$EMAIL"
+    fi
+fi
+
+/usr/bin/git "${ARGS[@]}"

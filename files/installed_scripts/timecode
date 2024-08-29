@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Function to print usage
+usage() {
+    echo "Usage: $0 <input_file>"
+    exit 1
+}
+
+# Check if the script is run as root
+if [ "$EUID" -eq 0 ]; then
+    echo "Please do not run this script as root."
+    exit 1
+fi
+
+# Check if exactly one argument is provided
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+# Get the input file and check if it exists
+input_file="$1"
+if [ ! -f "$input_file" ]; then
+    echo "File '$input_file' not found!"
+    exit 1
+fi
+
+# Extract the filename and extension
+filename=$(basename -- "$input_file")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+# Define the output file name
+output_file="${filename}_timecode.${extension}"
+
+# Run ffmpeg to add the timecode
+ffmpeg -i "$input_file" -vf "drawtext=fontfile=/path/to/font.ttf: \
+    text='%{pts\:hms}': \
+    fontcolor=yellow: \
+    fontsize=24: \
+    box=1: \
+    boxcolor=black@0.5: \
+    x=10: \
+    y=10" -preset ultrafast -codec:a copy "$output_file"
+
+# Check if the ffmpeg command was successful
+if [ $? -eq 0 ]; then
+    echo "Timecode added successfully. Output file: '$output_file'"
+else
+    echo "Failed to add timecode."
+    exit 1
+fi
+
+

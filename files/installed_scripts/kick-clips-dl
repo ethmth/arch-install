@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+
+import sys
+import requests
+import subprocess
+import json
+from datetime import datetime
+import os
+import re
+import concurrent.futures
+
+USE_COOKIES = True
+COOKIES_LOCATION = "/tmp/kick-cookies.txt"
+
+streamer = None
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def get_cookies():
+    cmd_args = ["get-cookies", "kick.com"]
+
+    cookies = subprocess.check_output(cmd_args).decode()
+
+    with open(COOKIES_LOCATION, 'w') as f:
+        f.write(cookies)
+
+
+def sanitize_filename(filename):
+    # Define a pattern for invalid characters
+    invalid_chars_pattern = r'[<>:"/\\|?*\x00-\x1F]'
+    # Replace invalid characters with an empty string
+    sanitized_filename = re.sub(invalid_chars_pattern, '', filename)
+    return sanitized_filename
+
+
+def get_clips(streamer):
+    filename = "/tmp/kick-clips.json"
+
+    # cmd_args = ["wget", "-q", "--no-check-certificate"]
+    # if USE_COOKIES:
+    #     cmd_args += ["--load-cookies", COOKIES_LOCATION]
+    # cmd_args += ["--output-document", filename]
+    # cmd_args += [f"https://kick.com/api/v2/channels/{streamer}/clips?cursor=0&sort=view&time=all"]
+
+    cmd_args = ["curl"]
+    cmd_args += ["--insecure"]
+    cmd_args += ["--silent"]
+    if USE_COOKIES:
+        cmd_args += ["-b", COOKIES_LOCATION]
+    cmd_args += ["-o", filename]
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'DNT': '1',
+        'Alt-Used': 'kick.com',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Priority': 'u=1',
+    }
+
+    for header in headers:
+        cmd_args += ["-H", f"{header}:{headers[header]}"]
+
+    api_url = f"https://kick.com/api/v2/channels/{streamer}/clips?cursor=0&sort=view&time=all"
+    cmd_args += [api_url]
+    
+    subprocess.run(cmd_args)
+
+    try:
+        with open(filename, 'r') as f:
+            data = json.load(f)
+    except:
+        print(api_url)
+        eprint("JSON not fetched. Refresh cookies? Streamer name invalid?")
+        sys.exit(1)
+    
+    # with open("dict.json", 'w') as f:
+    #     f.write(json.dumps(data))
+    # formatted = subprocess.check_output(["echo", json.dumps(data), "|", "jq", "."])
+    # print(formatted)
+
+    try:
+        return data["clips"]
+    except:
+        eprint("clips not in JSON")
+        sys.exit(1)
+
+
+def download_clip(clip):
+    clip_id = clip["id"]
+    livestream_id = clip["livestream_id"]
+    title = clip["title"]
+    video_url = clip["video_url"]
+    timestamp_str = clip["created_at"]
+
+    try:
+        dt = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
+        timestamp = dt.strftime("%Y-%m-%dT%H-%M-%S")
+    except:
+        try:
+            timestamp = sanitize_filename(timestamp_str)
+        except:
+            timestamp = ""
+
+
+    cmd_args = ["yt-dlp", "--no-check-certificates"]
+    cmd_args += ["--quiet"]
+    if USE_COOKIES:
+        cmd_args += ["--cookies", COOKIES_LOCATION]
+    cmd_args += ["-o", f"{streamer}/{timestamp}_{livestream_id}_{clip_id}_{title}.%(ext)s"]
+    # cmd_args += ["--verbose"]
+    # cmd_args += ["--print-traffic"]
+    # cmd_args += ["--impersonate", "chrome"]
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'DNT': '1',
+        'Alt-Used': 'kick.com',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Priority': 'u=1',
+    }
+
+    for header in headers:
+        cmd_args += ["--add-headers", f"{header}:{headers[header]}"]
+    
+    cmd_args += [video_url]
+
+    print("Downloading", video_url)
+    subprocess.run(cmd_args)
+
+
+def main():
+    if len(sys.argv) != 2:
+        eprint("Usage: kick-clips-dl <streamer>")
+        sys.exit(1)
+
+    global streamer
+    streamer = sys.argv[1]
+
+    if USE_COOKIES:
+        get_cookies()
+    
+    clips = get_clips(streamer)
+
+    print(len(clips), "clips found.")
+
+    if not os.path.exists(streamer):
+        os.makedirs(streamer)
+
+    # download_clip(clips[0])
+
+    max_threads = 4
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
+        executor.map(download_clip, clips)
+    
+
+if __name__ == "__main__":
+    main()

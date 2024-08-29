@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sleep 60
+# /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=megasync nz.mega.MEGAsync
+megasync

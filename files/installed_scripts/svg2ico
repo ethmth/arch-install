@@ -1,0 +1,18 @@
+#!/bin/bash
+
+FILE=$1
+
+if ! [ -f "$FILE" ]; then
+    echo "File $FILE does not exist."
+    exit 1
+fi
+
+inkscape -w 16 -h 16 -o 16.png $FILE
+inkscape -w 32 -h 32 -o 32.png $FILE
+inkscape -w 48 -h 48 -o 48.png $FILE
+
+convert 16.png 32.png 48.png icon.ico
+
+rm 16.png
+rm 32.png
+rm 48.png

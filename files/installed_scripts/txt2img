@@ -1,0 +1,8 @@
+#!/bin/bash
+
+POINT_SIZE=128
+if ! [ "$2" == "" ]; then
+    POINT_SIZE=$2
+fi
+
+convert -size 768x512 xc:black -font Liberation-Sans-Bold -fill white -gravity center -pointsize $POINT_SIZE -weight 900 -annotate 0 "$1" output.png

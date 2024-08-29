@@ -1,0 +1,31 @@
+#!/bin/sh
+
+OFF_TEMP="6500"
+ON_TEMP="3000"
+
+START_TIME="110000"
+END_TIME="180000"
+
+killall gammastep
+
+TEMP=$OFF_TEMP
+
+if [[ "$1" == "on" ]]; then
+	if ! [ -z "$2" ]; then
+		ON_TEMP=$2
+	fi
+	TEMP=$ON_TEMP
+elif [[ "$1" == "off" ]]; then
+	TEMP=$OFF_TEMP
+else
+	CURRENT_TIME=$(date +"%H%M%S")
+	if [[ ! ( "$CURRENT_TIME" < "$START_TIME" || "$CURRENT_TIME" > "$END_TIME" ) ]]; then
+		# DAY TIME
+		TEMP=$OFF_TEMP
+	else
+		# NIGHT TIME
+		TEMP=$ON_TEMP
+	fi
+fi
+
+gammastep -r -l 0:0 -t $TEMP:$TEMP &

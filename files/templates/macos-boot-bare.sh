@@ -1,0 +1,31 @@
+#!/bin/bash
+
+qemu-system-x86_64 \
+  -enable-kvm -m "8192" -cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,+ssse3,+sse4.2,+popcnt,+avx,+aes,+xsave,+xsaveopt,check \
+  -machine q35 \
+  -usb -device usb-kbd -device usb-tablet -device usb-mouse \
+  -smp "4",cores="4",sockets="1" \
+  -device usb-ehci,id=ehci \
+  -vga none \
+  -device vfio-pci,host=06:00.0,multifunction=on,x-no-kvm-intx=on \
+  -device vfio-pci,host=06:00.1 \
+  -device isa-applesmc,osk="ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc" \
+  -drive if=pflash,format=raw,readonly=on,file="/home/e/vm/osx/MacVentura/osx-serial-generator/OSX-KVM/OVMF_CODE.fd" \
+  -drive if=pflash,format=raw,file="/home/e/vm/osx/MacVentura/osx-serial-generator/OSX-KVM/OVMF_VARS.fd" \
+  -smbios type=2 \
+  -device ich9-intel-hda -device hda-duplex \
+  -device ich9-ahci,id=sata \
+  -drive id=OpenCoreBoot,if=none,snapshot=on,format=qcow2,file="/home/e/vm/osx/MacVentura/OpenCore.qcow2" \
+  -device ide-hd,bus=sata.2,drive=OpenCoreBoot \
+  -device ide-hd,bus=sata.3,drive=InstallMedia \
+  -drive id=InstallMedia,if=none,file="/home/e/vm/os/macos-Ventura.img",format=raw \
+  -drive id=MacHDD,if=none,file="/home/e/vm/disk/MacVentura.qcow2",format=qcow2 \
+  -device ide-hd,bus=sata.4,drive=MacHDD \
+  -netdev user,id=net0 -device vmxnet3,netdev=net0,id=net0,mac=52:54:00:c9:18:27 \
+  -monitor stdio \
+  -display none \
+  -vnc 0.0.0.0:1,password=on -k en-us \
+  -object input-linux,id=mouse1,evdev=/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse \
+  -object input-linux,id=kbd1,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-event-kbd,grab_all=on,repeat=on \
+  -object input-linux,id=kbd2,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-if01-event-kbd,grab_all=on,repeat=on \
+  -object input-linux,id=mouse2,evdev=/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma-if02-event-mouse \

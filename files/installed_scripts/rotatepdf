@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+# Check if the provided argument is a directory
+if [ ! -f "$1" ]; then
+    echo "Error: $1 is not a file"
+    exit 1
+fi
+
+file="$1"
+
+pdftk "$file" cat 1-endright output "/tmp/rotatepdf.temp.pdf" && mv "/tmp/rotatepdf.temp.pdf" "$file"

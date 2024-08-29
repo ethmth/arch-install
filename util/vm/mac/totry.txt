@@ -1,0 +1,8 @@
+agdpmod=ignore
+different qemu version
+
+disable sleep on guest
+
+disable all SSDTs in the ACPI section of config.plist
+
+look into acpi-pci-hotplug-with-bridge-support option

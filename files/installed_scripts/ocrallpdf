@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+# Check if the provided argument is a directory
+if [ ! -d "$1" ]; then
+    echo "Error: $1 is not a directory"
+    exit 1
+fi
+
+failures=()
+
+# Loop through each PDF file
+for file in "$1"/*.[pP][dD][fF]; do
+    # filename=$(basename -- "$file" .pdf)
+    filename=$(basename "$file")
+    extension="${filename##*.}"
+    filename="${filename%.*}"
+    dir=$(dirname "$file")
+
+    # # Remove any tags on PDF
+    # echo "Removing tags on \"$dir/$filename.pdf\""
+    # pdftk "$dir/$filename.pdf" output "$dir/output_no_tags.pdf" uncompress
+    # sed -i '/^\/StructTreeRoot/d' "$dir/output_no_tags.pdf"
+    # pdftk "$dir/output_no_tags.pdf" output "$dir/$filename.pdf" compress
+    # rm "$dir/output_no_tags.pdf"
+
+    if [[ "$filename" == "OCR"* ]]; then
+        echo "\"$dir/$filename.$extension\" has OCR in its name. Skipping"
+        continue
+    fi
+
+    # OCR the PDF
+    echo "ocrmypdf --skip-text \"$dir/$filename.$extension\" \"$dir/OCR_$filename.$extension\""
+    ocrmypdf --skip-text "$dir/$filename.$extension" "$dir/OCR_$filename.$extension"
+
+    if ! [ -f "$dir/OCR_$filename.$extension" ]; then
+        failures+=("$dir/OCR_$filename.$extension")
+        cp "$dir/$filename.$extension" "$dir/OCR_$filename.$extension"
+    fi
+done
+
+echo "Failures:"
+for element in "${failures[@]}"; do
+    echo "$element"
+done

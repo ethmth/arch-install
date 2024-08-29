@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <video_file_path> <timestamp>"
+    exit 1
+fi
+
+# Get the arguments
+video_file_path="$1"
+timestamp="$2"
+
+# Extract the file name without the extension
+video_file_name=$(basename "$video_file_path")
+video_file_name="${video_file_name%.*}"
+
+# Format the timestamp to replace colons with dashes
+formatted_timestamp="${timestamp//:/-}"
+
+# Create the output file name
+output_file="${video_file_name}_frame_at_${formatted_timestamp}.jpg"
+
+# Extract the frame using ffmpeg
+ffmpeg -i "$video_file_path" -ss "$timestamp" -vframes 1 "$output_file"
+
+echo "Frame extracted to $output_file"
+

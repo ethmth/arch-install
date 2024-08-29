@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "URL for m3u8 livestream required. Can be found by going to 'Network' tab."
+	exit 1
+fi
+URL=$1
+OUTPUT="output"
+
+if ! [ -z "$2" ]; then
+	OUTPUT=$2
+fi
+
+#echo "Running ffmpeg -i \"$1\" -c copy -bsf:a aac_adtstoasc \"$OUTPUT.mp4\""
+ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc "$OUTPUT.mp4"
