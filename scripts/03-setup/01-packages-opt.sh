@@ -14,6 +14,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # google-cloud-cli
 # pgmodeler
 # visual-studio-code-bin
+# squid
+# caddy
 packages="
 httrack
 megasync-bin
