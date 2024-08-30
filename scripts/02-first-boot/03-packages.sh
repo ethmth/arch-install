@@ -184,6 +184,7 @@ python
 python-poetry
 python-beautifulsoup4
 python-flask
+python-flask-cors
 python-flask-socketio
 python-gbinder
 python-matplotlib
