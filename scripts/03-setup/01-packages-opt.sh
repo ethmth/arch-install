@@ -15,8 +15,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # visual-studio-code-bin
 # squid
-# caddy
 packages="
+caddy
 httrack
 megasync-bin
 pdfgrep
