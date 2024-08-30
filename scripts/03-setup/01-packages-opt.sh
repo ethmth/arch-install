@@ -78,6 +78,7 @@ git-extras
 qbittorrent
 python-tqdm
 python-pycocotools
+python-phonenumbers
 python-opencv
 python-opengl
 python-openai
