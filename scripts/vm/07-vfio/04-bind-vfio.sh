@@ -87,7 +87,7 @@ sudo chmod +rx /usr/local/bin/gpustart
 
 sudo sh -c "echo \"#!/bin/bash\" > /usr/local/bin/gpucheck"
 sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"\" >> /usr/local/bin/gpucheck"
-sudo sh -c "echo \"lspci -nnk -d $gpu_pci_id | grep Kernel\" >> /usr/local/bin/gpucheck"
+sudo sh -c "echo \"lspci -nnk -d $gpu_pci_id | grep 'Kernel driver in use:'\" >> /usr/local/bin/gpucheck"
 sudo chmod +rx /usr/local/bin/gpucheck
 fi
 
