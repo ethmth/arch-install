@@ -76,7 +76,7 @@ if (( AMD_GPU )); then
 # sudo chmod +rx /usr/bin/gpustart
 
 sudo sh -c 'echo "#!/bin/bash" > /usr/local/bin/gpustart'
-sudo sh -c 'echo "echo \"Edit this script (/usr/local/bin/gpustart) and keep whichever method works\"" > /usr/local/bin/gpustart'
+sudo sh -c 'echo "echo \"Edit this script (/usr/local/bin/gpustart) and keep whichever method works\"" >> /usr/local/bin/gpustart'
 sudo sh -c "echo \"#sudo virsh nodedev-reattach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/local/bin/gpustart"
 sudo sh -c "echo \"#echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/local/bin/gpustart"
 sudo chmod +rx /usr/local/bin/gpustart
