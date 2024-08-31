@@ -65,6 +65,12 @@ pypy
 pypy3
 miopen-hip
 rocm-hip-sdk
+hipblas
+hipblaslt
+hiprand
+hipsparse
+hipcub
+rocthrust
 rocm-opencl-sdk
 okteta
 perl-image-exiftool
