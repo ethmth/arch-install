@@ -243,6 +243,7 @@ if (( HYPRLAND )); then
 # rose-pine-cursor
 # cliphist
 packages+="
+plasma-systemmonitor
 xwaylandvideobridge
 polkit-kde-agent
 hyprland
