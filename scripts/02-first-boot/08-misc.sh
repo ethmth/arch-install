@@ -235,6 +235,11 @@ if ! ( cat "/etc/pam.d/system-login" | grep -q "pam_faildelay.so delay=4000000" 
     sudo sh -c "echo \"$LINE\" >> /etc/pam.d/system-login"
 fi
 
+# tmux config
+if ! ( [ -f "/home/$CUR_USER/.tmux.conf" ] && ( cat "/home/$CUR_USER/.tmux.conf" | grep -q 'set -g mouse on' ) ); then
+    echo 'set -g mouse on' >> /home/$CUR_USER/.tmux.conf
+fi
+
 
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./09-initcpio.sh"
