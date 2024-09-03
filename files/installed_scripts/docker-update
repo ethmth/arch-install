@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 compose_images=$(docker images --filter "label=com.docker.compose.project")
 compose_images=$(echo "$compose_images" | awk 'NR>1 {system("echo " $1)}')
@@ -14,15 +14,12 @@ all_images=$(echo "$all_images" | grep -v "<none>" | grep -v "REPOSITORY")
 all_images=$(echo "$all_images" | tr -s ' ' | cut -d" " -f1,2 --output-delimiter=":")
 
 for image in $all_images; do
+    tag=$(echo "$image" | cut -d":" -f2)
+    if [[ $tag == *-builtlocally ]]; then
+        continue
+    fi
     echo "Pulling $image"
     docker pull $image
 done
-
-
-# pull_images=$(echo "$all_images" | grep "latest")
-# 
-# pull_images=$(printf "REPOSITORY                    TAG                           IMAGE ID       CREATED        SIZE\n$pull_images")
-# 
-# echo "$pull_images" | awk 'NR>1 {system("docker pull " $1)}'
 
 yes | docker system prune
