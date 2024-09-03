@@ -131,6 +131,7 @@ dkms
 dnsmasq
 docker
 docker-buildx
+docker-compose
 ffmpeg
 ffmpegthumbnailer
 firefox
