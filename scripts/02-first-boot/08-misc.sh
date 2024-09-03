@@ -187,8 +187,8 @@ if (( HYPRLAND )); then
         if [ -d "/opt/hyprland/wlr" ]; then
             rm -rf /opt/hyprland/wlr
         fi
-        cp -r /usr/include/wlr /opt/hyprland
-        cp /usr/include/hyprland/wlroots-hyprland/wlr/util/transform.h /opt/hyprland/wlr/util/transform.h
+        #cp -r /usr/include/wlr /opt/hyprland
+        #cp /usr/include/hyprland/wlroots-hyprland/wlr/util/transform.h /opt/hyprland/wlr/util/transform.h
 
         if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
             rm -rf /opt/hyprland/split-monitor-workspaces
