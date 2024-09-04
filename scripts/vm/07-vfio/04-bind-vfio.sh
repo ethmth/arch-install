@@ -95,11 +95,30 @@ if (( NVIDIA && ! INTEL )); then
 sudo bash ./custom-vfio-hook.sh IUNDERSTAND $CUR_USER "$groups"
 else
 sudo sh -c "echo \"options vfio-pci ids=$ids\" > /etc/modprobe.d/vfio.conf"
+if ! (cat /etc/mkinitcpio.conf | grep "^MODULES=" | grep -q "vfio_pci vfio vfio_iommu_type1"); then
 sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -b "end" vfio_pci vfio vfio_iommu_type1
 echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 fi
+fi
 
-sudo mkinitcpio -P
+if ((HYPRLAND)); then
+cards=$(ls -l /dev/dri/by-path | grep "card" | grep -v "$gpu_pci_group-card" | tr -s ' ' | rev | cut -d' ' -f-1 | rev | grep -Po 'card\d')
+wlr_devices=$(echo "$cards" | xargs | sed "s| |:/dev/dri/|")
+wlr_devices="/dev/dri/$wlr_devices"
+wlr_line="env = WLR_DRM_DEVICES,$wlr_devices"
+# sed -i "$wlr_line" /home/$CUR_USER/.config/hypr/hyprland.conf
+hyprland_conf="/home/$CUR_USER/.config/hypr/hyprland.conf"
+temp_conf="/tmp/hyprland.conf"
+
+cp "$hyprland_conf" "$temp_conf"
+if (cat "$temp_conf" | grep -q "^env = WLR_DRM_DEVICES,"); then
+sed -i '/^env = WLR_DRM_DEVICES,/d' "$temp_conf"
+fi
+echo "$wlr_line" | cat - "$temp_conf" > "$temp_conf.new"
+mv "$temp_conf.new" "$hyprland_conf"
+fi
+
+# sudo mkinitcpio -P
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
