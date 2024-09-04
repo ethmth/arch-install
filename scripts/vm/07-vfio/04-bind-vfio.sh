@@ -106,7 +106,6 @@ cards=$(ls -l /dev/dri/by-path | grep "card" | grep -v "$gpu_pci_group-card" | t
 wlr_devices=$(echo "$cards" | xargs | sed "s| |:/dev/dri/|")
 wlr_devices="/dev/dri/$wlr_devices"
 wlr_line="env = WLR_DRM_DEVICES,$wlr_devices"
-# sed -i "$wlr_line" /home/$CUR_USER/.config/hypr/hyprland.conf
 hyprland_conf="/home/$CUR_USER/.config/hypr/hyprland.conf"
 temp_conf="/tmp/hyprland.conf"
 
@@ -118,7 +117,7 @@ echo "$wlr_line" | cat - "$temp_conf" > "$temp_conf.new"
 mv "$temp_conf.new" "$hyprland_conf"
 fi
 
-# sudo mkinitcpio -P
+sudo mkinitcpio -P
 
 echo "Reboot and verify that the vfio drivers are loaded on your intended device(s) by running 'dmesg | grep -i vfio'"
 echo "To view the specific drivers on a pci device run 'lspci -nnk -d 10de:13c2', using the appropriate id."
