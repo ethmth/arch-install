@@ -43,7 +43,7 @@ chmod u=rw,g=,o= $path$name
 
 cryptsetup luksAddKey "$partition" "$path$name"
 
-options="luks"
+options="luks,x-systemd.device-timeout=20s"
 if (( SSD )); then
     options+=",discard"
 fi
