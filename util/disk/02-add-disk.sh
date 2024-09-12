@@ -43,7 +43,7 @@ chmod u=rw,g=,o= $path$name
 
 cryptsetup luksAddKey "$partition" "$path$name"
 
-options="luks"
+options="luks,x-systemd.device-timeout=20s"
 if (( SSD )); then
     options+=",discard"
 fi
@@ -53,8 +53,5 @@ device_string="UUID=$uuid_crypt"
 
 printf "$name\t$device_string\t$path$name\t$options\n" >> /etc/crypttab
 
-printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults\t0 2\n" >> /etc/fstab
-
-echo "$name added to /etc/crypttab and /etc/fstab"
-echo "Reboot and the disk should be mounted automatically at /mnt/$name"
-echo "To give your user, as a part of the storage group, access to the mountpoint, run ./change_ownership.sh as root"
+echo "$name added to /etc/crypttab"
+echo "Reboot. Then, run the next scripts."

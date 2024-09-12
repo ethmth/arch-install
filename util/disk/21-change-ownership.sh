@@ -14,7 +14,5 @@ fi
 
 chown -R root:storage $DISK
 chmod -R g+rwx $DISK
-# chown -R root:e $DISK
-# chmod -R g-rwx $DISK
 
 echo "As long as your user is part of the storage group, you should have access to $DISK"
