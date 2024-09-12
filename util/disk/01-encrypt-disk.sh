@@ -10,7 +10,22 @@ fi
 disksuffix=$(fdisk -l | grep "Disk /dev/" | grep -v "loop" | fzf --prompt="Select disk to encrypt" | awk -F'/' '{print $3}' | awk -F':' '{print $1}')
 disk="/dev/$disksuffix"
 
-read -p "Are you sure you want to format $disk (YES for yes, otherwise No)? " userInput
+logical_sector_size=$(fdisk -l $disk | grep "Sector size (logical/physical)" | cut -d':' -f2 | cut -d'/' -f1 | xargs | cut -d' ' -f1)
+physical_sector_size=$(fdisk -l $disk | grep "Sector size (logical/physical)" | cut -d':' -f2 | cut -d'/' -f2 | xargs | cut -d' ' -f1)
+sector_reset=0
+
+if [ "$physical_sector_size" == "4096" ]; then
+  if [ "$logical_sector_size" != "$physical_sector_size" ]; then
+    fdisk -l $disk
+    echo "The logical sector size ($logical_sector_size) does not match the physical sector size ($physical_sector_size)."
+    read -p "Do you want to set the logical sector size to $physical_sector_size (YES for yes, otherwise No)? " userInput
+    if [ "$userInput" == "YES" ]; then
+      sector_reset=1
+    fi
+  fi
+fi
+
+read -p "Are you sure you want to format $disk (sector_reset=$sector_reset) (YES for yes, otherwise No)? " userInput
 
 if ! [ "$userInput" == "YES" ]; then
     echo "Cancelling. No damage done."
@@ -27,7 +42,7 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${disk}
   w # write the partition table
 EOF
 echo "Partition created:"
-fdisk -l | grep "$disk"
+fdisk -l "$disk"
 
 read -p "Do these partitions look correct (N for No, otherwise Yes)? " userInput
 
