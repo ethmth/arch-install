@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-name=$(ls -1 /dev/mapper | grep -v "control" | fzf --prompt="Please select the /dev/mapper device you want to add an fstab entry for.")
+name=$(ls -1 /dev/mapper | grep -v "control" | fzf --prompt="Please select the /dev/mapper device you want to add an fstab entry for (just one is fine for multi-array).")
 
 uuid=$(btrfs filesystem show "/dev/mapper/$name" | grep -o "uuid.*" | cut -d':' -f2 | tr -d ' ')
 
