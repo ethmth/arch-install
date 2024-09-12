@@ -16,7 +16,8 @@ if [ "$physical_sector_size" == "4096" ]; then
   if [ "$logical_sector_size" != "$physical_sector_size" ]; then
     fdisk -l "$disk"
     echo "The logical sector size ($logical_sector_size) does not match the physical sector size ($physical_sector_size)."
-    read -p "Do you want to set the logical sector size to $physical_sector_size (YES for yes, otherwise No)? " userInput
+    echo "ALL DATA WILL BE LOST."
+    read -p "ARE YOU SURE you want to set the logical sector size for $disk to $physical_sector_size (YES for yes, otherwise No)? " userInput
     if [ "$userInput" == "YES" ]; then
       sector_reset=1
     fi
