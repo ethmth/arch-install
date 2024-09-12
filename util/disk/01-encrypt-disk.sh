@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-name="crypttemp"
+# name="crypttemp"
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run with root/sudo privileges."
@@ -43,10 +43,10 @@ partitionsuffix=$(echo "$partition" | cut -d'/' -f 3)
 
 echo "Encryption setup for filesystem:"
 cryptsetup luksFormat "$partition"
-echo "Enter the password to unencrypt the disk:"
-cryptsetup open "$partition" "$name"
-mkfs.ext4 /dev/mapper/$name
-sleep 3
-cryptsetup close "$name"
+# echo "Enter the password to unencrypt the disk:"
+# cryptsetup open "$partition" "$name"
+# mkfs.ext4 /dev/mapper/$name
+# sleep 3
+# cryptsetup close "$name"
 
-echo "To finish setting up the disk, run ./add-disk.sh"
+echo "To make the filesystem, run ./02-make-ext4.sh"
