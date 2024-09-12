@@ -49,4 +49,4 @@ cryptsetup luksFormat "$partition"
 # sleep 3
 # cryptsetup close "$name"
 
-echo "To make the filesystem, run ./02-make-ext4.sh"
+echo "To make the filesystem, run ./02-make-ext4.sh. If you're using btrfs, follow the scripts in ./btrfs"

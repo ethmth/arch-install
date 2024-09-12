@@ -8,6 +8,8 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
+sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -a start btrfs
+
 if (( INTEL )); then
     sudo bash /home/$CUR_USER/arch-install/util/kernel/mkinit-edit.sh add-modules -b end i915
 fi
