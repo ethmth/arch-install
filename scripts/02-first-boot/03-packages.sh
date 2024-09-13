@@ -9,6 +9,9 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 packages="
+s-nail
+msmtp
+msmtp-mta
 mdadm
 hdparm
 sdparm
