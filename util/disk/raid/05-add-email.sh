@@ -11,12 +11,17 @@ if [ "$email" == "" ]; then
   exit 1
 fi
 
+if ! ( [ -f "/etc/mdadm.conf" ] && ( cat "/etc/mdadm.conf" | grep -q '^PROGRAM' ) ); then
+    echo "PROGRAM /usr/local/bin/mdadm-notify" >> /etc/mdadm.conf
+fi
+
 if ! ( [ -f "/etc/mdadm.conf" ] && ( cat "/etc/mdadm.conf" | grep -q '^MAILADDR' ) ); then
     echo "MAILADDR $email" >> /etc/mdadm.conf
 else
 	echo "MAILADDR already exists in /etc/mdadm.conf. Remove it to continue."
 	exit 1
 fi
+
 
 
 echo "You may need to edit ~/.msmtprc if the mailserver there is incorrect."
