@@ -16,3 +16,5 @@ chown -R root:storage $DISK
 chmod -R g+rwx $DISK
 
 echo "As long as your user is part of the storage group, you should have access to $DISK"
+
+echo "Be sure to run protect-file on any files you want to protect."
