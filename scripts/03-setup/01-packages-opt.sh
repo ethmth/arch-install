@@ -83,6 +83,7 @@ git-lfs
 git-extras
 qbittorrent
 python-tqdm
+python-simple-term-menu
 python-jsondiff
 python-pycocotools
 python-phonenumbers
