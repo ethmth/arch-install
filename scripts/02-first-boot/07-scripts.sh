@@ -37,6 +37,7 @@ if (( LAPTOP && HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/brightlight /usr/local/bin/brightlight
     sudo chmod +rx /usr/local/bin/brightlight
 fi
+sudo sh -c "printf \"[Users]\nHideUsers=del_prot\n\" > /etc/sddm.conf.d/hiddenusers.conf"
 
 sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/update-resolv-conf /etc/openvpn/update-resolv-conf
 sudo chmod +rx /etc/openvpn/update-resolv-conf
