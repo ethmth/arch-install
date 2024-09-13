@@ -38,4 +38,4 @@ sudo chmod 1775 "$dir_path"
 
 echo "Protecting $(basename "$file_path")"
 sudo chown "$DUMMY_USER" "$file_path"
-sudo chmod 664 "$file_path"
+sudo chmod 660 "$file_path"
