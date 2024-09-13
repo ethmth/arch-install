@@ -32,6 +32,8 @@ if (( NVIDIA && ! INTEL)); then
 	sudo systemctl enable nvidia-hibernate.service
 	sudo systemctl enable nvidia-resume.service
 fi
+# Disable Sleeping
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Disable KDE Powerdevil
 # systemctl --user mask plasma-powerdevil.service
