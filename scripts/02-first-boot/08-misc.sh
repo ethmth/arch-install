@@ -150,59 +150,6 @@ fi
 # Enable NTP
 sudo timedatectl set-ntp true
 
-# TODO Add Hyprsome Install Command
-# echo "Install hyprsome manually if on Hyprland Multi-monitor by following the instructions in this file."
-# git clone https://github.com/sopa0/hyprsome
-# cd hyprsome
-# cargo build
-# sudo cp target/debug/hyprsome /usr/bin/hyprsome
-
-# if (( HYPRLAND )); then
-# hyprpm update
-# hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
-# hyprpm enable split-monitor-workspaces
-# hyprpm reload
-# fi
-
-# if (( HYPRLAND )); then
-# echo "Install hyprload using this command if needed:"
-# echo "curl -sSL https://raw.githubusercontent.com/Duckonaut/hyprload/main/install.sh | bash"
-# fi
-
-if (( HYPRLAND )); then
-    if [ -f "/opt/hyprland/split-monitor-workspaces/split-monitor-workspaces.so" ]; then
-        echo "Note: Delete /opt/hyprland/split-monitor-workspaces/split-monitor-workspaces.so to rebuild."
-    else
-        sudo mkdir -p /opt/hyprland
-        sudo chmod -R 777 /opt/hyprland
-        #if [ -d "/opt/hyprland/hyprland" ]; then
-        #    rm -rf /opt/hyprland/hyprland
-        #fi
-        #git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
-        #cd /opt/hyprland/hyprland
-        #GIT_HYPRLAND_VERSION="v$(yay -Q hyprland | cut -d ' ' -f 2 | cut -d '-' -f 1)"
-        #git checkout $GIT_HYPRLAND_VERSION
-        # make all
-        
-        if [ -d "/opt/hyprland/wlr" ]; then
-            rm -rf /opt/hyprland/wlr
-        fi
-        #cp -r /usr/include/wlr /opt/hyprland
-        #cp /usr/include/hyprland/wlroots-hyprland/wlr/util/transform.h /opt/hyprland/wlr/util/transform.h
-
-        if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
-            rm -rf /opt/hyprland/split-monitor-workspaces
-        fi
-        git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
-        cd /opt/hyprland/split-monitor-workspaces
-        export HYPRLAND_HEADERS="/opt/hyprland"
-        INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
-        sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
-        make all
-    fi
-fi
-
-
 # TODO: Implement these in RAM/also clipboard and bash history.
 RAM_DIRS="
 /home/$CUR_USER/.cache/thumbnails
@@ -242,4 +189,4 @@ fi
 
 
 echo "Verify that installation of various misc software was successful"
-echo "If so, run ./09-initcpio.sh"
+echo "If so, run ./09-split-workspaces.sh"

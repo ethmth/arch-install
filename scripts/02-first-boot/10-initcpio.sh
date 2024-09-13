@@ -30,4 +30,4 @@ sudo mkinitcpio -P
 
 echo "Initcpio should have been regenerated without kms and with the appropriate video driver in MODULES."
 echo "Otherwise, no action was taken"
-echo "Next, run ./10-grub.sh"
+echo "Next, run ./11-grub.sh"
