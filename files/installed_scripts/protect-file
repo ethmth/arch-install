@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+DUMMY_USER="del_prot"
+
+if ! [[ $EUID -ne 0 ]]; then
+	echo "This script must NOT be run with root/sudo privileges."
+	exit 1
+fi
+CUR_USER=$(whoami)
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <file_path>"
+    exit 1
+fi
+
+file_path="$1"
+
+if [ ! -f "$file_path" ]; then
+    echo "Error: '$file_path' is not a file."
+    exit 1
+fi
+
+# Add user if it doesn't exist
+id -u $DUMMY_USER &>/dev/null || sudo useradd $DUMMY_USER
+
+dir_path=$(dirname $(readlink -f "$file_path"))
+
+sudo chown $DUMMY_USER:$CUR_USER "$dir_path"
+sudo chmod 1775 "$dir_path"
+
+# for file in "$dir_path"/*; do
+#     if [ -f "$file" ]; then
+#         echo "Protecting $(basename "$file")"
+#         sudo chown "$DUMMY_USER" "$file"
+#         sudo chmod 664 "$file"
+#     fi
+# done
+
+echo "Protecting $(basename "$file_path")"
+sudo chown "$DUMMY_USER" "$file_path"
+sudo chmod 664 "$file_path"
