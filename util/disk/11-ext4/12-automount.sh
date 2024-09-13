@@ -15,6 +15,6 @@ if ! [ "$userInput" == "YES" ]; then
     exit 1
 fi
 
-printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults,nodev,nofail,x-systemd.device-timeout=10\t0 2\n" >> /etc/fstab
+printf "/dev/mapper/$name\t/mnt/$name\text4\tdefaults,nodev,nofail,x-systemd.device-timeout=30\t0 2\n" >> /etc/fstab
 
 echo "Reboot and /dev/mapper/$name should be mounted automatically at /mnt/$name"

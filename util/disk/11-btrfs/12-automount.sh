@@ -19,6 +19,6 @@ if ! [ "$userInput" == "YES" ]; then
     exit 1
 fi
 
-printf "UUID=$uuid\t/mnt/$mountname\tbtrfs\trw,async,nodev,nosuid,noexec,noatime,auto,nofail,x-systemd.device-timeout=10\t0 0\n" >> /etc/fstab
+printf "UUID=$uuid\t/mnt/$mountname\tbtrfs\trw,async,nodev,nosuid,noexec,noatime,auto,nofail,x-systemd.device-timeout=30\t0 0\n" >> /etc/fstab
 
 echo "Reboot and /dev/mapper/$name should be mounted automatically at /mnt/$mountname"
