@@ -25,6 +25,8 @@ send_message() {
         timeout=0
     fi
 
+    printf "[$(date +"%Y-%m-%d %I:%M:%S %p")] %-8s $summary. $body\n" "($urgency)" >> /opt/mdadm-notify.log
+
     # When we don't have a DBUS_SESSION_BUS_ADDRESS it's likely we were called by mdadm-monitor
     # that was started as part of the system startup session and not part of the login session.
     # Find non-system users, check if there's a socket named bus and use that instead.
@@ -39,14 +41,12 @@ send_message() {
                     response=$(sudo -u "$username" DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" -- notify-send -u "$urgency" -a 'mdadm' -i 'drive-harddisk' -c $category -t $timeout "$summary" "$body" 2>&1)
                     if test $? -ne 0; then
                         logger -t 'mdadm-notify' "Could not notify because: $response"
-                        printf "[$(date +"%Y-%m-%d %I:%M:%S %p")] %-8s [COULD NOT NOTIFY BECAUSE: $response] $summary - $body\n" "($urgency)" >> /opt/mdadm-notify.log
                     fi
                 fi
             fi
         done
     else
         notify-send -u "$urgency" -a 'mdadm' -i 'drive-harddisk' -c $category -t $timeout "$summary" "$body"
-        printf "[$(date +"%Y-%m-%d %I:%M:%S %p")] %-8s $summary - $body\n" "($urgency)" >> /opt/mdadm-notify.log
     fi
 }
 
