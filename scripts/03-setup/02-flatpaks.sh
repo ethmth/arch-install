@@ -27,7 +27,6 @@ com.github.PintaProject.Pinta
 org.upscayl.Upscayl
 io.dbeaver.DBeaverCommunity
 org.filezillaproject.Filezilla
-org.gnome.SimpleScan
 org.freecadweb.FreeCAD
 org.blender.Blender
 org.octave.Octave
