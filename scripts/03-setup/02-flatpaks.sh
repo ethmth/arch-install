@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Install Flatpaks
 # nz.mega.MEGAsync
 flatpaks="
+io.photoflare.photoflare
 org.keepassxc.KeePassXC
 org.cryptomator.Cryptomator
 com.github.jeromerobert.pdfarranger
