@@ -75,6 +75,11 @@ org.prismlauncher.PrismLauncher
 # fi
 # com.visualstudio.code
 
+# GAMES
+flatpaks+="
+org.armagetronad.ArmagetronAdvanced
+"
+
 flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
