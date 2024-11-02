@@ -20,8 +20,8 @@ if (( HYPRLAND )); then
         fi
         git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
         cd /opt/hyprland/hyprland
-        #GIT_HYPRLAND_VERSION="v$(yay -Q hyprland | cut -d ' ' -f 2 | cut -d '-' -f 1)"
-        #git checkout $GIT_HYPRLAND_VERSION
+        GIT_HYPRLAND_VERSION="v$(yay -Q hyprland | cut -d ' ' -f 2 | cut -d '-' -f 1)"
+        git checkout $GIT_HYPRLAND_VERSION
         make all
         
         #if [ -d "/opt/hyprland/wlr" ]; then
@@ -35,6 +35,7 @@ if (( HYPRLAND )); then
         fi
         git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
         cd /opt/hyprland/split-monitor-workspaces
+        git checkout f5805a868543358adeb5f24fd411c2f72455c88c
         export HYPRLAND_HEADERS="/opt/hyprland"
         INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
         sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
