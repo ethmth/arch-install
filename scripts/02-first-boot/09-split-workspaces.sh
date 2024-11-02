@@ -15,18 +15,18 @@ if (( HYPRLAND )); then
     else
         sudo mkdir -p /opt/hyprland
         sudo chmod -R 777 /opt/hyprland
-        #if [ -d "/opt/hyprland/hyprland" ]; then
-        #    rm -rf /opt/hyprland/hyprland
-        #fi
-        #git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
-        #cd /opt/hyprland/hyprland
+        if [ -d "/opt/hyprland/hyprland" ]; then
+            rm -rf /opt/hyprland/hyprland
+        fi
+        git clone --recurse-submodules https://github.com/hyprwm/Hyprland.git /opt/hyprland/hyprland
+        cd /opt/hyprland/hyprland
         #GIT_HYPRLAND_VERSION="v$(yay -Q hyprland | cut -d ' ' -f 2 | cut -d '-' -f 1)"
         #git checkout $GIT_HYPRLAND_VERSION
-        # make all
+        make all
         
-        if [ -d "/opt/hyprland/wlr" ]; then
-            rm -rf /opt/hyprland/wlr
-        fi
+        #if [ -d "/opt/hyprland/wlr" ]; then
+        #    rm -rf /opt/hyprland/wlr
+        #fi
         #cp -r /usr/include/wlr /opt/hyprland
         #cp /usr/include/hyprland/wlroots-hyprland/wlr/util/transform.h /opt/hyprland/wlr/util/transform.h
 
