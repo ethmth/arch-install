@@ -82,6 +82,7 @@ jupyter-nbformat
 git-lfs
 git-extras
 qbittorrent
+python-inotify
 python-tqdm
 python-simple-term-menu
 python-jsondiff
