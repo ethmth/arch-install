@@ -8,109 +8,49 @@ import validators
 import shutil
 from urllib.parse import urlparse
 from pathlib import Path
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives.padding import PKCS7
+import base64
+import argparse
+
+
 
 FILENAME = "cookies.sqlite"
 BROWSER="Librewolf"
 
 LOCATIONS = {
-    "Librewolf": f"{Path.home()}/.var/app/io.gitlab.librewolf-community/.librewolf"
+    "Librewolf": (f"{Path.home()}/.var/app/io.gitlab.librewolf-community/.librewolf", False),
+    "Mullvad": (f"{Path.home()}/.var/app/net.mullvad.MullvadBrowser/.mullvad-browser/.mullvad/mullvadbrowser", False),
+    "Chromium": (f"{Path.home()}/.config/chromium/Default/Cookies", True),
+    "Opera": (f"{Path.home()}/.var/app/com.opera.Opera/config/opera/Default/Cookies", True),
+    # "Brave": (f"{Path.home()}/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser/Default/Cookies", True)
 }
 
+# Initialize parser
+parser = argparse.ArgumentParser()
+
+# Adding optional argument
+parser.add_argument("-b", "--browser", help = f"Choose browser: [{', '.join(LOCATIONS.keys())}]")
+
+parser.add_argument("args", nargs="*")
+
+# Read arguments from command line
+args = parser.parse_args()
+
+if args.browser:
+    # print("Displaying Output as: % s" % args.Output)
+    BROWSER = args.browser
+
 domains = []
+
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
-
-# https://gist.github.com/ivansaul/40ad4f23ee375b38654be02631902041?short_path=b2eff7e
-def to_netscape_string(cookie_data: list[dict]) -> str:
-    """
-    Convert cookies to Netscape cookie format.
-
-    This function takes a list of cookie dictionaries and transforms them into
-    a single string in Netscape cookie file format, which is commonly used by
-    web browsers and other HTTP clients for cookie storage. The Netscape string
-    can be used to programmatically interact with websites by simulating the
-    presence of cookies that might be set during normal web browsing.
-
-    Args:
-        cookie_data (list of dict): A list of dictionaries where each dictionary
-            represents a cookie. Each dictionary should have the following keys:
-            - 'domain': The domain of the cookie.
-            - 'expires': The expiration date of the cookie as a timestamp.
-            - 'path': The path for which the cookie is valid.
-            - 'secure': A boolean indicating if the cookie is secure.
-            - 'name': The name of the cookie.
-            - 'value': The value of the cookie.
-
-    Returns:
-        str: A string representing the cookie data in Netscape cookie file format.
-
-    Example of Netscape cookie file format:
-        .example.com	TRUE	/	TRUE	0	CloudFront-Key-Pair-Id	APKAIAHLS7PK3GAUR2RQ
-    """
-    result = []
-    for cookie in cookie_data:
-        domain = cookie.get("domain", "")
-        expiration_date = cookie.get("expires", 0)
-        path = cookie.get("path", "")
-        secure = cookie.get("secure", False)
-        name = cookie.get("name", "")
-        value = cookie.get("value", "")
-
-        include_sub_domain = domain.startswith(".") if domain else False
-        expiry = str(int(expiration_date)) if expiration_date > 0 else "0"
-        result.append(
-            [
-                domain,
-                str(include_sub_domain).upper(),
-                path,
-                str(secure).upper(),
-                expiry,
-                name,
-                value,
-            ]
-        )
-    return "\n".join("\t".join(cookie_parts) for cookie_parts in result)
-
-
-def save_cookies_to_file(
-    cookie_data: list[dict], file_path
-) -> None:
-    """
-    Save cookies to txt file
-    """
-    netscape_string = to_netscape_string(cookie_data)
-    with open(file_path, "w", encoding="utf-8") as file:
-
-        header = """\
-# Netscape HTTP Cookie File
-# http://www.netscape.com/newsref/std/cookie_spec.html
-# This is a generated file!  Do not edit.\n
-"""
-        file.write(header)
-        file.write(netscape_string)
-
-
-def write_cookies_file(cookies, file_path):
-    cookie_data = []
-    for c in cookies:
-        cookie = {
-            "domain": c[0],
-            "expires": c[3],
-            "path": c[1],
-            "secure": True if c[2] == '1' else False,
-            "name": c[4],
-            "value": c[5]
-        }
-
-        cookie_data.append(cookie)
-    
-    save_cookies_to_file(cookie_data, file_path)
-
-
-def find_cookies_file():
-    location = LOCATIONS[BROWSER]
+def find_cookies_file(location):
 
     res = None
     for root, dirs, files in os.walk(location):
@@ -123,10 +63,11 @@ def find_cookies_file():
 
     return res
 
-
 def extract_domains():
-    if len(sys.argv) > 1:
-        for url in sys.argv[1:]:
+    if len(args.args) >= 1:
+    #if len(sys.argv) > 1:
+        #for url in sys.argv[1:]:
+        for url in args.args:
             if validators.domain(url):
                 domains.append(url)
                 continue
@@ -138,8 +79,7 @@ def extract_domains():
         eprint("Please provide one or more URLs as command-line arguments.")
         sys.exit(1)
 
-
-def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/cookies.txt"):
+def get_cookies_moz(sqlite_file = "/tmp/cookies.sqlite"):
     """Exports cookies from SQLite to CSV format."""
     conn = sqlite3.connect(sqlite_file)
     cursor = conn.cursor()
@@ -156,21 +96,88 @@ def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/
     cursor.execute(query)
     cookies = cursor.fetchall()
     conn.close()
+    return cookies
 
-    write_cookies_file(cookies, txt_file)
+def clean(x):
+    return x[:-x[-1]].decode('utf8')
 
-    # with open(txt_file, 'w') as txtfile:
-    #     txtfile.write("# Netscape HTTP Cookie File\n")
-    #     for cookie in cookies:
-    #         domain = cookie[0]
-    #         if domain[0] != '.' and domain.count(".") < 2:
-    #             domain = f".{domain}"
-    #         path = cookie[1]
-    #         secure = 'TRUE' if cookie[2] == '1' else 'FALSE'
-    #         expiry = cookie[3]
-    #         name = cookie[4]
-    #         value = cookie[5]
-    #         txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
+def decrypt_cookie(encrypted_value):
+    encrypted_value = encrypted_value[3:]
+    salt = b'saltysalt'
+    iv = b' ' * 16
+    length = 16
+
+    MY_PASS='peanuts'
+    my_pass = MY_PASS
+    my_pass = my_pass.encode('utf8')
+    iterations = 1
+
+    # Derive key using PBKDF2HMAC
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA1(),
+        length=length,
+        salt=salt,
+        iterations=iterations,
+        backend=default_backend()
+    )
+    key = kdf.derive(my_pass)
+    
+    # Decrypt using AES-CBC
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    decryptor = cipher.decryptor()
+
+    # Decrypt and remove padding
+    decrypted_value = decryptor.update(encrypted_value) + decryptor.finalize()
+
+    # Handle PKCS7 padding
+    unpadder = PKCS7(algorithms.AES.block_size).unpadder()
+    decrypted = unpadder.update(decrypted_value) + unpadder.finalize()
+
+    try:
+        res = decrypted.decode('utf-8')
+    except:
+        res = decrypted[32:].decode('utf-8')
+    
+    return res
+
+def get_cookies_chr(sqlite_file = "/tmp/cookies.sqlite"):
+    """Exports cookies from SQLite to CSV format."""
+    conn = sqlite3.connect(sqlite_file)
+    cursor = conn.cursor()
+
+    query = """
+    SELECT host_key, path, is_secure, expires_utc, name, encrypted_value 
+    FROM cookies
+    WHERE 
+    """
+    for domain in domains:
+        query += f"host_key='{domain}' OR host_key='.{domain}' OR "
+    query += "host_key='poopoo';"
+
+    cursor.execute(query)
+    cookies = cursor.fetchall()
+    new_cookies = []
+    for cookie in cookies:
+        new_cookie = [cookie[0], cookie[1], cookie[2], cookie[3], cookie[4], decrypt_cookie(cookie[5])]
+        new_cookies.append(new_cookie)
+    conn.close()
+    return new_cookies
+
+
+def export_cookies_to_txt(cookies, txt_file = "/tmp/cookies.txt"):
+    with open(txt_file, 'w') as txtfile:
+        txtfile.write("# Netscape HTTP Cookie File\n")
+        for cookie in cookies:
+            domain = cookie[0]
+            if domain[0] != '.' and domain.count(".") < 2:
+                domain = f".{domain}"
+            path = cookie[1]
+            secure = 'TRUE' if cookie[2] == '1' else 'FALSE'
+            expiry = cookie[3]
+            name = cookie[4]
+            value = cookie[5]
+            txtfile.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
+
 
     res = ""
     with open(txt_file, 'r') as txtfile:
@@ -181,14 +188,25 @@ def export_cookies_to_txt(sqlite_file = "/tmp/cookies.sqlite", txt_file = "/tmp/
 
 
 def main():
-    sqlite_file = find_cookies_file()
+    chromium = LOCATIONS[BROWSER][1]
+    location = LOCATIONS[BROWSER][0]
+    if chromium:
+        sqlite_file = location
+    else:
+        sqlite_file = find_cookies_file(location)
+
     extract_domains()
     shutil.copyfile(sqlite_file, "/tmp/cookies.sqlite")
-    
-    res = export_cookies_to_txt()
+  
+    if chromium:
+        cookies = get_cookies_chr(sqlite_file)
+    else:
+        cookies = get_cookies_moz(sqlite_file)
+    res = export_cookies_to_txt(cookies)
     print(res)
-
 
 if __name__ == "__main__":
     main()
+
+
 
