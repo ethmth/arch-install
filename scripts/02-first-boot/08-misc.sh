@@ -132,8 +132,12 @@ fi
 #echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bashrc
 #fi
 
-if ! ([ -f "/home/$CUR_USER/.bash_logout" ] && ( cat "/home/$CUR_USER/.bash_logout" | grep -q "cat /dev/null > ~/.bash_history && history -c" )); then
-echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bash_logout
+#if ! ([ -f "/home/$CUR_USER/.bash_logout" ] && ( cat "/home/$CUR_USER/.bash_logout" | grep -q "cat /dev/null > ~/.bash_history && history -c" )); then
+#echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bash_logout
+#fi
+
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "unset HISTFILE" ); then
+echo "unset HISTFILE" >> /home/$CUR_USER/.bashrc
 fi
 
 # Docker container runtime setup
