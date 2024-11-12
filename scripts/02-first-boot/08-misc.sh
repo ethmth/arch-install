@@ -128,9 +128,9 @@ echo "PATH=\$PATH:/home/$CUR_USER/.dotnet/tools" >> /home/$CUR_USER/.bashrc
 fi
 
 # Set bash history to delete
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "cat /dev/null > ~/.bash_history && history -c" ); then
-echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bashrc
-fi
+#if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "cat /dev/null > ~/.bash_history && history -c" ); then
+#echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bashrc
+#fi
 
 if ! ([ -f "/home/$CUR_USER/.bash_logout" ] && ( cat "/home/$CUR_USER/.bash_logout" | grep -q "cat /dev/null > ~/.bash_history && history -c" )); then
 echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bash_logout
