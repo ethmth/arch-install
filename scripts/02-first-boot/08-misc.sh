@@ -136,8 +136,13 @@ fi
 #echo "cat /dev/null > ~/.bash_history && history -c" >> /home/$CUR_USER/.bash_logout
 #fi
 
-if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "unset HISTFILE" ); then
-echo "unset HISTFILE" >> /home/$CUR_USER/.bashrc
+# if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "unset HISTFILE" ); then
+# echo "unset HISTFILE" >> /home/$CUR_USER/.bashrc
+# fi
+
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "HISTFILE=/home/" ); then
+echo "HISTFILE=/home/$CUR_USER/.history/.bash_history
+PROMPT_COMMAND=\"\${PROMPT_COMMAND:+\$PROMPT_COMMAND; }history -a\"" >> /home/$CUR_USER/.bashrc
 fi
 
 # Docker container runtime setup
@@ -165,6 +170,7 @@ sudo timedatectl set-ntp true
 
 # TODO: Implement these in RAM/also clipboard and bash history.
 RAM_DIRS="
+/home/$CUR_USER/.history
 /home/$CUR_USER/.cache/thumbnails
 /home/$CUR_USER/.cache/virt-manager
 /home/$CUR_USER/.cache/mpv
