@@ -16,6 +16,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
+etcher-bin
 caddy
 httrack
 megasync-bin
