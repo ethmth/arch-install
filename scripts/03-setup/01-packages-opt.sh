@@ -16,6 +16,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
+hfsprogs
 etcher-bin
 caddy
 httrack
