@@ -9,6 +9,7 @@ git.ethanmt.com
 
 USE_GLOBAL_LIST="
 github.com
+git.theatrax.com
 "
 
 ARGS=("$@")
