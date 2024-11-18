@@ -15,7 +15,10 @@ sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default
 #sudo bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /etc/default/grub "GRUB_DISABLE_OS_PROBER=false"
 
 sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh usbcore.autosuspend=-1
-sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh pcie_aspm=off
+
+if (( DESKTOP )); then #unlimit ethernet
+    sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh pcie_aspm=off
+fi
 
 if (( NVIDIA )); then
     sudo bash /home/$CUR_USER/arch-install/util/kernel/grub-add.sh nvidia_drm.modeset=1
