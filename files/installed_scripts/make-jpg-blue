@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Ensure the script stops on errors
+set -e
+
+# Check if input image is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <input.jpg>"
+    exit 1
+fi
+
+INPUT_IMAGE="$1"
+BASENAME=$(basename "$INPUT_IMAGE" .jpg)
+OUTPUT_IMAGE="${BASENAME}-blue.jpg"
+
+# Check dependencies
+if ! command -v convert &> /dev/null; then
+    echo "Please install ImageMagick before running this script."
+    exit 1
+fi
+
+# Step 1: Replace black with blue in the image
+echo "Replacing black with blue in the image..."
+convert "$INPUT_IMAGE" -fill blue -opaque black "$OUTPUT_IMAGE"
+
+# Step 2: Confirm output
+echo "Done! Output saved as $OUTPUT_IMAGE"
+

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Ensure the script stops on errors
+set -e
+
+# Check if input PDF is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <input.pdf>"
+    exit 1
+fi
+
+INPUT_PDF="$1"
+BASENAME=$(basename "$INPUT_PDF" .pdf)
+OUTPUT_PDF="${BASENAME}-blue.pdf"
+TEMP_DIR=$(mktemp -d)
+
+# Check dependencies
+if ! command -v convert &> /dev/null || ! command -v pdftk &> /dev/null; then
+    echo "Please install ImageMagick and pdftk before running this script."
+    exit 1
+fi
+
+# Step 1: Convert PDF pages to images
+echo "Converting PDF to images..."
+convert -density 300 "$INPUT_PDF" "$TEMP_DIR/page-%04d.png"
+
+# Step 2: Replace black with blue in each image
+echo "Replacing black with blue in images..."
+for img in "$TEMP_DIR"/page-*.png; do
+    convert "$img" -fill blue -opaque black "${img%.png}-blue.png"
+done
+
+# Step 3: Combine modified images back into a PDF
+echo "Combining modified images into a new PDF..."
+convert "$TEMP_DIR"/*-blue.png "$OUTPUT_PDF"
+
+# Step 4: Clean up
+echo "Cleaning up temporary files..."
+rm -rf "$TEMP_DIR"
+
+echo "Done! Output saved as $OUTPUT_PDF"
+
