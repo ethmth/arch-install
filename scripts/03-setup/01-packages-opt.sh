@@ -118,6 +118,7 @@ texlive-mathscience
 texlive-latexextra
 texlive-fontsextra
 texlive-plaingeneric
+texlive-luatex
 ttf-liberation
 ttf-roboto
 pdftk
