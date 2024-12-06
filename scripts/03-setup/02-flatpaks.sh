@@ -84,6 +84,8 @@ flatpaks=${flatpaks//$'\n'/ }
 flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 flatpak install --noninteractive flathub $flatpaks
 
+flatpak install --noninteractive --user https://sober.vinegarhq.org/sober.flatpakref 
+
 #sudo -k flatpak override --reset io.gitlab.librewolf-community
 #sudo flatpak override --nosocket=wayland io.gitlab.librewolf-community
 
