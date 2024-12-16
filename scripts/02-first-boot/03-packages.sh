@@ -168,7 +168,7 @@ neovim
 net-tools
 networkmanager-openvpn
 nm-connection-editor
-nodejs-lts-iron
+nodejs
 npm
 yarn
 openbsd-netcat
