@@ -16,6 +16,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
+terraform
 aws-cli
 hfsprogs
 etcher-bin
