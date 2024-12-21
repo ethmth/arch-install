@@ -59,6 +59,10 @@ cp /home/$CUR_USER/arch-install/files/templates/Windows-after.xml /home/$CUR_USE
 
 NEW_QEMU=$(cat /home/$CUR_USER/vm/tools/evdev_helper/evdev.txt | grep . | grep -v "<domain" | grep -v "qemu:commandline")
 
+if [ "$DISK" == "" ]; then
+    DISK="VIRT_DISK_HERE"
+fi
+
 # AUDIO SECTION
 
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
@@ -82,4 +86,4 @@ chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME updated."
-echo "Add your GPU to the VM, then play away."
+echo "Fix your disk devices, Add your GPU to the VM, then play away."

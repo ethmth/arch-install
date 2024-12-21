@@ -112,5 +112,10 @@ chmod o+x /home/$CUR_USER/vm
 chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME defined."
+
+echo "REMOVE Either SDA Disk Device or VirtIO Block Device."
+echo "If you're using a .qcow2 file, keep the SDA Disk Device."
+echo "If you're using a physical disk, keep the VirtIO Block Device."
+
 echo "Add your GPU to the VM, install Chocolatey & packages using resources.iso, and setup Graphics drivers."
 echo "Then, run ./02-windows-update.sh to remove Virtual Graphics Devices"
