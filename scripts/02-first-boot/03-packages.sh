@@ -258,6 +258,7 @@ plasma-systemmonitor
 xwaylandvideobridge
 polkit-kde-agent
 hyprland
+hyprland-qtutils
 hyprwayland-scanner
 hyprlang
 hyprcursor
