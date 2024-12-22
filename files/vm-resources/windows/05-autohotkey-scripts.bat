@@ -23,4 +23,5 @@ if not exist "%ScriptPath%\%ScriptFile%" (
  
             echo Shortcut created at %StartupFolder%\%ShortcutName%
             pause
- 
+
+attrib -R +A "%ScriptPath%\*.*" 
