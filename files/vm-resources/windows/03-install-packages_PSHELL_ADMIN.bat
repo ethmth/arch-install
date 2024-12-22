@@ -29,6 +29,8 @@ set "packages=%packages% partition-assistant-standard"
 set "packages=%packages% jdownloader"
 set "packages=%packages% lghub"
 set "packages=%packages% opera"
+set "packages=%packages% autohotkey"
+set "packages=%packages% vim"
 :: set "packages=%packages% free-hex-editor-neo"
 
 :: set "packages=%packages% spice-agent"
