@@ -6,10 +6,10 @@ set "ScriptFile=pushtotalk.ahk"
 set "ShortcutName=pushtotalk.lnk"
  
 :: Ensure the directory exists before copying
-if not exist "%ScriptPath%" mkdir "%ScriptPath%"
+:: if not exist "%ScriptPath%" mkdir "%ScriptPath%"
  
 :: Copy the AutoHotkey script using PowerShell
-powershell -Command "Copy-Item -Path '%LocalPath%\%ScriptFile%' -Destination '%ScriptPath%'"
+powershell -Command "Copy-Item -Path '%LocalPath%' -Destination '%ScriptPath%' -Recurse"
  
 :: Ensure the script exists before creating a shortcut
 if not exist "%ScriptPath%\%ScriptFile%" (
