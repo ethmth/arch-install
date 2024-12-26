@@ -24,6 +24,7 @@ sudo systemctl enable fstrim.timer
 sudo systemctl enable etckeeper.timer
 sudo systemctl enable ntpd.service
 sudo systemctl enable avahi-daemon.service
+sudo systemctl enable pcscd.service
 if (( LAPTOP )); then
     sudo systemctl enable auto-cpufreq
 fi
