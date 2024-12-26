@@ -16,8 +16,8 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
-yubikey-manager-qt
-yubioath-desktop
+yubikey-manager
+yubico-authenticator-bin
 terraform
 aws-cli
 hfsprogs
