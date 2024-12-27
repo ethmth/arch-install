@@ -106,6 +106,8 @@ python-flask-sqlalchemy
 python-psycopg2
 python-qtconsole
 python-regex
+python-libusb1
+python-adb-shell
 jupyterlab
 jupyter-notebook
 remmina
