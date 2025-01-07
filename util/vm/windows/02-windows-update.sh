@@ -87,3 +87,4 @@ chmod o+x /home/$CUR_USER/vm/os
 
 echo "Virtual machine $NAME updated."
 echo "Fix your disk devices, Add your GPU to the VM, then play away."
+echo "Turn on HyperV in the windows guest for some anticheats (Roblox) to work"
