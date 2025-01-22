@@ -103,6 +103,7 @@ python-systemd
 python-pysocks
 python-sqlalchemy
 python-flask-sqlalchemy
+python-flask-cors
 python-psycopg2
 python-qtconsole
 python-regex
