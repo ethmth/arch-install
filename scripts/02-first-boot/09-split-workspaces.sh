@@ -22,7 +22,9 @@ if (( HYPRLAND )); then
         cd /opt/hyprland/hyprland
         GIT_HYPRLAND_VERSION="v$(yay -Q hyprland | cut -d ' ' -f 2 | cut -d '-' -f 1)"
         git checkout $GIT_HYPRLAND_VERSION
-        make all
+        #git checkout "v0.46.2"
+        make all && sudo make install
+        sudo cp /usr/local/include/hyprland/protocols/xx-color-management-v4.hpp /usr/local/include/hyprland/src/protocols/types/xx-color-management-v4.hpp
         
         #if [ -d "/opt/hyprland/wlr" ]; then
         #    rm -rf /opt/hyprland/wlr
@@ -33,12 +35,13 @@ if (( HYPRLAND )); then
         if [ -d "/opt/hyprland/split-monitor-workspaces" ]; then
             rm -rf /opt/hyprland/split-monitor-workspaces
         fi
-        git clone https://github.com/ethmth/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
+        git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
+        #git clone https://github.com/ethmth/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
         cd /opt/hyprland/split-monitor-workspaces
         #git checkout c75ec3a643a98169acdea03336c06f3656fe0e76
-        export HYPRLAND_HEADERS="/opt/hyprland"
-        INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
-        sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
+        #export HYPRLAND_HEADERS="/opt/hyprland"
+        #INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
+        #sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
         make all
     fi
 fi
