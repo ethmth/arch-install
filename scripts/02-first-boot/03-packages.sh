@@ -12,6 +12,7 @@ packages="
 pcsclite
 ccid
 sane
+sane-airscan
 simple-scan
 libnotify
 s-nail
