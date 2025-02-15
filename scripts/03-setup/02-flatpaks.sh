@@ -11,6 +11,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # Install Flatpaks
 # nz.mega.MEGAsync
 flatpaks="
+org.pgadmin.pgadmin4
 org.eclipse.Java
 io.photoflare.photoflare
 org.keepassxc.KeePassXC

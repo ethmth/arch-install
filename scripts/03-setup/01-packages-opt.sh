@@ -16,6 +16,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
+maven
 yubikey-manager
 yubico-authenticator-bin
 terraform
