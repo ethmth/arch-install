@@ -240,6 +240,7 @@ xorg-xeyes
 yt-dlp
 edk2-ovmf
 jdk-openjdk
+jdk21-openjdk
 jdk17-openjdk
 jdk11-openjdk
 jdk8-openjdk
