@@ -33,6 +33,7 @@ fi
 # echo "Login to Github..."
 if ! (git config --global credential.helper); then
 git config --global credential.helper store
+git config --global credential.useHttpPath true
 fi
 if ! (git config --global user.name); then
 read -p "What is your Github username?: " git_user
