@@ -11,11 +11,11 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # issuu-dl
 # ocrmypdf
 # mp4fpsmod
-# google-cloud-cli
 # pgmodeler
 # visual-studio-code-bin
 # squid
 packages="
+google-cloud-cli
 maven
 yubikey-manager
 yubico-authenticator-bin
@@ -89,6 +89,7 @@ jupyter-nbformat
 git-lfs
 git-extras
 qbittorrent
+python-google-auth-oauthlib
 python-inotify
 python-tqdm
 python-simple-term-menu

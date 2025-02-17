@@ -15,6 +15,12 @@ if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q 'alias git="my-git"' ); then
     source /home/$CUR_USER/.bashrc
 fi
 
+# add google cloud to bin
+if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q 'source /etc/profile.d/google-cloud-cli.sh' ); then
+    echo 'source /etc/profile.d/google-cloud-cli.sh' >> /home/$CUR_USER/.bashrc
+    source /home/$CUR_USER/.bashrc
+fi
+
 # Install Magic Status Executables
 if (( PLASMA )); then
 	echo "Installing Plasma Widget - Magic Status Executables..."
