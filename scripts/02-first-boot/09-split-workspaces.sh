@@ -24,6 +24,7 @@ if (( HYPRLAND )); then
         git checkout $GIT_HYPRLAND_VERSION
         #git checkout "v0.46.2"
         make all && sudo make install
+        sudo rm /usr/local/bin/hyprland /usr/local/bin/Hyprland
         sudo cp /usr/local/include/hyprland/protocols/xx-color-management-v4.hpp /usr/local/include/hyprland/src/protocols/types/xx-color-management-v4.hpp
         
         #if [ -d "/opt/hyprland/wlr" ]; then
