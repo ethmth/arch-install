@@ -13,8 +13,8 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Execute Hyprland
-if [ -f /usr/local/bin/Hyprland ]; then
-   exec /usr/local/bin/Hyprland >/dev/null 2>&1
-elif [ -f /usr/bin/Hyprland ]; then
+if [ -f /usr/bin/Hyprland ]; then
    exec /usr/bin/Hyprland >/dev/null 2>&1
+elif [ -f /usr/local/bin/Hyprland ]; then
+   exec /usr/local/bin/Hyprland >/dev/null 2>&1
 fi
