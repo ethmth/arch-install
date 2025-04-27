@@ -16,7 +16,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # squid
 packages="
 liquibase
-code
+visual-studio-code-bin
 google-cloud-cli
 maven
 yubikey-manager
