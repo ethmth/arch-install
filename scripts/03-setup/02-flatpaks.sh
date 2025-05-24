@@ -9,7 +9,11 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
+# fr.romainvigier.MetadataCleaner
+# net.lutris.Lutris
+# io.github.dman95.SASM
 # nz.mega.MEGAsync
+# org.octave.Octave
 flatpaks="
 org.pgadmin.pgadmin4
 org.eclipse.Java
@@ -17,7 +21,6 @@ io.photoflare.photoflare
 org.keepassxc.KeePassXC
 org.cryptomator.Cryptomator
 com.github.jeromerobert.pdfarranger
-io.github.dman95.SASM
 org.kde.kleopatra
 com.github.libresprite.LibreSprite
 net.scribus.Scribus
@@ -32,7 +35,6 @@ io.dbeaver.DBeaverCommunity
 org.filezillaproject.Filezilla
 org.freecadweb.FreeCAD
 org.blender.Blender
-org.octave.Octave
 org.raspberrypi.rpi-imager
 cc.arduino.IDE2
 org.gimp.GIMP
@@ -51,7 +53,6 @@ com.usebottles.bottles
 com.valvesoftware.Steam
 eu.scarpetta.PDFMixTool
 io.gitlab.librewolf-community
-net.lutris.Lutris
 net.mullvad.MullvadBrowser
 org.chromium.Chromium
 com.google.Chrome
@@ -63,7 +64,6 @@ org.getmonero.Monero
 org.electrum.electrum
 org.kde.kalgebra
 org.kde.labplot2
-fr.romainvigier.MetadataCleaner
 org.tigervnc.vncviewer
 com.jgraph.drawio.desktop
 com.ultimaker.cura
