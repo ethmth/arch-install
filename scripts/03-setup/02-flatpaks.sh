@@ -9,12 +9,12 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 # Install Flatpaks
-# fr.romainvigier.MetadataCleaner
 # net.lutris.Lutris
 # io.github.dman95.SASM
 # nz.mega.MEGAsync
 # org.octave.Octave
 flatpaks="
+fr.romainvigier.MetadataCleaner
 org.pgadmin.pgadmin4
 org.eclipse.Java
 io.photoflare.photoflare
