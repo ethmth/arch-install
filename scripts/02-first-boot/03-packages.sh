@@ -142,6 +142,7 @@ lf
 bridge-utils
 cronie
 cups
+cups-pdf
 dkms
 dnsmasq
 docker
