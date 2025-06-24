@@ -15,6 +15,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # visual-studio-code-bin
 # squid
 packages="
+flutter-bin
 appimagelauncher
 liquibase
 visual-studio-code-bin
