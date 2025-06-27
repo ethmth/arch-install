@@ -213,6 +213,9 @@ if ! ( [ -f "/home/$CUR_USER/.tmux.conf" ] && ( cat "/home/$CUR_USER/.tmux.conf"
     echo 'set -g mouse on' >> /home/$CUR_USER/.tmux.conf
 fi
 
+# Add this to /etc/NetworkManager/conf.d/rc-manager.conf.
+sudo sh -c "echo '[main]
+rc-manager=resolvconf' > /etc/NetworkManager/conf.d/rc-manager.conf"
 
 echo "Verify that installation of various misc software was successful"
 echo "If so, run ./09-split-workspaces.sh"
