@@ -101,21 +101,21 @@ echo "NO NEED TO DO WHAT THIS SCRIPT SAYS ^"
 fi
 fi
 
-if ((HYPRLAND)); then
-cards=$(ls -l /dev/dri/by-path | grep "card" | grep -v "$gpu_pci_group-card" | tr -s ' ' | rev | cut -d' ' -f-1 | rev | grep -Po 'card\d')
-wlr_devices=$(echo "$cards" | xargs | sed "s| |:/dev/dri/|")
-wlr_devices="/dev/dri/$wlr_devices"
-wlr_line="env = WLR_DRM_DEVICES,$wlr_devices"
-hyprland_conf="/home/$CUR_USER/.config/hypr/hyprland.conf"
-temp_conf="/tmp/hyprland.conf"
-
-cp "$hyprland_conf" "$temp_conf"
-if (cat "$temp_conf" | grep -q "^env = WLR_DRM_DEVICES,"); then
-sed -i '/^env = WLR_DRM_DEVICES,/d' "$temp_conf"
-fi
-echo "$wlr_line" | cat - "$temp_conf" > "$temp_conf.new"
-mv "$temp_conf.new" "$hyprland_conf"
-fi
+#if ((HYPRLAND)); then
+#cards=$(ls -l /dev/dri/by-path | grep "card" | grep -v "$gpu_pci_group-card" | tr -s ' ' | rev | cut -d' ' -f-1 | rev | grep -Po 'card\d')
+#wlr_devices=$(echo "$cards" | xargs | sed "s| |:/dev/dri/|")
+#wlr_devices="/dev/dri/$wlr_devices"
+#wlr_line="env = WLR_DRM_DEVICES,$wlr_devices"
+#hyprland_conf="/home/$CUR_USER/.config/hypr/hyprland.conf"
+#temp_conf="/tmp/hyprland.conf"
+#
+#cp "$hyprland_conf" "$temp_conf"
+#if (cat "$temp_conf" | grep -q "^env = WLR_DRM_DEVICES,"); then
+#sed -i '/^env = WLR_DRM_DEVICES,/d' "$temp_conf"
+#fi
+#echo "$wlr_line" | cat - "$temp_conf" > "$temp_conf.new"
+#mv "$temp_conf.new" "$hyprland_conf"
+#fi
 
 sudo mkinitcpio -P
 
