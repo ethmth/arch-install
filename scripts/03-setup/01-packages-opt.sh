@@ -14,9 +14,10 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # pgmodeler
 # visual-studio-code-bin
 # squid
+# appimagelauncher
 packages="
+cursor-bin
 flutter-bin
-appimagelauncher
 liquibase
 visual-studio-code-bin
 google-cloud-cli
