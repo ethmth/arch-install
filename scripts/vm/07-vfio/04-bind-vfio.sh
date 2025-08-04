@@ -79,6 +79,7 @@ sudo sh -c 'echo "#!/bin/bash" > /usr/local/bin/gpustart'
 sudo sh -c 'echo "echo \"Edit this script (/usr/local/bin/gpustart) and keep whichever method works\"" >> /usr/local/bin/gpustart'
 sudo sh -c "echo \"#sudo virsh nodedev-reattach pci_0000_$gpu_pci_group_with_underscores\" >> /usr/local/bin/gpustart"
 sudo sh -c "echo \"#echo \"\'0000:$gpu_pci_group\'\" | sudo tee /sys/bus/pci/drivers/vfio-pci/unbind /sys/bus/pci/drivers/amdgpu/bind\" >> /usr/local/bin/gpustart"
+sudo sh -c 'echo "echo \"Remember to set the DRI_PRIME=1 environment variable for applications you want to use the GPU\"" >> /usr/local/bin/gpustart'
 sudo chmod +rx /usr/local/bin/gpustart
 
 # sudo sh -c "echo \"#!/bin/bash\" > /usr/bin/gpustop"
@@ -88,6 +89,7 @@ sudo chmod +rx /usr/local/bin/gpustart
 sudo sh -c "echo \"#!/bin/bash\" > /usr/local/bin/gpucheck"
 sudo sh -c "echo \"DRI_PRIME=1 glxinfo | grep \"\'OpenGL\'\" | grep \"\'renderer\'\"\" >> /usr/local/bin/gpucheck"
 sudo sh -c "echo \"lspci -nnk -d $gpu_pci_id | grep 'Kernel driver in use:'\" >> /usr/local/bin/gpucheck"
+sudo sh -c 'echo "echo \"Remember to set the DRI_PRIME=1 environment variable for applications you want to use the GPU\"" >> /usr/local/bin/gpucheck'
 sudo chmod +rx /usr/local/bin/gpucheck
 fi
 
