@@ -23,21 +23,19 @@ DEVICE_LIST=$(cat /etc/libvirt/hooks-scripts/evdev-devices.list)
 
 echo "DEVICE LIST: $DEVICE_LIST"
 
-XML_CONTENT="<devices>\n"
 for device in $DEVICE_LIST; do
         if [[ -z "$device" ]]; then
                 continue
         fi
-        XML_CONTENT+="\t<input type='evdev'>\n"
-        XML_CONTENT+="\t\t<source dev='$device'/>\n"
-        XML_CONTENT+="\t</input>\n"
-done
-XML_CONTENT+="</devices>\n"
-
-mkdir -p /etc/libvirt/hooks/devices/
-
-printf "$XML_CONTENT" > /etc/libvirt/hooks/devices/evdev.xml
-
-for vm in $VM_LIST; do
-        virsh attach-device $vm /etc/libvirt/hooks/devices/evdev.xml --live
+        XML_CONTENT="<input type='evdev'>\n"
+        XML_CONTENT+="\t<source dev='$device'/>\n"
+        XML_CONTENT+="</input>\n"
+        printf "$XML_CONTENT" > /tmp/evdev.xml
+        for vm in $VM_LIST; do
+                if [[ -z "$vm" ]]; then
+                        continue
+                fi
+                echo "Attaching device $device to VM $vm"
+                virsh attach-device $vm /tmp/evdev.xml --live
+        done
 done
