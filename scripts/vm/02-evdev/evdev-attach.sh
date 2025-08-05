@@ -6,10 +6,15 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 VM=$1
-VM_LIST="$VM"
+VM_LIST=$(cat /etc/libvirt/hooks-scripts/evdev-vms.list)
 
-if [[ -z "$VM" ]]; then
-        VM_LIST=$(cat /etc/libvirt/hooks-scripts/evdev-vms.list)
+if ! [[ -z "$VM" ]]; then
+        echo "VM $VM is set."
+        if ! [[ "$VM_LIST" == *"$VM"* ]]; then
+                echo "VM $VM is not in the list."
+                exit 0
+        fi
+        VM_LIST="$VM"
 fi
 
 echo "VM LIST: $VM_LIST"

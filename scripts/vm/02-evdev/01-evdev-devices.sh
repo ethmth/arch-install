@@ -5,6 +5,11 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+if ! [[ -f "evdev-attach.sh" ]]; then
+        echo "evdev-attach.sh not found."
+        exit 1
+fi
+
 # SELECT DEVICES
 
 read -p "Do you want to auto-select devices? (y/N): " user_input
