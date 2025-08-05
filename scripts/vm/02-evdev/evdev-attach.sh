@@ -35,7 +35,7 @@ for device in $DEVICE_LIST; do
         fi
         XML_CONTENT+=" />\n"
         XML_CONTENT+="</input>\n"
-        # printf "$XML_CONTENT"
+        printf "$XML_CONTENT"
         printf "$XML_CONTENT" > /tmp/evdev.xml
         for vm in $VM_LIST; do
                 if [[ -z "$vm" ]]; then
