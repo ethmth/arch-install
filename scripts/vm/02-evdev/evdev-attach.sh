@@ -28,8 +28,14 @@ for device in $DEVICE_LIST; do
                 continue
         fi
         XML_CONTENT="<input type='evdev'>\n"
-        XML_CONTENT+="\t<source dev='$device'/>\n"
+        XML_CONTENT+="\t<source dev='$device' "
+        KBD_M=`echo "$device" | rev | cut -c -4 | rev`
+        if [[ "$KBD_M" == "-kbd" ]]; then
+                XML_CONTENT+="grab='all' repeat='on' grabToggle='ctrl-ctrl'"
+        fi
+        XML_CONTENT+=" />\n"
         XML_CONTENT+="</input>\n"
+        # printf "$XML_CONTENT"
         printf "$XML_CONTENT" > /tmp/evdev.xml
         for vm in $VM_LIST; do
                 if [[ -z "$vm" ]]; then
