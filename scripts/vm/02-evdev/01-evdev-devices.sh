@@ -34,4 +34,5 @@ done
 printf "$VM_LIST" > /etc/libvirt/hooks-scripts/evdev-vms.list
 
 
-
+cp evdev-attach.sh /usr/local/bin/evdev-attach
+chmod 755 /usr/local/bin/evdev-attach
