@@ -6,7 +6,11 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 
-VM_LIST=$(cat /etc/libvirt/hooks-scripts/evdev-vms.list)
+VM_LIST=$(cat /etc/libvirt/hooks-scripts/evdev-vms.list | fzf -m --prompt="Please select the virtual machines to edit")
+if [[ -z "$VM_LIST" ]]; then
+        echo "Nothing selected. Exiting"
+        exit 0
+fi
 
 echo "VM LIST: $VM_LIST"
 
@@ -33,10 +37,10 @@ XML_CONTENT+="\n"
 echo "XML_CONTENT: $XML_CONTENT"
 
 for vm in $VM_LIST; do
-        echo "Adding devices to VM $vm"
         if [[ -z "$vm" ]]; then
                 continue
         fi
+        echo "Adding devices to VM $vm"
         if [ -f "/etc/libvirt/qemu/$vm.xml" ]; then
                 # insert XML_CONTENT above </devices>
                 sed -i "s|</devices>|${XML_CONTENT}</devices>|" "/etc/libvirt/qemu/$vm.xml"

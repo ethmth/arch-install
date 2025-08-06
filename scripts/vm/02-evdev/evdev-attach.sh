@@ -41,7 +41,11 @@ for device in $DEVICE_LIST; do
                 if [[ -z "$vm" ]]; then
                         continue
                 fi
-                echo "Attaching device $device to VM $vm"
-                virsh attach-device $vm /tmp/evdev.xml --live
+                # check if the vm is running
+                VM_STATUS=$(virsh domstate $vm)
+                if [[ "$VM_STATUS" == "running" ]]; then
+                        echo "Attaching device $device to VM $vm"
+                        virsh attach-device $vm /tmp/evdev.xml --live
+                fi
         done
 done
