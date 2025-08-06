@@ -13,6 +13,10 @@ if [ ! -d "$path" ]; then
 fi
 
 partition=$(echo "$(lsblk --list -f | grep crypto_LUKS | awk '{print $1}')" | fzf --prompt="Please select the crypto_LUKS partition you would like to add to your system.")
+if [ "$partition" == "" ]; then
+    echo "Nothing selected. Nothing done."
+    exit 1
+fi
 partition="/dev/$partition"
 
 
