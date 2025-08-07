@@ -33,6 +33,8 @@ set "packages=%packages% autohotkey"
 set "packages=%packages% vim"
 set "packages=%packages% goggalaxy"
 set "packages=%packages% keepassxc"
+set "packages=%packages% winpcap"
+set "packages=%packages% wireshark"
 :: set "packages=%packages% free-hex-editor-neo"
 
 :: set "packages=%packages% spice-agent"
