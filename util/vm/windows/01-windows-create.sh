@@ -38,6 +38,8 @@ if [ "$DISK" == "Nothing" ]; then
         done
     done
 
+    file_array+=("NODISK")
+
     files_string=$(printf "%s\n" "${file_array[@]}")
 
     DISK=$(echo "$files_string" | fzf --prompt="Select your disk. If you've not created one, press ESC and run ./create-qcow2.sh, then come back")

@@ -12,6 +12,7 @@
   <os>
     <type arch="x86_64" machine="q35">hvm</type>
     <loader readonly="yes" secure="yes" type="pflash">/usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd</loader>
+    <bootmenu enable="yes"/>
   </os>
   <features>
     <acpi/>
