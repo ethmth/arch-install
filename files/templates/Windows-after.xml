@@ -1,4 +1,4 @@
-<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+<domain type='kvm'>
   <name>VIRT_NAME_HERE</name>
   <uuid>VIRT_UUID_HERE</uuid>
   <metadata>
@@ -110,7 +110,4 @@
       <output name="qemuoutput"/>
     </audio>
   </devices>
-   <qemu:commandline>
-    VIRT_EVDEV_HERE
-  </qemu:commandline>
 </domain>

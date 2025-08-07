@@ -190,9 +190,9 @@
     <sound model="ich9">
       <address type="pci" domain="0x0000" bus="0x00" slot="0x08" function="0x0"/>
     </sound>
-    <audio id="1" type="jack">
-      <input clientName="vm-VIRT_NAME_HERE" connectPorts="VIRT_PIPEWIRE_INPUT"/>
-      <output clientName="vm-VIRT_NAME_HERE" connectPorts="VIRT_PIPEWIRE_OUTPUT"/>
+    <audio id="1" type="pipewire" runtimeDir="/run/user/VIRT_USERID_HERE">
+      <input name="qemuinput"/>
+      <output name="qemuoutput"/>
     </audio>
   </devices>
   <!-- Note: Enable the next line when SELinux is enabled -->
@@ -214,8 +214,5 @@
     <!-- <qemu:arg value='host,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
     <!-- If you wanna use cpu emulating mode like Skylake-Server, uncomments below-->
     <!-- <qemu:arg value='Skylake-Server,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
-    <qemu:env name="PIPEWIRE_RUNTIME_DIR" value="/run/user/VIRT_USERID_HERE"/>
-    <qemu:env name="PIPEWIRE_LATENCY" value="512/48000"/>
-    VIRT_EVDEV_HERE
   </qemu:commandline>
 </domain>

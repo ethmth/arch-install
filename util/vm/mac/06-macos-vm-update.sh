@@ -55,13 +55,6 @@ DIRECTORY=$(dirname $DISK_OC)
 mv /home/$CUR_USER/vm/templates/$VM /home/$CUR_USER/vm/templates/$VM.old
 cp /home/$CUR_USER/arch-install/files/templates/MacOS-after.xml /home/$CUR_USER/vm/templates/$NAME.xml
 
-NEW_QEMU=$(cat /home/$CUR_USER/vm/tools/evdev_helper/evdev.txt | grep . | grep -v "<domain" | grep -v "qemu:commandline")
-
-# AUDIO SECTION
-
-AUDIO_DEVICE=$(pactl list sources | grep "device.product.name" | uniq | awk -F'"' '{print $2}' | fzf --prompt="Select your target Audio Device")
-
-
 sed -i "s/VIRT_NETWORK_HERE/$NETWORK/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_MAC_ADDRESS_HERE/$MAC/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s|VIRT_DISK_HERE|$DISK|g" /home/$CUR_USER/vm/templates/$NAME.xml
@@ -72,12 +65,7 @@ sed -i "s|VIRT_OCDIR_HERE|$DIRECTORY|g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_NAME_HERE/$NAME/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_UUID_HERE/$UUID/g" /home/$CUR_USER/vm/templates/$NAME.xml
-sed -i "s/VIRT_PIPEWIRE_INPUT/$AUDIO_DEVICE/g" /home/$CUR_USER/vm/templates/$NAME.xml
-sed -i "s/VIRT_PIPEWIRE_OUTPUT/$AUDIO_DEVICE/g" /home/$CUR_USER/vm/templates/$NAME.xml
 sed -i "s/VIRT_USERID_HERE/$CUR_USER_ID/g" /home/$CUR_USER/vm/templates/$NAME.xml
-
-awk -v new="$NEW_QEMU" '/VIRT_EVDEV_HERE/ {print $0 "\n" new; next} 1' /home/$CUR_USER/vm/templates/$VM > /home/$CUR_USER/vm/templates/$VM.temp && mv /home/$CUR_USER/vm/templates/$VM.temp /home/$CUR_USER/vm/templates/$VM
-sed -i '/VIRT_EVDEV_HERE/d' /home/$CUR_USER/vm/templates/$VM
 
 sudo virsh -c qemu:///system define /home/$CUR_USER/vm/templates/$NAME.xml
 
