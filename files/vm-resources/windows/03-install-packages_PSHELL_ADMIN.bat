@@ -31,6 +31,8 @@ set "packages=%packages% lghub"
 set "packages=%packages% opera"
 set "packages=%packages% autohotkey"
 set "packages=%packages% vim"
+set "packages=%packages% goggalaxy"
+set "packages=%packages% keepassxc"
 :: set "packages=%packages% free-hex-editor-neo"
 
 :: set "packages=%packages% spice-agent"
