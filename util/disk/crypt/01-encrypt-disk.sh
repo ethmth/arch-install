@@ -27,3 +27,4 @@ echo "Disk encrypted. Open the disk with:"
 echo "cryptsetup luksOpen $disk <NAME>"
 
 echo "Optionally, run the add-disk.sh script to add it to /etc/crypttab."
+echo "You can also run the OPT-add-decrypt-script.sh script to create open-$name and close-$name scripts."

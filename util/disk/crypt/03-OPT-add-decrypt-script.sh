@@ -37,11 +37,19 @@ if (( SSD )); then
 fi
 
 echo "#!/usr/bin/env bash
+if [[ \$EUID -ne 0 ]]; then
+    echo "This script must be run with root/sudo privileges."
+    exit 1
+fi
 cryptsetup $options luksOpen $partition $name
 " > /usr/local/bin/open-$name
 chmod 755 /usr/local/bin/open-$name
 
 echo "#!/usr/bin/env bash
+if [[ \$EUID -ne 0 ]]; then
+    echo "This script must be run with root/sudo privileges."
+    exit 1
+fi
 cryptsetup luksClose $name
 " > /usr/local/bin/close-$name
 chmod 755 /usr/local/bin/close-$name
