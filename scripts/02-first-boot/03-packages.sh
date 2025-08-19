@@ -105,6 +105,7 @@ lshw
 bluez
 bluez-utils
 vlc
+vlc-plugin-ffmpeg
 mpv
 socat
 stunnel
