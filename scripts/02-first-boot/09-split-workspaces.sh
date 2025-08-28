@@ -39,7 +39,7 @@ if (( HYPRLAND )); then
         git clone https://github.com/Duckonaut/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
         #git clone https://github.com/ethmth/split-monitor-workspaces.git /opt/hyprland/split-monitor-workspaces
         cd /opt/hyprland/split-monitor-workspaces
-        #git checkout c75ec3a643a98169acdea03336c06f3656fe0e76
+        git checkout d0ba2bb24953c3c35a4a369ae4b4e50cb03f1832
         #export HYPRLAND_HEADERS="/opt/hyprland"
         #INCLUDE_PATH_LINE="COMPILE_FLAGS+=-I/opt/hyprland"
         #sed -i "/COMPILE_FLAGS+=/a $INCLUDE_PATH_LINE" Makefile
