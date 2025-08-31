@@ -97,6 +97,15 @@ else
 fi
 sudo update-mime-database /usr/share/mime
 
+
+# clear thunar recently used
+echo "<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+></xbel>" > /home/$CUR_USER/.local/share/recently-used.xbel
+sudo chattr +i /home/$CUR_USER/.local/share/recently-used.xbel
+
 # android home
 # NOW I've put ANDROID_HOME in hyprland.conf, so this is no longer needed
 #if ! ( cat "/home/$CUR_USER/.bashrc" | grep -q "export ANDROID_HOME=\"/home/$CUR_USER/Android/Sdk\"" ); then
