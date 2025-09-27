@@ -177,6 +177,7 @@ networkmanager-openvpn
 nm-connection-editor
 nodejs
 npm
+pnpm
 yarn
 openbsd-netcat
 nmap
