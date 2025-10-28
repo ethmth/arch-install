@@ -16,7 +16,6 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # squid
 # appimagelauncher
 packages="
-bruno-bin
 cursor-bin
 flutter-bin
 liquibase
