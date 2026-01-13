@@ -279,7 +279,7 @@ brightnessctl
 dunst
 hyprpicker
 otf-font-awesome
-rofi
+fuzzel
 hyprlock
 hyprpaper
 waybar
@@ -310,6 +310,8 @@ ttf-jetbrains-mono-nerd
 ttf-icomoon-feather
 ttf-iosevka-nerd
 adobe-source-code-pro-fonts
+ttf-cascadia-code-nerd
+ttf-cascadia-mono-nerd
 "
 # NVIDIA compat packages
 if (( NVIDIA && ! INTEL)); then
