@@ -13,8 +13,9 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Execute Hyprland
-if [ -f /usr/bin/Hyprland ]; then
-   exec /usr/bin/Hyprland >/dev/null 2>&1
-elif [ -f /usr/local/bin/Hyprland ]; then
-   exec /usr/local/bin/Hyprland >/dev/null 2>&1
+if [ -f /usr/bin/start-hyprland ]; then
+   exec /usr/bin/start-hyprland >/dev/null 2>&1
+else
+   echo "No hyprland executable found"
+   exit 1
 fi
