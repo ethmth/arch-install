@@ -312,6 +312,7 @@ ttf-iosevka-nerd
 adobe-source-code-pro-fonts
 ttf-cascadia-code-nerd
 ttf-cascadia-mono-nerd
+woff2-cascadia-code
 "
 # NVIDIA compat packages
 if (( NVIDIA && ! INTEL)); then
