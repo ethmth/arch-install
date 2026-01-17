@@ -161,6 +161,7 @@ guestfs-tools
 gvfs
 sshfs
 jq
+yq
 tidy
 kate
 kdeconnect
