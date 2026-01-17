@@ -14,6 +14,7 @@ source /home/$CUR_USER/arch-install/config/system.conf
 # nz.mega.MEGAsync
 # org.octave.Octave
 flatpaks="
+net.blockbench.Blockbench
 com.usebruno.Bruno
 fr.romainvigier.MetadataCleaner
 org.pgadmin.pgadmin4
