@@ -8,6 +8,10 @@
   </metadata>
   <memory>13271040</memory>
   <currentMemory>13271040</currentMemory>
+  <memoryBacking>
+    <source type="memfd"/>
+    <access mode="shared"/>
+  </memoryBacking>
   <vcpu current="4">4</vcpu>
   <os>
     <type arch="x86_64" machine="q35">hvm</type>
@@ -109,5 +113,10 @@
       <input name="qemuinput"/>
       <output name="qemuoutput"/>
     </audio>
+    <!-- <filesystem type="mount" accessmode="passthrough">
+      <driver type="virtiofs"/>
+      <source dir="VIRT_SHAREPOINT_HERE"/>
+      <target dir="shared_folder"/>
+    </filesystem> -->
   </devices>
 </domain>
