@@ -61,7 +61,6 @@ com.google.Chrome
 org.kde.kdenlive
 org.signal.Signal
 rest.insomnia.Insomnia
-io.freetubeapp.FreeTube
 org.getmonero.Monero
 org.electrum.electrum
 org.kde.kalgebra
