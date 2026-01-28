@@ -140,7 +140,6 @@ tar
 alacritty
 foot
 lf
-bridge-utils
 cronie
 cups
 cups-pdf
