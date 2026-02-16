@@ -116,6 +116,8 @@ python-qtconsole
 python-regex
 python-libusb1
 python-adb-shell
+python-pytest
+python-immutabledict
 jupyterlab
 jupyter-notebook
 remmina
