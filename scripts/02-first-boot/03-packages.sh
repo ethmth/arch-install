@@ -94,7 +94,7 @@ libsixel
 feh
 usbutils
 carla
-iptables-nft
+iptables
 firewalld
 cdrtools
 iotop
@@ -389,6 +389,5 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 yay -Syu $packages --needed
 
 echo "Verify that the installation of the packages was successful"
-echo "Make sure you have iptables-nft instead of iptables"
 echo "If so, run ./04-services.sh"
 
