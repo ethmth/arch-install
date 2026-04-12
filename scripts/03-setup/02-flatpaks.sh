@@ -8,6 +8,7 @@ fi
 CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
+
 # Install Flatpaks
 # net.lutris.Lutris
 # io.github.dman95.SASM
@@ -88,6 +89,11 @@ flatpaks=$(echo "$flatpaks" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 flatpak install --noninteractive flathub $flatpaks
 
 flatpak install --noninteractive --user https://sober.vinegarhq.org/sober.flatpakref 
+
+# Dolphin (manual repo)
+flatpak remote-add --if-not-exists --user dolphin https://flatpak.dolphin-emu.org/releases.flatpakrepo
+flatpak install --user dolphin org.DolphinEmu.dolphin-emu
+
 
 #sudo -k flatpak override --reset io.gitlab.librewolf-community
 #sudo flatpak override --nosocket=wayland io.gitlab.librewolf-community
