@@ -1,0 +1,2 @@
+0 * * * * /home/e/arch-install/backup/e-mini-backup.sh >> /home/e/log/cron/e-mini-backup.log 2>&1
+0 12 * * * /home/e/arch-install/backup/e-droplet-backup.sh >> /home/e/log/cron/e-droplet-backup.log 2>&1
