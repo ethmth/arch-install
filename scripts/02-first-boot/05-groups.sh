@@ -9,7 +9,7 @@ CUR_USER=$(whoami)
 source /home/$CUR_USER/arch-install/config/system.conf
 
 sudo -k groupadd autologin
-sudo usermod -aG network,libvirt,kvm,input,docker,wireshark,autologin,render $CUR_USER
+sudo usermod -aG network,libvirt,kvm,input,docker,wireshark,autologin,render,nix-users $CUR_USER
 # sudo usermod -aG libvirt-qemu $CUR_USER
 
 # Add del_prot user if it doesn't exist yet
