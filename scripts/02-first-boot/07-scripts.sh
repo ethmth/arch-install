@@ -22,10 +22,12 @@ fi
 if (( HYPRLAND )); then
     sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/wrappedhl /usr/local/bin/wrappedhl
     sudo chmod +rx /usr/local/bin/wrappedhl
-    sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lock /usr/local/bin/lock
-    sudo chmod +rx /usr/local/bin/lock
+    # sudo cp /home/$CUR_USER/arch-install/files/installed_scripts/lock /usr/local/bin/lock
+    # sudo chmod +rx /usr/local/bin/lock
     sudo cp /home/$CUR_USER/arch-install/files/configs/hyprlandwrapper.desktop /usr/share/wayland-sessions/hyprlandwrapper.desktop
     sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=hyprlandwrapper\n\" > /etc/sddm.conf.d/autologin.conf"
+    sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
+    { echo "[Service]"; echo "ExecStart="; echo "ExecStart=-/sbin/agetty -o '-p -f -- \\u' --autologin $CUR_USER --noclear %I $TERM"; } | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf > /dev/null
 elif (( PLASMA )); then
     if (( NVIDIA && ! INTEL )); then
         sudo sh -c "printf \"[Autologin]\nUser=$CUR_USER\nSession=plasmax11\n\" > /etc/sddm.conf.d/autologin.conf"
